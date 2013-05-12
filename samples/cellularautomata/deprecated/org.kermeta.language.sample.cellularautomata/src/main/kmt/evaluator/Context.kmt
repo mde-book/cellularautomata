@@ -1,0 +1,21 @@
+using kermeta::standard
+using ca_vm
+using kermeta::io::StdIO => stdio
+
+package ca::evaluator{
+	class Context
+	{
+		reference currentGrid : Grid
+		reference currentCell : Cell
+		
+		operation initialize(grid : Grid, cell : Cell) : Context is do
+			currentGrid := grid
+			currentCell := cell
+			result := self
+		end
+		operation initialize(grid : Grid) : Context is do
+			currentGrid := grid
+			result := self
+		end
+	}
+}

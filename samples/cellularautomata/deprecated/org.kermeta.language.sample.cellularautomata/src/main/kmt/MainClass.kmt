@@ -1,0 +1,15 @@
+using kermeta::standard
+using kermeta::io::StdIO => stdio
+
+package mainPackage{
+	class MainClass
+	{
+		operation mainOperation() : Void is do 
+			
+			stdio.writeln("Hello from mainOperation")
+			var simu : cellular_automata::simulator::Simulator := cellular_automata::simulator::Simulator.new
+			simu.simulateWithAsciiArt2Dvisualizer("platform:/resource/org.kermeta.language.sample.cellularautomata/src/main/samples/LifeGame.CA_rules.xmi",
+			"platform:/resource/org.kermeta.language.sample.cellularautomata/src/main/samples/2D_3x3_Moore_cross.CA_vm.xmi")
+		end
+	}
+}
