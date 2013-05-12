@@ -1,0 +1,28 @@
+KermetaProject "org.kermeta.language.sample.cellularautomata"
+	groupId = "my.group"
+	defaultMainClass = "cellular_automata::simulator::Simulator"
+	defaultMainOperation = "simulateWithAsciiArt2Dvisualizer"
+	dependencies = {
+		//default dependency to kermeta framework (try first in eclipse plugin, then look into maven repository)
+		dependency "library.core" ="platform:/plugin/org.kermeta.language.library.core","mvn:org.kermeta.language/language.library.core/LATEST"
+	}	packageEquivalences={
+		// indicates the real java name of a given package
+		// useful for deployed thirdparty metamodels
+		packageEquivalence "ecore" = "org.eclipse.emf.ecore"
+		packageEquivalence "uml2" = "org.eclipse.uml2.uml"
+	}
+	sources = {
+		require "${project.baseUri}/src/main/kmt/MainClass.kmt"
+		require "${project.baseUri}/src/main/kmt/gridGenerator/GridGenerator.kmt"
+		require "${project.baseUri}/src/main/kmt/gridGenerator/GridGenerator_VM_Aspect.kmt"
+		require "${project.baseUri}/src/main/kmt/evaluator/Evaluator_CA_rule_Aspect.kmt"
+		require "${project.baseUri}/src/main/kmt/evaluator/Evaluator_CA_initialization_Aspect.kmt"
+		require "${project.baseUri}/src/main/kmt/evaluator/Context.kmt"
+		require "${project.baseUri}/src/main/ecore/CA_VM.ecore"
+		require "${project.baseUri}/src/main/ecore/CA_Rules.ecore"
+		require "${project.baseUri}/src/main/ecore/CA_Initialization.ecore"
+		require "${project.baseUri}/src/main/kmt/visualizers/AsciiArtVisualizer.kmt"
+		require"${project.baseUri}/src/main/kmt/simulator/Simulator.kmt"
+		require"${project.baseUri}/src/main/kmt/simulator/Simulator_VM_Aspect.kmt"
+		require"${project.baseUri}/src/main/kmt/simulator/Simulator_CA_rule_Aspect.kmt"
+	}

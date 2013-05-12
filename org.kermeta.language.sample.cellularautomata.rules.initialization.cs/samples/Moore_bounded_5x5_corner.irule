@@ -1,0 +1,4 @@
+regularGeometry 4 {5 x 5}  				// Moore (4 neighbours) 2 dimensions 5x5 bounded world
+where {[0,5] x [0,0]} initValue = { 1 } // assign 1 on 1rst line
+where {[0,0] x [0,5]} initValue = { 1 } // assign 1 on 1rst column
+where {[0,5] x [0,5]} initValue = { 0 } // if none of the previous rule applies, then set to 0

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ca_rule:CellularAutomata xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ca_rule="http://ca_rule/1.0" xsi:schemaLocation="http://ca_rule/1.0 ../ecore/CA_Rules.ecore">
+  <rules>
+    <nextValue xsi:type="ca_rule:Conditional">
+      <ifTrueExpression xsi:type="ca_rule:IntegerLiteral" value="1"/>
+      <ifFalseExpression xsi:type="ca_rule:SelfValue"/>
+      <condition xsi:type="ca_rule:Equal">
+        <left xsi:type="ca_rule:IntegerLiteral" value="3"/>
+        <right xsi:type="ca_rule:Sum"/>
+      </condition>
+    </nextValue>
+    <filter/>
+  </rules>
+  <rules>
+    <nextValue xsi:type="ca_rule:Conditional">
+      <ifTrueExpression xsi:type="ca_rule:IntegerLiteral" value="1"/>
+      <ifFalseExpression xsi:type="ca_rule:IntegerLiteral"/>
+      <condition xsi:type="ca_rule:Or">
+        <left xsi:type="ca_rule:Equal">
+          <left xsi:type="ca_rule:IntegerLiteral" value="2"/>
+          <right xsi:type="ca_rule:Sum"/>
+        </left>
+        <right xsi:type="ca_rule:Equal">
+          <left xsi:type="ca_rule:IntegerLiteral" value="3"/>
+          <right xsi:type="ca_rule:Sum"/>
+        </right>
+      </condition>
+    </nextValue>
+    <filter lowerRange="1" upperRange="1"/>
+  </rules>
+</ca_rule:CellularAutomata>

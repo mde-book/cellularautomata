@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.kermeta.language.sample.cellularautomata.rules.model/src"
+    modelPluginID="org.kermeta.language.sample.cellularautomata.rules.model" modelName="Rules"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>rules.ecore</foreignModel>
+  <genPackages prefix="Rule" disposableProviderFactory="true" ecorePackage="rules.ecore#/">
+    <genClasses ecoreClass="rules.ecore#//Rule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules.ecore#//Rule/nextValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules.ecore#//Rule/filter"/>
+    </genClasses>
+    <genClasses ecoreClass="rules.ecore#//Max"/>
+    <genClasses ecoreClass="rules.ecore#//Add"/>
+    <genClasses ecoreClass="rules.ecore#//IntegerExpression"/>
+    <genClasses ecoreClass="rules.ecore#//UnaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules.ecore#//UnaryExpression/target"/>
+    </genClasses>
+    <genClasses ecoreClass="rules.ecore#//And"/>
+    <genClasses ecoreClass="rules.ecore#//Or"/>
+    <genClasses ecoreClass="rules.ecore#//Not"/>
+    <genClasses ecoreClass="rules.ecore#//Greater"/>
+    <genClasses ecoreClass="rules.ecore#//Lower"/>
+    <genClasses ecoreClass="rules.ecore#//IntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rules.ecore#//IntegerLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="rules.ecore#//Conditional">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules.ecore#//Conditional/ifTrueExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules.ecore#//Conditional/ifFalseExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules.ecore#//Conditional/condition"/>
+    </genClasses>
+    <genClasses ecoreClass="rules.ecore#//CurrentCellPopulation"/>
+    <genClasses ecoreClass="rules.ecore#//Size"/>
+    <genClasses ecoreClass="rules.ecore#//NeighborsExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules.ecore#//NeighborsExpression/neighborsFilter"/>
+    </genClasses>
+    <genClasses ecoreClass="rules.ecore#//Min"/>
+    <genClasses ecoreClass="rules.ecore#//BinaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules.ecore#//BinaryExpression/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules.ecore#//BinaryExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="rules.ecore#//Mult"/>
+    <genClasses ecoreClass="rules.ecore#//Div"/>
+    <genClasses ecoreClass="rules.ecore#//PopulationRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rules.ecore#//PopulationRange/lowerRange"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rules.ecore#//PopulationRange/upperRange"/>
+    </genClasses>
+    <genClasses ecoreClass="rules.ecore#//Sum"/>
+    <genClasses ecoreClass="rules.ecore#//CellularAutomata">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules.ecore#//CellularAutomata/rules"/>
+    </genClasses>
+    <genClasses ecoreClass="rules.ecore#//Mod"/>
+    <genClasses ecoreClass="rules.ecore#//UMinus"/>
+    <genClasses ecoreClass="rules.ecore#//Minus"/>
+    <genClasses ecoreClass="rules.ecore#//Equal"/>
+  </genPackages>
+</genmodel:GenModel>

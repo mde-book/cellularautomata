@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.kermeta.kp.launcher.eclipse.internal.KermetaLauncherID">
+<stringAttribute key="KM_LAUNCH_KP_FILE" value="/org.kermeta.language.sample.cellularautomata/org.kermeta.language.sample.cellularautomata.kp"/>
+<stringAttribute key="KM_LAUNCH_MAIN_CLASS" value="mainPackage::MainClass"/>
+<stringAttribute key="KM_LAUNCH_MAIN_OPERATION" value="mainOperation"/>
+<stringAttribute key="KM_LAUNCH_PARAMETERS" value="platform:/resource/org.kermeta.language.sample.cellularautomata/src/main/samples/2D_50x50_Moore_0.CA_Initialization.xmi"/>
+<stringAttribute key="KM_LAUNCH_PROJECT" value="org.kermeta.language.sample.cellularautomata"/>
+<stringAttribute key="process_factory_id" value="org.kermeta.debug.processFactory"/>
+</launchConfiguration>
