@@ -1,19 +1,20 @@
 package fr.inria.diverse.k3.sample.cellularautomata.evol.refactoring
 
-import fr.inria.triskell.k3.Aspect
-import core.Equal
-import evol.CurrentCellPopulation
-import core.Rule
-import evol.PopulationRange
-import core.Conditional
 
-
-import static extension fr.inria.diverse.k3.sample.cellularautomata.evol.refactoring.EqualAspect.*
 import java.util.List
 import java.util.ArrayList
+
+import fr.inria.triskell.k3.Aspect
+import core.Equal
+import core.Rule
+import core.Conditional
 import core.IntegerLiteral
 import core.CoreFactory
+import evol.PopulationRange
+import evol.CurrentCellPopulation
 import evol.EvolFactory
+
+import static extension fr.inria.diverse.k3.sample.cellularautomata.evol.refactoring.EqualAspect.*
 
 @Aspect(className=typeof(Rule))
 class RuleAspect {
@@ -50,7 +51,6 @@ class RuleAspect {
 		val lowerRule = CoreFactory.eINSTANCE.createRule
 		val upperRule = CoreFactory.eINSTANCE.createRule
 		if(literalValue == lower){
-			println("literalValue == lower")
 			val lowerPopulationRange = EvolFactory.eINSTANCE.createPopulationRange
 			lowerPopulationRange.lowerRange = lower
 			lowerPopulationRange.upperRange = lower
@@ -63,7 +63,6 @@ class RuleAspect {
 			upperRule.evaluatedVal = (_self.evaluatedVal as Conditional).ifFalseExpression
 		}
 		else{
-			println("literalValue != lower")
 			val lowerPopulationRange = EvolFactory.eINSTANCE.createPopulationRange
 			lowerPopulationRange.lowerRange = lower
 			lowerPopulationRange.upperRange = upper-1
