@@ -1,4 +1,4 @@
-package fr.inria.diverse.k3.sample.cellularautomata.vm.simple_transfos.inverter
+package fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.inverter
 
 class TestVMInverter {
 	

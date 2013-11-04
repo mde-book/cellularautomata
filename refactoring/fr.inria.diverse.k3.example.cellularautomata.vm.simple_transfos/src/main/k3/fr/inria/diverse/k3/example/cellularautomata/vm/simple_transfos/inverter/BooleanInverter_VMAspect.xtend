@@ -1,11 +1,10 @@
-package fr.inria.diverse.k3.sample.cellularautomata.vm.simple_transfos.inverter
+package fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.inverter
 
 import fr.inria.triskell.k3.Aspect
 import vm.Cell
 import vm.Universe
 
-
-import static extension fr.inria.diverse.k3.sample.cellularautomata.vm.simple_transfos.inverter.CellAspect.*
+import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.inverter.CellAspect.*
 
 @Aspect(className=typeof(Universe))
 class UniverseAspect{
