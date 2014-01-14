@@ -1,0 +1,6 @@
+mymodel MyModel {
+
+  myelement SomeElement;
+  myelement AnotherElement;
+
+}
