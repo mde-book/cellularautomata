@@ -1,4 +1,4 @@
-package org.cellularautomata.lang.core;
+package org.kermeta.language.cellularautomata.rules;
 
 version "0.0.1";
 
@@ -7,17 +7,23 @@ version "0.0.1";
  *
  * @author
  */
-grammar CellularAutomataCore {
+grammar CellularAutomataCore extends mc.literals.Literals {
 
 
   /* ======================================================================= */
   /* =============================== GRAMMAR =============================== */
   /* ======================================================================= */
 
-  IntegerExpression = "1";
 
+  // TODO is this rule really needed in this core grammar?
   Rule =
-    "when" OrExpression variable:Name "=" IntegerExpression;
+    "when" OrExpression variable:Name "=" IntLiteral; // TODO SignedIntLiteral
+
+  Conditional =
+    OrExpression
+    |
+    ("if" condition:Conditional "{" trueExpr:Conditional "}" "else" "{" falseExpr:Conditional "}")
+  ;
 
   OrExpression =
     left:AndExpression ("|" right:AndExpression)*;
@@ -40,6 +46,6 @@ grammar CellularAutomataCore {
   UnaryExpression =
     (not:["!"] | uminus:["-"])? LiteralsExpression;
 
-  LiteralsExpression = "(" OrExpression ")" | IntegerExpression;
+  LiteralsExpression = "(" OrExpression ")" | IntLiteral; // TODO SignedIntLiteral
 
 }
