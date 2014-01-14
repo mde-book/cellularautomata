@@ -12,8 +12,8 @@ import mc.antlr.RecognitionException;
 import mc.antlr.TokenStreamException;
 import mc.grammar.MCConcreteParser;
 
-import org.cellularautomata.lang.core._parser.CellularAutomataCoreOrExpressionMCConcreteParser;
 import org.junit.Test;
+import org.kermeta.language.cellularautomata.rules._parser.CellularAutomataCoreOrExpressionMCConcreteParser;
 
 import com.google.common.base.Supplier;
 
