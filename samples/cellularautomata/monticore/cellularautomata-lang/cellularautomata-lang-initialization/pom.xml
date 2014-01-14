@@ -15,6 +15,20 @@
 
   <dependencies>
 
+	<dependency>
+		<groupId>de.monticore.cellularautomata</groupId>
+		<artifactId>cellularautomata-lang-core</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+
+	<dependency>
+		<groupId>de.monticore.cellularautomata</groupId>
+		<artifactId>cellularautomata-lang-core</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<classifier>grammars</classifier>
+	</dependency>
+
+
     <!-- .. MontiCore ............................................. -->
 
     <dependency>

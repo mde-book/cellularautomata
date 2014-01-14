@@ -41,7 +41,6 @@
 		<artifactId>de.monticore.re</artifactId>
 		<version>${monticore.version}</version>
 		<classifier>grammars</classifier>
-		<scope>provided</scope>
 	</dependency>
 
     <!-- .. Common Libraries .............................................. -->
@@ -129,7 +128,7 @@
             </goals>
             <configuration>
               <classifier>grammars</classifier>
-              <classesDirectory>${basedir}/${paths.generated}</classesDirectory>
+              <classesDirectory>${basedir}/src/main/grammars</classesDirectory>
             </configuration>
           </execution>
         </executions>

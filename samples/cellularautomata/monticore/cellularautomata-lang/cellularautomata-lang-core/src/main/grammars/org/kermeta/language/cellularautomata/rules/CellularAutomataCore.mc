@@ -14,11 +14,6 @@ grammar CellularAutomataCore extends mc.literals.Literals {
   /* =============================== GRAMMAR =============================== */
   /* ======================================================================= */
 
-
-  // TODO is this rule really needed in this core grammar?
-  Rule =
-    "when" OrExpression variable:Name "=" IntLiteral; // TODO SignedIntLiteral
-
   Conditional =
     OrExpression
     |
@@ -46,6 +41,6 @@ grammar CellularAutomataCore extends mc.literals.Literals {
   UnaryExpression =
     (not:["!"] | uminus:["-"])? LiteralsExpression;
 
-  LiteralsExpression = "(" OrExpression ")" | IntLiteral; // TODO SignedIntLiteral
+  LiteralsExpression = "(" Conditional ")" | IntLiteral; // TODO SignedIntLiteral
 
 }
