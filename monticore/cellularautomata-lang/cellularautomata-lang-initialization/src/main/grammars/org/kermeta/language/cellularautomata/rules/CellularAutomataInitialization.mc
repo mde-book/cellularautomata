@@ -4,12 +4,11 @@ version "0.0.1";
 
 grammar CellularAutomataInitialization extends mc.literals.Literals {
 
-
   /* ======================================================================= */
   /* =============================== GRAMMAR =============================== */
   /* ======================================================================= */
 
-  CAInita =
+  CAInit =
     (geometry:RegularGeometry)?
     seedRules:Rule (seedRules:Rule)*
   ;

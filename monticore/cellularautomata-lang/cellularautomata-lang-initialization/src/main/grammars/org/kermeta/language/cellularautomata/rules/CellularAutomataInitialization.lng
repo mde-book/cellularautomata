@@ -1,0 +1,13 @@
+package org.kermeta.language.cellularautomata.rules;
+
+language CellularAutomataInitialization {
+
+  root CellularAutomataInitializationRoot<CAInit>;
+
+  rootfactory CellularAutomataInitializationRootFactory for CellularAutomataInitializationRoot<CAInit> {
+    org.kermeta.language.cellularautomata.rules.CellularAutomataInitialization.CAInit l <<start>>;
+  }
+
+  parsingworkflow CellularAutomataInitializationParsingWorkflow for CellularAutomataInitializationRoot<CAInit>;
+
+}
