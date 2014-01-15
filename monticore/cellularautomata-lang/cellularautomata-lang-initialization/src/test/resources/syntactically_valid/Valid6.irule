@@ -1,0 +1,1 @@
+where {[1,5]} initValue = { if (positionOn[2]) {if (1|0) {0} else {1} } else {0} }

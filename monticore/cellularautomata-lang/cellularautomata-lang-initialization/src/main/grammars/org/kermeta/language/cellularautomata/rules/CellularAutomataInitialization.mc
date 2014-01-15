@@ -2,21 +2,21 @@ package org.kermeta.language.cellularautomata.rules;
 
 version "0.0.1";
 
-grammar CellularAutomataInitialization extends org.kermeta.language.cellularautomata.rules.CellularAutomataCore {
+grammar CellularAutomataInitialization extends mc.literals.Literals {
 
 
   /* ======================================================================= */
   /* =============================== GRAMMAR =============================== */
   /* ======================================================================= */
 
-  CellularAutomataInitialization =
+  CAInita =
     (geometry:RegularGeometry)?
     seedRules:Rule (seedRules:Rule)*
   ;
 
 
   Rule =
-    "where"  "initValue" (filter:GlobalPosition) "=" "{" evaluatedVal:Conditional "}"
+    "where" (filter:GlobalPosition) "initValue" "=" "{" evaluatedVal:Conditional "}"
   ;
 
   GlobalPosition =
@@ -27,10 +27,8 @@ grammar CellularAutomataInitialization extends org.kermeta.language.cellularauto
 	"[" (lowerCoordinate:IntLiteral) "," (upperCoordinate:IntLiteral) "]"
   ;
 
-  InitializationLiteralsExpression extends LiteralsExpression = BooleanLiteral;
-
   PositionLiteral =
-    "positionOn" "[" dimensionIndex:IntLiteral
+    "positionOn" "[" dimensionIndex:IntLiteral "]"
   ;
 
   RegularGeometry =
@@ -38,7 +36,38 @@ grammar CellularAutomataInitialization extends org.kermeta.language.cellularauto
   ;
 
   Dimension =
-	(size:IntLiteral) /* | (isCircular? = '(' size=EInt ')')*/ // TODO
+	(size:IntLiteral) | ["isCircular"] "(" size:IntLiteral ")"
   ;
+
+  Conditional =
+    OrExpression
+    |
+    ("if" condition:Conditional "{" trueExpr:Conditional "}" "else" "{" falseExpr:Conditional "}")
+  ;
+
+  OrExpression =
+    left:AndExpression ("|" right:AndExpression)*;
+
+  AndExpression =
+    left:EqualExpression ("&" right:EqualExpression)*;
+
+  EqualExpression =
+    left:ComparisonExpression ("==" right:ComparisonExpression)*;
+
+  ComparisonExpression =
+    left:AddExpression ((lower:["<"] | greater:[">"]) right:AddExpression)*;
+
+  AddExpression =
+    left:MultExpression ((plus:["+"] | minus:["-"]) right:MultExpression)*;
+
+  MultExpression =
+    left:UnaryExpression ((mult:["*"] | div:["/"] | mod:["%"]) right:UnaryExpression)*;
+
+  UnaryExpression =
+    (not:["!"] | uminus:["-"])? LiteralsExpression;
+
+  LiteralsExpression = "(" Conditional ")" | IntLiteral | PositionLiteral; // TODO SignedIntLiteral
+
+
 
 }

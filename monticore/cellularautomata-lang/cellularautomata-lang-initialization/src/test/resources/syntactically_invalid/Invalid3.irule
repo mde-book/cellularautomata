@@ -1,0 +1,2 @@
+where {[1,5]} initValue = 1 // missing brackets, i.e. { 1 }
+
