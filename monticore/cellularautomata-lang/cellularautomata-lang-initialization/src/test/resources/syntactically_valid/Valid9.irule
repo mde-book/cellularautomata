@@ -1,0 +1,2 @@
+regularGeometry 4 {isCircular (5) x 5}  // first dimension is circular
+where {[1,5] x [1,5]} initValue = { 0 } // if none of the previous rule applies, then set to 0
