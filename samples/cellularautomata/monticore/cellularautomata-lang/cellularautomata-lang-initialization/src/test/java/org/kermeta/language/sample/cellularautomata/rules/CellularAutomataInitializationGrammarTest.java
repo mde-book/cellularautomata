@@ -13,7 +13,7 @@ import mc.antlr.TokenStreamException;
 import mc.grammar.MCConcreteParser;
 
 import org.junit.Test;
-import org.kermeta.language.cellularautomata.rules._parser.CellularAutomataInitializationCAInitaMCConcreteParser;
+import org.kermeta.language.cellularautomata.rules._parser.CellularAutomataInitializationCAInitMCConcreteParser;
 
 import com.google.common.base.Supplier;
 
@@ -30,7 +30,8 @@ public class CellularAutomataInitializationGrammarTest {
   public static final Supplier<MCConcreteParser> parserSupplier = new Supplier<MCConcreteParser>() {
     @Override
     public MCConcreteParser get() {
-      return new CellularAutomataInitializationCAInitaMCConcreteParser("Test");
+
+      return new CellularAutomataInitializationCAInitMCConcreteParser("Test");
     }
   };
 
