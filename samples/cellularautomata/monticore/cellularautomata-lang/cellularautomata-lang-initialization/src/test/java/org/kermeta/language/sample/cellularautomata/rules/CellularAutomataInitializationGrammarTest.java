@@ -13,12 +13,12 @@ import mc.antlr.TokenStreamException;
 import mc.grammar.MCConcreteParser;
 
 import org.junit.Test;
-import org.kermeta.language.cellularautomata.rules._parser.CellularAutomataInitializationUnaryExpressionMCConcreteParser;
+import org.kermeta.language.cellularautomata.rules._parser.CellularAutomataInitializationCAInitaMCConcreteParser;
 
 import com.google.common.base.Supplier;
 
 /**
- * Tests if CellularAutomataCore.mc is producing the desired models.
+ * Tests if CellularAutomataInitialization.mc is producing the desired models.
  *
  * @author (last commit) $Author$
  * @version $Revision$, $Date: 2012-11-01 16:19:26 +0100 (Do, 01 Nov
@@ -30,7 +30,7 @@ public class CellularAutomataInitializationGrammarTest {
   public static final Supplier<MCConcreteParser> parserSupplier = new Supplier<MCConcreteParser>() {
     @Override
     public MCConcreteParser get() {
-      return new CellularAutomataInitializationUnaryExpressionMCConcreteParser("Test");
+      return new CellularAutomataInitializationCAInitaMCConcreteParser("Test");
     }
   };
 
@@ -38,24 +38,25 @@ public class CellularAutomataInitializationGrammarTest {
 
   /**
    * Tests if the models are really unparsable on basis
-   * of the current Cellular Automata Core grammar.
+   * of the current Cellular Automata Initialization grammar.
    *
    * @throws IOException
    * @throws RecognitionException
    * @throws TokenStreamException
    */
+  @Test
   public void parseAllInalidTestModels() throws IOException, RecognitionException,
       TokenStreamException {
 
     GrammarTestParser parser = GrammarTestParser.newParser(parserSupplier);
-    parser.parseModels(new File("src/test/resources/syntactically_invalid/syntax"), ".core");
+    parser.parseModels(new File("src/test/resources/syntactically_invalid"), ".irule");
 
     assertTrue(parser.printReport(), parser.failedParsingAllModelFiles());
   }
 
   /**
    * Tests if the models are really parsable on basis
-   * of the current Cellular Automata Core grammar.
+   * of the current Cellular Automata Initialization grammar.
    *
    * @throws IOException
    * @throws RecognitionException
