@@ -26,12 +26,21 @@ class UniverseAspect{
 class CellAspect{
 	public def void vonNeumann2Moore(){
 		val neighborsToAdd = new HashSet<Cell>  
-		_self.neighbors.forEach[neighborCell| 
-			neighborCell.neighbors.filter[possibleCommonNeighbor | 
-				(_self.neighbors.contains(possibleCommonNeighbor) && possibleCommonNeighbor != _self )
-				].forEach[neighborToAdd | neighborsToAdd.add(neighborToAdd) ]
+		_self.neighbors.forEach[neighborCell1| 
+			_self.neighbors.forEach[neighborCell2|
+				if(neighborCell1 != neighborCell2){ 
+					neighborsToAdd.addAll(neighborCell1.commonNeighborsWith(neighborCell2).filter[possibleCommonNeighbor | 
+						possibleCommonNeighbor != _self
+					])
+				}
+			]
 		]
 		_self.neighbors.addAll(neighborsToAdd) 
+	}
+	public def HashSet<Cell> commonNeighborsWith(Cell otherCell){
+		val commonNeighbors = new HashSet<Cell>
+		commonNeighbors.addAll(_self.neighbors.filter[neighbor | otherCell.neighbors.contains(neighbor)])
+		return commonNeighbors
 	}
 }
 
