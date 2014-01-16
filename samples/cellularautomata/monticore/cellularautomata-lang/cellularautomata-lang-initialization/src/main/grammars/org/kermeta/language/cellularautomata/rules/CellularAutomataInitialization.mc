@@ -15,15 +15,15 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
 
 
   Rule =
-    "where" (filter:GlobalPosition) "initValue" "=" "{" evaluatedVal:Conditional "}"
+    "where" GlobalPosition "initValue" "=" "{" Conditional "}"
   ;
 
   GlobalPosition =
-	"{" coordinateRanges:CoordinateRange ("x" (coordinateRanges:CoordinateRange)?)* "}"
+	"{" ranges:CoordinateRange ("x" (ranges:CoordinateRange)?)* "}"
   ;
 
   CoordinateRange =
-	"[" (lowerCoordinate:IntLiteral) "," (upperCoordinate:IntLiteral) "]"
+	"[" (lowerCoord:IntLiteral) "," (upperCoord:IntLiteral) "]"
   ;
 
   PositionLiteral =
@@ -41,7 +41,7 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
   Conditional =
     OrExpression
     |
-    ("if" condition:Conditional "{" trueExpr:Conditional "}" "else" "{" falseExpr:Conditional "}")
+    ("if" Conditional "{" trueExpr:Conditional "}" "else" "{" falseExpr:Conditional "}")
   ;
 
   OrExpression =
