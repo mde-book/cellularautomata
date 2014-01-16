@@ -1,0 +1,7 @@
+regularGeometry 3 {6 x isCircular (7)}  // second dimension is circular
+// where {[1,5]x[2,4]} initValue = { if 1 {1} else {2} }
+where {[1,5]} initValue = { positionOn [4] }
+where {[1,5]} initValue = { !2 }
+where {[1,5]} initValue = { 3 }
+
+

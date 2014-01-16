@@ -74,8 +74,8 @@ public final class CellularAutomataInitializationLanguage extends ModelingLangua
     addExecutionUnit("parse",
         new CellularAutomataInitializationParsingWorkflow());
 
-//    addExecutionUnit("myworkflow",
-//        MyWorkflow.newWorkflow(LANGUAGE_ROOT));
+    addExecutionUnit("ecore_export",
+        EcoreExportWorkflow.newWorkflow(LANGUAGE_ROOT));
   }
 
   /**

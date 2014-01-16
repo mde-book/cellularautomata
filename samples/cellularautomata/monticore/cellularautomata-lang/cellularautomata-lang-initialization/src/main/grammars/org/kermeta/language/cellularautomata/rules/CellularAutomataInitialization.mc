@@ -9,8 +9,8 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
   /* ======================================================================= */
 
   CAInit =
-    (geometry:RegularGeometry)?
-    seedRules:Rule (seedRules:Rule)*
+    RegularGeometry?
+    rules:Rule (rules:Rule)*
   ;
 
 
@@ -65,7 +65,10 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
   UnaryExpression =
     (not:["!"] | uminus:["-"])? LiteralsExpression;
 
-  LiteralsExpression = "(" Conditional ")" | IntLiteral | PositionLiteral; // TODO SignedIntLiteral
+  LiteralsExpression = "(" Conditional ")" | SignedIntegerLiteral | PositionLiteral; // TODO SignedIntegerLiteral
+  
+  SignedIntegerLiteral  = 
+    /*(neg:["-"])?*/ IntLiteral; // TODO
 
 
 
