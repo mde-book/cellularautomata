@@ -17,9 +17,10 @@ public class CellularAutomataInitializationToolTest {
 
   @Test
   public void test() {
-	  CellularAutomataInitializationTool.main(new String[] {
-        "src/test/resources/syntactically_valid",
+    CellularAutomataInitializationTool.main(new String[] {
+        "src/test/resources/models/",
         "-analysis", "ALL", "parse",
+        "-analysis", "ALL", "ecore_export"
     });
   }
 

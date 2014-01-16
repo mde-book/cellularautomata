@@ -11,19 +11,19 @@ import mc.ast.AbstractVisitor;
 import org.kermeta.language.cellularautomata.rules._tool.CellularAutomataInitializationRoot;
 
 /**
- * A workflow that executes a {@link MyVisitor} on the given AST.
+ * A workflow that executes a {@link EcoreExportVisitor} on the given AST.
  *
  * @author (last commit) $Author$
  * @version $Revision$, $Date$
  *
  */
-public final class MyWorkflow extends DSLWorkflow<CellularAutomataInitializationRoot> {
+public final class EcoreExportWorkflow extends DSLWorkflow<CellularAutomataInitializationRoot> {
 
   /**
-   * Factory method for {@link MyWorkflow}.
+   * Factory method for {@link EcoreExportWorkflow}.
    */
-  public static final MyWorkflow newWorkflow(Class<? extends CellularAutomataInitializationRoot> responsibleClass) {
-    return new MyWorkflow(responsibleClass);
+  public static final EcoreExportWorkflow newWorkflow(Class<? extends CellularAutomataInitializationRoot> responsibleClass) {
+    return new EcoreExportWorkflow(responsibleClass);
   }
 
   /**
@@ -31,7 +31,7 @@ public final class MyWorkflow extends DSLWorkflow<CellularAutomataInitialization
    *
    * @param responsibleClass
    */
-  private MyWorkflow(Class<? extends CellularAutomataInitializationRoot> responsibleClass) {
+  private EcoreExportWorkflow(Class<? extends CellularAutomataInitializationRoot> responsibleClass) {
     super(responsibleClass);
   }
 
@@ -41,7 +41,7 @@ public final class MyWorkflow extends DSLWorkflow<CellularAutomataInitialization
   @Override
   public final void run(CellularAutomataInitializationRoot dslroot) {
     ASTNode ast = dslroot.getAst();
-    MyVisitor visitor = MyVisitor.newVisitor();
+    EcoreExportVisitor visitor = EcoreExportVisitor.newVisitor();
     AbstractVisitor.run(visitor, ast);
   }
 
