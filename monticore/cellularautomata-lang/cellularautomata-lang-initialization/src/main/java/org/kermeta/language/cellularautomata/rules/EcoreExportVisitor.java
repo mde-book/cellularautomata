@@ -500,63 +500,6 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	}
 
 
-//	public final void ownVisitXXX(ASTOrExpression node) {
-//	  ASTAndExpression left = node.getLeft();
-//	  if (!node.getRight().isEmpty()) {
-//
-//	    BinaryExpression beParent = null;
-//	    Conditional condParent = null;
-//	    if (estack.peek() instanceof BinaryExpression) {
-//	      beParent = (BinaryExpression) estack.peek();
-//	    }
-//	    else if (estack.peek() instanceof Conditional) {
-//	      condParent = (Conditional) estack.peek();
-//	    }
-//
-//	    Or prev = null;
-//	    for (int i = 0; i < node.getRight().size(); i++) {
-//	      ASTAndExpression right = node.getRight().get(i);
-//
-//	      Or orOp = coreFactory.createOr();
-//	      estack.push(orOp);
-//	      if (i == 0) {
-//	        getVisitor().startVisit(left);
-//	      }
-//	      else {
-//	        orOp.setLeft(prev);
-//	      }
-//
-//	      getVisitor().startVisit(right);
-//
-//	      prev = (Or) estack.pop();
-//	      if (beParent != null) {
-//	        if (beParent.getLeft() == null) {
-//	          beParent.setLeft(prev);
-//	        }
-//	        else {
-//	          beParent.setRight(prev);
-//	        }
-//	      }
-//	      else if (condParent != null) {
-//	        if (condParent.getCondition() == null) {
-//	          condParent.setCondition(prev);
-//	        }
-//	        else if (condParent.getIfTrueExpression() == null) {
-//	          condParent.setIfTrueExpression(prev);
-//	        }
-//	        else {
-//	          condParent.setIfFalseExpression(prev);
-//	        }
-//	      }
-//	    }
-//	  }
-//	  else {
-//	    getVisitor().startVisit(left);
-//	  }
-//	}
-
-
-
   private void addChildToParent(EObject parent, IntegerExpression child) {
     if (parent instanceof Rule) {
       ((Rule) parent).setEvaluatedVal(child);
