@@ -26,13 +26,22 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
+import org.kermeta.language.cellularautomata.rules._ast.ASTAddExpression;
+import org.kermeta.language.cellularautomata.rules._ast.ASTAndExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTCAInit;
 import org.kermeta.language.cellularautomata.rules._ast.ASTConditional;
 import org.kermeta.language.cellularautomata.rules._ast.ASTCoordinateRange;
 import org.kermeta.language.cellularautomata.rules._ast.ASTDimension;
+import org.kermeta.language.cellularautomata.rules._ast.ASTDivExpression;
+import org.kermeta.language.cellularautomata.rules._ast.ASTEqualExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTGlobalPosition;
+import org.kermeta.language.cellularautomata.rules._ast.ASTGreaterExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTLiteralsExpression;
+import org.kermeta.language.cellularautomata.rules._ast.ASTLowerExpression;
+import org.kermeta.language.cellularautomata.rules._ast.ASTMinusExpression;
+import org.kermeta.language.cellularautomata.rules._ast.ASTModExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTMultExpression;
+import org.kermeta.language.cellularautomata.rules._ast.ASTOrExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTRegularGeometry;
 import org.kermeta.language.cellularautomata.rules._ast.ASTRule;
 import org.kermeta.language.cellularautomata.rules._ast.ASTSignedIntegerLiteral;
@@ -46,11 +55,21 @@ import ruleInit.GlobalPosition;
 import ruleInit.InitFactory;
 import ruleInit.PositionLiteral;
 import ruleInit.impl.InitFactoryImpl;
+import core.Add;
+import core.And;
+import core.BinaryExpression;
 import core.Conditional;
 import core.CoreFactory;
+import core.Div;
+import core.Equal;
+import core.Greater;
 import core.IntegerExpression;
 import core.IntegerLiteral;
+import core.Lower;
+import core.Minus;
+import core.Mod;
 import core.Mult;
+import core.Or;
 import core.Rule;
 import core.UnaryExpression;
 import core.impl.CoreFactoryImpl;
@@ -157,45 +176,278 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	  rule.setFilter(pos);
 	}
 
-	public final void visit (ASTConditional node) {
+	public final void ownVisit (ASTConditional node) {
 	  if (node.getOrExpression() != null) {
+	    getVisitor().startVisit(node.getOrExpression());
+
 	    return;
 	  }
 
 	  Conditional conditional = coreFactory.createConditional();
 
-	  if (estack.peek() instanceof Rule) {
-	    Rule rule = (Rule) estack.peek();
-	    rule.setEvaluatedVal(conditional);
-	  }
-
-
-	  if (node.getOrExpression() != null) {
-	    // TODO rekursive conditionals
-	  }
-
+	  addChildToParent(estack.peek(), conditional);
 	  estack.push(conditional);
+
+	  getVisitor().startVisit(node.getConditional());
+	  getVisitor().startVisit(node.getTrueExpr());
+	  getVisitor().startVisit(node.getFalseExpr());
 
 	  estack.pop();
 
 	}
 
-	 public final void ownVisit (ASTMultExpression node) {
+  public final void ownVisit (ASTOrExpression node) {
+    if (node.getRight().isEmpty()) {
+      // Only visit child nodes
+      getVisitor().startVisit(node.getLeft());
+      return;
+    }
+
+    Or or = coreFactory.createOr();
+
+    EObject parent = estack.peek();
+    estack.push(or);
+
+    // visit left child
+    getVisitor().startVisit(node.getLeft());
+
+    // visit (first) right child
+    // TODO needs to be done for all right children
+    getVisitor().startVisit(node.getRight().get(0));
+
+    addChildToParent(parent, or);
+    estack.pop();
+  }
+
+  public final void ownVisit (ASTAndExpression node) {
+    if (node.getRight().isEmpty()) {
+      // Only visit child nodes
+      getVisitor().startVisit(node.getLeft());
+      return;
+    }
+
+    And and = coreFactory.createAnd();
+
+    EObject parent = estack.peek();
+    estack.push(and);
+
+    // visit left child
+    getVisitor().startVisit(node.getLeft());
+
+    // visit (first) right child
+    // TODO needs to be done for all right children
+    getVisitor().startVisit(node.getRight().get(0));
+
+    addChildToParent(parent, and);
+    estack.pop();
+  }
+
+  public final void ownVisit (ASTEqualExpression node) {
+    if (node.getRight().isEmpty()) {
+      // Only visit child nodes
+      getVisitor().startVisit(node.getLeft());
+      return;
+    }
+
+    Equal lower = coreFactory.createEqual();
+
+    EObject parent = estack.peek();
+    estack.push(lower);
+
+    // visit left child
+    getVisitor().startVisit(node.getLeft());
+
+    // visit (first) right child
+    // TODO needs to be done for all right children
+    getVisitor().startVisit(node.getRight().get(0));
+
+    addChildToParent(parent, lower);
+    estack.pop();
+  }
+
+  public final void ownVisit (ASTLowerExpression node) {
+    if (node.getRight().isEmpty()) {
+      // Only visit child nodes
+      getVisitor().startVisit(node.getLeft());
+      return;
+    }
+
+    Lower lower = coreFactory.createLower();
+
+    EObject parent = estack.peek();
+    estack.push(lower);
+
+    // visit left child
+    getVisitor().startVisit(node.getLeft());
+
+    // visit (first) right child
+    // TODO needs to be done for all right children
+    getVisitor().startVisit(node.getRight().get(0));
+
+    addChildToParent(parent, lower);
+    estack.pop();
+  }
+
+  public final void ownVisit (ASTGreaterExpression node) {
+    if (node.getRight().isEmpty()) {
+      // Only visit child nodes
+      getVisitor().startVisit(node.getLeft());
+      return;
+    }
+
+    Greater greater = coreFactory.createGreater();
+
+    EObject parent = estack.peek();
+    estack.push(greater);
+
+    // visit left child
+    getVisitor().startVisit(node.getLeft());
+
+    // visit (first) right child
+    // TODO needs to be done for all right children
+    getVisitor().startVisit(node.getRight().get(0));
+
+    addChildToParent(parent, greater);
+    estack.pop();
+  }
+
+  public final void ownVisit (ASTAddExpression node) {
+    if (node.getRight().isEmpty()) {
+      // Only visit child nodes
+      getVisitor().startVisit(node.getLeft());
+      return;
+    }
+
+    Add add = coreFactory.createAdd();
+
+    EObject parent = estack.peek();
+    estack.push(add);
+
+    // visit left child
+    getVisitor().startVisit(node.getLeft());
+
+    // visit (first) right child
+    // TODO needs to be done for all right children
+    getVisitor().startVisit(node.getRight().get(0));
+
+    addChildToParent(parent, add);
+    estack.pop();
+  }
+
+
+  public final void ownVisit (ASTMinusExpression node) {
+    if (node.getRight().isEmpty()) {
+      // Only visit child nodes
+      getVisitor().startVisit(node.getLeft());
+      return;
+    }
+
+    Minus minus = coreFactory.createMinus();
+
+    EObject parent = estack.peek();
+    estack.push(minus);
+
+    // visit left child
+    getVisitor().startVisit(node.getLeft());
+
+    // visit (first) right child
+    // TODO needs to be done for all right children
+    getVisitor().startVisit(node.getRight().get(0));
+
+    addChildToParent(parent, minus);
+    estack.pop();
+  }
+
+  public final void ownVisit (ASTMultExpression node) {
+    if (node.getRight().isEmpty()) {
+      // Only visit child nodes
+      getVisitor().startVisit(node.getLeft());
+      return;
+    }
+
+    Mult mult = coreFactory.createMult();
+
+    EObject parent = estack.peek();
+    estack.push(mult);
+
+    // visit left child
+    getVisitor().startVisit(node.getLeft());
+
+    // visit (first) right child
+    // TODO needs to be done for all right children
+    getVisitor().startVisit(node.getRight().get(0));
+
+    addChildToParent(parent, mult);
+    estack.pop();
+  }
+
+  public final void ownVisit (ASTDivExpression node) {
+    if (node.getRight().isEmpty()) {
+      // Only visit child nodes
+      getVisitor().startVisit(node.getLeft());
+      return;
+    }
+
+    Div div = coreFactory.createDiv();
+
+    EObject parent = estack.peek();
+    estack.push(div);
+
+    // visit left child
+    getVisitor().startVisit(node.getLeft());
+
+    // visit (first) right child
+    // TODO needs to be done for all right children
+    getVisitor().startVisit(node.getRight().get(0));
+
+    addChildToParent(parent, div);
+    estack.pop();
+  }
+
+	 public final void ownVisit (ASTModExpression node) {
 	    if (node.getRight().isEmpty()) {
 	      // Only visit child nodes
 	      getVisitor().startVisit(node.getLeft());
 	      return;
 	    }
 
+	    Mod mod = coreFactory.createMod();
+
 	    EObject parent = estack.peek();
+	    estack.push(mod);
 
-	    Mult mult = null;
+	    // visit left child
+	    getVisitor().startVisit(node.getLeft());
 
+	    // visit (first) right child
+	    // TODO needs to be done for all right children
+	    getVisitor().startVisit(node.getRight().get(0));
 
-	    addChildToParent(parent, mult);
-
+	    addChildToParent(parent, mod);
 	    estack.pop();
 
+
+//	    EObject parent = estack.peek();
+//
+//	    Mod prevMod = null;
+//
+//      for (int i = 0; i < node.getRight().size(); i++) {
+//        ASTUnaryExpression right = node.getRight().get(i);
+//
+//        Mod curMod = coreFactory.createMod();
+//        estack.push(curMod);
+//
+//        if (i == 0) {
+//          getVisitor().startVisit(node.getLeft());
+//        }
+//        else {
+//          curMod.setLeft(prevMod);
+//        }
+//
+//        getVisitor().startVisit(right);
+//        prevMod = curMod;
+//      }
+//      addChildToParent(parent, prevMod);
 	  }
 
   public final void ownVisit(ASTUnaryExpression node) {
@@ -241,6 +493,9 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	    position.setDimensionIndex(node.getPositionLiteral().getDimensionIndex().getValue());
 
 	    addChildToParent(parent, position);
+	  }
+	  else if (node.getConditional() != null) {
+	    // TODO implement
 	  }
 	}
 
@@ -321,14 +576,14 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
     else if (parent instanceof UnaryExpression) {
       ((UnaryExpression) parent).setTarget(child);
     }
-    else if (parent instanceof Mult) {
-      Mult multParent = (Mult) parent;
+    else if (parent instanceof BinaryExpression) {
+      BinaryExpression modParent = (BinaryExpression) parent;
 
-      if (multParent.getLeft() == null) {
-        multParent.setLeft(child);
+      if (modParent.getLeft() == null) {
+        modParent.setLeft(child);
       }
       else {
-        multParent.setRight(child);
+        modParent.setRight(child);
       }
     }
   }
