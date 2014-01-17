@@ -43,7 +43,8 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
     |
     ("if" Conditional "{" trueExpr:Conditional "}" "else" "{" falseExpr:Conditional "}")
   ;
-
+  
+  
   OrExpression =
     left:AndExpression ("|" right:AndExpression)*;
 
