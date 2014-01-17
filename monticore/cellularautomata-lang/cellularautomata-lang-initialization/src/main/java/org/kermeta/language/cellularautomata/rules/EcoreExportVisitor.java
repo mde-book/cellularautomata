@@ -495,7 +495,7 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	    addChildToParent(parent, position);
 	  }
 	  else if (node.getConditional() != null) {
-	    // TODO implement
+	    getVisitor().startVisit(node.getConditional());
 	  }
 	}
 
@@ -504,7 +504,7 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
     if (parent instanceof Rule) {
       ((Rule) parent).setEvaluatedVal(child);
     }
-    if (parent instanceof Conditional) {
+    else if (parent instanceof Conditional) {
       Conditional condParent = (Conditional) parent;
       if (condParent.getCondition() == null) {
         condParent.setCondition(child);
