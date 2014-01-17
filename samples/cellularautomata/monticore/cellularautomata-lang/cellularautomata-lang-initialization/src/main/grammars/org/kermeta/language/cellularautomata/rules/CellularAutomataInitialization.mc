@@ -51,17 +51,29 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
     left:EqualExpression ("&" right:EqualExpression)*;
 
   EqualExpression =
-    left:ComparisonExpression ("==" right:ComparisonExpression)*;
+    left:LowerExpression ("==" right:LowerExpression)*;
 
-  ComparisonExpression =
-    left:AddExpression ((lower:["<"] | greater:[">"]) right:AddExpression)*;
+  LowerExpression =
+    left:GreaterExpression ("<" right:GreaterExpression)*;
+	
+  GreaterExpression =
+    left:AddExpression (">" right:AddExpression)*;
 
   AddExpression =
-    left:MultExpression ((plus:["+"] | minus:["-"]) right:MultExpression)*;
+    left:MinusExpression ("+" right:MinusExpression)*;
+	
+  MinusExpression =
+    left:MultExpression ("-" right:MultExpression)*;
 
   MultExpression =
-    left:UnaryExpression ((mult:["*"] | div:["/"] | mod:["%"]) right:UnaryExpression)*;
+    left:DivExpression ("*" right:DivExpression)*;
 
+  DivExpression =
+    left:ModExpression ("/" right:ModExpression)*;	
+
+  ModExpression =
+    left:UnaryExpression ("%" right:UnaryExpression)*;
+	
   UnaryExpression =
     (not:["!"] | uminus:["-"])? LiteralsExpression;
 

@@ -14,6 +14,7 @@
     <module>cellularautomata-lang-core</module>
     <module>cellularautomata-lang-evolution</module>
     <module>cellularautomata-lang-initialization</module>
+    <module>cellularautomata-lang-initialization-usage</module>
   </modules>
 
   <!-- == Project Properties ====================================== -->

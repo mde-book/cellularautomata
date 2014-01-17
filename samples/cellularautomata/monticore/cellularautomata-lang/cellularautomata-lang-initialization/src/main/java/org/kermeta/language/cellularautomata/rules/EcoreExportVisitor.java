@@ -26,14 +26,13 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
-import org.kermeta.language.cellularautomata.rules._ast.ASTAndExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTCAInit;
 import org.kermeta.language.cellularautomata.rules._ast.ASTConditional;
 import org.kermeta.language.cellularautomata.rules._ast.ASTCoordinateRange;
 import org.kermeta.language.cellularautomata.rules._ast.ASTDimension;
 import org.kermeta.language.cellularautomata.rules._ast.ASTGlobalPosition;
 import org.kermeta.language.cellularautomata.rules._ast.ASTLiteralsExpression;
-import org.kermeta.language.cellularautomata.rules._ast.ASTOrExpression;
+import org.kermeta.language.cellularautomata.rules._ast.ASTMultExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTRegularGeometry;
 import org.kermeta.language.cellularautomata.rules._ast.ASTRule;
 import org.kermeta.language.cellularautomata.rules._ast.ASTSignedIntegerLiteral;
@@ -47,12 +46,11 @@ import ruleInit.GlobalPosition;
 import ruleInit.InitFactory;
 import ruleInit.PositionLiteral;
 import ruleInit.impl.InitFactoryImpl;
-import core.BinaryExpression;
 import core.Conditional;
 import core.CoreFactory;
 import core.IntegerExpression;
 import core.IntegerLiteral;
-import core.Or;
+import core.Mult;
 import core.Rule;
 import core.UnaryExpression;
 import core.impl.CoreFactoryImpl;
@@ -182,14 +180,31 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
 	}
 
-	public final void ownVisit (ASTUnaryExpression node) {
-	  if (!node.isNot() && !node.isUminus()) {
-	    // Only visit child nodes
-	    getVisitor().startVisit(node.getLiteralsExpression());
+	 public final void ownVisit (ASTMultExpression node) {
+	    if (node.getRight().isEmpty()) {
+	      // Only visit child nodes
+	      getVisitor().startVisit(node.getLeft());
+	      return;
+	    }
 
-	    return;
+	    EObject parent = estack.peek();
+
+	    Mult mult = null;
+
+
+	    addChildToParent(parent, mult);
+
+	    estack.pop();
+
 	  }
 
+  public final void ownVisit(ASTUnaryExpression node) {
+    if (!node.isNot() && !node.isUminus()) {
+      // Only visit child nodes
+      getVisitor().startVisit(node.getLiteralsExpression());
+
+      return;
+    }
 
 	  EObject parent = estack.peek();
 
@@ -202,15 +217,14 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	    unary = coreFactory.createUMinus();
 	  }
 
-	  if (unary != null) {
-      estack.push(unary);
+    estack.push(unary);
 
-      addChildToParent(parent, unary);
+    addChildToParent(parent, unary);
 
-      getVisitor().startVisit(node.getLiteralsExpression());
+    // visit child nodes
+    getVisitor().startVisit(node.getLiteralsExpression());
 
-      estack.pop();
-	  }
+    estack.pop();
 	}
 
 	public void ownVisit(ASTLiteralsExpression node) {
@@ -231,67 +245,66 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	}
 
 
-	public final void ownVisitXXX(ASTOrExpression node) {
-	  ASTAndExpression left = node.getLeft();
-	  if (!node.getRight().isEmpty()) {
-
-	    BinaryExpression beParent = null;
-	    Conditional condParent = null;
-	    if (estack.peek() instanceof BinaryExpression) {
-	      beParent = (BinaryExpression) estack.peek();
-	    }
-	    else if (estack.peek() instanceof Conditional) {
-	      condParent = (Conditional) estack.peek();
-	    }
-
-	    Or prev = null;
-	    for (int i = 0; i < node.getRight().size(); i++) {
-	      ASTAndExpression right = node.getRight().get(i);
-
-	      Or orOp = coreFactory.createOr();
-	      estack.push(orOp);
-	      if (i == 0) {
-	        getVisitor().startVisit(left);
-	      }
-	      else {
-	        orOp.setLeft(prev);
-	      }
-
-	      getVisitor().startVisit(right);
-
-	      prev = (Or) estack.pop();
-	      if (beParent != null) {
-	        if (beParent.getLeft() == null) {
-	          beParent.setLeft(prev);
-	        }
-	        else {
-	          beParent.setRight(prev);
-	        }
-	      }
-	      else if (condParent != null) {
-	        if (condParent.getCondition() == null) {
-	          condParent.setCondition(prev);
-	        }
-	        else if (condParent.getIfTrueExpression() == null) {
-	          condParent.setIfTrueExpression(prev);
-	        }
-	        else {
-	          condParent.setIfFalseExpression(prev);
-	        }
-	      }
-	    }
-	  }
-	  else {
-	    getVisitor().startVisit(left);
-	  }
-	}
+//	public final void ownVisitXXX(ASTOrExpression node) {
+//	  ASTAndExpression left = node.getLeft();
+//	  if (!node.getRight().isEmpty()) {
+//
+//	    BinaryExpression beParent = null;
+//	    Conditional condParent = null;
+//	    if (estack.peek() instanceof BinaryExpression) {
+//	      beParent = (BinaryExpression) estack.peek();
+//	    }
+//	    else if (estack.peek() instanceof Conditional) {
+//	      condParent = (Conditional) estack.peek();
+//	    }
+//
+//	    Or prev = null;
+//	    for (int i = 0; i < node.getRight().size(); i++) {
+//	      ASTAndExpression right = node.getRight().get(i);
+//
+//	      Or orOp = coreFactory.createOr();
+//	      estack.push(orOp);
+//	      if (i == 0) {
+//	        getVisitor().startVisit(left);
+//	      }
+//	      else {
+//	        orOp.setLeft(prev);
+//	      }
+//
+//	      getVisitor().startVisit(right);
+//
+//	      prev = (Or) estack.pop();
+//	      if (beParent != null) {
+//	        if (beParent.getLeft() == null) {
+//	          beParent.setLeft(prev);
+//	        }
+//	        else {
+//	          beParent.setRight(prev);
+//	        }
+//	      }
+//	      else if (condParent != null) {
+//	        if (condParent.getCondition() == null) {
+//	          condParent.setCondition(prev);
+//	        }
+//	        else if (condParent.getIfTrueExpression() == null) {
+//	          condParent.setIfTrueExpression(prev);
+//	        }
+//	        else {
+//	          condParent.setIfFalseExpression(prev);
+//	        }
+//	      }
+//	    }
+//	  }
+//	  else {
+//	    getVisitor().startVisit(left);
+//	  }
+//	}
 
 
 
   private void addChildToParent(EObject parent, IntegerExpression child) {
     if (parent instanceof Rule) {
-      Rule ruleParent = (Rule) parent;
-      ruleParent.setEvaluatedVal(child);
+      ((Rule) parent).setEvaluatedVal(child);
     }
     if (parent instanceof Conditional) {
       Conditional condParent = (Conditional) parent;
@@ -306,8 +319,17 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
       }
     }
     else if (parent instanceof UnaryExpression) {
-      UnaryExpression unaryParent = (UnaryExpression) parent;
-      unaryParent.setTarget(child);
+      ((UnaryExpression) parent).setTarget(child);
+    }
+    else if (parent instanceof Mult) {
+      Mult multParent = (Mult) parent;
+
+      if (multParent.getLeft() == null) {
+        multParent.setLeft(child);
+      }
+      else {
+        multParent.setRight(child);
+      }
     }
   }
 
