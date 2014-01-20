@@ -215,9 +215,21 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
     or.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
-    // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
     or.setRight((IntegerExpression) estack.pop());
+
+    for (int i=1; i < node.getRight().size(); i++) {
+      ASTAndExpression andNode = node.getRight().get(i);
+
+      Or currOr = coreFactory.createOr();
+
+      currOr.setLeft(or);
+
+      getVisitor().startVisit(andNode);
+      currOr.setRight((IntegerExpression) estack.pop());
+
+      or = currOr;
+    }
 
     estack.push(or);
   }
@@ -231,16 +243,26 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
     And and = coreFactory.createAnd();
 
-    estack.push(and);
-
     // visit left child
     getVisitor().startVisit(node.getLeft());
     and.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
-    // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
     and.setRight((IntegerExpression) estack.pop());
+
+    for (int i=1; i < node.getRight().size(); i++) {
+      ASTEqualExpression andNode = node.getRight().get(i);
+
+      And curr = coreFactory.createAnd();
+
+      curr.setLeft(and);
+
+      getVisitor().startVisit(andNode);
+      curr.setRight((IntegerExpression) estack.pop());
+
+      and = curr;
+    }
 
     estack.push(and);
   }
@@ -259,9 +281,21 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
     equal.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
-    // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
     equal.setRight((IntegerExpression) estack.pop());
+
+    for (int i=1; i < node.getRight().size(); i++) {
+      ASTLowerExpression andNode = node.getRight().get(i);
+
+      Equal curr = coreFactory.createEqual();
+
+      curr.setLeft(equal);
+
+      getVisitor().startVisit(andNode);
+      curr.setRight((IntegerExpression) estack.pop());
+
+      equal = curr;
+    }
 
     estack.push(equal);
   }
@@ -280,9 +314,21 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
     lower.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
-    // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
     lower.setRight((IntegerExpression) estack.pop());
+
+    for (int i=1; i < node.getRight().size(); i++) {
+      ASTGreaterExpression curNode = node.getRight().get(i);
+
+      Lower curr = coreFactory.createLower();
+
+      curr.setLeft(lower);
+
+      getVisitor().startVisit(curNode);
+      curr.setRight((IntegerExpression) estack.pop());
+
+      lower = curr;
+    }
 
     estack.push(lower);
   }
@@ -301,9 +347,21 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
     greater.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
-    // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
     greater.setRight((IntegerExpression) estack.pop());
+
+    for (int i=1; i < node.getRight().size(); i++) {
+      ASTAddExpression curNode = node.getRight().get(i);
+
+      Greater curr = coreFactory.createGreater();
+
+      curr.setLeft(greater);
+
+      getVisitor().startVisit(curNode);
+      curr.setRight((IntegerExpression) estack.pop());
+
+      greater = curr;
+    }
 
     estack.push(greater);
   }
@@ -322,9 +380,21 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
     add.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
-    // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
     add.setRight((IntegerExpression) estack.pop());
+
+    for (int i=1; i < node.getRight().size(); i++) {
+      ASTMinusExpression curNode = node.getRight().get(i);
+
+      Add curr = coreFactory.createAdd();
+
+      curr.setLeft(add);
+
+      getVisitor().startVisit(curNode);
+      curr.setRight((IntegerExpression) estack.pop());
+
+      add = curr;
+    }
 
     estack.push(add);
   }
@@ -345,9 +415,21 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
 
     // visit (first) right child
-    // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
     minus.setRight((IntegerExpression) estack.pop());
+
+    for (int i=1; i < node.getRight().size(); i++) {
+      ASTMultExpression curNode = node.getRight().get(i);
+
+      Minus curr = coreFactory.createMinus();
+
+      curr.setLeft(minus);
+
+      getVisitor().startVisit(curNode);
+      curr.setRight((IntegerExpression) estack.pop());
+
+      minus = curr;
+    }
 
     estack.push(minus);
   }
@@ -366,9 +448,21 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
     mult.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
-    // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
     mult.setRight((IntegerExpression) estack.pop());
+
+    for (int i=1; i < node.getRight().size(); i++) {
+      ASTDivExpression curNode = node.getRight().get(i);
+
+      Mult curr = coreFactory.createMult();
+
+      curr.setLeft(mult);
+
+      getVisitor().startVisit(curNode);
+      curr.setRight((IntegerExpression) estack.pop());
+
+      mult = curr;
+    }
 
     estack.push(mult);
   }
@@ -387,9 +481,21 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
     div.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
-    // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
     div.setRight((IntegerExpression) estack.pop());
+
+    for (int i=1; i < node.getRight().size(); i++) {
+      ASTModExpression curNode = node.getRight().get(i);
+
+      Div curr = coreFactory.createDiv();
+
+      curr.setLeft(div);
+
+      getVisitor().startVisit(curNode);
+      curr.setRight((IntegerExpression) estack.pop());
+
+      div = curr;
+    }
 
     estack.push(div);
   }
@@ -408,9 +514,21 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	    mod.setLeft((IntegerExpression) estack.pop());
 
 	    // visit (first) right child
-	    // TODO needs to be done for all right children
 	    getVisitor().startVisit(node.getRight().get(0));
 	    mod.setRight((IntegerExpression) estack.pop());
+
+	    for (int i=1; i < node.getRight().size(); i++) {
+	      ASTUnaryExpression curNode = node.getRight().get(i);
+
+	      Mod curr = coreFactory.createMod();
+
+	      curr.setLeft(mod);
+
+	      getVisitor().startVisit(curNode);
+	      curr.setRight((IntegerExpression) estack.pop());
+
+	      mod = curr;
+	    }
 
 	    estack.push(mod);
 	  }

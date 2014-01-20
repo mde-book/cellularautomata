@@ -1,0 +1,10 @@
+where {[4,5]} initValue = { 1|2|3 }
+where {[4,5]} initValue = { 1&2&3 }
+where {[4,5]} initValue = { 1==2==3 }
+where {[4,5]} initValue = { 1<2<3 }
+where {[4,5]} initValue = { 1>2>3 }
+where {[4,5]} initValue = { 1+2+3 }
+where {[4,5]} initValue = { 1-2-3 }
+where {[4,5]} initValue = { 1*2*3 }
+where {[4,5]} initValue = { 1/2/3 }
+where {[4,5]} initValue = { 1%2%3 }
