@@ -4,7 +4,6 @@ package org.kermeta.language.cellularautomata.rules;
  *
  * http://www.monticore.de/ - http://www.se-rwth.de/ */
 
-import static org.kermeta.language.cellularautomata.rules.Monticore2EcoreConverter.convertASTIntLiteral;
 import geometry.Dimension;
 import geometry.GeometryFactory;
 import geometry.RegularGeometry;
@@ -57,7 +56,6 @@ import ruleInit.PositionLiteral;
 import ruleInit.impl.InitFactoryImpl;
 import core.Add;
 import core.And;
-import core.BinaryExpression;
 import core.Conditional;
 import core.CoreFactory;
 import core.Div;
@@ -149,31 +147,35 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	  root.setGeometry(geometry);
 	}
 
-	public final void visit(ASTRule node) {
+	public final void ownVisit(ASTRule node) {
 	  Rule rule = coreFactory.createRule();
 
 	  root.getSeedRules().add(rule);
 
-	  estack.push(rule);
+	  getVisitor().startVisit(node.getGlobalPosition());
+
+	  GlobalPosition position = (GlobalPosition) estack.pop();
+	  rule.setFilter(position);
+
+	  getVisitor().startVisit(node.getConditional());
+
+	  IntegerExpression integerExpression = (IntegerExpression) estack.pop();
+	  rule.setEvaluatedVal(integerExpression);
 	}
 
-	public final void endVisit(ASTRule node) {
-	  estack.pop();
-	}
-
-	public final void visit (ASTGlobalPosition node) {
-	  GlobalPosition pos = initFactory.createGlobalPosition();
+	public final void ownVisit (ASTGlobalPosition node) {
+	  GlobalPosition position = initFactory.createGlobalPosition();
 
 	  for (ASTCoordinateRange rangeNode : node.getRanges()) {
 	    CoordinateRange range = initFactory.createCoordinateRange();
 	    range.setLowerCoordinate(rangeNode.getLowerCoord().getValue());
 	    range.setUpperCoordinate(rangeNode.getUpperCoord().getValue());
 
-	    pos.getCoordinateRanges().add(range);
+	    position.getCoordinateRanges().add(range);
 	  }
 
-	  Rule rule = (Rule) estack.peek();
-	  rule.setFilter(pos);
+	  estack.push(position);
+
 	}
 
 	public final void ownVisit (ASTConditional node) {
@@ -185,15 +187,18 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
 	  Conditional conditional = coreFactory.createConditional();
 
-	  addChildToParent(estack.peek(), conditional);
-	  estack.push(conditional);
-
+	  // Handle children
 	  getVisitor().startVisit(node.getConditional());
+	  conditional.setCondition((IntegerExpression) estack.pop());
+
 	  getVisitor().startVisit(node.getTrueExpr());
+	  conditional.setIfTrueExpression((IntegerExpression) estack.pop());
+
 	  getVisitor().startVisit(node.getFalseExpr());
+	  conditional.setIfFalseExpression((IntegerExpression) estack.pop());
 
-	  estack.pop();
 
+	  estack.push(conditional);
 	}
 
   public final void ownVisit (ASTOrExpression node) {
@@ -205,18 +210,16 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
     Or or = coreFactory.createOr();
 
-    EObject parent = estack.peek();
-    estack.push(or);
-
     // visit left child
     getVisitor().startVisit(node.getLeft());
+    or.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
     // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
+    or.setRight((IntegerExpression) estack.pop());
 
-    addChildToParent(parent, or);
-    estack.pop();
+    estack.push(or);
   }
 
   public final void ownVisit (ASTAndExpression node) {
@@ -228,18 +231,18 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
     And and = coreFactory.createAnd();
 
-    EObject parent = estack.peek();
     estack.push(and);
 
     // visit left child
     getVisitor().startVisit(node.getLeft());
+    and.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
     // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
+    and.setRight((IntegerExpression) estack.pop());
 
-    addChildToParent(parent, and);
-    estack.pop();
+    estack.push(and);
   }
 
   public final void ownVisit (ASTEqualExpression node) {
@@ -249,20 +252,18 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
       return;
     }
 
-    Equal lower = coreFactory.createEqual();
-
-    EObject parent = estack.peek();
-    estack.push(lower);
+    Equal equal = coreFactory.createEqual();
 
     // visit left child
     getVisitor().startVisit(node.getLeft());
+    equal.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
     // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
+    equal.setRight((IntegerExpression) estack.pop());
 
-    addChildToParent(parent, lower);
-    estack.pop();
+    estack.push(equal);
   }
 
   public final void ownVisit (ASTLowerExpression node) {
@@ -274,18 +275,16 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
     Lower lower = coreFactory.createLower();
 
-    EObject parent = estack.peek();
-    estack.push(lower);
-
     // visit left child
     getVisitor().startVisit(node.getLeft());
+    lower.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
     // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
+    lower.setRight((IntegerExpression) estack.pop());
 
-    addChildToParent(parent, lower);
-    estack.pop();
+    estack.push(lower);
   }
 
   public final void ownVisit (ASTGreaterExpression node) {
@@ -297,18 +296,16 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
     Greater greater = coreFactory.createGreater();
 
-    EObject parent = estack.peek();
-    estack.push(greater);
-
     // visit left child
     getVisitor().startVisit(node.getLeft());
+    greater.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
     // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
+    greater.setRight((IntegerExpression) estack.pop());
 
-    addChildToParent(parent, greater);
-    estack.pop();
+    estack.push(greater);
   }
 
   public final void ownVisit (ASTAddExpression node) {
@@ -320,18 +317,16 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
     Add add = coreFactory.createAdd();
 
-    EObject parent = estack.peek();
-    estack.push(add);
-
     // visit left child
     getVisitor().startVisit(node.getLeft());
+    add.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
     // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
+    add.setRight((IntegerExpression) estack.pop());
 
-    addChildToParent(parent, add);
-    estack.pop();
+    estack.push(add);
   }
 
 
@@ -344,18 +339,17 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
     Minus minus = coreFactory.createMinus();
 
-    EObject parent = estack.peek();
-    estack.push(minus);
-
     // visit left child
     getVisitor().startVisit(node.getLeft());
+    minus.setLeft((IntegerExpression) estack.pop());
+
 
     // visit (first) right child
     // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
+    minus.setRight((IntegerExpression) estack.pop());
 
-    addChildToParent(parent, minus);
-    estack.pop();
+    estack.push(minus);
   }
 
   public final void ownVisit (ASTMultExpression node) {
@@ -367,18 +361,16 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
     Mult mult = coreFactory.createMult();
 
-    EObject parent = estack.peek();
-    estack.push(mult);
-
     // visit left child
     getVisitor().startVisit(node.getLeft());
+    mult.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
     // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
+    mult.setRight((IntegerExpression) estack.pop());
 
-    addChildToParent(parent, mult);
-    estack.pop();
+    estack.push(mult);
   }
 
   public final void ownVisit (ASTDivExpression node) {
@@ -390,18 +382,16 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
     Div div = coreFactory.createDiv();
 
-    EObject parent = estack.peek();
-    estack.push(div);
-
     // visit left child
     getVisitor().startVisit(node.getLeft());
+    div.setLeft((IntegerExpression) estack.pop());
 
     // visit (first) right child
     // TODO needs to be done for all right children
     getVisitor().startVisit(node.getRight().get(0));
+    div.setRight((IntegerExpression) estack.pop());
 
-    addChildToParent(parent, div);
-    estack.pop();
+    estack.push(div);
   }
 
 	 public final void ownVisit (ASTModExpression node) {
@@ -413,41 +403,16 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
 	    Mod mod = coreFactory.createMod();
 
-	    EObject parent = estack.peek();
-	    estack.push(mod);
-
 	    // visit left child
 	    getVisitor().startVisit(node.getLeft());
+	    mod.setLeft((IntegerExpression) estack.pop());
 
 	    // visit (first) right child
 	    // TODO needs to be done for all right children
 	    getVisitor().startVisit(node.getRight().get(0));
+	    mod.setRight((IntegerExpression) estack.pop());
 
-	    addChildToParent(parent, mod);
-	    estack.pop();
-
-
-//	    EObject parent = estack.peek();
-//
-//	    Mod prevMod = null;
-//
-//      for (int i = 0; i < node.getRight().size(); i++) {
-//        ASTUnaryExpression right = node.getRight().get(i);
-//
-//        Mod curMod = coreFactory.createMod();
-//        estack.push(curMod);
-//
-//        if (i == 0) {
-//          getVisitor().startVisit(node.getLeft());
-//        }
-//        else {
-//          curMod.setLeft(prevMod);
-//        }
-//
-//        getVisitor().startVisit(right);
-//        prevMod = curMod;
-//      }
-//      addChildToParent(parent, prevMod);
+	    estack.push(mod);
 	  }
 
   public final void ownVisit(ASTUnaryExpression node) {
@@ -458,8 +423,6 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
       return;
     }
 
-	  EObject parent = estack.peek();
-
 	  UnaryExpression unary = null;
 
 	  if (node.isNot()) {
@@ -469,67 +432,31 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	    unary = coreFactory.createUMinus();
 	  }
 
-    estack.push(unary);
-
-    addChildToParent(parent, unary);
-
     // visit child nodes
     getVisitor().startVisit(node.getLiteralsExpression());
+    unary.setTarget((IntegerExpression) estack.pop());
 
-    estack.pop();
+    estack.push(unary);
 	}
 
 	public void ownVisit(ASTLiteralsExpression node) {
-	  EObject parent = estack.peek();
-
 	  if (node.getSignedIntegerLiteral() != null) {
 	    ASTSignedIntegerLiteral intNode = node.getSignedIntegerLiteral();
-	    IntegerLiteral intLiteral = convertASTIntLiteral(intNode);
+	    IntegerLiteral intLiteral = Monticore2EcoreConverter.convertASTIntLiteral(intNode);
 
-	    addChildToParent(parent, intLiteral);
+	    estack.push(intLiteral);
 	  }
 	  else if (node.getPositionLiteral() != null) {
 	    PositionLiteral position = initFactory.createPositionLiteral();
 	    position.setDimensionIndex(node.getPositionLiteral().getDimensionIndex().getValue());
 
-	    addChildToParent(parent, position);
+	    estack.push(position);
 	  }
 	  else if (node.getConditional() != null) {
 	    getVisitor().startVisit(node.getConditional());
 	  }
 	}
 
-
-  private void addChildToParent(EObject parent, IntegerExpression child) {
-    if (parent instanceof Rule) {
-      ((Rule) parent).setEvaluatedVal(child);
-    }
-    else if (parent instanceof Conditional) {
-      Conditional condParent = (Conditional) parent;
-      if (condParent.getCondition() == null) {
-        condParent.setCondition(child);
-      }
-      else if (condParent.getIfTrueExpression() == null) {
-        condParent.setIfTrueExpression(child);
-      }
-      else {
-        condParent.setIfFalseExpression(child);
-      }
-    }
-    else if (parent instanceof UnaryExpression) {
-      ((UnaryExpression) parent).setTarget(child);
-    }
-    else if (parent instanceof BinaryExpression) {
-      BinaryExpression modParent = (BinaryExpression) parent;
-
-      if (modParent.getLeft() == null) {
-        modParent.setLeft(child);
-      }
-      else {
-        modParent.setRight(child);
-      }
-    }
-  }
 
 	private Resource createAndAddResource(String outputFile, String[] fileextensions, ResourceSet rs) {
 		for (String fileext : fileextensions) {
