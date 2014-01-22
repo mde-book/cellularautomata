@@ -82,7 +82,9 @@ import core.impl.CoreFactoryImpl;
  */
 public final class EcoreExportVisitor extends ConcreteVisitor {
 
-	/**
+
+
+  /**
 	 * SLF4J logger
 	 */
 	private static final Logger logger = LoggerFactory
@@ -96,6 +98,9 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
   private Resource gastResource;
 
   final Stack<EObject> estack = new Stack<EObject>();
+
+  public static final String TARGET_ECORE_DIR = "target/generated-sources/ecore/";
+  public static final String EXPORTED_FILE_EXTENSION = "xmi";
 
 
   private CellularAutomatatInitialization root;
@@ -120,8 +125,8 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	public final void visit(ASTCAInit node) {
 		ResourceSet rs = new ResourceSetImpl();
 		String fileName = node.get_root().getName();
-		gastResource = createAndAddResource("target/generated-sources/" + fileName + ".xmi",
-				new String[] {"xmi"}, rs);
+		gastResource = createAndAddResource(TARGET_ECORE_DIR + fileName + "." + EXPORTED_FILE_EXTENSION,
+				new String[] {EXPORTED_FILE_EXTENSION}, rs);
 
 		root = initFactory.createCellularAutomatatInitialization();
 		gastResource.getContents().add(root);
