@@ -23,6 +23,7 @@ import ruleInit.GlobalPosition;
 import core.Conditional;
 import core.IntegerLiteral;
 import core.Not;
+import core.Or;
 import core.Rule;
 
 /**
@@ -79,7 +80,7 @@ public class CellularAutomataInitializationToolTest {
   public void testAtomicIntLiteral() {
     initAndRun("AtomicIntLiteral");
 
-    Rule rule = checkOneRuleWithWithOneRange(1, 5);
+    Rule rule = checkOneRuleWithOneRange(1, 5);
 
     IntegerLiteral intLiteral = (IntegerLiteral) rule.getEvaluatedVal();
     assertNotNull(intLiteral);
@@ -90,7 +91,7 @@ public class CellularAutomataInitializationToolTest {
   public void testAtomicNot() {
     initAndRun("AtomicNot");
 
-    Rule rule = checkOneRuleWithWithOneRange(1, 5);
+    Rule rule = checkOneRuleWithOneRange(1, 5);
     Not not = (Not) rule.getEvaluatedVal();
     assertNotNull(not);
     IntegerLiteral intLiteral = (IntegerLiteral) not.getTarget();
@@ -101,7 +102,7 @@ public class CellularAutomataInitializationToolTest {
   public void testAtomicCondition() {
     initAndRun("AtomicCondition");
 
-    Rule rule = checkOneRuleWithWithOneRange(1, 5);
+    Rule rule = checkOneRuleWithOneRange(1, 5);
     Conditional conditional = (Conditional) rule.getEvaluatedVal();
     assertNotNull(conditional.getCondition());
     assertNotNull(conditional.getIfTrueExpression());
@@ -117,7 +118,29 @@ public class CellularAutomataInitializationToolTest {
     assertEquals(3, intIfFalse.getVal());
   }
 
-  private Rule checkOneRuleWithWithOneRange(int lower, int upper) {
+  @Test
+  public void testSeveralOr() {
+    initAndRun("SeveralOr");
+
+    Rule rule = checkOneRuleWithOneRange(4, 5);
+    Or or = (Or) rule.getEvaluatedVal();
+    assertNotNull(or);
+
+    // check that expression 1|2|3 is evaluated as (1|2)|3
+
+    Or orLeft = (Or) or.getLeft();
+    assertNotNull(orLeft);
+    IntegerLiteral orLeftLeft = (IntegerLiteral) orLeft.getLeft();
+    assertEquals(1, orLeftLeft.getVal());
+    IntegerLiteral orLeftRight = (IntegerLiteral) orLeft.getRight();
+    assertEquals(2, orLeftRight.getVal());
+
+    IntegerLiteral orRight = (IntegerLiteral) or.getRight();
+    assertNotNull(orRight);
+    assertEquals(3, orRight.getVal());
+  }
+
+  private Rule checkOneRuleWithOneRange(int lower, int upper) {
     assertNull(caInit.getGeometry());
     assertEquals(1, caInit.getSeedRules().size());
 
