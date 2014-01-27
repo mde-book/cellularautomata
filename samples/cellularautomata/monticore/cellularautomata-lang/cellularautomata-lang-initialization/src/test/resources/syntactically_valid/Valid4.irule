@@ -1,1 +1,1 @@
-where {[1,5]} initValue = { 1 }
+init {[1,5]} by { 1 }

@@ -1,15 +1,15 @@
 regularGeometry 3 {6 x isCircular (7)}  // second dimension is circular
-where {[1,5]} initValue = { if 1 {2} else {3} }
-where {[1,5]} initValue = { 3|5 }
-where {[1,5]} initValue = { 3&5 }
-where {[1,5]} initValue = { 3==5 }
-where {[1,5]} initValue = { 3<5 }
-where {[1,5]} initValue = { 3>5 }
-where {[1,5]} initValue = { 3+5 }
-where {[1,5]} initValue = { 3-5 }
-where {[1,5]} initValue = { 3*5 }
-where {[1,5]} initValue = { 7/3 }
-where {[1,5]} initValue = { 7%3 }
-where {[1,5]} initValue = { positionOn [4] }
-where {[1,5]} initValue = { !2 }
-where {[1,5]} initValue = { 1 }
+init {[1,5]} by { if 1 {2} else {3} }
+init {[1,5]} by { 3|5 }
+init {[1,5]} by { 3&5 }
+init {[1,5]} by { 3==5 }
+init {[1,5]} by { 3<5 }
+init {[1,5]} by { 3>5 }
+init {[1,5]} by { 3+5 }
+init {[1,5]} by { 3-5 }
+init {[1,5]} by { 3*5 }
+init {[1,5]} by { 7/3 }
+init {[1,5]} by { 7%3 }
+init {[1,5]} by { positionOn [4] }
+init {[1,5]} by { !2 }
+init {[1,5]} by { 1 }

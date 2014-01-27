@@ -15,7 +15,7 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
 
 
   Rule =
-    "where" GlobalPosition "initValue" "=" "{" Conditional "}"
+    "init" GlobalPosition "by" "{" Conditional "}"
   ;
 
   GlobalPosition =
@@ -52,33 +52,30 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
     EqualExpression ("&" EqualExpression)*;
 
   EqualExpression =
-    LowerExpression ("==" LowerExpression)*;
+    ComparisonExpression ("==" ComparisonExpression)*;
 
-  LowerExpression =
-    GreaterExpression ("<" GreaterExpression)*;
+  ComparisonExpression =
+    AddExpression (ComparisonOperator AddExpression)*;
 	
-  GreaterExpression =
-    AddExpression (">" AddExpression)*;
+  ComparisonOperator =
+    lower:["<"] | greater:[">"];
 
   AddExpression =
-    MinusExpression ("+" MinusExpression)*;
+    MultExpression (AddOperator MultExpression)*;
 	
-  MinusExpression =
-    MultExpression ("-" MultExpression)*;
-
+  AddOperator = 
+    plus:["+"] | minus:["-"];
+	
   MultExpression =
-    DivExpression ("*" DivExpression)*;
-
-  DivExpression =
-    ModExpression ("/" ModExpression)*;	
-
-  ModExpression =
-    UnaryExpression ("%" UnaryExpression)*;
+    UnaryExpression (MultOperator UnaryExpression)*;
+  
+  MultOperator = 
+    mult:["*"] | div:["/"] | mod:["%"];
 	
   UnaryExpression =
-    (not:["!"] | uminus:["-"])? LiteralsExpression;
+    (not:["!"] | uminus:["-"])? PrimaryExpression;
 
-  LiteralsExpression = "(" Conditional ")" | SignedIntegerLiteral | PositionLiteral; // TODO SignedIntegerLiteral
+  PrimaryExpression = "(" Conditional ")" | SignedIntegerLiteral | PositionLiteral; // TODO SignedIntegerLiteral
   
   SignedIntegerLiteral  = 
     /*(neg:["-"])?*/ IntLiteral; // TODO

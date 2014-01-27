@@ -20,8 +20,10 @@ import org.kermeta.language.cellularautomata.rules.EcoreExportVisitor;
 import ruleInit.CellularAutomatatInitialization;
 import ruleInit.CoordinateRange;
 import ruleInit.GlobalPosition;
+import core.Add;
 import core.Conditional;
 import core.IntegerLiteral;
+import core.Minus;
 import core.Not;
 import core.Or;
 import core.Rule;
@@ -138,6 +140,50 @@ public class CellularAutomataInitializationToolTest {
     IntegerLiteral orRight = (IntegerLiteral) or.getRight();
     assertNotNull(orRight);
     assertEquals(3, orRight.getVal());
+  }
+
+  @Test
+  public void testLeftAssociativityOfAdd1() {
+    initAndRun("LeftAssociativityOfAdd1");
+
+    Rule rule = checkOneRuleWithOneRange(4, 5);
+    Minus minus = (Minus) rule.getEvaluatedVal();
+    assertNotNull(minus);
+
+    // check that expression 1+2-3 is evaluated as (1+2)-3
+
+    Add minusLeft = (Add) minus.getLeft();
+    assertNotNull(minusLeft);
+    IntegerLiteral minusLeftLeft = (IntegerLiteral) minusLeft.getLeft();
+    assertEquals(1, minusLeftLeft.getVal());
+    IntegerLiteral minusLeftRight = (IntegerLiteral) minusLeft.getRight();
+    assertEquals(2, minusLeftRight.getVal());
+
+    IntegerLiteral minusRight = (IntegerLiteral) minus.getRight();
+    assertNotNull(minusRight);
+    assertEquals(3, minusRight.getVal());
+  }
+
+  @Test
+  public void testLeftAssociativityOfAdd2() {
+    initAndRun("LeftAssociativityOfAdd2");
+
+    Rule rule = checkOneRuleWithOneRange(4, 5);
+    Add add = (Add) rule.getEvaluatedVal();
+    assertNotNull(add);
+
+    // check that expression 1+2-3 is evaluated as (1+2)-3
+
+    Minus addLeft = (Minus) add.getLeft();
+    assertNotNull(addLeft);
+    IntegerLiteral addLeftLeft = (IntegerLiteral) addLeft.getLeft();
+    assertEquals(1, addLeftLeft.getVal());
+    IntegerLiteral addLeftRight = (IntegerLiteral) addLeft.getRight();
+    assertEquals(2, addLeftRight.getVal());
+
+    IntegerLiteral addRight = (IntegerLiteral) add.getRight();
+    assertNotNull(addRight);
+    assertEquals(3, addRight.getVal());
   }
 
   private Rule checkOneRuleWithOneRange(int lower, int upper) {
