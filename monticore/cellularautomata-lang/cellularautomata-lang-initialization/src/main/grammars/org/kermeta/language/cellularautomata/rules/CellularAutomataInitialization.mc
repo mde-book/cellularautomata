@@ -46,34 +46,34 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
   
   
   OrExpression =
-    left:AndExpression ("|" right:AndExpression)*;
+    AndExpression ("|" AndExpression)*;
 
   AndExpression =
-    left:EqualExpression ("&" right:EqualExpression)*;
+    EqualExpression ("&" EqualExpression)*;
 
   EqualExpression =
-    left:LowerExpression ("==" right:LowerExpression)*;
+    LowerExpression ("==" LowerExpression)*;
 
   LowerExpression =
-    left:GreaterExpression ("<" right:GreaterExpression)*;
+    GreaterExpression ("<" GreaterExpression)*;
 	
   GreaterExpression =
-    left:AddExpression (">" right:AddExpression)*;
+    AddExpression (">" AddExpression)*;
 
   AddExpression =
-    left:MinusExpression ("+" right:MinusExpression)*;
+    MinusExpression ("+" MinusExpression)*;
 	
   MinusExpression =
-    left:MultExpression ("-" right:MultExpression)*;
+    MultExpression ("-" MultExpression)*;
 
   MultExpression =
-    left:DivExpression ("*" right:DivExpression)*;
+    DivExpression ("*" DivExpression)*;
 
   DivExpression =
-    left:ModExpression ("/" right:ModExpression)*;	
+    ModExpression ("/" ModExpression)*;	
 
   ModExpression =
-    left:UnaryExpression ("%" right:UnaryExpression)*;
+    UnaryExpression ("%" UnaryExpression)*;
 	
   UnaryExpression =
     (not:["!"] | uminus:["-"])? LiteralsExpression;
