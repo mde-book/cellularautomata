@@ -29,19 +29,16 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.kermeta.language.cellularautomata.rules._ast.ASTAddExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTAndExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTCAInit;
+import org.kermeta.language.cellularautomata.rules._ast.ASTComparisonExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTConditional;
 import org.kermeta.language.cellularautomata.rules._ast.ASTCoordinateRange;
 import org.kermeta.language.cellularautomata.rules._ast.ASTDimension;
-import org.kermeta.language.cellularautomata.rules._ast.ASTDivExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTEqualExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTGlobalPosition;
-import org.kermeta.language.cellularautomata.rules._ast.ASTGreaterExpression;
-import org.kermeta.language.cellularautomata.rules._ast.ASTLiteralsExpression;
-import org.kermeta.language.cellularautomata.rules._ast.ASTLowerExpression;
-import org.kermeta.language.cellularautomata.rules._ast.ASTMinusExpression;
-import org.kermeta.language.cellularautomata.rules._ast.ASTModExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTMultExpression;
+import org.kermeta.language.cellularautomata.rules._ast.ASTMultOperator;
 import org.kermeta.language.cellularautomata.rules._ast.ASTOrExpression;
+import org.kermeta.language.cellularautomata.rules._ast.ASTPrimaryExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTRegularGeometry;
 import org.kermeta.language.cellularautomata.rules._ast.ASTRule;
 import org.kermeta.language.cellularautomata.rules._ast.ASTSignedIntegerLiteral;
@@ -55,19 +52,13 @@ import ruleInit.GlobalPosition;
 import ruleInit.InitFactory;
 import ruleInit.PositionLiteral;
 import ruleInit.impl.InitFactoryImpl;
-import core.Add;
 import core.And;
+import core.BinaryExpression;
 import core.Conditional;
 import core.CoreFactory;
-import core.Div;
 import core.Equal;
-import core.Greater;
 import core.IntegerExpression;
 import core.IntegerLiteral;
-import core.Lower;
-import core.Minus;
-import core.Mod;
-import core.Mult;
 import core.Or;
 import core.Rule;
 import core.UnaryExpression;
@@ -280,8 +271,8 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
   }
 
   public final void ownVisit (ASTEqualExpression node) {
-    ASTLowerExpression left = node.getLowerExpression().get(0);
-    List<ASTLowerExpression> right = node.getLowerExpression().subList(1, node.getLowerExpression().size());
+    ASTComparisonExpression left = node.getComparisonExpression().get(0);
+    List<ASTComparisonExpression> right = node.getComparisonExpression().subList(1, node.getComparisonExpression().size());
 
     if (right.isEmpty()) {
       // Only visit child nodes
@@ -300,7 +291,7 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
     equal.setRight((IntegerExpression) estack.pop());
 
     for (int i=1; i < right.size(); i++) {
-      ASTLowerExpression andNode = right.get(i);
+      ASTComparisonExpression andNode = right.get(i);
 
       Equal curr = coreFactory.createEqual();
 
@@ -315,43 +306,7 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
     estack.push(equal);
   }
 
-  public final void ownVisit (ASTLowerExpression node) {
-    ASTGreaterExpression left = node.getGreaterExpression().get(0);
-    List<ASTGreaterExpression> right = node.getGreaterExpression().subList(1, node.getGreaterExpression().size());
-
-    if (right.isEmpty()) {
-      // Only visit child nodes
-      getVisitor().startVisit(left);
-      return;
-    }
-
-    Lower lower = coreFactory.createLower();
-
-    // visit left child
-    getVisitor().startVisit(left);
-    lower.setLeft((IntegerExpression) estack.pop());
-
-    // visit (first) right child
-    getVisitor().startVisit(right.get(0));
-    lower.setRight((IntegerExpression) estack.pop());
-
-    for (int i=1; i < right.size(); i++) {
-      ASTGreaterExpression curNode = right.get(i);
-
-      Lower curr = coreFactory.createLower();
-
-      curr.setLeft(lower);
-
-      getVisitor().startVisit(curNode);
-      curr.setRight((IntegerExpression) estack.pop());
-
-      lower = curr;
-    }
-
-    estack.push(lower);
-  }
-
-  public final void ownVisit (ASTGreaterExpression node) {
+  public final void ownVisit (ASTComparisonExpression node) {
     ASTAddExpression left = node.getAddExpression().get(0);
     List<ASTAddExpression> right = node.getAddExpression().subList(1, node.getAddExpression().size());
 
@@ -361,35 +316,41 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
       return;
     }
 
-    Greater greater = coreFactory.createGreater();
+    BinaryExpression add = null;
 
-    // visit left child
-    getVisitor().startVisit(left);
-    greater.setLeft((IntegerExpression) estack.pop());
-
-    // visit (first) right child
-    getVisitor().startVisit(right.get(0));
-    greater.setRight((IntegerExpression) estack.pop());
-
-    for (int i=1; i < right.size(); i++) {
+    for (int i=0; i < right.size(); i++) {
       ASTAddExpression curNode = right.get(i);
 
-      Greater curr = coreFactory.createGreater();
+      BinaryExpression curr = null;
 
-      curr.setLeft(greater);
+      if (node.getComparisonOperator().get(i).isLower()) {
+        curr = coreFactory.createLower();
+      }
+      else {
+        curr = coreFactory.createGreater();
+      }
+
+      if (i == 0) {
+        // visit left child
+        getVisitor().startVisit(left);
+        curr.setLeft((IntegerExpression) estack.pop());
+      }
+      else {
+        curr.setLeft(add);
+      }
 
       getVisitor().startVisit(curNode);
       curr.setRight((IntegerExpression) estack.pop());
 
-      greater = curr;
+      add = curr;
     }
 
-    estack.push(greater);
+    estack.push(add);
   }
 
   public final void ownVisit (ASTAddExpression node) {
-    ASTMinusExpression left = node.getMinusExpression().get(0);
-    List<ASTMinusExpression> right = node.getMinusExpression().subList(1, node.getMinusExpression().size());
+    ASTMultExpression left = node.getMultExpression().get(0);
+    List<ASTMultExpression> right = node.getMultExpression().subList(1, node.getMultExpression().size());
 
     if (right.isEmpty()) {
       // Only visit child nodes
@@ -397,22 +358,28 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
       return;
     }
 
-    Add add = coreFactory.createAdd();
+    BinaryExpression add = null;
 
-    // visit left child
-    getVisitor().startVisit(left);
-    add.setLeft((IntegerExpression) estack.pop());
+    for (int i=0; i < right.size(); i++) {
+      ASTMultExpression curNode = right.get(i);
 
-    // visit (first) right child
-    getVisitor().startVisit(right.get(0));
-    add.setRight((IntegerExpression) estack.pop());
+      BinaryExpression curr = null;
 
-    for (int i=1; i < right.size(); i++) {
-      ASTMinusExpression curNode = right.get(i);
+      if (node.getAddOperator().get(i).isPlus()) {
+        curr = coreFactory.createAdd();
+      }
+      else {
+        curr = coreFactory.createMinus();
+      }
 
-      Add curr = coreFactory.createAdd();
-
-      curr.setLeft(add);
+      if (i == 0) {
+        // visit left child
+        getVisitor().startVisit(left);
+        curr.setLeft((IntegerExpression) estack.pop());
+      }
+      else {
+        curr.setLeft(add);
+      }
 
       getVisitor().startVisit(curNode);
       curr.setRight((IntegerExpression) estack.pop());
@@ -424,119 +391,9 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
   }
 
 
-  public final void ownVisit (ASTMinusExpression node) {
-    ASTMultExpression left = node.getMultExpression().get(0);
-    List<ASTMultExpression> right = node.getMultExpression().subList(1, node.getMultExpression().size());
-
-    if (right.isEmpty()) {
-      // Only visit child nodes
-      getVisitor().startVisit(left);
-      return;
-    }
-
-    Minus minus = coreFactory.createMinus();
-
-    // visit left child
-    getVisitor().startVisit(left);
-    minus.setLeft((IntegerExpression) estack.pop());
-
-
-    // visit (first) right child
-    getVisitor().startVisit(right.get(0));
-    minus.setRight((IntegerExpression) estack.pop());
-
-    for (int i=1; i < right.size(); i++) {
-      ASTMultExpression curNode = right.get(i);
-
-      Minus curr = coreFactory.createMinus();
-
-      curr.setLeft(minus);
-
-      getVisitor().startVisit(curNode);
-      curr.setRight((IntegerExpression) estack.pop());
-
-      minus = curr;
-    }
-
-    estack.push(minus);
-  }
-
   public final void ownVisit (ASTMultExpression node) {
-    ASTDivExpression left = node.getDivExpression().get(0);
-    List<ASTDivExpression> right = node.getDivExpression().subList(1, node.getDivExpression().size());
-
-    if (right.isEmpty()) {
-      // Only visit child nodes
-      getVisitor().startVisit(left);
-      return;
-    }
-
-    Mult mult = coreFactory.createMult();
-
-    // visit left child
-    getVisitor().startVisit(left);
-    mult.setLeft((IntegerExpression) estack.pop());
-
-    // visit (first) right child
-    getVisitor().startVisit(right.get(0));
-    mult.setRight((IntegerExpression) estack.pop());
-
-    for (int i=1; i < right.size(); i++) {
-      ASTDivExpression curNode = right.get(i);
-
-      Mult curr = coreFactory.createMult();
-
-      curr.setLeft(mult);
-
-      getVisitor().startVisit(curNode);
-      curr.setRight((IntegerExpression) estack.pop());
-
-      mult = curr;
-    }
-
-    estack.push(mult);
-  }
-
-  public final void ownVisit (ASTDivExpression node) {
-    ASTModExpression left = node.getModExpression().get(0);
-    List<ASTModExpression> right = node.getModExpression().subList(1, node.getModExpression().size());
-
-    if (right.isEmpty()) {
-      // Only visit child nodes
-      getVisitor().startVisit(left);
-      return;
-    }
-
-    Div div = coreFactory.createDiv();
-
-    // visit left child
-    getVisitor().startVisit(left);
-    div.setLeft((IntegerExpression) estack.pop());
-
-    // visit (first) right child
-    getVisitor().startVisit(right.get(0));
-    div.setRight((IntegerExpression) estack.pop());
-
-    for (int i=1; i < right.size(); i++) {
-      ASTModExpression curNode = right.get(i);
-
-      Div curr = coreFactory.createDiv();
-
-      curr.setLeft(div);
-
-      getVisitor().startVisit(curNode);
-      curr.setRight((IntegerExpression) estack.pop());
-
-      div = curr;
-    }
-
-    estack.push(div);
-  }
-
-	 public final void ownVisit (ASTModExpression node) {
     ASTUnaryExpression left = node.getUnaryExpression().get(0);
-    List<ASTUnaryExpression> right = node.getUnaryExpression().subList(1,
-        node.getUnaryExpression().size());
+    List<ASTUnaryExpression> right = node.getUnaryExpression().subList(1, node.getUnaryExpression().size());
 
     if (right.isEmpty()) {
       // Only visit child nodes
@@ -544,36 +401,46 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
       return;
     }
 
-    Mod mod = coreFactory.createMod();
+    BinaryExpression add = null;
 
-    // visit left child
-    getVisitor().startVisit(left);
-    mod.setLeft((IntegerExpression) estack.pop());
-
-    // visit (first) right child
-    getVisitor().startVisit(right.get(0));
-    mod.setRight((IntegerExpression) estack.pop());
-
-    for (int i = 1; i < right.size(); i++) {
+    for (int i=0; i < right.size(); i++) {
       ASTUnaryExpression curNode = right.get(i);
 
-      Mod curr = coreFactory.createMod();
+      BinaryExpression curr = null;
 
-      curr.setLeft(mod);
+      ASTMultOperator operator = node.getMultOperator().get(i);
+      if (operator.isMult()) {
+        curr = coreFactory.createMult();
+      }
+      else if (operator.isDiv()){
+        curr = coreFactory.createDiv();
+      }
+      else {
+        curr = coreFactory.createMod();
+      }
+
+      if (i == 0) {
+        // visit left child
+        getVisitor().startVisit(left);
+        curr.setLeft((IntegerExpression) estack.pop());
+      }
+      else {
+        curr.setLeft(add);
+      }
 
       getVisitor().startVisit(curNode);
       curr.setRight((IntegerExpression) estack.pop());
 
-      mod = curr;
+      add = curr;
     }
 
-    estack.push(mod);
+    estack.push(add);
   }
 
   public final void ownVisit(ASTUnaryExpression node) {
     if (!node.isNot() && !node.isUminus()) {
       // Only visit child nodes
-      getVisitor().startVisit(node.getLiteralsExpression());
+      getVisitor().startVisit(node.getPrimaryExpression());
 
       return;
     }
@@ -588,13 +455,13 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	  }
 
     // visit child nodes
-    getVisitor().startVisit(node.getLiteralsExpression());
+    getVisitor().startVisit(node.getPrimaryExpression());
     unary.setTarget((IntegerExpression) estack.pop());
 
     estack.push(unary);
 	}
 
-	public void ownVisit(ASTLiteralsExpression node) {
+	public void ownVisit(ASTPrimaryExpression node) {
 	  if (node.getSignedIntegerLiteral() != null) {
 	    ASTSignedIntegerLiteral intNode = node.getSignedIntegerLiteral();
 	    IntegerLiteral intLiteral = Monticore2EcoreConverter.convertASTIntLiteral(intNode);
