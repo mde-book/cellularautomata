@@ -32,11 +32,11 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
 
 
   RegularGeometry =
-	"regularGeometry" neighborsNumber:IntLiteral "{" dimensions:Dimension  ("x" dimensions:Dimension)* "}"
+	"regularGeometry" (["neumann"]|["moore"]) "{" dimensions:Dimension  ("x" dimensions:Dimension)* "}" (["allCircular"])?
   ;
 
   Dimension =
-	(size:IntLiteral) | ["isCircular"] "(" size:IntLiteral ")"
+	(size:IntLiteral) (["circular"])?
   ;
 
   Conditional =
