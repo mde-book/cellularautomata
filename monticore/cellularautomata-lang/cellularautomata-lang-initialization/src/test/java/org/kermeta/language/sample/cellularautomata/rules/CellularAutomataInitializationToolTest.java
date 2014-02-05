@@ -12,6 +12,7 @@ import geometry.Dimension;
 import geometry.RegularGeometry;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.kermeta.language.cellularautomata.rules.CellularAutomataInitializationTool;
 import org.kermeta.language.cellularautomata.rules.EMFModelLoader;
@@ -35,6 +36,8 @@ import core.Rule;
  * @version $Revision$, $Date$
  *
  */
+
+@Ignore("Ecore Meta-Model first has to be updated")
 public class CellularAutomataInitializationToolTest {
 
   private static final String ECORE_DIR = EcoreExportVisitor.TARGET_ECORE_DIR;

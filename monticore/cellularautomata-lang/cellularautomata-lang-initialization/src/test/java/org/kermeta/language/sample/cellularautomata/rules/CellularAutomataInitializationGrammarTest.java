@@ -46,7 +46,7 @@ public class CellularAutomataInitializationGrammarTest {
    * @throws TokenStreamException
    */
   @Test
-  public void parseAllInalidTestModels() throws IOException, RecognitionException,
+  public void parseAllInvalidTestModels() throws IOException, RecognitionException,
       TokenStreamException {
 
     GrammarTestParser parser = GrammarTestParser.newParser(parserSupplier);

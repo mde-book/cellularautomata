@@ -15,20 +15,21 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
 
 
   Rule =
-    "init" GlobalPosition "by" "{" Conditional "}"
+    "init" Ranges "by" "{" Conditional "}"
+  ;
+  
+  Ranges =
+    Range ("," Range)*
+  ;
+  
+  Range =
+	"(" Interval ("," Interval)* ")"
+  ;
+  
+  Interval =
+    IntLiteral (".." IntLiteral)?
   ;
 
-  GlobalPosition =
-	"{" ranges:CoordinateRange ("x" (ranges:CoordinateRange)?)* "}"
-  ;
-
-  CoordinateRange =
-	"[" (lowerCoord:IntLiteral) "," (upperCoord:IntLiteral) "]"
-  ;
-
-  PositionLiteral =
-    "positionOn" "[" dimensionIndex:IntLiteral "]"
-  ;
 
   RegularGeometry =
 	"regularGeometry" neighborsNumber:IntLiteral "{" dimensions:Dimension  ("x" dimensions:Dimension)* "}"
@@ -75,7 +76,7 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
   UnaryExpression =
     (not:["!"] | uminus:["-"])? PrimaryExpression;
 
-  PrimaryExpression = "(" Conditional ")" | SignedIntegerLiteral | PositionLiteral; // TODO SignedIntegerLiteral
+  PrimaryExpression = "(" Conditional ")" | SignedIntegerLiteral | position:Name; // TODO SignedIntegerLiteral
   
   SignedIntegerLiteral  = 
     /*(neg:["-"])?*/ IntLiteral; // TODO

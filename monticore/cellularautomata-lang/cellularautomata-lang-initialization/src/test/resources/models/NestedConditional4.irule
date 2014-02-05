@@ -1,1 +1,1 @@
-init {[1,5]} by { if 1 {if 11 {12} else {13} } else { if 21 {22} else {23} } }
+init (1..5) by { if 1 {if 11 {12} else {13} } else { if 21 {22} else {23} } }
