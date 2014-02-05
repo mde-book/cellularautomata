@@ -1,0 +1,1 @@
+init (1..5), (2,2), (2..5) by { 1  } // several intervals and points
