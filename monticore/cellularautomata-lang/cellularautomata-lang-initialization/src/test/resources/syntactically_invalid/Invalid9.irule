@@ -1,0 +1,2 @@
+regularGeometry foo {5 x 5} // neigborhood foo does not exist
+init (1..5, 1) by { 1 }

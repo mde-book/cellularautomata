@@ -1,2 +1,2 @@
-regularGeometry 4 {isCircular (5) x 5}  // first dimension is circular
+regularGeometry neumann {5 circular x 5}  // first dimension is circular
 init (1..5, 1..5) by { 0 } // if none of the previous rule applies, then set to 0

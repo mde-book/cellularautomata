@@ -4,9 +4,7 @@ package org.kermeta.language.cellularautomata.rules;
  *
  * http://www.monticore.de/ - http://www.se-rwth.de/ */
 
-import geometry.Dimension;
 import geometry.GeometryFactory;
-import geometry.RegularGeometry;
 import geometry.impl.GeometryFactoryImpl;
 
 import java.io.IOException;
@@ -31,12 +29,10 @@ import org.kermeta.language.cellularautomata.rules._ast.ASTAndExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTCAInit;
 import org.kermeta.language.cellularautomata.rules._ast.ASTComparisonExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTConditional;
-import org.kermeta.language.cellularautomata.rules._ast.ASTDimension;
 import org.kermeta.language.cellularautomata.rules._ast.ASTEqualExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTMultExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTMultOperator;
 import org.kermeta.language.cellularautomata.rules._ast.ASTOrExpression;
-import org.kermeta.language.cellularautomata.rules._ast.ASTRegularGeometry;
 import org.kermeta.language.cellularautomata.rules._ast.ASTRule;
 import org.kermeta.language.cellularautomata.rules._ast.ASTUnaryExpression;
 import org.slf4j.Logger;
@@ -56,6 +52,20 @@ import core.Or;
 import core.Rule;
 import core.UnaryExpression;
 import core.impl.CoreFactoryImpl;
+
+
+
+/**
+ * ========================================================
+ *
+ * NOTE: A lot of code parts are commented out, because
+ *       first the Ecore Meta Model has to be updates
+ *
+ * ========================================================
+ *
+ */
+
+
 
 /**
  * Traverses the AST of My Language and prints a log message for every
@@ -121,21 +131,21 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 		saveResource(gastResource);
 	}
 
-	public final void visit(ASTRegularGeometry node) {
-	  RegularGeometry geometry = geoFactory.createRegularGeometry();
-
-	  geometry.setNeighborsNumber(node.getNeighborsNumber().getValue());
-
-	  for (ASTDimension dimensionNode : node.getDimensions()) {
-	    Dimension dimension = geoFactory.createDimension();
-	    dimension.setIsCircular(dimensionNode.isIsCircular());
-	    dimension.setSize(dimensionNode.getSize().getValue());
-
-	    geometry.getDimensions().add(dimension);
-	  }
-
-	  root.setGeometry(geometry);
-	}
+//	public final void visit(ASTRegularGeometry node) {
+//	  RegularGeometry geometry = geoFactory.createRegularGeometry();
+//
+//	  geometry.setNeighborsNumber(node.getNeighborsNumber().getValue());
+//
+//	  for (ASTDimension dimensionNode : node.getDimensions()) {
+//	    Dimension dimension = geoFactory.createDimension();
+//	    dimension.setIsCircular(dimensionNode.isIsCircular());
+//	    dimension.setSize(dimensionNode.getSize().getValue());
+//
+//	    geometry.getDimensions().add(dimension);
+//	  }
+//
+//	  root.setGeometry(geometry);
+//	}
 
 	public final void ownVisit(ASTRule node) {
 	  Rule rule = coreFactory.createRule();
