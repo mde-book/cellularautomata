@@ -76,7 +76,7 @@ grammar CellularAutomataInitialization extends mc.literals.Literals {
   UnaryExpression =
     (not:["!"] | uminus:["-"])? PrimaryExpression;
 
-  PrimaryExpression = "(" Conditional ")" | SignedIntegerLiteral | position:Name; // TODO SignedIntegerLiteral
+  PrimaryExpression = "(" Conditional ")" | SignedIntegerLiteral | position:Name;
   
   SignedIntegerLiteral  = 
     /*(neg:["-"])?*/ IntLiteral; // TODO
