@@ -3,10 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-        <artifactId>cellularautomata-lang</artifactId>
+        <artifactId>cellularautomata-lang.root</artifactId>
         <groupId>de.monticore.cellularautomata</groupId>
         <version>0.0.1-SNAPSHOT</version>
-    </parent>
+        <relativePath>../cellularautomata-lang.root/pom.xml</relativePath>
+  </parent>
 
   <!-- == Project Coordinates ===================================== -->
 
