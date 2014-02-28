@@ -6,7 +6,7 @@
   <!-- == Project Coordinates ===================================== -->
   
   <groupId>de.monticore.cellularautomata</groupId>
-  <artifactId>cellularautomata-lang</artifactId>
+  <artifactId>cellularautomata-lang.root</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
