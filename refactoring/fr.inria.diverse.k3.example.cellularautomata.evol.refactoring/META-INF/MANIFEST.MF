@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: fr.inria.diverse.k3.example.cellularautomata.evol.refactoring
 Bundle-SymbolicName: fr.inria.diverse.k3.example.cellularautomata.evol.refactoring; singleton:=true
 Bundle-Version: 1.0.0
-Require-Bundle: fr.inria.diverse.k3.eclipse.core.plugin;bundle-version="1.0.0",
+Require-Bundle: fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.0.0",
  org.eclipse.emf.common;bundle-version="2.9.1",
  org.eclipse.emf.ecore;bundle-version="2.9.1",
  org.eclipse.emf.ecore.xmi;bundle-version="2.9.1",

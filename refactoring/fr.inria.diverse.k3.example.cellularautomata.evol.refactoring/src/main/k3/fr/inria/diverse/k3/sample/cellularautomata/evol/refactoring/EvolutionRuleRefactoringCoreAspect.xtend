@@ -4,7 +4,7 @@ package fr.inria.diverse.k3.sample.cellularautomata.evol.refactoring
 import java.util.List
 import java.util.ArrayList
 
-import fr.inria.triskell.k3.Aspect
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import core.Equal
 import core.Rule
 import core.Conditional
