@@ -133,7 +133,7 @@ public interface InitPackage extends EPackage {
 	int COORDINATE_RANGE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Dimension Ranges</b></em>' reference list.
+	 * The feature id for the '<em><b>Dimension Ranges</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -280,10 +280,10 @@ public interface InitPackage extends EPackage {
 	EClass getCoordinateRange();
 
 	/**
-	 * Returns the meta object for the reference list '{@link ruleInit.CoordinateRange#getDimensionRanges <em>Dimension Ranges</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ruleInit.CoordinateRange#getDimensionRanges <em>Dimension Ranges</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Dimension Ranges</em>'.
+	 * @return the meta object for the containment reference list '<em>Dimension Ranges</em>'.
 	 * @see ruleInit.CoordinateRange#getDimensionRanges()
 	 * @see #getCoordinateRange()
 	 * @generated
@@ -420,7 +420,7 @@ public interface InitPackage extends EPackage {
 		EClass COORDINATE_RANGE = eINSTANCE.getCoordinateRange();
 
 		/**
-		 * The meta object literal for the '<em><b>Dimension Ranges</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Dimension Ranges</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
