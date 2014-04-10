@@ -4,6 +4,7 @@ package geometry;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -85,22 +86,22 @@ public interface GeometryPackage extends EPackage {
 	int REGULAR_GEOMETRY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Neighbors Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REGULAR_GEOMETRY__NEIGHBORS_NUMBER = GEOMETRY_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Dimensions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REGULAR_GEOMETRY__DIMENSIONS = GEOMETRY_FEATURE_COUNT + 1;
+	int REGULAR_GEOMETRY__DIMENSIONS = GEOMETRY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Neighbors</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REGULAR_GEOMETRY__NEIGHBORS = GEOMETRY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Regular Geometry</em>' class.
@@ -150,6 +151,17 @@ public interface GeometryPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link geometry.Neighborhood <em>Neighborhood</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see geometry.Neighborhood
+	 * @see geometry.impl.GeometryPackageImpl#getNeighborhood()
+	 * @generated
+	 */
+	int NEIGHBORHOOD = 3;
+
+
+	/**
 	 * Returns the meta object for class '{@link geometry.Geometry <em>Geometry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -170,17 +182,6 @@ public interface GeometryPackage extends EPackage {
 	EClass getRegularGeometry();
 
 	/**
-	 * Returns the meta object for the attribute '{@link geometry.RegularGeometry#getNeighborsNumber <em>Neighbors Number</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Neighbors Number</em>'.
-	 * @see geometry.RegularGeometry#getNeighborsNumber()
-	 * @see #getRegularGeometry()
-	 * @generated
-	 */
-	EAttribute getRegularGeometry_NeighborsNumber();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link geometry.RegularGeometry#getDimensions <em>Dimensions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -190,6 +191,17 @@ public interface GeometryPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRegularGeometry_Dimensions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link geometry.RegularGeometry#getNeighbors <em>Neighbors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Neighbors</em>'.
+	 * @see geometry.RegularGeometry#getNeighbors()
+	 * @see #getRegularGeometry()
+	 * @generated
+	 */
+	EAttribute getRegularGeometry_Neighbors();
 
 	/**
 	 * Returns the meta object for class '{@link geometry.Dimension <em>Dimension</em>}'.
@@ -222,6 +234,16 @@ public interface GeometryPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDimension_IsCircular();
+
+	/**
+	 * Returns the meta object for enum '{@link geometry.Neighborhood <em>Neighborhood</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Neighborhood</em>'.
+	 * @see geometry.Neighborhood
+	 * @generated
+	 */
+	EEnum getNeighborhood();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -266,20 +288,20 @@ public interface GeometryPackage extends EPackage {
 		EClass REGULAR_GEOMETRY = eINSTANCE.getRegularGeometry();
 
 		/**
-		 * The meta object literal for the '<em><b>Neighbors Number</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute REGULAR_GEOMETRY__NEIGHBORS_NUMBER = eINSTANCE.getRegularGeometry_NeighborsNumber();
-
-		/**
 		 * The meta object literal for the '<em><b>Dimensions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference REGULAR_GEOMETRY__DIMENSIONS = eINSTANCE.getRegularGeometry_Dimensions();
+
+		/**
+		 * The meta object literal for the '<em><b>Neighbors</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REGULAR_GEOMETRY__NEIGHBORS = eINSTANCE.getRegularGeometry_Neighbors();
 
 		/**
 		 * The meta object literal for the '{@link geometry.impl.DimensionImpl <em>Dimension</em>}' class.
@@ -306,6 +328,16 @@ public interface GeometryPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DIMENSION__IS_CIRCULAR = eINSTANCE.getDimension_IsCircular();
+
+		/**
+		 * The meta object literal for the '{@link geometry.Neighborhood <em>Neighborhood</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see geometry.Neighborhood
+		 * @see geometry.impl.GeometryPackageImpl#getNeighborhood()
+		 * @generated
+		 */
+		EEnum NEIGHBORHOOD = eINSTANCE.getNeighborhood();
 
 	}
 

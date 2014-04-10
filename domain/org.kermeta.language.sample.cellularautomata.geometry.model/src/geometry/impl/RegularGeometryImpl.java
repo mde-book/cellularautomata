@@ -4,6 +4,7 @@ package geometry.impl;
 
 import geometry.Dimension;
 import geometry.GeometryPackage;
+import geometry.Neighborhood;
 import geometry.RegularGeometry;
 
 import java.util.Collection;
@@ -29,34 +30,14 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link geometry.impl.RegularGeometryImpl#getNeighborsNumber <em>Neighbors Number</em>}</li>
  *   <li>{@link geometry.impl.RegularGeometryImpl#getDimensions <em>Dimensions</em>}</li>
+ *   <li>{@link geometry.impl.RegularGeometryImpl#getNeighbors <em>Neighbors</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class RegularGeometryImpl extends GeometryImpl implements RegularGeometry {
-	/**
-	 * The default value of the '{@link #getNeighborsNumber() <em>Neighbors Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNeighborsNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int NEIGHBORS_NUMBER_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getNeighborsNumber() <em>Neighbors Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNeighborsNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected int neighborsNumber = NEIGHBORS_NUMBER_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getDimensions() <em>Dimensions</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -66,6 +47,26 @@ public class RegularGeometryImpl extends GeometryImpl implements RegularGeometry
 	 * @ordered
 	 */
 	protected EList<Dimension> dimensions;
+
+	/**
+	 * The default value of the '{@link #getNeighbors() <em>Neighbors</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNeighbors()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Neighborhood NEIGHBORS_EDEFAULT = Neighborhood.MOORE;
+
+	/**
+	 * The cached value of the '{@link #getNeighbors() <em>Neighbors</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNeighbors()
+	 * @generated
+	 * @ordered
+	 */
+	protected Neighborhood neighbors = NEIGHBORS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,32 +92,32 @@ public class RegularGeometryImpl extends GeometryImpl implements RegularGeometry
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getNeighborsNumber() {
-		return neighborsNumber;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNeighborsNumber(int newNeighborsNumber) {
-		int oldNeighborsNumber = neighborsNumber;
-		neighborsNumber = newNeighborsNumber;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeometryPackage.REGULAR_GEOMETRY__NEIGHBORS_NUMBER, oldNeighborsNumber, neighborsNumber));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Dimension> getDimensions() {
 		if (dimensions == null) {
 			dimensions = new EObjectContainmentEList<Dimension>(Dimension.class, this, GeometryPackage.REGULAR_GEOMETRY__DIMENSIONS);
 		}
 		return dimensions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Neighborhood getNeighbors() {
+		return neighbors;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNeighbors(Neighborhood newNeighbors) {
+		Neighborhood oldNeighbors = neighbors;
+		neighbors = newNeighbors == null ? NEIGHBORS_EDEFAULT : newNeighbors;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GeometryPackage.REGULAR_GEOMETRY__NEIGHBORS, oldNeighbors, neighbors));
 	}
 
 	/**
@@ -141,10 +142,10 @@ public class RegularGeometryImpl extends GeometryImpl implements RegularGeometry
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeometryPackage.REGULAR_GEOMETRY__NEIGHBORS_NUMBER:
-				return getNeighborsNumber();
 			case GeometryPackage.REGULAR_GEOMETRY__DIMENSIONS:
 				return getDimensions();
+			case GeometryPackage.REGULAR_GEOMETRY__NEIGHBORS:
+				return getNeighbors();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -158,12 +159,12 @@ public class RegularGeometryImpl extends GeometryImpl implements RegularGeometry
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeometryPackage.REGULAR_GEOMETRY__NEIGHBORS_NUMBER:
-				setNeighborsNumber((Integer)newValue);
-				return;
 			case GeometryPackage.REGULAR_GEOMETRY__DIMENSIONS:
 				getDimensions().clear();
 				getDimensions().addAll((Collection<? extends Dimension>)newValue);
+				return;
+			case GeometryPackage.REGULAR_GEOMETRY__NEIGHBORS:
+				setNeighbors((Neighborhood)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -177,11 +178,11 @@ public class RegularGeometryImpl extends GeometryImpl implements RegularGeometry
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeometryPackage.REGULAR_GEOMETRY__NEIGHBORS_NUMBER:
-				setNeighborsNumber(NEIGHBORS_NUMBER_EDEFAULT);
-				return;
 			case GeometryPackage.REGULAR_GEOMETRY__DIMENSIONS:
 				getDimensions().clear();
+				return;
+			case GeometryPackage.REGULAR_GEOMETRY__NEIGHBORS:
+				setNeighbors(NEIGHBORS_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -195,10 +196,10 @@ public class RegularGeometryImpl extends GeometryImpl implements RegularGeometry
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeometryPackage.REGULAR_GEOMETRY__NEIGHBORS_NUMBER:
-				return neighborsNumber != NEIGHBORS_NUMBER_EDEFAULT;
 			case GeometryPackage.REGULAR_GEOMETRY__DIMENSIONS:
 				return dimensions != null && !dimensions.isEmpty();
+			case GeometryPackage.REGULAR_GEOMETRY__NEIGHBORS:
+				return neighbors != NEIGHBORS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -213,8 +214,8 @@ public class RegularGeometryImpl extends GeometryImpl implements RegularGeometry
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (neighborsNumber: ");
-		result.append(neighborsNumber);
+		result.append(" (neighbors: ");
+		result.append(neighbors);
 		result.append(')');
 		return result.toString();
 	}

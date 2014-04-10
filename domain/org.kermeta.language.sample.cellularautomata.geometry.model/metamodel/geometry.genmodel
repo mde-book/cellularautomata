@@ -5,10 +5,14 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false">
   <foreignModel>geometry.ecore</foreignModel>
   <genPackages prefix="Geometry" disposableProviderFactory="true" ecorePackage="geometry.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="geometry.ecore#//Neighborhood">
+      <genEnumLiterals ecoreEnumLiteral="geometry.ecore#//Neighborhood/Neumann"/>
+      <genEnumLiterals ecoreEnumLiteral="geometry.ecore#//Neighborhood/Moore"/>
+    </genEnums>
     <genClasses image="false" ecoreClass="geometry.ecore#//Geometry"/>
     <genClasses ecoreClass="geometry.ecore#//RegularGeometry">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//RegularGeometry/neighborsNumber"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference geometry.ecore#//RegularGeometry/dimensions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//RegularGeometry/neighbors"/>
     </genClasses>
     <genClasses ecoreClass="geometry.ecore#//Dimension">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Dimension/size"/>
