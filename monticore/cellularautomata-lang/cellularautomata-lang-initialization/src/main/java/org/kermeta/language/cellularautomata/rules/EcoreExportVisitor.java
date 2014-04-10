@@ -4,7 +4,10 @@ package org.kermeta.language.cellularautomata.rules;
  *
  * http://www.monticore.de/ - http://www.se-rwth.de/ */
 
+import geometry.Dimension;
 import geometry.GeometryFactory;
+import geometry.Neighborhood;
+import geometry.RegularGeometry;
 import geometry.impl.GeometryFactoryImpl;
 
 import java.io.IOException;
@@ -29,17 +32,26 @@ import org.kermeta.language.cellularautomata.rules._ast.ASTAndExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTCAInit;
 import org.kermeta.language.cellularautomata.rules._ast.ASTComparisonExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTConditional;
+import org.kermeta.language.cellularautomata.rules._ast.ASTDimension;
 import org.kermeta.language.cellularautomata.rules._ast.ASTEqualExpression;
+import org.kermeta.language.cellularautomata.rules._ast.ASTInterval;
 import org.kermeta.language.cellularautomata.rules._ast.ASTMultExpression;
 import org.kermeta.language.cellularautomata.rules._ast.ASTMultOperator;
 import org.kermeta.language.cellularautomata.rules._ast.ASTOrExpression;
+import org.kermeta.language.cellularautomata.rules._ast.ASTPrimaryExpression;
+import org.kermeta.language.cellularautomata.rules._ast.ASTRange;
+import org.kermeta.language.cellularautomata.rules._ast.ASTRanges;
+import org.kermeta.language.cellularautomata.rules._ast.ASTRegularGeometry;
 import org.kermeta.language.cellularautomata.rules._ast.ASTRule;
+import org.kermeta.language.cellularautomata.rules._ast.ASTSignedIntegerLiteral;
 import org.kermeta.language.cellularautomata.rules._ast.ASTUnaryExpression;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ruleInit.CellularAutomatatInitialization;
-import ruleInit.GlobalPosition;
+import ruleInit.CoordinateRange;
+import ruleInit.CoordinateRanges;
+import ruleInit.DimensionRange;
 import ruleInit.InitFactory;
 import ruleInit.impl.InitFactoryImpl;
 import core.And;
@@ -48,6 +60,7 @@ import core.Conditional;
 import core.CoreFactory;
 import core.Equal;
 import core.IntegerExpression;
+import core.IntegerLiteral;
 import core.Or;
 import core.Rule;
 import core.UnaryExpression;
@@ -131,21 +144,32 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 		saveResource(gastResource);
 	}
 
-//	public final void visit(ASTRegularGeometry node) {
-//	  RegularGeometry geometry = geoFactory.createRegularGeometry();
-//
-//	  geometry.setNeighborsNumber(node.getNeighborsNumber().getValue());
-//
-//	  for (ASTDimension dimensionNode : node.getDimensions()) {
-//	    Dimension dimension = geoFactory.createDimension();
-//	    dimension.setIsCircular(dimensionNode.isIsCircular());
-//	    dimension.setSize(dimensionNode.getSize().getValue());
-//
-//	    geometry.getDimensions().add(dimension);
-//	  }
-//
-//	  root.setGeometry(geometry);
-//	}
+	public final void visit(ASTRegularGeometry node) {
+	  RegularGeometry geometry = geoFactory.createRegularGeometry();
+
+	  if (node.isMoore()) {
+		  geometry.setNeighbors(Neighborhood.MOORE);
+	  }
+	  else if (node.isNeumann()){
+		  geometry.setNeighbors(Neighborhood.NEUMANN);
+	  }
+	  else {
+		  throw new RuntimeException("Unknown Neighboorhood");
+	  }
+
+	  for (ASTDimension dimensionNode : node.getDimensions()) {
+	    Dimension dimension = geoFactory.createDimension();
+	    
+	    boolean isCircular = node.isAllCircular() || dimensionNode.isCircular();
+	    
+	    dimension.setIsCircular(isCircular);
+	    dimension.setSize(dimensionNode.getSize().getValue());
+
+	    geometry.getDimensions().add(dimension);
+	  }
+
+	  root.setGeometry(geometry);
+	}
 
 	public final void ownVisit(ASTRule node) {
 	  Rule rule = coreFactory.createRule();
@@ -154,8 +178,8 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 
 	  getVisitor().startVisit(node.getRanges());
 
-	  GlobalPosition position = (GlobalPosition) estack.pop();
-	  rule.setFilter(position);
+	  CoordinateRanges ranges = (CoordinateRanges) estack.pop();
+	  rule.setFilter(ranges);
 
 	  getVisitor().startVisit(node.getConditional());
 
@@ -163,24 +187,39 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	  rule.setEvaluatedVal(integerExpression);
 	}
 
-//	public final void ownVisit (ASTRanges node) {
-//	  GlobalPosition position = initFactory.createGlobalPosition();
-//
-//	  for (ASTRange rangeNode : node.getRange()) {
-//	    CoordinateRange range = initFactory.createCoordinateRange();
-//
-//	    int lower = rangeNode.getInterval().get(0).getIntLiteral();
-//	    int
-//
-//	    range.setLowerCoordinate(rangeNode.getLowerCoord().getValue());
-//	    range.setUpperCoordinate(rangeNode.getUpperCoord().getValue());
-//
-//	    position.getCoordinateRanges().add(range);
-//	  }
-//
-//	  estack.push(position);
-//
-//	}
+	public final void ownVisit (ASTRanges node) {
+
+	  // e.g. (1..4, 3, 8), (5, 5..3, 6) 
+	  CoordinateRanges ranges = initFactory.createCoordinateRanges();
+      
+	  for (ASTRange rangeNode : node.getRange()) {
+		// (1..4, 3, 8) and (5, 5..3, 6) 
+	    CoordinateRange range = initFactory.createCoordinateRange();
+	    
+	    for (ASTInterval intervalNode : rangeNode.getInterval()) {
+	    	
+		    int lower = intervalNode.getIntLiteral().get(0).getValue();
+		    int upper = lower;
+		    
+		    // the size is either 1 (lower == upper) or 2 (lower != upper)
+		    if (intervalNode.getIntLiteral().size() > 1) {
+		    	upper = intervalNode.getIntLiteral().get(1).getValue();
+		    }
+
+		    // 1..4 and 3 and 8 (resp: 5 and 5..3 and 6)
+		    DimensionRange dimRange = initFactory.createDimensionRange();
+		    dimRange.setLower(lower);
+		    dimRange.setUpper(upper);
+		    
+		    range.getDimensionRanges().add(dimRange);
+	    }
+
+	    ranges.getCoordinateRanges().add(range);
+	  }
+
+	  estack.push(ranges);
+
+	}
 
 	public final void ownVisit (ASTConditional node) {
 	  if (node.getOrExpression() != null) {
@@ -468,23 +507,24 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
     estack.push(unary);
 	}
 
-//	public void ownVisit(ASTPrimaryExpression node) {
-//	  if (node.getSignedIntegerLiteral() != null) {
-//	    ASTSignedIntegerLiteral intNode = node.getSignedIntegerLiteral();
-//	    IntegerLiteral intLiteral = Monticore2EcoreConverter.convertASTIntLiteral(intNode);
-//
-//	    estack.push(intLiteral);
-//	  }
+	public void ownVisit(ASTPrimaryExpression node) {
+	  if (node.getSignedIntegerLiteral() != null) {
+	    ASTSignedIntegerLiteral intNode = node.getSignedIntegerLiteral();
+	    IntegerLiteral intLiteral = Monticore2EcoreConverter.convertASTIntLiteral(intNode);
+
+	    estack.push(intLiteral);
+	  }
+	  // TODO PN implement
 //	  else if (node.getPositionLiteral() != null) {
 //	    PositionLiteral position = initFactory.createPositionLiteral();
 //	    position.setDimensionIndex(node.getPositionLiteral().getDimensionIndex().getValue());
 //
 //	    estack.push(position);
 //	  }
-//	  else if (node.getConditional() != null) {
-//	    getVisitor().startVisit(node.getConditional());
-//	  }
-//	}
+	  else if (node.getConditional() != null) {
+	    getVisitor().startVisit(node.getConditional());
+	  }
+	}
 
 
 	private Resource createAndAddResource(String outputFile, String[] fileextensions, ResourceSet rs) {
