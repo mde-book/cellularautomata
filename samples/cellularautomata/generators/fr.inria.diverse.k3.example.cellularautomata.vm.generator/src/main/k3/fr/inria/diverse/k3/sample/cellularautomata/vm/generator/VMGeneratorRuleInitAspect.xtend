@@ -1,8 +1,9 @@
 package fr.inria.diverse.k3.sample.cellularautomata.vm.generator
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
-import ruleInit.GlobalPosition
+import ruleInit.CoordinateRanges
 import ruleInit.CoordinateRange
+import ruleInit.DimensionRange
 import ruleInit.PositionLiteral
 import vm.Cell
 import core.Filter
@@ -10,16 +11,16 @@ import fr.inria.diverse.k3.sample.cellularautomata.vm.generator.Context
 
 import static extension fr.inria.diverse.k3.sample.cellularautomata.vm.generator.CellAspect.*
 import static extension fr.inria.diverse.k3.sample.cellularautomata.vm.generator.CoordinateRangeAspect.*
-
+import static extension fr.inria.diverse.k3.sample.cellularautomata.vm.generator.DimensionRangeAspect.*
 
 @Aspect(className=typeof(Filter))
 abstract class FilterAspect {
 	def public Boolean isApplicableForCell(Cell cell)
 }
 
-@Aspect(className=typeof(GlobalPosition)) 
-class GlobalPositionAspect extends FilterAspect {
-	
+
+@Aspect(className=typeof(CoordinateRanges))
+class CoordinateRangesAspect extends FilterAspect {
 	def public Boolean isApplicableForCell(Cell cell) {
 		var Boolean result = true
 		if (_self.coordinateRanges.size == cell.coordinates.size) {
@@ -34,7 +35,18 @@ class GlobalPositionAspect extends FilterAspect {
 @Aspect(className=typeof(CoordinateRange))
 class CoordinateRangeAspect {
 	def public Boolean isInRange(Integer i) {
-		return ((_self.lowerCoordinate <= i) && (i <= _self.upperCoordinate))
+		var Boolean result = true
+		for(DimensionRange dimRange : _self.dimensionRanges){
+			result = result && dimRange.isInRange(i)
+		}
+		return result
+	}
+}
+
+@Aspect(className=typeof(DimensionRange))
+class DimensionRangeAspect {
+	def public Boolean isInRange(Integer i) {
+		return ((_self.lower <= i) && (i <= _self.upper))
 	}
 }
 
