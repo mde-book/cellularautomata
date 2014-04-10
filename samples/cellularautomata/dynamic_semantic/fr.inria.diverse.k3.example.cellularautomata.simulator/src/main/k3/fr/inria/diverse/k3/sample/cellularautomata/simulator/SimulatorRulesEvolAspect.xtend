@@ -1,7 +1,6 @@
 package fr.inria.diverse.k3.sample.cellularautomata.simulator
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
-import fr.inria.diverse.k3.al.annotationprocessor.OverrideAspectMethod
 import evol.CellularAutomata
 import fr.inria.diverse.k3.sample.cellularautomata.simulator.Context
 import core.Rule
@@ -14,7 +13,7 @@ class SimulatorRulesEvolAspect {
 
 @Aspect(className=typeof(CellularAutomata))
 class CellularAutomataAspect {
-	def public applyRules(Context context) { 
+	def public void applyRules(Context context) { 
 		context.currentUniverse.cells.forEach[cell |
 			context.currentCell = cell
 			var Rule rule = _self.rules.filter[r | 
