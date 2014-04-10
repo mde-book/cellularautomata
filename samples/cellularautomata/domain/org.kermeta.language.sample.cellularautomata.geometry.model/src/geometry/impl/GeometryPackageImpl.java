@@ -6,10 +6,12 @@ import geometry.Dimension;
 import geometry.Geometry;
 import geometry.GeometryFactory;
 import geometry.GeometryPackage;
+import geometry.Neighborhood;
 import geometry.RegularGeometry;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -42,6 +44,13 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 	 * @generated
 	 */
 	private EClass dimensionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum neighborhoodEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -127,8 +136,8 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRegularGeometry_NeighborsNumber() {
-		return (EAttribute)regularGeometryEClass.getEStructuralFeatures().get(0);
+	public EReference getRegularGeometry_Dimensions() {
+		return (EReference)regularGeometryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -136,8 +145,8 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRegularGeometry_Dimensions() {
-		return (EReference)regularGeometryEClass.getEStructuralFeatures().get(1);
+	public EAttribute getRegularGeometry_Neighbors() {
+		return (EAttribute)regularGeometryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -172,6 +181,15 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getNeighborhood() {
+		return neighborhoodEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public GeometryFactory getGeometryFactory() {
 		return (GeometryFactory)getEFactoryInstance();
 	}
@@ -198,12 +216,15 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 		geometryEClass = createEClass(GEOMETRY);
 
 		regularGeometryEClass = createEClass(REGULAR_GEOMETRY);
-		createEAttribute(regularGeometryEClass, REGULAR_GEOMETRY__NEIGHBORS_NUMBER);
 		createEReference(regularGeometryEClass, REGULAR_GEOMETRY__DIMENSIONS);
+		createEAttribute(regularGeometryEClass, REGULAR_GEOMETRY__NEIGHBORS);
 
 		dimensionEClass = createEClass(DIMENSION);
 		createEAttribute(dimensionEClass, DIMENSION__SIZE);
 		createEAttribute(dimensionEClass, DIMENSION__IS_CIRCULAR);
+
+		// Create enums
+		neighborhoodEEnum = createEEnum(NEIGHBORHOOD);
 	}
 
 	/**
@@ -240,12 +261,17 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 		initEClass(geometryEClass, Geometry.class, "Geometry", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(regularGeometryEClass, RegularGeometry.class, "RegularGeometry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRegularGeometry_NeighborsNumber(), ecorePackage.getEInt(), "neighborsNumber", null, 1, 1, RegularGeometry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRegularGeometry_Dimensions(), this.getDimension(), null, "dimensions", null, 0, -1, RegularGeometry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRegularGeometry_Neighbors(), this.getNeighborhood(), "neighbors", "Moore", 0, 1, RegularGeometry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dimensionEClass, Dimension.class, "Dimension", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDimension_Size(), ecorePackage.getEInt(), "size", "10", 1, 1, Dimension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDimension_Size(), ecorePackage.getEInt(), "size", null, 1, 1, Dimension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDimension_IsCircular(), ecorePackage.getEBoolean(), "isCircular", "false", 1, 1, Dimension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(neighborhoodEEnum, Neighborhood.class, "Neighborhood");
+		addEEnumLiteral(neighborhoodEEnum, Neighborhood.NEUMANN);
+		addEEnumLiteral(neighborhoodEEnum, Neighborhood.MOORE);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EObject;
 public interface Dimension extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Size</b></em>' attribute.
-	 * The default value is <code>"10"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Size</em>' attribute isn't clear,
@@ -34,7 +33,7 @@ public interface Dimension extends EObject {
 	 * @return the value of the '<em>Size</em>' attribute.
 	 * @see #setSize(int)
 	 * @see geometry.GeometryPackage#getDimension_Size()
-	 * @model default="10" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	int getSize();

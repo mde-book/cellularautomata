@@ -35,7 +35,7 @@ public class DimensionImpl extends EObjectImpl implements Dimension {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SIZE_EDEFAULT = 10;
+	protected static final int SIZE_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
