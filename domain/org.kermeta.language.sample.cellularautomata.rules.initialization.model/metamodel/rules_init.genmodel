@@ -10,15 +10,18 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//CellularAutomatatInitialization/seedRules"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//CellularAutomatatInitialization/geometry"/>
     </genClasses>
-    <genClasses ecoreClass="rules_init.ecore#//GlobalPosition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//GlobalPosition/coordinateRanges"/>
+    <genClasses ecoreClass="rules_init.ecore#//CoordinateRanges">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//CoordinateRanges/coordinateRanges"/>
+    </genClasses>
+    <genClasses ecoreClass="rules_init.ecore#//CoordinateRange">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rules_init.ecore#//CoordinateRange/dimensionRanges"/>
+    </genClasses>
+    <genClasses ecoreClass="rules_init.ecore#//DimensionRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rules_init.ecore#//DimensionRange/lower"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rules_init.ecore#//DimensionRange/upper"/>
     </genClasses>
     <genClasses ecoreClass="rules_init.ecore#//PositionLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rules_init.ecore#//PositionLiteral/dimensionIndex"/>
-    </genClasses>
-    <genClasses ecoreClass="rules_init.ecore#//CoordinateRange">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rules_init.ecore#//CoordinateRange/lowerCoordinate"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rules_init.ecore#//CoordinateRange/upperCoordinate"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

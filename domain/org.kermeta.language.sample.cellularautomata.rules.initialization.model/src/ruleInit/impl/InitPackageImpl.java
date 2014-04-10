@@ -15,7 +15,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import ruleInit.CellularAutomatatInitialization;
 import ruleInit.CoordinateRange;
-import ruleInit.GlobalPosition;
+import ruleInit.CoordinateRanges;
+import ruleInit.DimensionRange;
 import ruleInit.InitFactory;
 import ruleInit.InitPackage;
 import ruleInit.PositionLiteral;
@@ -39,14 +40,7 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass globalPositionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass positionLiteralEClass = null;
+	private EClass coordinateRangesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -54,6 +48,20 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * @generated
 	 */
 	private EClass coordinateRangeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dimensionRangeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass positionLiteralEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -152,8 +160,8 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getGlobalPosition() {
-		return globalPositionEClass;
+	public EClass getCoordinateRanges() {
+		return coordinateRangesEClass;
 	}
 
 	/**
@@ -161,8 +169,53 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGlobalPosition_CoordinateRanges() {
-		return (EReference)globalPositionEClass.getEStructuralFeatures().get(0);
+	public EReference getCoordinateRanges_CoordinateRanges() {
+		return (EReference)coordinateRangesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCoordinateRange() {
+		return coordinateRangeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCoordinateRange_DimensionRanges() {
+		return (EReference)coordinateRangeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDimensionRange() {
+		return dimensionRangeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDimensionRange_Lower() {
+		return (EAttribute)dimensionRangeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDimensionRange_Upper() {
+		return (EAttribute)dimensionRangeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -181,33 +234,6 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 */
 	public EAttribute getPositionLiteral_DimensionIndex() {
 		return (EAttribute)positionLiteralEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCoordinateRange() {
-		return coordinateRangeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCoordinateRange_LowerCoordinate() {
-		return (EAttribute)coordinateRangeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCoordinateRange_UpperCoordinate() {
-		return (EAttribute)coordinateRangeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -242,15 +268,18 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 		createEReference(cellularAutomatatInitializationEClass, CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES);
 		createEReference(cellularAutomatatInitializationEClass, CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY);
 
-		globalPositionEClass = createEClass(GLOBAL_POSITION);
-		createEReference(globalPositionEClass, GLOBAL_POSITION__COORDINATE_RANGES);
+		coordinateRangesEClass = createEClass(COORDINATE_RANGES);
+		createEReference(coordinateRangesEClass, COORDINATE_RANGES__COORDINATE_RANGES);
+
+		coordinateRangeEClass = createEClass(COORDINATE_RANGE);
+		createEReference(coordinateRangeEClass, COORDINATE_RANGE__DIMENSION_RANGES);
+
+		dimensionRangeEClass = createEClass(DIMENSION_RANGE);
+		createEAttribute(dimensionRangeEClass, DIMENSION_RANGE__LOWER);
+		createEAttribute(dimensionRangeEClass, DIMENSION_RANGE__UPPER);
 
 		positionLiteralEClass = createEClass(POSITION_LITERAL);
 		createEAttribute(positionLiteralEClass, POSITION_LITERAL__DIMENSION_INDEX);
-
-		coordinateRangeEClass = createEClass(COORDINATE_RANGE);
-		createEAttribute(coordinateRangeEClass, COORDINATE_RANGE__LOWER_COORDINATE);
-		createEAttribute(coordinateRangeEClass, COORDINATE_RANGE__UPPER_COORDINATE);
 	}
 
 	/**
@@ -285,7 +314,7 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		globalPositionEClass.getESuperTypes().add(theCorePackage.getFilter());
+		coordinateRangesEClass.getESuperTypes().add(theCorePackage.getFilter());
 		positionLiteralEClass.getESuperTypes().add(theCorePackage.getIntegerExpression());
 
 		// Initialize classes and features; add operations and parameters
@@ -293,15 +322,18 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 		initEReference(getCellularAutomatatInitialization_SeedRules(), theCorePackage.getRule(), null, "seedRules", null, 0, -1, CellularAutomatatInitialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCellularAutomatatInitialization_Geometry(), theGeometryPackage.getGeometry(), null, "geometry", null, 0, 1, CellularAutomatatInitialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(globalPositionEClass, GlobalPosition.class, "GlobalPosition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGlobalPosition_CoordinateRanges(), this.getCoordinateRange(), null, "coordinateRanges", null, 0, -1, GlobalPosition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(coordinateRangesEClass, CoordinateRanges.class, "CoordinateRanges", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCoordinateRanges_CoordinateRanges(), this.getCoordinateRange(), null, "coordinateRanges", null, 0, -1, CoordinateRanges.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(coordinateRangeEClass, CoordinateRange.class, "CoordinateRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCoordinateRange_DimensionRanges(), this.getDimensionRange(), null, "dimensionRanges", null, 0, -1, CoordinateRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dimensionRangeEClass, DimensionRange.class, "DimensionRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDimensionRange_Lower(), ecorePackage.getEInt(), "lower", null, 0, 1, DimensionRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDimensionRange_Upper(), ecorePackage.getEInt(), "upper", null, 0, 1, DimensionRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(positionLiteralEClass, PositionLiteral.class, "PositionLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPositionLiteral_DimensionIndex(), ecorePackage.getEInt(), "dimensionIndex", null, 1, 1, PositionLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(coordinateRangeEClass, CoordinateRange.class, "CoordinateRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCoordinateRange_LowerCoordinate(), ecorePackage.getEInt(), "lowerCoordinate", null, 0, 1, CoordinateRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCoordinateRange_UpperCoordinate(), ecorePackage.getEInt(), "upperCoordinate", null, 0, 1, CoordinateRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

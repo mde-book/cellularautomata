@@ -75,10 +75,22 @@ public class InitSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case InitPackage.GLOBAL_POSITION: {
-				GlobalPosition globalPosition = (GlobalPosition)theEObject;
-				T result = caseGlobalPosition(globalPosition);
-				if (result == null) result = caseFilter(globalPosition);
+			case InitPackage.COORDINATE_RANGES: {
+				CoordinateRanges coordinateRanges = (CoordinateRanges)theEObject;
+				T result = caseCoordinateRanges(coordinateRanges);
+				if (result == null) result = caseFilter(coordinateRanges);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case InitPackage.COORDINATE_RANGE: {
+				CoordinateRange coordinateRange = (CoordinateRange)theEObject;
+				T result = caseCoordinateRange(coordinateRange);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case InitPackage.DIMENSION_RANGE: {
+				DimensionRange dimensionRange = (DimensionRange)theEObject;
+				T result = caseDimensionRange(dimensionRange);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -86,12 +98,6 @@ public class InitSwitch<T> extends Switch<T> {
 				PositionLiteral positionLiteral = (PositionLiteral)theEObject;
 				T result = casePositionLiteral(positionLiteral);
 				if (result == null) result = caseIntegerExpression(positionLiteral);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case InitPackage.COORDINATE_RANGE: {
-				CoordinateRange coordinateRange = (CoordinateRange)theEObject;
-				T result = caseCoordinateRange(coordinateRange);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -115,32 +121,17 @@ public class InitSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Global Position</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Coordinate Ranges</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Global Position</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Coordinate Ranges</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseGlobalPosition(GlobalPosition object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Position Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Position Literal</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePositionLiteral(PositionLiteral object) {
+	public T caseCoordinateRanges(CoordinateRanges object) {
 		return null;
 	}
 
@@ -156,6 +147,36 @@ public class InitSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCoordinateRange(CoordinateRange object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Dimension Range</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Dimension Range</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDimensionRange(DimensionRange object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Position Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Position Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePositionLiteral(PositionLiteral object) {
 		return null;
 	}
 

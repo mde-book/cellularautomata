@@ -27,7 +27,7 @@ public class InitFactoryImpl extends EFactoryImpl implements InitFactory {
 	 */
 	public static InitFactory init() {
 		try {
-			InitFactory theInitFactory = (InitFactory)EPackage.Registry.INSTANCE.getEFactory("http://rules/init/1.0"); 
+			InitFactory theInitFactory = (InitFactory)EPackage.Registry.INSTANCE.getEFactory(InitPackage.eNS_URI);
 			if (theInitFactory != null) {
 				return theInitFactory;
 			}
@@ -57,9 +57,10 @@ public class InitFactoryImpl extends EFactoryImpl implements InitFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION: return createCellularAutomatatInitialization();
-			case InitPackage.GLOBAL_POSITION: return createGlobalPosition();
-			case InitPackage.POSITION_LITERAL: return createPositionLiteral();
+			case InitPackage.COORDINATE_RANGES: return createCoordinateRanges();
 			case InitPackage.COORDINATE_RANGE: return createCoordinateRange();
+			case InitPackage.DIMENSION_RANGE: return createDimensionRange();
+			case InitPackage.POSITION_LITERAL: return createPositionLiteral();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,19 +81,9 @@ public class InitFactoryImpl extends EFactoryImpl implements InitFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GlobalPosition createGlobalPosition() {
-		GlobalPositionImpl globalPosition = new GlobalPositionImpl();
-		return globalPosition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PositionLiteral createPositionLiteral() {
-		PositionLiteralImpl positionLiteral = new PositionLiteralImpl();
-		return positionLiteral;
+	public CoordinateRanges createCoordinateRanges() {
+		CoordinateRangesImpl coordinateRanges = new CoordinateRangesImpl();
+		return coordinateRanges;
 	}
 
 	/**
@@ -103,6 +94,26 @@ public class InitFactoryImpl extends EFactoryImpl implements InitFactory {
 	public CoordinateRange createCoordinateRange() {
 		CoordinateRangeImpl coordinateRange = new CoordinateRangeImpl();
 		return coordinateRange;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DimensionRange createDimensionRange() {
+		DimensionRangeImpl dimensionRange = new DimensionRangeImpl();
+		return dimensionRange;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PositionLiteral createPositionLiteral() {
+		PositionLiteralImpl positionLiteral = new PositionLiteralImpl();
+		return positionLiteral;
 	}
 
 	/**

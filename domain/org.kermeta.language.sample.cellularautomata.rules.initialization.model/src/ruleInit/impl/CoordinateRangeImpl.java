@@ -2,14 +2,18 @@
  */
 package ruleInit.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
 import ruleInit.CoordinateRange;
+import ruleInit.DimensionRange;
 import ruleInit.InitPackage;
 
 /**
@@ -19,8 +23,7 @@ import ruleInit.InitPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ruleInit.impl.CoordinateRangeImpl#getLowerCoordinate <em>Lower Coordinate</em>}</li>
- *   <li>{@link ruleInit.impl.CoordinateRangeImpl#getUpperCoordinate <em>Upper Coordinate</em>}</li>
+ *   <li>{@link ruleInit.impl.CoordinateRangeImpl#getDimensionRanges <em>Dimension Ranges</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,44 +31,14 @@ import ruleInit.InitPackage;
  */
 public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange {
 	/**
-	 * The default value of the '{@link #getLowerCoordinate() <em>Lower Coordinate</em>}' attribute.
+	 * The cached value of the '{@link #getDimensionRanges() <em>Dimension Ranges</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLowerCoordinate()
+	 * @see #getDimensionRanges()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LOWER_COORDINATE_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getLowerCoordinate() <em>Lower Coordinate</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLowerCoordinate()
-	 * @generated
-	 * @ordered
-	 */
-	protected int lowerCoordinate = LOWER_COORDINATE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getUpperCoordinate() <em>Upper Coordinate</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUpperCoordinate()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int UPPER_COORDINATE_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getUpperCoordinate() <em>Upper Coordinate</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUpperCoordinate()
-	 * @generated
-	 * @ordered
-	 */
-	protected int upperCoordinate = UPPER_COORDINATE_EDEFAULT;
+	protected EList<DimensionRange> dimensionRanges;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,41 +64,11 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getLowerCoordinate() {
-		return lowerCoordinate;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setLowerCoordinate(int newLowerCoordinate) {
-		int oldLowerCoordinate = lowerCoordinate;
-		lowerCoordinate = newLowerCoordinate;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InitPackage.COORDINATE_RANGE__LOWER_COORDINATE, oldLowerCoordinate, lowerCoordinate));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getUpperCoordinate() {
-		return upperCoordinate;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUpperCoordinate(int newUpperCoordinate) {
-		int oldUpperCoordinate = upperCoordinate;
-		upperCoordinate = newUpperCoordinate;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InitPackage.COORDINATE_RANGE__UPPER_COORDINATE, oldUpperCoordinate, upperCoordinate));
+	public EList<DimensionRange> getDimensionRanges() {
+		if (dimensionRanges == null) {
+			dimensionRanges = new EObjectResolvingEList<DimensionRange>(DimensionRange.class, this, InitPackage.COORDINATE_RANGE__DIMENSION_RANGES);
+		}
+		return dimensionRanges;
 	}
 
 	/**
@@ -136,10 +79,8 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGE__LOWER_COORDINATE:
-				return getLowerCoordinate();
-			case InitPackage.COORDINATE_RANGE__UPPER_COORDINATE:
-				return getUpperCoordinate();
+			case InitPackage.COORDINATE_RANGE__DIMENSION_RANGES:
+				return getDimensionRanges();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -149,14 +90,13 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGE__LOWER_COORDINATE:
-				setLowerCoordinate((Integer)newValue);
-				return;
-			case InitPackage.COORDINATE_RANGE__UPPER_COORDINATE:
-				setUpperCoordinate((Integer)newValue);
+			case InitPackage.COORDINATE_RANGE__DIMENSION_RANGES:
+				getDimensionRanges().clear();
+				getDimensionRanges().addAll((Collection<? extends DimensionRange>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -170,11 +110,8 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGE__LOWER_COORDINATE:
-				setLowerCoordinate(LOWER_COORDINATE_EDEFAULT);
-				return;
-			case InitPackage.COORDINATE_RANGE__UPPER_COORDINATE:
-				setUpperCoordinate(UPPER_COORDINATE_EDEFAULT);
+			case InitPackage.COORDINATE_RANGE__DIMENSION_RANGES:
+				getDimensionRanges().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -188,30 +125,10 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGE__LOWER_COORDINATE:
-				return lowerCoordinate != LOWER_COORDINATE_EDEFAULT;
-			case InitPackage.COORDINATE_RANGE__UPPER_COORDINATE:
-				return upperCoordinate != UPPER_COORDINATE_EDEFAULT;
+			case InitPackage.COORDINATE_RANGE__DIMENSION_RANGES:
+				return dimensionRanges != null && !dimensionRanges.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (lowerCoordinate: ");
-		result.append(lowerCoordinate);
-		result.append(", upperCoordinate: ");
-		result.append(upperCoordinate);
-		result.append(')');
-		return result.toString();
 	}
 
 } //CoordinateRangeImpl
