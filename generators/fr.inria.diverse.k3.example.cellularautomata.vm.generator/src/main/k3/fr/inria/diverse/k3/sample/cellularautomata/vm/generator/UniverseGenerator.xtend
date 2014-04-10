@@ -21,6 +21,7 @@ import static extension fr.inria.diverse.k3.sample.cellularautomata.vm.generator
 import org.eclipse.emf.ecore.EPackage
 import fr.inria.diverse.k3.sample.cellularautomata.vm.generator.Context
 import vm.impl.VmFactoryImpl
+import geometry.Neighborhood
 
 class UniverseGenerator {
 	
@@ -54,11 +55,12 @@ class UniverseGenerator {
 			}
 			
 			if (regularGeometry != null) {
-				if ((regularGeometry.neighborsNumber == 4) && (regularGeometry.dimensions.size == 2) 
+				
+				if ((regularGeometry.neighbors == Neighborhood.NEUMANN) && (regularGeometry.dimensions.size == 2) 
 						&& (!regularGeometry.dimensions.exists[ d | d.isCircular])) {
 					result = generateMooreRectangleBoundedUniverse(regularGeometry.dimensions.get(0).size, regularGeometry.dimensions.get(1).size)
 				} else {
-					if ((regularGeometry.neighborsNumber == 8) && (regularGeometry.dimensions.size == 2) 
+					if ((regularGeometry.neighbors == Neighborhood.MOORE) && (regularGeometry.dimensions.size == 2) 
 							&& (!regularGeometry.dimensions.exists[d | d.isCircular])) {
 						result = generateVonNeumannRectangleBoundedUniverse(regularGeometry.dimensions.get(0).size, regularGeometry.dimensions.get(1).size)
 					} else { 
