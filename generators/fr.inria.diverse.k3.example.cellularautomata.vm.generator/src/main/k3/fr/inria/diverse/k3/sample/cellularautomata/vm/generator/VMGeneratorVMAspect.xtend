@@ -1,6 +1,6 @@
 package fr.inria.diverse.k3.sample.cellularautomata.vm.generator
 
-import fr.inria.triskell.k3.Aspect
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import java.util.List
 import vm.Cell
 import java.util.ArrayList

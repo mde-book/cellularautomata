@@ -1,8 +1,8 @@
 package fr.inria.diverse.k3.sample.cellularautomata.simulator
 
 
-import fr.inria.triskell.k3.Aspect
-import fr.inria.triskell.k3.OverrideAspectMethod
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect
+import fr.inria.diverse.k3.al.annotationprocessor.OverrideAspectMethod
 import vm.Cell
 import evol.PopulationRange
 import evol.CurrentCellPopulation
@@ -260,14 +260,14 @@ class PopulationRangeAspect extends FilterAspect {
 			var Boolean lowerOk = false
 			var Boolean upperOk = false
 			
-			if (_self.lowerRange != null) {
+			if (_self.lowerRange != 0) {
 				if (value >= _self.lowerRange) { 
 					 lowerOk = true
 				} 
 			} else {
 				lowerOk = true
 			}
-			if (_self.upperRange != null) {
+			if (_self.upperRange != 0) {
 				if (value <= _self.upperRange) {
 					 upperOk = true
 				}

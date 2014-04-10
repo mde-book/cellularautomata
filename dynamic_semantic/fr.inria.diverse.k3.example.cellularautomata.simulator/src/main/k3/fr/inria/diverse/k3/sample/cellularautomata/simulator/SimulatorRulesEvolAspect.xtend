@@ -1,6 +1,7 @@
 package fr.inria.diverse.k3.sample.cellularautomata.simulator
 
-import fr.inria.triskell.k3.Aspect
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect
+import fr.inria.diverse.k3.al.annotationprocessor.OverrideAspectMethod
 import evol.CellularAutomata
 import fr.inria.diverse.k3.sample.cellularautomata.simulator.Context
 import core.Rule
