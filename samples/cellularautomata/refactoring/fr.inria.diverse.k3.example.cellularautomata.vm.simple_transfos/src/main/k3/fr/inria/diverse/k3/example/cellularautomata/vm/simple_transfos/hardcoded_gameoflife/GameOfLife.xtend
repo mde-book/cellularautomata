@@ -8,7 +8,7 @@
 
 package fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.hardcoded_gameoflife
 
-import fr.inria.triskell.k3.Aspect
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import vm.Cell
 import vm.Universe
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
@@ -21,7 +21,8 @@ import org.eclipse.emf.ecore.resource.Resource
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.hardcoded_gameoflife.CellAspect.*
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.hardcoded_gameoflife.UniverseAspect.*
 
- @Aspect(className=typeof(Universe))
+
+@Aspect(className=typeof(Universe))
 class UniverseAspect{
 	public def void playOneStep(){
 		_self.cells.forEach[cell |	cell.computeGameOfLifeFutureValue]
