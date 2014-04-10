@@ -1,8 +1,8 @@
 package fr.inria.diverse.k3.sample.cellularautomata.vm.generator
 
 
-import fr.inria.triskell.k3.Aspect
-import fr.inria.triskell.k3.OverrideAspectMethod
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect
+import fr.inria.diverse.k3.al.annotationprocessor.OverrideAspectMethod
 import vm.Cell
 import core.Rule
 import core.IntegerExpression
