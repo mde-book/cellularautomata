@@ -2,7 +2,7 @@
 
 package fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.vonneuman2moore
 
-import fr.inria.triskell.k3.Aspect
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import vm.Cell
 import vm.Universe
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
