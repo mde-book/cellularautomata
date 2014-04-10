@@ -326,7 +326,7 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 		initEReference(getCoordinateRanges_CoordinateRanges(), this.getCoordinateRange(), null, "coordinateRanges", null, 0, -1, CoordinateRanges.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(coordinateRangeEClass, CoordinateRange.class, "CoordinateRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCoordinateRange_DimensionRanges(), this.getDimensionRange(), null, "dimensionRanges", null, 0, -1, CoordinateRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCoordinateRange_DimensionRanges(), this.getDimensionRange(), null, "dimensionRanges", null, 0, -1, CoordinateRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dimensionRangeEClass, DimensionRange.class, "DimensionRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDimensionRange_Lower(), ecorePackage.getEInt(), "lower", null, 0, 1, DimensionRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

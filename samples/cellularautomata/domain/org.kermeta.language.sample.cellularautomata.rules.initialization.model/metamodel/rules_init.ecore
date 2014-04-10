@@ -14,7 +14,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CoordinateRange">
     <eStructuralFeatures xsi:type="ecore:EReference" name="dimensionRanges" upperBound="-1"
-        eType="#//DimensionRange"/>
+        eType="#//DimensionRange" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DimensionRange">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

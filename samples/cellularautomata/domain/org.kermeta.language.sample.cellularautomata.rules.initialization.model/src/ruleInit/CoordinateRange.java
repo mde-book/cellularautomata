@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface CoordinateRange extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Dimension Ranges</b></em>' reference list.
+	 * Returns the value of the '<em><b>Dimension Ranges</b></em>' containment reference list.
 	 * The list contents are of type {@link ruleInit.DimensionRange}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -32,9 +32,9 @@ public interface CoordinateRange extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Dimension Ranges</em>' reference list.
+	 * @return the value of the '<em>Dimension Ranges</em>' containment reference list.
 	 * @see ruleInit.InitPackage#getCoordinateRange_DimensionRanges()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<DimensionRange> getDimensionRanges();

@@ -4,14 +4,18 @@ package ruleInit.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.emf.ecore.util.InternalEList;
 import ruleInit.CoordinateRange;
 import ruleInit.DimensionRange;
 import ruleInit.InitPackage;
@@ -31,7 +35,7 @@ import ruleInit.InitPackage;
  */
 public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange {
 	/**
-	 * The cached value of the '{@link #getDimensionRanges() <em>Dimension Ranges</em>}' reference list.
+	 * The cached value of the '{@link #getDimensionRanges() <em>Dimension Ranges</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDimensionRanges()
@@ -66,9 +70,23 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	 */
 	public EList<DimensionRange> getDimensionRanges() {
 		if (dimensionRanges == null) {
-			dimensionRanges = new EObjectResolvingEList<DimensionRange>(DimensionRange.class, this, InitPackage.COORDINATE_RANGE__DIMENSION_RANGES);
+			dimensionRanges = new EObjectContainmentEList<DimensionRange>(DimensionRange.class, this, InitPackage.COORDINATE_RANGE__DIMENSION_RANGES);
 		}
 		return dimensionRanges;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case InitPackage.COORDINATE_RANGE__DIMENSION_RANGES:
+				return ((InternalEList<?>)getDimensionRanges()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
