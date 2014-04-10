@@ -75,16 +75,20 @@ public class InitAdapterFactory extends AdapterFactoryImpl {
 				return createCellularAutomatatInitializationAdapter();
 			}
 			@Override
-			public Adapter caseGlobalPosition(GlobalPosition object) {
-				return createGlobalPositionAdapter();
-			}
-			@Override
-			public Adapter casePositionLiteral(PositionLiteral object) {
-				return createPositionLiteralAdapter();
+			public Adapter caseCoordinateRanges(CoordinateRanges object) {
+				return createCoordinateRangesAdapter();
 			}
 			@Override
 			public Adapter caseCoordinateRange(CoordinateRange object) {
 				return createCoordinateRangeAdapter();
+			}
+			@Override
+			public Adapter caseDimensionRange(DimensionRange object) {
+				return createDimensionRangeAdapter();
+			}
+			@Override
+			public Adapter casePositionLiteral(PositionLiteral object) {
+				return createPositionLiteralAdapter();
 			}
 			@Override
 			public Adapter caseFilter(Filter object) {
@@ -129,30 +133,16 @@ public class InitAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link ruleInit.GlobalPosition <em>Global Position</em>}'.
+	 * Creates a new adapter for an object of class '{@link ruleInit.CoordinateRanges <em>Coordinate Ranges</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see ruleInit.GlobalPosition
+	 * @see ruleInit.CoordinateRanges
 	 * @generated
 	 */
-	public Adapter createGlobalPositionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link ruleInit.PositionLiteral <em>Position Literal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see ruleInit.PositionLiteral
-	 * @generated
-	 */
-	public Adapter createPositionLiteralAdapter() {
+	public Adapter createCoordinateRangesAdapter() {
 		return null;
 	}
 
@@ -167,6 +157,34 @@ public class InitAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCoordinateRangeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ruleInit.DimensionRange <em>Dimension Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ruleInit.DimensionRange
+	 * @generated
+	 */
+	public Adapter createDimensionRangeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ruleInit.PositionLiteral <em>Position Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ruleInit.PositionLiteral
+	 * @generated
+	 */
+	public Adapter createPositionLiteralAdapter() {
 		return null;
 	}
 

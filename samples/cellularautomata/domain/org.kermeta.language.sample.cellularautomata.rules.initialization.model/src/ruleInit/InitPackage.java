@@ -95,14 +95,14 @@ public interface InitPackage extends EPackage {
 	int CELLULAR_AUTOMATAT_INITIALIZATION_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link ruleInit.impl.GlobalPositionImpl <em>Global Position</em>}' class.
+	 * The meta object id for the '{@link ruleInit.impl.CoordinateRangesImpl <em>Coordinate Ranges</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see ruleInit.impl.GlobalPositionImpl
-	 * @see ruleInit.impl.InitPackageImpl#getGlobalPosition()
+	 * @see ruleInit.impl.CoordinateRangesImpl
+	 * @see ruleInit.impl.InitPackageImpl#getCoordinateRanges()
 	 * @generated
 	 */
-	int GLOBAL_POSITION = 1;
+	int COORDINATE_RANGES = 1;
 
 	/**
 	 * The feature id for the '<em><b>Coordinate Ranges</b></em>' containment reference list.
@@ -111,16 +111,81 @@ public interface InitPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GLOBAL_POSITION__COORDINATE_RANGES = CorePackage.FILTER_FEATURE_COUNT + 0;
+	int COORDINATE_RANGES__COORDINATE_RANGES = CorePackage.FILTER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Global Position</em>' class.
+	 * The number of structural features of the '<em>Coordinate Ranges</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GLOBAL_POSITION_FEATURE_COUNT = CorePackage.FILTER_FEATURE_COUNT + 1;
+	int COORDINATE_RANGES_FEATURE_COUNT = CorePackage.FILTER_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link ruleInit.impl.CoordinateRangeImpl <em>Coordinate Range</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ruleInit.impl.CoordinateRangeImpl
+	 * @see ruleInit.impl.InitPackageImpl#getCoordinateRange()
+	 * @generated
+	 */
+	int COORDINATE_RANGE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Dimension Ranges</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COORDINATE_RANGE__DIMENSION_RANGES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Coordinate Range</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COORDINATE_RANGE_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link ruleInit.impl.DimensionRangeImpl <em>Dimension Range</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ruleInit.impl.DimensionRangeImpl
+	 * @see ruleInit.impl.InitPackageImpl#getDimensionRange()
+	 * @generated
+	 */
+	int DIMENSION_RANGE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIMENSION_RANGE__LOWER = 0;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIMENSION_RANGE__UPPER = 1;
+
+	/**
+	 * The number of structural features of the '<em>Dimension Range</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIMENSION_RANGE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link ruleInit.impl.PositionLiteralImpl <em>Position Literal</em>}' class.
@@ -130,7 +195,7 @@ public interface InitPackage extends EPackage {
 	 * @see ruleInit.impl.InitPackageImpl#getPositionLiteral()
 	 * @generated
 	 */
-	int POSITION_LITERAL = 2;
+	int POSITION_LITERAL = 4;
 
 	/**
 	 * The feature id for the '<em><b>Dimension Index</b></em>' attribute.
@@ -149,44 +214,6 @@ public interface InitPackage extends EPackage {
 	 * @ordered
 	 */
 	int POSITION_LITERAL_FEATURE_COUNT = CorePackage.INTEGER_EXPRESSION_FEATURE_COUNT + 1;
-
-
-	/**
-	 * The meta object id for the '{@link ruleInit.impl.CoordinateRangeImpl <em>Coordinate Range</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ruleInit.impl.CoordinateRangeImpl
-	 * @see ruleInit.impl.InitPackageImpl#getCoordinateRange()
-	 * @generated
-	 */
-	int COORDINATE_RANGE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Lower Coordinate</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COORDINATE_RANGE__LOWER_COORDINATE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Upper Coordinate</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COORDINATE_RANGE__UPPER_COORDINATE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Coordinate Range</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COORDINATE_RANGE_FEATURE_COUNT = 2;
 
 
 	/**
@@ -222,25 +249,78 @@ public interface InitPackage extends EPackage {
 	EReference getCellularAutomatatInitialization_Geometry();
 
 	/**
-	 * Returns the meta object for class '{@link ruleInit.GlobalPosition <em>Global Position</em>}'.
+	 * Returns the meta object for class '{@link ruleInit.CoordinateRanges <em>Coordinate Ranges</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Global Position</em>'.
-	 * @see ruleInit.GlobalPosition
+	 * @return the meta object for class '<em>Coordinate Ranges</em>'.
+	 * @see ruleInit.CoordinateRanges
 	 * @generated
 	 */
-	EClass getGlobalPosition();
+	EClass getCoordinateRanges();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ruleInit.GlobalPosition#getCoordinateRanges <em>Coordinate Ranges</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ruleInit.CoordinateRanges#getCoordinateRanges <em>Coordinate Ranges</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Coordinate Ranges</em>'.
-	 * @see ruleInit.GlobalPosition#getCoordinateRanges()
-	 * @see #getGlobalPosition()
+	 * @see ruleInit.CoordinateRanges#getCoordinateRanges()
+	 * @see #getCoordinateRanges()
 	 * @generated
 	 */
-	EReference getGlobalPosition_CoordinateRanges();
+	EReference getCoordinateRanges_CoordinateRanges();
+
+	/**
+	 * Returns the meta object for class '{@link ruleInit.CoordinateRange <em>Coordinate Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Coordinate Range</em>'.
+	 * @see ruleInit.CoordinateRange
+	 * @generated
+	 */
+	EClass getCoordinateRange();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ruleInit.CoordinateRange#getDimensionRanges <em>Dimension Ranges</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Dimension Ranges</em>'.
+	 * @see ruleInit.CoordinateRange#getDimensionRanges()
+	 * @see #getCoordinateRange()
+	 * @generated
+	 */
+	EReference getCoordinateRange_DimensionRanges();
+
+	/**
+	 * Returns the meta object for class '{@link ruleInit.DimensionRange <em>Dimension Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Dimension Range</em>'.
+	 * @see ruleInit.DimensionRange
+	 * @generated
+	 */
+	EClass getDimensionRange();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ruleInit.DimensionRange#getLower <em>Lower</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lower</em>'.
+	 * @see ruleInit.DimensionRange#getLower()
+	 * @see #getDimensionRange()
+	 * @generated
+	 */
+	EAttribute getDimensionRange_Lower();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ruleInit.DimensionRange#getUpper <em>Upper</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Upper</em>'.
+	 * @see ruleInit.DimensionRange#getUpper()
+	 * @see #getDimensionRange()
+	 * @generated
+	 */
+	EAttribute getDimensionRange_Upper();
 
 	/**
 	 * Returns the meta object for class '{@link ruleInit.PositionLiteral <em>Position Literal</em>}'.
@@ -262,38 +342,6 @@ public interface InitPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPositionLiteral_DimensionIndex();
-
-	/**
-	 * Returns the meta object for class '{@link ruleInit.CoordinateRange <em>Coordinate Range</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Coordinate Range</em>'.
-	 * @see ruleInit.CoordinateRange
-	 * @generated
-	 */
-	EClass getCoordinateRange();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ruleInit.CoordinateRange#getLowerCoordinate <em>Lower Coordinate</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Lower Coordinate</em>'.
-	 * @see ruleInit.CoordinateRange#getLowerCoordinate()
-	 * @see #getCoordinateRange()
-	 * @generated
-	 */
-	EAttribute getCoordinateRange_LowerCoordinate();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ruleInit.CoordinateRange#getUpperCoordinate <em>Upper Coordinate</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Upper Coordinate</em>'.
-	 * @see ruleInit.CoordinateRange#getUpperCoordinate()
-	 * @see #getCoordinateRange()
-	 * @generated
-	 */
-	EAttribute getCoordinateRange_UpperCoordinate();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -344,14 +392,14 @@ public interface InitPackage extends EPackage {
 		EReference CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY = eINSTANCE.getCellularAutomatatInitialization_Geometry();
 
 		/**
-		 * The meta object literal for the '{@link ruleInit.impl.GlobalPositionImpl <em>Global Position</em>}' class.
+		 * The meta object literal for the '{@link ruleInit.impl.CoordinateRangesImpl <em>Coordinate Ranges</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see ruleInit.impl.GlobalPositionImpl
-		 * @see ruleInit.impl.InitPackageImpl#getGlobalPosition()
+		 * @see ruleInit.impl.CoordinateRangesImpl
+		 * @see ruleInit.impl.InitPackageImpl#getCoordinateRanges()
 		 * @generated
 		 */
-		EClass GLOBAL_POSITION = eINSTANCE.getGlobalPosition();
+		EClass COORDINATE_RANGES = eINSTANCE.getCoordinateRanges();
 
 		/**
 		 * The meta object literal for the '<em><b>Coordinate Ranges</b></em>' containment reference list feature.
@@ -359,7 +407,51 @@ public interface InitPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GLOBAL_POSITION__COORDINATE_RANGES = eINSTANCE.getGlobalPosition_CoordinateRanges();
+		EReference COORDINATE_RANGES__COORDINATE_RANGES = eINSTANCE.getCoordinateRanges_CoordinateRanges();
+
+		/**
+		 * The meta object literal for the '{@link ruleInit.impl.CoordinateRangeImpl <em>Coordinate Range</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ruleInit.impl.CoordinateRangeImpl
+		 * @see ruleInit.impl.InitPackageImpl#getCoordinateRange()
+		 * @generated
+		 */
+		EClass COORDINATE_RANGE = eINSTANCE.getCoordinateRange();
+
+		/**
+		 * The meta object literal for the '<em><b>Dimension Ranges</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COORDINATE_RANGE__DIMENSION_RANGES = eINSTANCE.getCoordinateRange_DimensionRanges();
+
+		/**
+		 * The meta object literal for the '{@link ruleInit.impl.DimensionRangeImpl <em>Dimension Range</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ruleInit.impl.DimensionRangeImpl
+		 * @see ruleInit.impl.InitPackageImpl#getDimensionRange()
+		 * @generated
+		 */
+		EClass DIMENSION_RANGE = eINSTANCE.getDimensionRange();
+
+		/**
+		 * The meta object literal for the '<em><b>Lower</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DIMENSION_RANGE__LOWER = eINSTANCE.getDimensionRange_Lower();
+
+		/**
+		 * The meta object literal for the '<em><b>Upper</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DIMENSION_RANGE__UPPER = eINSTANCE.getDimensionRange_Upper();
 
 		/**
 		 * The meta object literal for the '{@link ruleInit.impl.PositionLiteralImpl <em>Position Literal</em>}' class.
@@ -378,32 +470,6 @@ public interface InitPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute POSITION_LITERAL__DIMENSION_INDEX = eINSTANCE.getPositionLiteral_DimensionIndex();
-
-		/**
-		 * The meta object literal for the '{@link ruleInit.impl.CoordinateRangeImpl <em>Coordinate Range</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see ruleInit.impl.CoordinateRangeImpl
-		 * @see ruleInit.impl.InitPackageImpl#getCoordinateRange()
-		 * @generated
-		 */
-		EClass COORDINATE_RANGE = eINSTANCE.getCoordinateRange();
-
-		/**
-		 * The meta object literal for the '<em><b>Lower Coordinate</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COORDINATE_RANGE__LOWER_COORDINATE = eINSTANCE.getCoordinateRange_LowerCoordinate();
-
-		/**
-		 * The meta object literal for the '<em><b>Upper Coordinate</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COORDINATE_RANGE__UPPER_COORDINATE = eINSTANCE.getCoordinateRange_UpperCoordinate();
 
 	}
 

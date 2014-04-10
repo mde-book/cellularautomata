@@ -31,22 +31,13 @@ public interface InitFactory extends EFactory {
 	CellularAutomatatInitialization createCellularAutomatatInitialization();
 
 	/**
-	 * Returns a new object of class '<em>Global Position</em>'.
+	 * Returns a new object of class '<em>Coordinate Ranges</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Global Position</em>'.
+	 * @return a new object of class '<em>Coordinate Ranges</em>'.
 	 * @generated
 	 */
-	GlobalPosition createGlobalPosition();
-
-	/**
-	 * Returns a new object of class '<em>Position Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Position Literal</em>'.
-	 * @generated
-	 */
-	PositionLiteral createPositionLiteral();
+	CoordinateRanges createCoordinateRanges();
 
 	/**
 	 * Returns a new object of class '<em>Coordinate Range</em>'.
@@ -56,6 +47,24 @@ public interface InitFactory extends EFactory {
 	 * @generated
 	 */
 	CoordinateRange createCoordinateRange();
+
+	/**
+	 * Returns a new object of class '<em>Dimension Range</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Dimension Range</em>'.
+	 * @generated
+	 */
+	DimensionRange createDimensionRange();
+
+	/**
+	 * Returns a new object of class '<em>Position Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Position Literal</em>'.
+	 * @generated
+	 */
+	PositionLiteral createPositionLiteral();
 
 	/**
 	 * Returns the package supported by this factory.
