@@ -53,6 +53,7 @@ import ruleInit.CoordinateRange;
 import ruleInit.CoordinateRanges;
 import ruleInit.DimensionRange;
 import ruleInit.InitFactory;
+import ruleInit.PositionLiteral;
 import ruleInit.impl.InitFactoryImpl;
 import core.And;
 import core.BinaryExpression;
@@ -515,12 +516,33 @@ public final class EcoreExportVisitor extends ConcreteVisitor {
 	    estack.push(intLiteral);
 	  }
 	  // TODO PN implement
-//	  else if (node.getPositionLiteral() != null) {
-//	    PositionLiteral position = initFactory.createPositionLiteral();
-//	    position.setDimensionIndex(node.getPositionLiteral().getDimensionIndex().getValue());
-//
-//	    estack.push(position);
-//	  }
+	  else if (node.getPosition() != null) {
+	    PositionLiteral position = initFactory.createPositionLiteral();
+	    
+	    String positionName = node.getPosition();
+	    
+	    // TODO PN the following should be done with context conditions
+	    
+	    boolean correctPosition = false;
+	    
+	    // allowed positions d1, d2, d3, ...
+	    if ((positionName.length() == 2) && (positionName.startsWith("d"))) {
+	    	
+	    	String end = positionName.substring(positionName.length()-1);
+	    	correctPosition = true;
+	    	try {
+	    		int dim = Integer.valueOf(end);
+	    		position.setDimensionIndex(dim);
+	    		estack.push(position);
+			} catch (NumberFormatException e) {
+				correctPosition = false;
+			}
+	    }
+	    
+	    if (!correctPosition) {
+	    	throw new RuntimeException("Unallowed dimension name. Should be of the form d<num>,e.g. d1");
+	    }
+	  }
 	  else if (node.getConditional() != null) {
 	    getVisitor().startVisit(node.getConditional());
 	  }
