@@ -20,6 +20,7 @@ import org.kermeta.language.cellularautomata.rules.EcoreExportVisitor;
 import ruleInit.CellularAutomatatInitialization;
 import ruleInit.CoordinateRange;
 import ruleInit.CoordinateRanges;
+import ruleInit.DimensionRange;
 import core.Add;
 import core.Conditional;
 import core.IntegerLiteral;
@@ -83,7 +84,7 @@ public class CellularAutomataInitializationToolTest {
   public void testAtomicIntLiteral() {
     initAndRun("AtomicIntLiteral");
 
-    Rule rule = checkOneRuleWithOneRange(1, 5);
+    Rule rule = checkOneRuleWithOneInterval(1, 5);
 
     IntegerLiteral intLiteral = (IntegerLiteral) rule.getEvaluatedVal();
     assertNotNull(intLiteral);
@@ -94,7 +95,7 @@ public class CellularAutomataInitializationToolTest {
   public void testAtomicNot() {
     initAndRun("AtomicNot");
 
-    Rule rule = checkOneRuleWithOneRange(1, 5);
+    Rule rule = checkOneRuleWithOneInterval(1, 5);
     Not not = (Not) rule.getEvaluatedVal();
     assertNotNull(not);
     IntegerLiteral intLiteral = (IntegerLiteral) not.getTarget();
@@ -105,7 +106,7 @@ public class CellularAutomataInitializationToolTest {
   public void testAtomicCondition() {
     initAndRun("AtomicCondition");
 
-    Rule rule = checkOneRuleWithOneRange(1, 5);
+    Rule rule = checkOneRuleWithOneInterval(1, 5);
     Conditional conditional = (Conditional) rule.getEvaluatedVal();
     assertNotNull(conditional.getCondition());
     assertNotNull(conditional.getIfTrueExpression());
@@ -196,10 +197,30 @@ public class CellularAutomataInitializationToolTest {
     assertNotNull(filter);
     assertEquals(1, filter.getCoordinateRanges().size());
     CoordinateRange coordinateRange = filter.getCoordinateRanges().get(0);
-//    assertEquals(lower, coordinateRange.getLowerCoordinate());
-//    assertEquals(upper, coordinateRange.getUpperCoordinate());
+    assertEquals(lower, coordinateRange.getDimensionRanges().get(0).getLower());
+    assertEquals(lower, coordinateRange.getDimensionRanges().get(0).getUpper());
+    assertEquals(upper, coordinateRange.getDimensionRanges().get(1).getLower());
+    assertEquals(upper, coordinateRange.getDimensionRanges().get(1).getUpper());
     return rule;
   }
+  
+  private Rule checkOneRuleWithOneInterval(int lower, int upper) {
+	    assertNull(caInit.getGeometry());
+	    assertEquals(1, caInit.getSeedRules().size());
+
+	    Rule rule = caInit.getSeedRules().get(0);
+	    CoordinateRanges filter = (CoordinateRanges) rule.getFilter();
+	    assertNotNull(filter);
+	    assertEquals(1, filter.getCoordinateRanges().size());
+	    CoordinateRange coordinateRange = filter.getCoordinateRanges().get(0);
+	    assertEquals(1, coordinateRange.getDimensionRanges().size());
+	    
+	    DimensionRange dimRange = coordinateRange.getDimensionRanges().get(0);
+	    assertEquals(lower, dimRange.getLower());
+	    assertEquals(upper, dimRange.getUpper());
+	    return rule;
+	  }
+  
 
   private void initAndRun(String name) {
     CellularAutomataInitializationTool.main(new String[] {
