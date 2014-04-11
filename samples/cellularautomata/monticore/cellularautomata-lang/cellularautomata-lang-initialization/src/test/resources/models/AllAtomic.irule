@@ -1,4 +1,4 @@
-regularGeometry 3 {6 x isCircular (7)}  // second dimension is circular
+regularGeometry neumann {6 x 7circular}  // second dimension is circular
 init (1..5) by { if 1 {2} else {3} }
 init (1..5) by { 3|5 }
 init (1..5) by { 3&5 }
@@ -10,6 +10,6 @@ init (1..5) by { 3-5 }
 init (1..5) by { 3*5 }
 init (1..5) by { 7/3 }
 init (1..5) by { 7%3 }
-init (1..5) by { positionOn [4] }
+init (1..5) by { d1 }
 init (1..5) by { !2 }
 init (1..5) by { 1 }
