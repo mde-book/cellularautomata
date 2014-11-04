@@ -13,25 +13,27 @@ public class SimpleAsciiArt2DVisualizer {
 	}
 
 	def public visualizeRegular2DUniverse(Integer worldSize, Universe grid) {
+		var StringBuffer buf = new StringBuffer
+		pringRegular2DUniverse(worldSize, grid, buf)
+		println(buf.toString)
+	}
+	def public pringRegular2DUniverse(Integer worldSize, Universe grid, StringBuffer buf) {
 		for (i : 0 ..< worldSize) {
-			printRow(i, worldSize, grid)
+			printLine(worldSize, buf)
+			printRow(i, worldSize, grid, buf)
 		}
-		printLine(worldSize)
+		printLine(worldSize, buf)
+		println(buf.toString)
 	}
 	
-	def public printLine(Integer worldSize) {
-		var StringBuffer buf = new StringBuffer
+	def public printLine(Integer worldSize, StringBuffer buf) {
 		for (i : 0 ..< worldSize) {
 			buf.append("----")
 		}
 		buf.append("-")
-		println(buf.toString)
 	}
 	
-	def public printRow(Integer row,Integer worldSize, Universe grid) {
-		printLine(worldSize)
-		var StringBuffer buf = new StringBuffer
-		
+	def public printRow(Integer row,Integer worldSize, Universe grid, StringBuffer buf) {
 		buf.append("| ")
 		for (i : 0 ..< worldSize) {
 			var Integer cellVal = grid.cells.get(row*worldSize + i).^val
@@ -42,6 +44,5 @@ public class SimpleAsciiArt2DVisualizer {
 			}
 			buf.append(" | ")
 		}
-		println(buf.toString)
 	}
 }
