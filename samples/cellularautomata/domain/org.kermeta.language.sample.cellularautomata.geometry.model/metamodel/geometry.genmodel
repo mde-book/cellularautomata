@@ -15,7 +15,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//RegularGeometry/neighbors"/>
     </genClasses>
     <genClasses ecoreClass="geometry.ecore#//Dimension">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Dimension/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Dimension/extent"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Dimension/isCircular"/>
     </genClasses>
   </genPackages>
