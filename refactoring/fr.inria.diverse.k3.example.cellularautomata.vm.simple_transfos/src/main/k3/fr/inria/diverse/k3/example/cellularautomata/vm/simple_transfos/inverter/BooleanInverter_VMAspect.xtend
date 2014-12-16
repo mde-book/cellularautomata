@@ -6,14 +6,14 @@ import vm.Universe
 
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.inverter.CellAspect.*
 
-@Aspect(className=typeof(Universe))
+@Aspect(className=Universe)
 class UniverseAspect{
 	public def void invert(){
 		_self.cells.forEach[cell | cell.invert()]
 	}
 }
 
-@Aspect(className=typeof(Cell))
+@Aspect(className=Cell)
 class CellAspect{
 	public def void invert(){
 		if(_self.^val == 0) _self.^val = 1
