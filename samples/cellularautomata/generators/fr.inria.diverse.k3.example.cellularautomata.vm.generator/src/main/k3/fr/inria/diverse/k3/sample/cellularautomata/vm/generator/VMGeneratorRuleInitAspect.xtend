@@ -13,13 +13,13 @@ import static extension fr.inria.diverse.k3.sample.cellularautomata.vm.generator
 import static extension fr.inria.diverse.k3.sample.cellularautomata.vm.generator.CoordinateRangeAspect.*
 import static extension fr.inria.diverse.k3.sample.cellularautomata.vm.generator.DimensionRangeAspect.*
 
-@Aspect(className=typeof(Filter))
+@Aspect(className=Filter)
 abstract class FilterAspect {
 	def public Boolean isApplicableForCell(Cell cell)
 }
 
 
-@Aspect(className=typeof(CoordinateRanges))
+@Aspect(className=CoordinateRanges)
 class CoordinateRangesAspect extends FilterAspect {
 	def public Boolean isApplicableForCell(Cell cell) {
 		var Boolean result = true
@@ -32,7 +32,7 @@ class CoordinateRangesAspect extends FilterAspect {
 	}
 }
 
-@Aspect(className=typeof(CoordinateRange))
+@Aspect(className=CoordinateRange)
 class CoordinateRangeAspect {
 	def public Boolean isInRange(Integer i) {
 		var Boolean result = true
@@ -43,14 +43,14 @@ class CoordinateRangeAspect {
 	}
 }
 
-@Aspect(className=typeof(DimensionRange))
+@Aspect(className=DimensionRange)
 class DimensionRangeAspect {
 	def public Boolean isInRange(Integer i) {
 		return ((_self.lower <= i) && (i <= _self.upper))
 	}
 }
 
-@Aspect(className=typeof(PositionLiteral))
+@Aspect(className=PositionLiteral)
 class PositionLiteralAspect extends IntegerExpressionAspect {
 	def public Integer evaluate(Context context) {
 		return context.currentCell.coordinates.get(_self.dimensionIndex)

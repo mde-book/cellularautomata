@@ -16,13 +16,13 @@ import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_t
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.vonneuman2moore.UniverseAspect.*
 import java.util.HashSet
 
-@Aspect(className=typeof(Universe))
+@Aspect(className=Universe)
 class UniverseAspect{
 	public def void vonNeumann2Moore(){
 		_self.cells.forEach[cell |	cell.vonNeumann2Moore]
 	}
 }
-@Aspect(className=typeof(Cell))
+@Aspect(className=Cell)
 class CellAspect{
 	public def void vonNeumann2Moore(){
 		val neighborsToAdd = new HashSet<Cell>  

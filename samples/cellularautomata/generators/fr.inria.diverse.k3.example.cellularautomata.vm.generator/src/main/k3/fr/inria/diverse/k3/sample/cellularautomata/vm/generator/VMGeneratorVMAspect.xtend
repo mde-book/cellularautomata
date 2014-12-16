@@ -9,7 +9,7 @@ class VMGeneratorVMAspect {
 	
 }
 
-@Aspect(className=typeof(Cell)) 
+@Aspect(className=Cell) 
 class CellAspect {
 	
 	public List<Integer> coordinates

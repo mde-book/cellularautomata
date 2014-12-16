@@ -26,7 +26,7 @@ import core.Mod
 import static extension fr.inria.diverse.k3.sample.cellularautomata.vm.generator.FilterAspect.*
 import static extension fr.inria.diverse.k3.sample.cellularautomata.vm.generator.IntegerExpressionAspect.*
 
-@Aspect(className=typeof(Rule))
+@Aspect(className=Rule)
 class RuleAspect {
 	
 	def public Boolean isApplicableForCell(Cell cell) {
@@ -44,7 +44,7 @@ class RuleAspect {
 	}
 }
 
-@Aspect(className=typeof(IntegerExpression))
+@Aspect(className=IntegerExpression)
 abstract class IntegerExpressionAspect
 {
 	def public Integer evaluate(Context context) {
@@ -53,7 +53,7 @@ abstract class IntegerExpressionAspect
 	}
 }
 
-@Aspect(className=typeof(IntegerLiteral))
+@Aspect(className=IntegerLiteral)
 class IntegerLiteralAspect extends IntegerExpressionAspect
 {
 	def public Integer evaluate(Context context) { 
@@ -61,7 +61,7 @@ class IntegerLiteralAspect extends IntegerExpressionAspect
 	}
 }
 
-@Aspect(className=typeof(Conditional))	
+@Aspect(className=Conditional)	
 class ConditionalAspect extends IntegerExpressionAspect {
 	@OverrideAspectMethod
 	def public Integer evaluate(Context context) {
@@ -82,7 +82,7 @@ class AddAspect extends BinaryExpressionAspect {
 	}
 }
 
-@Aspect(className=typeof(And))
+@Aspect(className=And)
 class AndAspect extends BinaryExpressionAspect{
 	
 	def public Integer evaluate(Context context) {
@@ -105,14 +105,14 @@ class AndAspect extends BinaryExpressionAspect{
 	
 }
 
-@Aspect(className=typeof(Div))
+@Aspect(className=Div)
 class DivAspect extends BinaryExpressionAspect{
 	def public Integer evaluate(Context context) {
 		return _self.left.evaluate(context) / _self.right.evaluate(context)
 	}
 }
 
-@Aspect(className=typeof(Equal))
+@Aspect(className=Equal)
 class EqualAspect extends BinaryExpressionAspect{
 	def public Integer evaluate(Context context) {
 		if (_self.left.evaluate(context) == _self.right.evaluate(context)) {
@@ -123,7 +123,7 @@ class EqualAspect extends BinaryExpressionAspect{
 	}
 }
 
-@Aspect(className=typeof(Greater))
+@Aspect(className=Greater)
 class GreaterAspect extends BinaryExpressionAspect{
 	def public Integer evaluate(Context context) {
 		if (_self.left.evaluate(context) > _self.right.evaluate(context)) {
@@ -134,7 +134,7 @@ class GreaterAspect extends BinaryExpressionAspect{
 	}
 }
 
-@Aspect(className=typeof(Lower))
+@Aspect(className=Lower)
 class LowerAspect extends BinaryExpressionAspect{
 	def public Integer evaluate(Context context) {
 		if (_self.left.evaluate(context) < _self.right.evaluate(context)) {
@@ -145,14 +145,14 @@ class LowerAspect extends BinaryExpressionAspect{
 	}
 }
 
-@Aspect(className=typeof(Minus))
+@Aspect(className=Minus)
 class MinusAspect extends BinaryExpressionAspect {
 	def public Integer evaluate(Context context) {
 		return _self.left.evaluate(context) - _self.right.evaluate(context)
 	}
 }
 
-@Aspect(className=typeof(Mod))
+@Aspect(className=Mod)
 class ModAspect extends BinaryExpressionAspect {
 	def public Integer evaluate(Context context) {
 		var leftVal = _self.left.evaluate(context)
@@ -161,14 +161,14 @@ class ModAspect extends BinaryExpressionAspect {
 	}
 }
 
-@Aspect(className=typeof(Mult))
+@Aspect(className=Mult)
 class MultAspect extends BinaryExpressionAspect{
 	def public Integer evaluate(Context context) {
 		return _self.left.evaluate(context) * _self.right.evaluate(context)
 	}
 }
 
-@Aspect(className=typeof(Or))
+@Aspect(className=Or)
 class OrAspect extends BinaryExpressionAspect {
 	def public Integer evaluate(Context context) {
 		var Boolean leftVal = false
@@ -190,7 +190,7 @@ class OrAspect extends BinaryExpressionAspect {
 }	
 
 /* --- UnaryExpressions --- */
-@Aspect(className=typeof(Not))
+@Aspect(className=Not)
 class NotAspect extends UnaryExpressionAspect{
 	def public Integer evaluate(Context context) {
 		var Boolean targetVal = false
@@ -205,7 +205,7 @@ class NotAspect extends UnaryExpressionAspect{
 	}
 }
 
-@Aspect(className=typeof(UMinus))
+@Aspect(className=UMinus)
 class UMinusAspect extends UnaryExpressionAspect {
 	@OverrideAspectMethod
 	def public Integer evaluate(Context context) {
@@ -214,7 +214,7 @@ class UMinusAspect extends UnaryExpressionAspect {
 	
 }
 
-@Aspect(className=typeof(BinaryExpression))
+@Aspect(className=BinaryExpression)
 class BinaryExpressionAspect extends IntegerExpressionAspect {
 	
 	def public Integer evaluate(Context context) {
@@ -222,7 +222,7 @@ class BinaryExpressionAspect extends IntegerExpressionAspect {
 	}
 }
 
-@Aspect(className=typeof(UnaryExpression))
+@Aspect(className=UnaryExpression)
 class UnaryExpressionAspect extends IntegerExpressionAspect {
 	
 	def public Integer evaluate(Context context) {

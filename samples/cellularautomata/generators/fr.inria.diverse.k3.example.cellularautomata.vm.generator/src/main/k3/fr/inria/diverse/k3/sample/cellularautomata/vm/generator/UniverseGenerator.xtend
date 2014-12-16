@@ -9,7 +9,7 @@ import fr.inria.diverse.k3.sample.cellularautomata.visualize.asciiart.SimpleAsci
 
 import vm.Universe
 import vm.Cell
-import ruleInit.CellularAutomatatInitialization
+import ruleInit.CellularAutomataInitialization
 import ruleInit.InitPackage
 import geometry.RegularGeometry
 import core.Rule
@@ -42,11 +42,11 @@ class UniverseGenerator {
 			var rs = new ResourceSetImpl()
 			var uri = URI.createURI(automataFile)
 			var res = rs.getResource(uri, true)
-			var CellularAutomatatInitialization ca = res.getContents.get(0) as CellularAutomatatInitialization
+			var CellularAutomataInitialization ca = res.getContents.get(0) as CellularAutomataInitialization
 			saveUniverse(generateInitialUniverseForAutomata(ca))
 		}
 		
-		def public Universe generateInitialUniverseForAutomata(CellularAutomatatInitialization automata) {
+		def public Universe generateInitialUniverseForAutomata(CellularAutomataInitialization automata) {
 			var Universe result
 			var RegularGeometry regularGeometry = null
 			
@@ -58,11 +58,11 @@ class UniverseGenerator {
 				
 				if ((regularGeometry.neighbors == Neighborhood.NEUMANN) && (regularGeometry.dimensions.size == 2) 
 						&& (!regularGeometry.dimensions.exists[ d | d.isCircular])) {
-					result = generateMooreRectangleBoundedUniverse(regularGeometry.dimensions.get(0).size, regularGeometry.dimensions.get(1).size)
+					result = generateVonNeumannRectangleBoundedUniverse(regularGeometry.dimensions.get(0).extent, regularGeometry.dimensions.get(1).extent)
 				} else {
 					if ((regularGeometry.neighbors == Neighborhood.MOORE) && (regularGeometry.dimensions.size == 2) 
 							&& (!regularGeometry.dimensions.exists[d | d.isCircular])) {
-						result = generateVonNeumannRectangleBoundedUniverse(regularGeometry.dimensions.get(0).size, regularGeometry.dimensions.get(1).size)
+						result = generateMooreRectangleBoundedUniverse(regularGeometry.dimensions.get(0).extent, regularGeometry.dimensions.get(1).extent)
 					} else { 
 						println(" Generic configuration not supported yet. Currently supported configurations : dimension=2; neighborsNumber=4|8; not circular")
 					}
@@ -85,11 +85,11 @@ class UniverseGenerator {
 						}
 					]
 						
-					if (regularGeometry.dimensions.size <= 2 && (regularGeometry.dimensions.get(0).size == regularGeometry.dimensions.get(1).size)) {
+					if (regularGeometry.dimensions.size <= 2 && (regularGeometry.dimensions.get(0).extent == regularGeometry.dimensions.get(1).extent)) {
 						// visualize result using ascii art
 						var SimpleAsciiArt2DVisualizer asciiArtVisualizer = new SimpleAsciiArt2DVisualizer
 						asciiArtVisualizer.initialize(false)
-						asciiArtVisualizer.visualizeRegular2DUniverse(regularGeometry.dimensions.get(0).size, result)
+						asciiArtVisualizer.visualizeRegular2DUniverse(regularGeometry.dimensions.get(0).extent, result)
 					}
 					
 				}
@@ -108,14 +108,14 @@ class UniverseGenerator {
 		}
 		
 		def public Universe generateVonNeumannRectangleBoundedUniverse(Integer universeLength, Integer universeWidth) { 
-			println("Generating a square Universe...")
-			var Universe g
+			println("Generating a square Universe using von Neumann neighborhood...")
+			var Universe g = new VmFactoryImpl().createUniverse
 			
 			var Integer cellNumber = universeLength * universeWidth
 			println("Generating "+cellNumber.toString+" Cells...")
 			
 			for (int i : 0..cellNumber) {
-				var Cell cell
+				var Cell cell = new VmFactoryImpl().createCell
 				cell.globalPosition = i
 				cell.coordinates.add(i / universeWidth) // x
 				cell.coordinates.add(i % universeWidth) // y
@@ -124,7 +124,7 @@ class UniverseGenerator {
 			 
 			
 			println("Generating bounded VonNeumann neighborhood for "+cellNumber.toString+" Cells...")
-			for (int i : 0..cellNumber) {
+			for (int i : 0..cellNumber-1) {
 				var Cell currentCell = g.cells.get(i)
 				var Integer currentLine =  i / universeWidth
 				var Integer currentColumn = i % universeWidth
@@ -148,13 +148,13 @@ class UniverseGenerator {
 		}
 		
 		def public Universe generateMooreRectangleBoundedUniverse(Integer universeLength, Integer universeWidth) { 
-			println("Generating a square Universe...")
+			println("Generating a square Universe using Moore neighborhood...")
 			var Universe g = new VmFactoryImpl().createUniverse
 			
 			var Integer cellNumber = universeLength * universeWidth
 			println("Generating "+cellNumber.toString+" Cells...")
 			
-			for(int i : 0..cellNumber) {
+			for(int i : 0..cellNumber-1) {
 				var Cell cell = new VmFactoryImpl().createCell
 				cell.init
 				cell.globalPosition = i
