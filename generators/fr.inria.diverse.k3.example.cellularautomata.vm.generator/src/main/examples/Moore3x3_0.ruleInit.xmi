@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<ruleInit:CellularAutomatatInitialization
+<ruleInit:CellularAutomataInitialization
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -12,11 +12,10 @@
         xsi:type="core:IntegerLiteral"/>
   </seedRules>
   <geometry
-      xsi:type="geometry:RegularGeometry"
-      neighborsNumber="4">
+      xsi:type="geometry:RegularGeometry">
     <dimensions
-        size="3"/>
+        extent="3"/>
     <dimensions
-        size="3"/>
+        extent="3"/>
   </geometry>
-</ruleInit:CellularAutomatatInitialization>
+</ruleInit:CellularAutomataInitialization>
