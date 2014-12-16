@@ -23,23 +23,25 @@ abstract class FilterAspect {
 class CoordinateRangesAspect extends FilterAspect {
 	def public Boolean isApplicableForCell(Cell cell) {
 		var Boolean result = true
-		if (_self.coordinateRanges.size == cell.coordinates.size) {
-		    for(int i : 0.._self.coordinateRanges.size-1) {
-		    	result = result && (_self.coordinateRanges.get(i).isInRange(cell.coordinates.get(i)))
-		    }
-		    return result
+		for (CoordinateRange coordinateRange :  _self.coordinateRanges){
+			result = coordinateRange.isInRange(cell)
+			if(result) return result			
 		}
+		return false // no range have matched the cell
 	}
 }
 
 @Aspect(className=CoordinateRange)
 class CoordinateRangeAspect {
-	def public Boolean isInRange(Integer i) {
+	def public Boolean isInRange(Cell cell){
 		var Boolean result = true
-		for(DimensionRange dimRange : _self.dimensionRanges){
-			result = result && dimRange.isInRange(i)
+		if (_self.dimensionRanges.size == cell.coordinates.size) {
+		    for(int i : 0.._self.dimensionRanges.size-1) {
+		    	result = result && (_self.dimensionRanges.get(i).isInRange(cell.coordinates.get(i)))
+		    }
+		    return result
 		}
-		return result
+		else return false   // illformed coordinateRange, must have the same number of dimensions as the universe TODO raise exception
 	}
 }
 

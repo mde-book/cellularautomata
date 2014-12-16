@@ -73,7 +73,17 @@ class UniverseGenerator {
 					// fill default values
 					result.cells.forEach[cell |
 						// select the rule that applies (there must be maximum one)
-						var Iterable<Rule> rules = automata.seedRules.filter[r |r.isApplicableForCell(cell)]
+						/* var Iterable<Rule> rules = automata.seedRules.filter[r |r.isApplicableForCell(cell)]
+						var Rule rule = null
+						if (!rules.nullOrEmpty){
+							rule = rules.get(0)
+						}
+						if (rule != null) {
+							var Context context = new Context
+							context.initialize(getResult, cell)
+							cell.^val = rule.evaluatedVal.evaluate(context)
+						} */
+						val rules = automata.seedRules.filter[r |r.isApplicableForCell(cell)].toList
 						var Rule rule = null
 						if (!rules.empty){
 							rule = rules.get(0)
@@ -116,6 +126,7 @@ class UniverseGenerator {
 			
 			for (int i : 0..cellNumber) {
 				var Cell cell = new VmFactoryImpl().createCell
+				cell.init
 				cell.globalPosition = i
 				cell.coordinates.add(i / universeWidth) // x
 				cell.coordinates.add(i % universeWidth) // y
@@ -153,18 +164,20 @@ class UniverseGenerator {
 			
 			var Integer cellNumber = universeLength * universeWidth
 			println("Generating "+cellNumber.toString+" Cells...")
-			
+						
 			for(int i : 0..cellNumber-1) {
 				var Cell cell = new VmFactoryImpl().createCell
 				cell.init
 				cell.globalPosition = i
-				cell.coordinates.add(i / universeWidth) // x
-				cell.coordinates.add(i % universeWidth) // y
+				// logical coordinates starts at 1
+				cell.coordinates.add((i / universeWidth)+1) // x
+				cell.coordinates.add((i % universeWidth)+1) // y
 				g.cells.add(cell)
 			}
 						
 			println("Generating bounded Moore neighborhood for "+cellNumber.toString+" Cells...")
 			
+			// internal collections starts at 0
 			for(int i : 0..cellNumber-1) {
 				var Cell currentCell = g.cells.get(i)
 				var Integer currentLine =  i / universeWidth
@@ -202,13 +215,13 @@ class UniverseGenerator {
 		
 		def public saveUniverse(Universe universe) {
 			var rs = new ResourceSetImpl()
-			var uri = URI.createURI("/target/results/universe.vm.xmi")
+			var uri = URI.createURI("./target/results/universe.vm.xmi")
 			var res = rs.createResource(uri, System.getProperty("user.dir")+ "/org.kermeta.language.sample.cellularautomata.vm.model/metamodel/vm.ecore")
 			    							 					
 		 	// Define a Root ...
 		 	res.getContents.add(universe)
 		 		 	
 		 	res.save(null)
-		 	println("saved to p fr.kermeta.language.sample.cellularautomata.vm.generator/target/results/universe.vm.xmi")
+		 	println("saved to p fr.inria.diverse.k3.example.cellularautomata.vm.generator/target/results/universe.vm.xmi")
 		}
 }
