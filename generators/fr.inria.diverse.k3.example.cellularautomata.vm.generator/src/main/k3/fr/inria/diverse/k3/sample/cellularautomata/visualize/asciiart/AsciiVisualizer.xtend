@@ -23,14 +23,14 @@ public class SimpleAsciiArt2DVisualizer {
 			printRow(i, worldSize, grid, buf)
 		}
 		printLine(worldSize, buf)
-		println(buf.toString)
+		//println(buf.toString)
 	}
 	
 	def public printLine(Integer worldSize, StringBuffer buf) {
 		for (i : 0 ..< worldSize) {
 			buf.append("----")
 		}
-		buf.append("-")
+		buf.append("-\n")
 	}
 	
 	def public printRow(Integer row,Integer worldSize, Universe grid, StringBuffer buf) {
@@ -44,5 +44,6 @@ public class SimpleAsciiArt2DVisualizer {
 			}
 			buf.append(" | ")
 		}
+		buf.append("\n")
 	}
 }
