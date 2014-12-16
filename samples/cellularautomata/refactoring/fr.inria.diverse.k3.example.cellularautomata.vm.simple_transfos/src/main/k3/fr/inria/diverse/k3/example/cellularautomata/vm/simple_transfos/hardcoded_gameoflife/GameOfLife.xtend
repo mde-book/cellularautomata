@@ -22,7 +22,7 @@ import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_t
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.hardcoded_gameoflife.UniverseAspect.*
 
 
-@Aspect(className=typeof(Universe))
+@Aspect(className=Universe)
 class UniverseAspect{
 	public def void playOneStep(){
 		_self.cells.forEach[cell |	cell.computeGameOfLifeFutureValue]
@@ -30,7 +30,7 @@ class UniverseAspect{
 	}
 }
 
-@Aspect(className=typeof(Cell))
+@Aspect(className=Cell)
 class CellAspect{
 	public Integer futureValue
 	
