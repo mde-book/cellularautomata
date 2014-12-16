@@ -69,9 +69,9 @@ public class InitSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION: {
-				CellularAutomatatInitialization cellularAutomatatInitialization = (CellularAutomatatInitialization)theEObject;
-				T result = caseCellularAutomatatInitialization(cellularAutomatatInitialization);
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION: {
+				CellularAutomataInitialization cellularAutomataInitialization = (CellularAutomataInitialization)theEObject;
+				T result = caseCellularAutomataInitialization(cellularAutomataInitialization);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -106,17 +106,17 @@ public class InitSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Cellular Automatat Initialization</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Cellular Automata Initialization</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Cellular Automatat Initialization</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Cellular Automata Initialization</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCellularAutomatatInitialization(CellularAutomatatInitialization object) {
+	public T caseCellularAutomataInitialization(CellularAutomataInitialization object) {
 		return null;
 	}
 

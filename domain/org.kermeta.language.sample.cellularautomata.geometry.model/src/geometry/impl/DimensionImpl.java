@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link geometry.impl.DimensionImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link geometry.impl.DimensionImpl#getExtent <em>Extent</em>}</li>
  *   <li>{@link geometry.impl.DimensionImpl#isIsCircular <em>Is Circular</em>}</li>
  * </ul>
  * </p>
@@ -28,24 +28,24 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class DimensionImpl extends EObjectImpl implements Dimension {
 	/**
-	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
+	 * The default value of the '{@link #getExtent() <em>Extent</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSize()
+	 * @see #getExtent()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SIZE_EDEFAULT = 0;
+	protected static final int EXTENT_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
+	 * The cached value of the '{@link #getExtent() <em>Extent</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSize()
+	 * @see #getExtent()
 	 * @generated
 	 * @ordered
 	 */
-	protected int size = SIZE_EDEFAULT;
+	protected int extent = EXTENT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isIsCircular() <em>Is Circular</em>}' attribute.
@@ -91,8 +91,8 @@ public class DimensionImpl extends EObjectImpl implements Dimension {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getSize() {
-		return size;
+	public int getExtent() {
+		return extent;
 	}
 
 	/**
@@ -100,11 +100,11 @@ public class DimensionImpl extends EObjectImpl implements Dimension {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSize(int newSize) {
-		int oldSize = size;
-		size = newSize;
+	public void setExtent(int newExtent) {
+		int oldExtent = extent;
+		extent = newExtent;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeometryPackage.DIMENSION__SIZE, oldSize, size));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeometryPackage.DIMENSION__EXTENT, oldExtent, extent));
 	}
 
 	/**
@@ -136,8 +136,8 @@ public class DimensionImpl extends EObjectImpl implements Dimension {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeometryPackage.DIMENSION__SIZE:
-				return getSize();
+			case GeometryPackage.DIMENSION__EXTENT:
+				return getExtent();
 			case GeometryPackage.DIMENSION__IS_CIRCULAR:
 				return isIsCircular();
 		}
@@ -152,8 +152,8 @@ public class DimensionImpl extends EObjectImpl implements Dimension {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeometryPackage.DIMENSION__SIZE:
-				setSize((Integer)newValue);
+			case GeometryPackage.DIMENSION__EXTENT:
+				setExtent((Integer)newValue);
 				return;
 			case GeometryPackage.DIMENSION__IS_CIRCULAR:
 				setIsCircular((Boolean)newValue);
@@ -170,8 +170,8 @@ public class DimensionImpl extends EObjectImpl implements Dimension {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeometryPackage.DIMENSION__SIZE:
-				setSize(SIZE_EDEFAULT);
+			case GeometryPackage.DIMENSION__EXTENT:
+				setExtent(EXTENT_EDEFAULT);
 				return;
 			case GeometryPackage.DIMENSION__IS_CIRCULAR:
 				setIsCircular(IS_CIRCULAR_EDEFAULT);
@@ -188,8 +188,8 @@ public class DimensionImpl extends EObjectImpl implements Dimension {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeometryPackage.DIMENSION__SIZE:
-				return size != SIZE_EDEFAULT;
+			case GeometryPackage.DIMENSION__EXTENT:
+				return extent != EXTENT_EDEFAULT;
 			case GeometryPackage.DIMENSION__IS_CIRCULAR:
 				return isCircular != IS_CIRCULAR_EDEFAULT;
 		}
@@ -206,8 +206,8 @@ public class DimensionImpl extends EObjectImpl implements Dimension {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (size: ");
-		result.append(size);
+		result.append(" (extent: ");
+		result.append(extent);
 		result.append(", isCircular: ");
 		result.append(isCircular);
 		result.append(')');

@@ -5,6 +5,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalInitParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'where'", "'initValue'", "'='", "'{'", "'}'", "'x'", "'['", "','", "']'", "'('", "')'", "'positionOn'", "'regularGeometry'", "'if'", "'else'", "'|'", "'&'", "'=='", "'>'", "'<'", "'+'", "'-'", "'*'", "'/'", "'%'", "'!'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'init'", "'by'", "'{'", "'}'", "','", "'('", "')'", "'..'", "'positionOn'", "'['", "']'", "'regularGeometry'", "'x'", "'circular'", "'if'", "'else'", "'|'", "'&'", "'=='", "'>'", "'<'", "'+'", "'-'", "'*'", "'/'", "'%'", "'!'", "'Neumann'", "'Moore'"
     };
     public static final int RULE_ID=5;
     public static final int T__29=29;
@@ -51,8 +52,11 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
     public static final int T__18=18;
     public static final int T__36=36;
     public static final int T__17=17;
+    public static final int T__37=37;
     public static final int T__12=12;
+    public static final int T__38=38;
     public static final int T__11=11;
+    public static final int T__39=39;
     public static final int T__14=14;
     public static final int T__13=13;
     public static final int RULE_INT=4;
@@ -97,7 +101,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCellularAutomataInitialization"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:67:1: entryRuleCellularAutomataInitialization returns [EObject current=null] : iv_ruleCellularAutomataInitialization= ruleCellularAutomataInitialization EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:68:1: entryRuleCellularAutomataInitialization returns [EObject current=null] : iv_ruleCellularAutomataInitialization= ruleCellularAutomataInitialization EOF ;
     public final EObject entryRuleCellularAutomataInitialization() throws RecognitionException {
         EObject current = null;
 
@@ -105,8 +109,8 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:68:2: (iv_ruleCellularAutomataInitialization= ruleCellularAutomataInitialization EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:69:2: iv_ruleCellularAutomataInitialization= ruleCellularAutomataInitialization EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:69:2: (iv_ruleCellularAutomataInitialization= ruleCellularAutomataInitialization EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:70:2: iv_ruleCellularAutomataInitialization= ruleCellularAutomataInitialization EOF
             {
              newCompositeNode(grammarAccess.getCellularAutomataInitializationRule()); 
             pushFollow(FollowSets000.FOLLOW_ruleCellularAutomataInitialization_in_entryRuleCellularAutomataInitialization75);
@@ -133,7 +137,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCellularAutomataInitialization"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:76:1: ruleCellularAutomataInitialization returns [EObject current=null] : ( () ( (lv_geometry_1_0= ruleRegularGeometry ) )? ( (lv_seedRules_2_0= ruleRule ) ) ( (lv_seedRules_3_0= ruleRule ) )* ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:77:1: ruleCellularAutomataInitialization returns [EObject current=null] : ( () ( (lv_geometry_1_0= ruleRegularGeometry ) )? ( (lv_seedRules_2_0= ruleRule ) ) ( (lv_seedRules_3_0= ruleRule ) )* ) ;
     public final EObject ruleCellularAutomataInitialization() throws RecognitionException {
         EObject current = null;
 
@@ -147,36 +151,36 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:79:28: ( ( () ( (lv_geometry_1_0= ruleRegularGeometry ) )? ( (lv_seedRules_2_0= ruleRule ) ) ( (lv_seedRules_3_0= ruleRule ) )* ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:80:1: ( () ( (lv_geometry_1_0= ruleRegularGeometry ) )? ( (lv_seedRules_2_0= ruleRule ) ) ( (lv_seedRules_3_0= ruleRule ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:80:28: ( ( () ( (lv_geometry_1_0= ruleRegularGeometry ) )? ( (lv_seedRules_2_0= ruleRule ) ) ( (lv_seedRules_3_0= ruleRule ) )* ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:81:1: ( () ( (lv_geometry_1_0= ruleRegularGeometry ) )? ( (lv_seedRules_2_0= ruleRule ) ) ( (lv_seedRules_3_0= ruleRule ) )* )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:80:1: ( () ( (lv_geometry_1_0= ruleRegularGeometry ) )? ( (lv_seedRules_2_0= ruleRule ) ) ( (lv_seedRules_3_0= ruleRule ) )* )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:80:2: () ( (lv_geometry_1_0= ruleRegularGeometry ) )? ( (lv_seedRules_2_0= ruleRule ) ) ( (lv_seedRules_3_0= ruleRule ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:81:1: ( () ( (lv_geometry_1_0= ruleRegularGeometry ) )? ( (lv_seedRules_2_0= ruleRule ) ) ( (lv_seedRules_3_0= ruleRule ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:81:2: () ( (lv_geometry_1_0= ruleRegularGeometry ) )? ( (lv_seedRules_2_0= ruleRule ) ) ( (lv_seedRules_3_0= ruleRule ) )*
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:80:2: ()
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:81:5: 
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:81:2: ()
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:82:5: 
             {
 
                     current = forceCreateModelElement(
-                        grammarAccess.getCellularAutomataInitializationAccess().getCellularAutomatatInitializationAction_0(),
+                        grammarAccess.getCellularAutomataInitializationAccess().getCellularAutomataInitializationAction_0(),
                         current);
                 
 
             }
 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:86:2: ( (lv_geometry_1_0= ruleRegularGeometry ) )?
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:87:2: ( (lv_geometry_1_0= ruleRegularGeometry ) )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
-            if ( (LA1_0==23) ) {
+            if ( (LA1_0==22) ) {
                 alt1=1;
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:87:1: (lv_geometry_1_0= ruleRegularGeometry )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:88:1: (lv_geometry_1_0= ruleRegularGeometry )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:87:1: (lv_geometry_1_0= ruleRegularGeometry )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:88:3: lv_geometry_1_0= ruleRegularGeometry
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:88:1: (lv_geometry_1_0= ruleRegularGeometry )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:89:3: lv_geometry_1_0= ruleRegularGeometry
                     {
                      
                     	        newCompositeNode(grammarAccess.getCellularAutomataInitializationAccess().getGeometryRegularGeometryParserRuleCall_1_0()); 
@@ -206,11 +210,11 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:104:3: ( (lv_seedRules_2_0= ruleRule ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:105:1: (lv_seedRules_2_0= ruleRule )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:105:3: ( (lv_seedRules_2_0= ruleRule ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:106:1: (lv_seedRules_2_0= ruleRule )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:105:1: (lv_seedRules_2_0= ruleRule )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:106:3: lv_seedRules_2_0= ruleRule
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:106:1: (lv_seedRules_2_0= ruleRule )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:107:3: lv_seedRules_2_0= ruleRule
             {
              
             	        newCompositeNode(grammarAccess.getCellularAutomataInitializationAccess().getSeedRulesRuleParserRuleCall_2_0()); 
@@ -237,7 +241,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:122:2: ( (lv_seedRules_3_0= ruleRule ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:123:2: ( (lv_seedRules_3_0= ruleRule ) )*
             loop2:
             do {
                 int alt2=2;
@@ -250,10 +254,10 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
                 switch (alt2) {
             	case 1 :
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:123:1: (lv_seedRules_3_0= ruleRule )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:124:1: (lv_seedRules_3_0= ruleRule )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:123:1: (lv_seedRules_3_0= ruleRule )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:124:3: lv_seedRules_3_0= ruleRule
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:124:1: (lv_seedRules_3_0= ruleRule )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:125:3: lv_seedRules_3_0= ruleRule
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getCellularAutomataInitializationAccess().getSeedRulesRuleParserRuleCall_3_0()); 
@@ -307,7 +311,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRule"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:148:1: entryRuleRule returns [EObject current=null] : iv_ruleRule= ruleRule EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:149:1: entryRuleRule returns [EObject current=null] : iv_ruleRule= ruleRule EOF ;
     public final EObject entryRuleRule() throws RecognitionException {
         EObject current = null;
 
@@ -315,8 +319,8 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:149:2: (iv_ruleRule= ruleRule EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:150:2: iv_ruleRule= ruleRule EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:150:2: (iv_ruleRule= ruleRule EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:151:2: iv_ruleRule= ruleRule EOF
             {
              newCompositeNode(grammarAccess.getRuleRule()); 
             pushFollow(FollowSets000.FOLLOW_ruleRule_in_entryRuleRule220);
@@ -343,52 +347,51 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRule"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:157:1: ruleRule returns [EObject current=null] : (otherlv_0= 'where' ( (lv_filter_1_0= ruleGlobalPosition ) )? otherlv_2= 'initValue' otherlv_3= '=' otherlv_4= '{' ( (lv_evaluatedVal_5_0= ruleConditional ) ) otherlv_6= '}' ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:158:1: ruleRule returns [EObject current=null] : (otherlv_0= 'init' ( (lv_filter_1_0= ruleCoordinateRanges ) )? otherlv_2= 'by' otherlv_3= '{' ( (lv_evaluatedVal_4_0= ruleConditional ) ) otherlv_5= '}' ) ;
     public final EObject ruleRule() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_2=null;
         Token otherlv_3=null;
-        Token otherlv_4=null;
-        Token otherlv_6=null;
+        Token otherlv_5=null;
         EObject lv_filter_1_0 = null;
 
-        EObject lv_evaluatedVal_5_0 = null;
+        EObject lv_evaluatedVal_4_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:160:28: ( (otherlv_0= 'where' ( (lv_filter_1_0= ruleGlobalPosition ) )? otherlv_2= 'initValue' otherlv_3= '=' otherlv_4= '{' ( (lv_evaluatedVal_5_0= ruleConditional ) ) otherlv_6= '}' ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:161:1: (otherlv_0= 'where' ( (lv_filter_1_0= ruleGlobalPosition ) )? otherlv_2= 'initValue' otherlv_3= '=' otherlv_4= '{' ( (lv_evaluatedVal_5_0= ruleConditional ) ) otherlv_6= '}' )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:161:28: ( (otherlv_0= 'init' ( (lv_filter_1_0= ruleCoordinateRanges ) )? otherlv_2= 'by' otherlv_3= '{' ( (lv_evaluatedVal_4_0= ruleConditional ) ) otherlv_5= '}' ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:162:1: (otherlv_0= 'init' ( (lv_filter_1_0= ruleCoordinateRanges ) )? otherlv_2= 'by' otherlv_3= '{' ( (lv_evaluatedVal_4_0= ruleConditional ) ) otherlv_5= '}' )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:161:1: (otherlv_0= 'where' ( (lv_filter_1_0= ruleGlobalPosition ) )? otherlv_2= 'initValue' otherlv_3= '=' otherlv_4= '{' ( (lv_evaluatedVal_5_0= ruleConditional ) ) otherlv_6= '}' )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:161:3: otherlv_0= 'where' ( (lv_filter_1_0= ruleGlobalPosition ) )? otherlv_2= 'initValue' otherlv_3= '=' otherlv_4= '{' ( (lv_evaluatedVal_5_0= ruleConditional ) ) otherlv_6= '}'
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:162:1: (otherlv_0= 'init' ( (lv_filter_1_0= ruleCoordinateRanges ) )? otherlv_2= 'by' otherlv_3= '{' ( (lv_evaluatedVal_4_0= ruleConditional ) ) otherlv_5= '}' )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:162:3: otherlv_0= 'init' ( (lv_filter_1_0= ruleCoordinateRanges ) )? otherlv_2= 'by' otherlv_3= '{' ( (lv_evaluatedVal_4_0= ruleConditional ) ) otherlv_5= '}'
             {
             otherlv_0=(Token)match(input,11,FollowSets000.FOLLOW_11_in_ruleRule267); 
 
-                	newLeafNode(otherlv_0, grammarAccess.getRuleAccess().getWhereKeyword_0());
+                	newLeafNode(otherlv_0, grammarAccess.getRuleAccess().getInitKeyword_0());
                 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:165:1: ( (lv_filter_1_0= ruleGlobalPosition ) )?
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:166:1: ( (lv_filter_1_0= ruleCoordinateRanges ) )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( (LA3_0==14) ) {
+            if ( (LA3_0==16) ) {
                 alt3=1;
             }
             switch (alt3) {
                 case 1 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:166:1: (lv_filter_1_0= ruleGlobalPosition )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:167:1: (lv_filter_1_0= ruleCoordinateRanges )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:166:1: (lv_filter_1_0= ruleGlobalPosition )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:167:3: lv_filter_1_0= ruleGlobalPosition
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:167:1: (lv_filter_1_0= ruleCoordinateRanges )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:168:3: lv_filter_1_0= ruleCoordinateRanges
                     {
                      
-                    	        newCompositeNode(grammarAccess.getRuleAccess().getFilterGlobalPositionParserRuleCall_1_0()); 
+                    	        newCompositeNode(grammarAccess.getRuleAccess().getFilterCoordinateRangesParserRuleCall_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleGlobalPosition_in_ruleRule288);
-                    lv_filter_1_0=ruleGlobalPosition();
+                    pushFollow(FollowSets000.FOLLOW_ruleCoordinateRanges_in_ruleRule288);
+                    lv_filter_1_0=ruleCoordinateRanges();
 
                     state._fsp--;
 
@@ -400,7 +403,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                            			current, 
                            			"filter",
                             		lv_filter_1_0, 
-                            		"GlobalPosition");
+                            		"CoordinateRanges");
                     	        afterParserOrEnumRuleCall();
                     	    
 
@@ -414,27 +417,23 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             otherlv_2=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleRule301); 
 
-                	newLeafNode(otherlv_2, grammarAccess.getRuleAccess().getInitValueKeyword_2());
+                	newLeafNode(otherlv_2, grammarAccess.getRuleAccess().getByKeyword_2());
                 
             otherlv_3=(Token)match(input,13,FollowSets000.FOLLOW_13_in_ruleRule313); 
 
-                	newLeafNode(otherlv_3, grammarAccess.getRuleAccess().getEqualsSignKeyword_3());
+                	newLeafNode(otherlv_3, grammarAccess.getRuleAccess().getLeftCurlyBracketKeyword_3());
                 
-            otherlv_4=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleRule325); 
-
-                	newLeafNode(otherlv_4, grammarAccess.getRuleAccess().getLeftCurlyBracketKeyword_4());
-                
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:195:1: ( (lv_evaluatedVal_5_0= ruleConditional ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:196:1: (lv_evaluatedVal_5_0= ruleConditional )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:192:1: ( (lv_evaluatedVal_4_0= ruleConditional ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:193:1: (lv_evaluatedVal_4_0= ruleConditional )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:196:1: (lv_evaluatedVal_5_0= ruleConditional )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:197:3: lv_evaluatedVal_5_0= ruleConditional
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:193:1: (lv_evaluatedVal_4_0= ruleConditional )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:194:3: lv_evaluatedVal_4_0= ruleConditional
             {
              
-            	        newCompositeNode(grammarAccess.getRuleAccess().getEvaluatedValConditionalParserRuleCall_5_0()); 
+            	        newCompositeNode(grammarAccess.getRuleAccess().getEvaluatedValConditionalParserRuleCall_4_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleConditional_in_ruleRule346);
-            lv_evaluatedVal_5_0=ruleConditional();
+            pushFollow(FollowSets000.FOLLOW_ruleConditional_in_ruleRule334);
+            lv_evaluatedVal_4_0=ruleConditional();
 
             state._fsp--;
 
@@ -445,7 +444,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                    		set(
                    			current, 
                    			"evaluatedVal",
-                    		lv_evaluatedVal_5_0, 
+                    		lv_evaluatedVal_4_0, 
                     		"Conditional");
             	        afterParserOrEnumRuleCall();
             	    
@@ -455,9 +454,9 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleRule358); 
+            otherlv_5=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleRule346); 
 
-                	newLeafNode(otherlv_6, grammarAccess.getRuleAccess().getRightCurlyBracketKeyword_6());
+                	newLeafNode(otherlv_5, grammarAccess.getRuleAccess().getRightCurlyBracketKeyword_5());
                 
 
             }
@@ -479,26 +478,26 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleRule"
 
 
-    // $ANTLR start "entryRuleGlobalPosition"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:225:1: entryRuleGlobalPosition returns [EObject current=null] : iv_ruleGlobalPosition= ruleGlobalPosition EOF ;
-    public final EObject entryRuleGlobalPosition() throws RecognitionException {
+    // $ANTLR start "entryRuleCoordinateRanges"
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:222:1: entryRuleCoordinateRanges returns [EObject current=null] : iv_ruleCoordinateRanges= ruleCoordinateRanges EOF ;
+    public final EObject entryRuleCoordinateRanges() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleGlobalPosition = null;
+        EObject iv_ruleCoordinateRanges = null;
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:226:2: (iv_ruleGlobalPosition= ruleGlobalPosition EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:227:2: iv_ruleGlobalPosition= ruleGlobalPosition EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:223:2: (iv_ruleCoordinateRanges= ruleCoordinateRanges EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:224:2: iv_ruleCoordinateRanges= ruleCoordinateRanges EOF
             {
-             newCompositeNode(grammarAccess.getGlobalPositionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleGlobalPosition_in_entryRuleGlobalPosition394);
-            iv_ruleGlobalPosition=ruleGlobalPosition();
+             newCompositeNode(grammarAccess.getCoordinateRangesRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleCoordinateRanges_in_entryRuleCoordinateRanges382);
+            iv_ruleCoordinateRanges=ruleCoordinateRanges();
 
             state._fsp--;
 
-             current =iv_ruleGlobalPosition; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleGlobalPosition404); 
+             current =iv_ruleCoordinateRanges; 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleCoordinateRanges392); 
 
             }
 
@@ -512,68 +511,62 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleGlobalPosition"
+    // $ANTLR end "entryRuleCoordinateRanges"
 
 
-    // $ANTLR start "ruleGlobalPosition"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:234:1: ruleGlobalPosition returns [EObject current=null] : ( () otherlv_1= '{' ( (lv_coordinateRanges_2_0= ruleCoordinateRange ) ) (otherlv_3= 'x' ( (lv_coordinateRanges_4_0= ruleCoordinateRange ) )? )* otherlv_5= '}' ) ;
-    public final EObject ruleGlobalPosition() throws RecognitionException {
+    // $ANTLR start "ruleCoordinateRanges"
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:231:1: ruleCoordinateRanges returns [EObject current=null] : ( () ( (lv_coordinateRanges_1_0= ruleCoordinateRange ) ) (otherlv_2= ',' ( (lv_coordinateRanges_3_0= ruleCoordinateRange ) ) )* ) ;
+    public final EObject ruleCoordinateRanges() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_1=null;
-        Token otherlv_3=null;
-        Token otherlv_5=null;
-        EObject lv_coordinateRanges_2_0 = null;
+        Token otherlv_2=null;
+        EObject lv_coordinateRanges_1_0 = null;
 
-        EObject lv_coordinateRanges_4_0 = null;
+        EObject lv_coordinateRanges_3_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:237:28: ( ( () otherlv_1= '{' ( (lv_coordinateRanges_2_0= ruleCoordinateRange ) ) (otherlv_3= 'x' ( (lv_coordinateRanges_4_0= ruleCoordinateRange ) )? )* otherlv_5= '}' ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:238:1: ( () otherlv_1= '{' ( (lv_coordinateRanges_2_0= ruleCoordinateRange ) ) (otherlv_3= 'x' ( (lv_coordinateRanges_4_0= ruleCoordinateRange ) )? )* otherlv_5= '}' )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:234:28: ( ( () ( (lv_coordinateRanges_1_0= ruleCoordinateRange ) ) (otherlv_2= ',' ( (lv_coordinateRanges_3_0= ruleCoordinateRange ) ) )* ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:235:1: ( () ( (lv_coordinateRanges_1_0= ruleCoordinateRange ) ) (otherlv_2= ',' ( (lv_coordinateRanges_3_0= ruleCoordinateRange ) ) )* )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:238:1: ( () otherlv_1= '{' ( (lv_coordinateRanges_2_0= ruleCoordinateRange ) ) (otherlv_3= 'x' ( (lv_coordinateRanges_4_0= ruleCoordinateRange ) )? )* otherlv_5= '}' )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:238:2: () otherlv_1= '{' ( (lv_coordinateRanges_2_0= ruleCoordinateRange ) ) (otherlv_3= 'x' ( (lv_coordinateRanges_4_0= ruleCoordinateRange ) )? )* otherlv_5= '}'
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:235:1: ( () ( (lv_coordinateRanges_1_0= ruleCoordinateRange ) ) (otherlv_2= ',' ( (lv_coordinateRanges_3_0= ruleCoordinateRange ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:235:2: () ( (lv_coordinateRanges_1_0= ruleCoordinateRange ) ) (otherlv_2= ',' ( (lv_coordinateRanges_3_0= ruleCoordinateRange ) ) )*
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:238:2: ()
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:239:5: 
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:235:2: ()
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:236:5: 
             {
 
                     current = forceCreateModelElement(
-                        grammarAccess.getGlobalPositionAccess().getGlobalPositionAction_0(),
+                        grammarAccess.getCoordinateRangesAccess().getCoordinateRangesAction_0(),
                         current);
                 
 
             }
 
-            otherlv_1=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleGlobalPosition450); 
-
-                	newLeafNode(otherlv_1, grammarAccess.getGlobalPositionAccess().getLeftCurlyBracketKeyword_1());
-                
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:248:1: ( (lv_coordinateRanges_2_0= ruleCoordinateRange ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:249:1: (lv_coordinateRanges_2_0= ruleCoordinateRange )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:241:2: ( (lv_coordinateRanges_1_0= ruleCoordinateRange ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:242:1: (lv_coordinateRanges_1_0= ruleCoordinateRange )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:249:1: (lv_coordinateRanges_2_0= ruleCoordinateRange )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:250:3: lv_coordinateRanges_2_0= ruleCoordinateRange
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:242:1: (lv_coordinateRanges_1_0= ruleCoordinateRange )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:243:3: lv_coordinateRanges_1_0= ruleCoordinateRange
             {
              
-            	        newCompositeNode(grammarAccess.getGlobalPositionAccess().getCoordinateRangesCoordinateRangeParserRuleCall_2_0()); 
+            	        newCompositeNode(grammarAccess.getCoordinateRangesAccess().getCoordinateRangesCoordinateRangeParserRuleCall_1_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleCoordinateRange_in_ruleGlobalPosition471);
-            lv_coordinateRanges_2_0=ruleCoordinateRange();
+            pushFollow(FollowSets000.FOLLOW_ruleCoordinateRange_in_ruleCoordinateRanges447);
+            lv_coordinateRanges_1_0=ruleCoordinateRange();
 
             state._fsp--;
 
 
             	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getGlobalPositionRule());
+            	            current = createModelElementForParent(grammarAccess.getCoordinateRangesRule());
             	        }
                    		add(
                    			current, 
                    			"coordinateRanges",
-                    		lv_coordinateRanges_2_0, 
+                    		lv_coordinateRanges_1_0, 
                     		"CoordinateRange");
             	        afterParserOrEnumRuleCall();
             	    
@@ -583,64 +576,53 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:266:2: (otherlv_3= 'x' ( (lv_coordinateRanges_4_0= ruleCoordinateRange ) )? )*
-            loop5:
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:259:2: (otherlv_2= ',' ( (lv_coordinateRanges_3_0= ruleCoordinateRange ) ) )*
+            loop4:
             do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                if ( (LA5_0==16) ) {
-                    alt5=1;
+                if ( (LA4_0==15) ) {
+                    alt4=1;
                 }
 
 
-                switch (alt5) {
+                switch (alt4) {
             	case 1 :
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:266:4: otherlv_3= 'x' ( (lv_coordinateRanges_4_0= ruleCoordinateRange ) )?
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:259:4: otherlv_2= ',' ( (lv_coordinateRanges_3_0= ruleCoordinateRange ) )
             	    {
-            	    otherlv_3=(Token)match(input,16,FollowSets000.FOLLOW_16_in_ruleGlobalPosition484); 
+            	    otherlv_2=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleCoordinateRanges460); 
 
-            	        	newLeafNode(otherlv_3, grammarAccess.getGlobalPositionAccess().getXKeyword_3_0());
+            	        	newLeafNode(otherlv_2, grammarAccess.getCoordinateRangesAccess().getCommaKeyword_2_0());
             	        
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:270:1: ( (lv_coordinateRanges_4_0= ruleCoordinateRange ) )?
-            	    int alt4=2;
-            	    int LA4_0 = input.LA(1);
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:263:1: ( (lv_coordinateRanges_3_0= ruleCoordinateRange ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:264:1: (lv_coordinateRanges_3_0= ruleCoordinateRange )
+            	    {
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:264:1: (lv_coordinateRanges_3_0= ruleCoordinateRange )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:265:3: lv_coordinateRanges_3_0= ruleCoordinateRange
+            	    {
+            	     
+            	    	        newCompositeNode(grammarAccess.getCoordinateRangesAccess().getCoordinateRangesCoordinateRangeParserRuleCall_2_1_0()); 
+            	    	    
+            	    pushFollow(FollowSets000.FOLLOW_ruleCoordinateRange_in_ruleCoordinateRanges481);
+            	    lv_coordinateRanges_3_0=ruleCoordinateRange();
 
-            	    if ( (LA4_0==17) ) {
-            	        alt4=1;
+            	    state._fsp--;
+
+
+            	    	        if (current==null) {
+            	    	            current = createModelElementForParent(grammarAccess.getCoordinateRangesRule());
+            	    	        }
+            	           		add(
+            	           			current, 
+            	           			"coordinateRanges",
+            	            		lv_coordinateRanges_3_0, 
+            	            		"CoordinateRange");
+            	    	        afterParserOrEnumRuleCall();
+            	    	    
+
             	    }
-            	    switch (alt4) {
-            	        case 1 :
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:271:1: (lv_coordinateRanges_4_0= ruleCoordinateRange )
-            	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:271:1: (lv_coordinateRanges_4_0= ruleCoordinateRange )
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:272:3: lv_coordinateRanges_4_0= ruleCoordinateRange
-            	            {
-            	             
-            	            	        newCompositeNode(grammarAccess.getGlobalPositionAccess().getCoordinateRangesCoordinateRangeParserRuleCall_3_1_0()); 
-            	            	    
-            	            pushFollow(FollowSets000.FOLLOW_ruleCoordinateRange_in_ruleGlobalPosition505);
-            	            lv_coordinateRanges_4_0=ruleCoordinateRange();
 
-            	            state._fsp--;
-
-
-            	            	        if (current==null) {
-            	            	            current = createModelElementForParent(grammarAccess.getGlobalPositionRule());
-            	            	        }
-            	                   		add(
-            	                   			current, 
-            	                   			"coordinateRanges",
-            	                    		lv_coordinateRanges_4_0, 
-            	                    		"CoordinateRange");
-            	            	        afterParserOrEnumRuleCall();
-            	            	    
-
-            	            }
-
-
-            	            }
-            	            break;
 
             	    }
 
@@ -649,14 +631,10 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop5;
+            	    break loop4;
                 }
             } while (true);
 
-            otherlv_5=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleGlobalPosition520); 
-
-                	newLeafNode(otherlv_5, grammarAccess.getGlobalPositionAccess().getRightCurlyBracketKeyword_4());
-                
 
             }
 
@@ -674,11 +652,11 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleGlobalPosition"
+    // $ANTLR end "ruleCoordinateRanges"
 
 
     // $ANTLR start "entryRuleCoordinateRange"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:300:1: entryRuleCoordinateRange returns [EObject current=null] : iv_ruleCoordinateRange= ruleCoordinateRange EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:289:1: entryRuleCoordinateRange returns [EObject current=null] : iv_ruleCoordinateRange= ruleCoordinateRange EOF ;
     public final EObject entryRuleCoordinateRange() throws RecognitionException {
         EObject current = null;
 
@@ -686,17 +664,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:301:2: (iv_ruleCoordinateRange= ruleCoordinateRange EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:302:2: iv_ruleCoordinateRange= ruleCoordinateRange EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:290:2: (iv_ruleCoordinateRange= ruleCoordinateRange EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:291:2: iv_ruleCoordinateRange= ruleCoordinateRange EOF
             {
              newCompositeNode(grammarAccess.getCoordinateRangeRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleCoordinateRange_in_entryRuleCoordinateRange556);
+            pushFollow(FollowSets000.FOLLOW_ruleCoordinateRange_in_entryRuleCoordinateRange519);
             iv_ruleCoordinateRange=ruleCoordinateRange();
 
             state._fsp--;
 
              current =iv_ruleCoordinateRange; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleCoordinateRange566); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleCoordinateRange529); 
 
             }
 
@@ -714,42 +692,42 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCoordinateRange"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:309:1: ruleCoordinateRange returns [EObject current=null] : (otherlv_0= '[' ( (lv_lowerCoordinate_1_0= ruleEInt ) ) otherlv_2= ',' ( (lv_upperCoordinate_3_0= ruleEInt ) ) otherlv_4= ']' ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:298:1: ruleCoordinateRange returns [EObject current=null] : (otherlv_0= '(' ( (lv_dimensionRanges_1_0= ruleDimensionRange ) ) otherlv_2= ',' ( (lv_dimensionRanges_3_0= ruleDimensionRange ) ) otherlv_4= ')' ) ;
     public final EObject ruleCoordinateRange() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_2=null;
         Token otherlv_4=null;
-        AntlrDatatypeRuleToken lv_lowerCoordinate_1_0 = null;
+        EObject lv_dimensionRanges_1_0 = null;
 
-        AntlrDatatypeRuleToken lv_upperCoordinate_3_0 = null;
+        EObject lv_dimensionRanges_3_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:312:28: ( (otherlv_0= '[' ( (lv_lowerCoordinate_1_0= ruleEInt ) ) otherlv_2= ',' ( (lv_upperCoordinate_3_0= ruleEInt ) ) otherlv_4= ']' ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:313:1: (otherlv_0= '[' ( (lv_lowerCoordinate_1_0= ruleEInt ) ) otherlv_2= ',' ( (lv_upperCoordinate_3_0= ruleEInt ) ) otherlv_4= ']' )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:301:28: ( (otherlv_0= '(' ( (lv_dimensionRanges_1_0= ruleDimensionRange ) ) otherlv_2= ',' ( (lv_dimensionRanges_3_0= ruleDimensionRange ) ) otherlv_4= ')' ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:302:1: (otherlv_0= '(' ( (lv_dimensionRanges_1_0= ruleDimensionRange ) ) otherlv_2= ',' ( (lv_dimensionRanges_3_0= ruleDimensionRange ) ) otherlv_4= ')' )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:313:1: (otherlv_0= '[' ( (lv_lowerCoordinate_1_0= ruleEInt ) ) otherlv_2= ',' ( (lv_upperCoordinate_3_0= ruleEInt ) ) otherlv_4= ']' )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:313:3: otherlv_0= '[' ( (lv_lowerCoordinate_1_0= ruleEInt ) ) otherlv_2= ',' ( (lv_upperCoordinate_3_0= ruleEInt ) ) otherlv_4= ']'
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:302:1: (otherlv_0= '(' ( (lv_dimensionRanges_1_0= ruleDimensionRange ) ) otherlv_2= ',' ( (lv_dimensionRanges_3_0= ruleDimensionRange ) ) otherlv_4= ')' )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:302:3: otherlv_0= '(' ( (lv_dimensionRanges_1_0= ruleDimensionRange ) ) otherlv_2= ',' ( (lv_dimensionRanges_3_0= ruleDimensionRange ) ) otherlv_4= ')'
             {
-            otherlv_0=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleCoordinateRange603); 
+            otherlv_0=(Token)match(input,16,FollowSets000.FOLLOW_16_in_ruleCoordinateRange566); 
 
-                	newLeafNode(otherlv_0, grammarAccess.getCoordinateRangeAccess().getLeftSquareBracketKeyword_0());
+                	newLeafNode(otherlv_0, grammarAccess.getCoordinateRangeAccess().getLeftParenthesisKeyword_0());
                 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:317:1: ( (lv_lowerCoordinate_1_0= ruleEInt ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:318:1: (lv_lowerCoordinate_1_0= ruleEInt )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:306:1: ( (lv_dimensionRanges_1_0= ruleDimensionRange ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:307:1: (lv_dimensionRanges_1_0= ruleDimensionRange )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:318:1: (lv_lowerCoordinate_1_0= ruleEInt )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:319:3: lv_lowerCoordinate_1_0= ruleEInt
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:307:1: (lv_dimensionRanges_1_0= ruleDimensionRange )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:308:3: lv_dimensionRanges_1_0= ruleDimensionRange
             {
              
-            	        newCompositeNode(grammarAccess.getCoordinateRangeAccess().getLowerCoordinateEIntParserRuleCall_1_0()); 
+            	        newCompositeNode(grammarAccess.getCoordinateRangeAccess().getDimensionRangesDimensionRangeParserRuleCall_1_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_ruleCoordinateRange624);
-            lv_lowerCoordinate_1_0=ruleEInt();
+            pushFollow(FollowSets000.FOLLOW_ruleDimensionRange_in_ruleCoordinateRange587);
+            lv_dimensionRanges_1_0=ruleDimensionRange();
 
             state._fsp--;
 
@@ -757,11 +735,11 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
             	        if (current==null) {
             	            current = createModelElementForParent(grammarAccess.getCoordinateRangeRule());
             	        }
-                   		set(
+                   		add(
                    			current, 
-                   			"lowerCoordinate",
-                    		lv_lowerCoordinate_1_0, 
-                    		"EInt");
+                   			"dimensionRanges",
+                    		lv_dimensionRanges_1_0, 
+                    		"DimensionRange");
             	        afterParserOrEnumRuleCall();
             	    
 
@@ -770,21 +748,21 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleCoordinateRange636); 
+            otherlv_2=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleCoordinateRange599); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getCoordinateRangeAccess().getCommaKeyword_2());
                 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:339:1: ( (lv_upperCoordinate_3_0= ruleEInt ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:340:1: (lv_upperCoordinate_3_0= ruleEInt )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:328:1: ( (lv_dimensionRanges_3_0= ruleDimensionRange ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:329:1: (lv_dimensionRanges_3_0= ruleDimensionRange )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:340:1: (lv_upperCoordinate_3_0= ruleEInt )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:341:3: lv_upperCoordinate_3_0= ruleEInt
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:329:1: (lv_dimensionRanges_3_0= ruleDimensionRange )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:330:3: lv_dimensionRanges_3_0= ruleDimensionRange
             {
              
-            	        newCompositeNode(grammarAccess.getCoordinateRangeAccess().getUpperCoordinateEIntParserRuleCall_3_0()); 
+            	        newCompositeNode(grammarAccess.getCoordinateRangeAccess().getDimensionRangesDimensionRangeParserRuleCall_3_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_ruleCoordinateRange657);
-            lv_upperCoordinate_3_0=ruleEInt();
+            pushFollow(FollowSets000.FOLLOW_ruleDimensionRange_in_ruleCoordinateRange620);
+            lv_dimensionRanges_3_0=ruleDimensionRange();
 
             state._fsp--;
 
@@ -792,11 +770,11 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
             	        if (current==null) {
             	            current = createModelElementForParent(grammarAccess.getCoordinateRangeRule());
             	        }
-                   		set(
+                   		add(
                    			current, 
-                   			"upperCoordinate",
-                    		lv_upperCoordinate_3_0, 
-                    		"EInt");
+                   			"dimensionRanges",
+                    		lv_dimensionRanges_3_0, 
+                    		"DimensionRange");
             	        afterParserOrEnumRuleCall();
             	    
 
@@ -805,9 +783,9 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleCoordinateRange669); 
+            otherlv_4=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleCoordinateRange632); 
 
-                	newLeafNode(otherlv_4, grammarAccess.getCoordinateRangeAccess().getRightSquareBracketKeyword_4());
+                	newLeafNode(otherlv_4, grammarAccess.getCoordinateRangeAccess().getRightParenthesisKeyword_4());
                 
 
             }
@@ -829,8 +807,167 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleCoordinateRange"
 
 
+    // $ANTLR start "entryRuleDimensionRange"
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:358:1: entryRuleDimensionRange returns [EObject current=null] : iv_ruleDimensionRange= ruleDimensionRange EOF ;
+    public final EObject entryRuleDimensionRange() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleDimensionRange = null;
+
+
+        try {
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:359:2: (iv_ruleDimensionRange= ruleDimensionRange EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:360:2: iv_ruleDimensionRange= ruleDimensionRange EOF
+            {
+             newCompositeNode(grammarAccess.getDimensionRangeRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleDimensionRange_in_entryRuleDimensionRange668);
+            iv_ruleDimensionRange=ruleDimensionRange();
+
+            state._fsp--;
+
+             current =iv_ruleDimensionRange; 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleDimensionRange678); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleDimensionRange"
+
+
+    // $ANTLR start "ruleDimensionRange"
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:367:1: ruleDimensionRange returns [EObject current=null] : ( ( (lv_lower_0_0= ruleEInt ) ) (otherlv_1= '..' ( (lv_upper_2_0= ruleEInt ) ) )? ) ;
+    public final EObject ruleDimensionRange() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        AntlrDatatypeRuleToken lv_lower_0_0 = null;
+
+        AntlrDatatypeRuleToken lv_upper_2_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:370:28: ( ( ( (lv_lower_0_0= ruleEInt ) ) (otherlv_1= '..' ( (lv_upper_2_0= ruleEInt ) ) )? ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:371:1: ( ( (lv_lower_0_0= ruleEInt ) ) (otherlv_1= '..' ( (lv_upper_2_0= ruleEInt ) ) )? )
+            {
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:371:1: ( ( (lv_lower_0_0= ruleEInt ) ) (otherlv_1= '..' ( (lv_upper_2_0= ruleEInt ) ) )? )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:371:2: ( (lv_lower_0_0= ruleEInt ) ) (otherlv_1= '..' ( (lv_upper_2_0= ruleEInt ) ) )?
+            {
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:371:2: ( (lv_lower_0_0= ruleEInt ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:372:1: (lv_lower_0_0= ruleEInt )
+            {
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:372:1: (lv_lower_0_0= ruleEInt )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:373:3: lv_lower_0_0= ruleEInt
+            {
+             
+            	        newCompositeNode(grammarAccess.getDimensionRangeAccess().getLowerEIntParserRuleCall_0_0()); 
+            	    
+            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_ruleDimensionRange724);
+            lv_lower_0_0=ruleEInt();
+
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getDimensionRangeRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"lower",
+                    		lv_lower_0_0, 
+                    		"EInt");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:389:2: (otherlv_1= '..' ( (lv_upper_2_0= ruleEInt ) ) )?
+            int alt5=2;
+            int LA5_0 = input.LA(1);
+
+            if ( (LA5_0==18) ) {
+                alt5=1;
+            }
+            switch (alt5) {
+                case 1 :
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:389:4: otherlv_1= '..' ( (lv_upper_2_0= ruleEInt ) )
+                    {
+                    otherlv_1=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleDimensionRange737); 
+
+                        	newLeafNode(otherlv_1, grammarAccess.getDimensionRangeAccess().getFullStopFullStopKeyword_1_0());
+                        
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:393:1: ( (lv_upper_2_0= ruleEInt ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:394:1: (lv_upper_2_0= ruleEInt )
+                    {
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:394:1: (lv_upper_2_0= ruleEInt )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:395:3: lv_upper_2_0= ruleEInt
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getDimensionRangeAccess().getUpperEIntParserRuleCall_1_1_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleEInt_in_ruleDimensionRange758);
+                    lv_upper_2_0=ruleEInt();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getDimensionRangeRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"upper",
+                            		lv_upper_2_0, 
+                            		"EInt");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleDimensionRange"
+
+
     // $ANTLR start "entryRuleLiteralsExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:369:1: entryRuleLiteralsExpression returns [EObject current=null] : iv_ruleLiteralsExpression= ruleLiteralsExpression EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:419:1: entryRuleLiteralsExpression returns [EObject current=null] : iv_ruleLiteralsExpression= ruleLiteralsExpression EOF ;
     public final EObject entryRuleLiteralsExpression() throws RecognitionException {
         EObject current = null;
 
@@ -838,17 +975,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:370:2: (iv_ruleLiteralsExpression= ruleLiteralsExpression EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:371:2: iv_ruleLiteralsExpression= ruleLiteralsExpression EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:420:2: (iv_ruleLiteralsExpression= ruleLiteralsExpression EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:421:2: iv_ruleLiteralsExpression= ruleLiteralsExpression EOF
             {
              newCompositeNode(grammarAccess.getLiteralsExpressionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleLiteralsExpression_in_entryRuleLiteralsExpression705);
+            pushFollow(FollowSets000.FOLLOW_ruleLiteralsExpression_in_entryRuleLiteralsExpression796);
             iv_ruleLiteralsExpression=ruleLiteralsExpression();
 
             state._fsp--;
 
              current =iv_ruleLiteralsExpression; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleLiteralsExpression715); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleLiteralsExpression806); 
 
             }
 
@@ -866,7 +1003,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteralsExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:378:1: ruleLiteralsExpression returns [EObject current=null] : ( (otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')' ) | this_PositionLiteral_3= rulePositionLiteral | this_IntegerLiteral_4= ruleIntegerLiteral ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:428:1: ruleLiteralsExpression returns [EObject current=null] : ( (otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')' ) | this_PositionLiteral_3= rulePositionLiteral | this_IntegerLiteral_4= ruleIntegerLiteral ) ;
     public final EObject ruleLiteralsExpression() throws RecognitionException {
         EObject current = null;
 
@@ -882,24 +1019,24 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:381:28: ( ( (otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')' ) | this_PositionLiteral_3= rulePositionLiteral | this_IntegerLiteral_4= ruleIntegerLiteral ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:382:1: ( (otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')' ) | this_PositionLiteral_3= rulePositionLiteral | this_IntegerLiteral_4= ruleIntegerLiteral )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:431:28: ( ( (otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')' ) | this_PositionLiteral_3= rulePositionLiteral | this_IntegerLiteral_4= ruleIntegerLiteral ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:432:1: ( (otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')' ) | this_PositionLiteral_3= rulePositionLiteral | this_IntegerLiteral_4= ruleIntegerLiteral )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:382:1: ( (otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')' ) | this_PositionLiteral_3= rulePositionLiteral | this_IntegerLiteral_4= ruleIntegerLiteral )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:432:1: ( (otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')' ) | this_PositionLiteral_3= rulePositionLiteral | this_IntegerLiteral_4= ruleIntegerLiteral )
             int alt6=3;
             switch ( input.LA(1) ) {
-            case 20:
+            case 16:
                 {
                 alt6=1;
                 }
                 break;
-            case 22:
+            case 19:
                 {
                 alt6=2;
                 }
                 break;
             case RULE_INT:
-            case 32:
+            case 33:
                 {
                 alt6=3;
                 }
@@ -913,19 +1050,19 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             switch (alt6) {
                 case 1 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:382:2: (otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')' )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:432:2: (otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')' )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:382:2: (otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')' )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:382:4: otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')'
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:432:2: (otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')' )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:432:4: otherlv_0= '(' this_Conditional_1= ruleConditional otherlv_2= ')'
                     {
-                    otherlv_0=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleLiteralsExpression753); 
+                    otherlv_0=(Token)match(input,16,FollowSets000.FOLLOW_16_in_ruleLiteralsExpression844); 
 
                         	newLeafNode(otherlv_0, grammarAccess.getLiteralsExpressionAccess().getLeftParenthesisKeyword_0_0());
                         
                      
                             newCompositeNode(grammarAccess.getLiteralsExpressionAccess().getConditionalParserRuleCall_0_1()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleConditional_in_ruleLiteralsExpression775);
+                    pushFollow(FollowSets000.FOLLOW_ruleConditional_in_ruleLiteralsExpression866);
                     this_Conditional_1=ruleConditional();
 
                     state._fsp--;
@@ -934,7 +1071,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                             current = this_Conditional_1; 
                             afterParserOrEnumRuleCall();
                         
-                    otherlv_2=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleLiteralsExpression786); 
+                    otherlv_2=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleLiteralsExpression877); 
 
                         	newLeafNode(otherlv_2, grammarAccess.getLiteralsExpressionAccess().getRightParenthesisKeyword_0_2());
                         
@@ -945,12 +1082,12 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:401:5: this_PositionLiteral_3= rulePositionLiteral
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:451:5: this_PositionLiteral_3= rulePositionLiteral
                     {
                      
                             newCompositeNode(grammarAccess.getLiteralsExpressionAccess().getPositionLiteralParserRuleCall_1()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_rulePositionLiteral_in_ruleLiteralsExpression815);
+                    pushFollow(FollowSets000.FOLLOW_rulePositionLiteral_in_ruleLiteralsExpression906);
                     this_PositionLiteral_3=rulePositionLiteral();
 
                     state._fsp--;
@@ -963,12 +1100,12 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:411:5: this_IntegerLiteral_4= ruleIntegerLiteral
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:461:5: this_IntegerLiteral_4= ruleIntegerLiteral
                     {
                      
                             newCompositeNode(grammarAccess.getLiteralsExpressionAccess().getIntegerLiteralParserRuleCall_2()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleIntegerLiteral_in_ruleLiteralsExpression842);
+                    pushFollow(FollowSets000.FOLLOW_ruleIntegerLiteral_in_ruleLiteralsExpression933);
                     this_IntegerLiteral_4=ruleIntegerLiteral();
 
                     state._fsp--;
@@ -1001,7 +1138,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePositionLiteral"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:427:1: entryRulePositionLiteral returns [EObject current=null] : iv_rulePositionLiteral= rulePositionLiteral EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:477:1: entryRulePositionLiteral returns [EObject current=null] : iv_rulePositionLiteral= rulePositionLiteral EOF ;
     public final EObject entryRulePositionLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -1009,17 +1146,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:428:2: (iv_rulePositionLiteral= rulePositionLiteral EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:429:2: iv_rulePositionLiteral= rulePositionLiteral EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:478:2: (iv_rulePositionLiteral= rulePositionLiteral EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:479:2: iv_rulePositionLiteral= rulePositionLiteral EOF
             {
              newCompositeNode(grammarAccess.getPositionLiteralRule()); 
-            pushFollow(FollowSets000.FOLLOW_rulePositionLiteral_in_entryRulePositionLiteral877);
+            pushFollow(FollowSets000.FOLLOW_rulePositionLiteral_in_entryRulePositionLiteral968);
             iv_rulePositionLiteral=rulePositionLiteral();
 
             state._fsp--;
 
              current =iv_rulePositionLiteral; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePositionLiteral887); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePositionLiteral978); 
 
             }
 
@@ -1037,7 +1174,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePositionLiteral"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:436:1: rulePositionLiteral returns [EObject current=null] : ( () otherlv_1= 'positionOn' otherlv_2= '[' ( (lv_dimensionIndex_3_0= ruleEInt ) ) otherlv_4= ']' ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:486:1: rulePositionLiteral returns [EObject current=null] : ( () otherlv_1= 'positionOn' otherlv_2= '[' ( (lv_dimensionIndex_3_0= ruleEInt ) ) otherlv_4= ']' ) ;
     public final EObject rulePositionLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -1050,14 +1187,14 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:439:28: ( ( () otherlv_1= 'positionOn' otherlv_2= '[' ( (lv_dimensionIndex_3_0= ruleEInt ) ) otherlv_4= ']' ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:440:1: ( () otherlv_1= 'positionOn' otherlv_2= '[' ( (lv_dimensionIndex_3_0= ruleEInt ) ) otherlv_4= ']' )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:489:28: ( ( () otherlv_1= 'positionOn' otherlv_2= '[' ( (lv_dimensionIndex_3_0= ruleEInt ) ) otherlv_4= ']' ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:490:1: ( () otherlv_1= 'positionOn' otherlv_2= '[' ( (lv_dimensionIndex_3_0= ruleEInt ) ) otherlv_4= ']' )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:440:1: ( () otherlv_1= 'positionOn' otherlv_2= '[' ( (lv_dimensionIndex_3_0= ruleEInt ) ) otherlv_4= ']' )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:440:2: () otherlv_1= 'positionOn' otherlv_2= '[' ( (lv_dimensionIndex_3_0= ruleEInt ) ) otherlv_4= ']'
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:490:1: ( () otherlv_1= 'positionOn' otherlv_2= '[' ( (lv_dimensionIndex_3_0= ruleEInt ) ) otherlv_4= ']' )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:490:2: () otherlv_1= 'positionOn' otherlv_2= '[' ( (lv_dimensionIndex_3_0= ruleEInt ) ) otherlv_4= ']'
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:440:2: ()
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:441:5: 
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:490:2: ()
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:491:5: 
             {
 
                     current = forceCreateModelElement(
@@ -1067,24 +1204,24 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,22,FollowSets000.FOLLOW_22_in_rulePositionLiteral933); 
+            otherlv_1=(Token)match(input,19,FollowSets000.FOLLOW_19_in_rulePositionLiteral1024); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getPositionLiteralAccess().getPositionOnKeyword_1());
                 
-            otherlv_2=(Token)match(input,17,FollowSets000.FOLLOW_17_in_rulePositionLiteral945); 
+            otherlv_2=(Token)match(input,20,FollowSets000.FOLLOW_20_in_rulePositionLiteral1036); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getPositionLiteralAccess().getLeftSquareBracketKeyword_2());
                 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:454:1: ( (lv_dimensionIndex_3_0= ruleEInt ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:455:1: (lv_dimensionIndex_3_0= ruleEInt )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:504:1: ( (lv_dimensionIndex_3_0= ruleEInt ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:505:1: (lv_dimensionIndex_3_0= ruleEInt )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:455:1: (lv_dimensionIndex_3_0= ruleEInt )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:456:3: lv_dimensionIndex_3_0= ruleEInt
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:505:1: (lv_dimensionIndex_3_0= ruleEInt )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:506:3: lv_dimensionIndex_3_0= ruleEInt
             {
              
             	        newCompositeNode(grammarAccess.getPositionLiteralAccess().getDimensionIndexEIntParserRuleCall_3_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_rulePositionLiteral966);
+            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_rulePositionLiteral1057);
             lv_dimensionIndex_3_0=ruleEInt();
 
             state._fsp--;
@@ -1106,7 +1243,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,19,FollowSets000.FOLLOW_19_in_rulePositionLiteral978); 
+            otherlv_4=(Token)match(input,21,FollowSets000.FOLLOW_21_in_rulePositionLiteral1069); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getPositionLiteralAccess().getRightSquareBracketKeyword_4());
                 
@@ -1131,7 +1268,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRegularGeometry"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:484:1: entryRuleRegularGeometry returns [EObject current=null] : iv_ruleRegularGeometry= ruleRegularGeometry EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:534:1: entryRuleRegularGeometry returns [EObject current=null] : iv_ruleRegularGeometry= ruleRegularGeometry EOF ;
     public final EObject entryRuleRegularGeometry() throws RecognitionException {
         EObject current = null;
 
@@ -1139,17 +1276,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:485:2: (iv_ruleRegularGeometry= ruleRegularGeometry EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:486:2: iv_ruleRegularGeometry= ruleRegularGeometry EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:535:2: (iv_ruleRegularGeometry= ruleRegularGeometry EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:536:2: iv_ruleRegularGeometry= ruleRegularGeometry EOF
             {
              newCompositeNode(grammarAccess.getRegularGeometryRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleRegularGeometry_in_entryRuleRegularGeometry1014);
+            pushFollow(FollowSets000.FOLLOW_ruleRegularGeometry_in_entryRuleRegularGeometry1105);
             iv_ruleRegularGeometry=ruleRegularGeometry();
 
             state._fsp--;
 
              current =iv_ruleRegularGeometry; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleRegularGeometry1024); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleRegularGeometry1115); 
 
             }
 
@@ -1167,7 +1304,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRegularGeometry"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:493:1: ruleRegularGeometry returns [EObject current=null] : ( () otherlv_1= 'regularGeometry' ( (lv_neighborsNumber_2_0= ruleEInt ) ) otherlv_3= '{' ( (lv_dimensions_4_0= ruleDimension ) ) (otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) ) )* otherlv_7= '}' ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:543:1: ruleRegularGeometry returns [EObject current=null] : ( () otherlv_1= 'regularGeometry' ( (lv_neighbors_2_0= ruleNeighborhood ) ) otherlv_3= '{' ( (lv_dimensions_4_0= ruleDimension ) ) (otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) ) )* otherlv_7= '}' ) ;
     public final EObject ruleRegularGeometry() throws RecognitionException {
         EObject current = null;
 
@@ -1175,7 +1312,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
         Token otherlv_3=null;
         Token otherlv_5=null;
         Token otherlv_7=null;
-        AntlrDatatypeRuleToken lv_neighborsNumber_2_0 = null;
+        Enumerator lv_neighbors_2_0 = null;
 
         EObject lv_dimensions_4_0 = null;
 
@@ -1185,14 +1322,14 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:496:28: ( ( () otherlv_1= 'regularGeometry' ( (lv_neighborsNumber_2_0= ruleEInt ) ) otherlv_3= '{' ( (lv_dimensions_4_0= ruleDimension ) ) (otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) ) )* otherlv_7= '}' ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:497:1: ( () otherlv_1= 'regularGeometry' ( (lv_neighborsNumber_2_0= ruleEInt ) ) otherlv_3= '{' ( (lv_dimensions_4_0= ruleDimension ) ) (otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) ) )* otherlv_7= '}' )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:546:28: ( ( () otherlv_1= 'regularGeometry' ( (lv_neighbors_2_0= ruleNeighborhood ) ) otherlv_3= '{' ( (lv_dimensions_4_0= ruleDimension ) ) (otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) ) )* otherlv_7= '}' ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:547:1: ( () otherlv_1= 'regularGeometry' ( (lv_neighbors_2_0= ruleNeighborhood ) ) otherlv_3= '{' ( (lv_dimensions_4_0= ruleDimension ) ) (otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) ) )* otherlv_7= '}' )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:497:1: ( () otherlv_1= 'regularGeometry' ( (lv_neighborsNumber_2_0= ruleEInt ) ) otherlv_3= '{' ( (lv_dimensions_4_0= ruleDimension ) ) (otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) ) )* otherlv_7= '}' )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:497:2: () otherlv_1= 'regularGeometry' ( (lv_neighborsNumber_2_0= ruleEInt ) ) otherlv_3= '{' ( (lv_dimensions_4_0= ruleDimension ) ) (otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) ) )* otherlv_7= '}'
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:547:1: ( () otherlv_1= 'regularGeometry' ( (lv_neighbors_2_0= ruleNeighborhood ) ) otherlv_3= '{' ( (lv_dimensions_4_0= ruleDimension ) ) (otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) ) )* otherlv_7= '}' )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:547:2: () otherlv_1= 'regularGeometry' ( (lv_neighbors_2_0= ruleNeighborhood ) ) otherlv_3= '{' ( (lv_dimensions_4_0= ruleDimension ) ) (otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) ) )* otherlv_7= '}'
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:497:2: ()
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:498:5: 
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:547:2: ()
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:548:5: 
             {
 
                     current = forceCreateModelElement(
@@ -1202,21 +1339,21 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,23,FollowSets000.FOLLOW_23_in_ruleRegularGeometry1070); 
+            otherlv_1=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleRegularGeometry1161); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getRegularGeometryAccess().getRegularGeometryKeyword_1());
                 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:507:1: ( (lv_neighborsNumber_2_0= ruleEInt ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:508:1: (lv_neighborsNumber_2_0= ruleEInt )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:557:1: ( (lv_neighbors_2_0= ruleNeighborhood ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:558:1: (lv_neighbors_2_0= ruleNeighborhood )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:508:1: (lv_neighborsNumber_2_0= ruleEInt )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:509:3: lv_neighborsNumber_2_0= ruleEInt
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:558:1: (lv_neighbors_2_0= ruleNeighborhood )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:559:3: lv_neighbors_2_0= ruleNeighborhood
             {
              
-            	        newCompositeNode(grammarAccess.getRegularGeometryAccess().getNeighborsNumberEIntParserRuleCall_2_0()); 
+            	        newCompositeNode(grammarAccess.getRegularGeometryAccess().getNeighborsNeighborhoodEnumRuleCall_2_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_ruleRegularGeometry1091);
-            lv_neighborsNumber_2_0=ruleEInt();
+            pushFollow(FollowSets000.FOLLOW_ruleNeighborhood_in_ruleRegularGeometry1182);
+            lv_neighbors_2_0=ruleNeighborhood();
 
             state._fsp--;
 
@@ -1226,9 +1363,9 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
             	        }
                    		set(
                    			current, 
-                   			"neighborsNumber",
-                    		lv_neighborsNumber_2_0, 
-                    		"EInt");
+                   			"neighbors",
+                    		lv_neighbors_2_0, 
+                    		"Neighborhood");
             	        afterParserOrEnumRuleCall();
             	    
 
@@ -1237,20 +1374,20 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleRegularGeometry1103); 
+            otherlv_3=(Token)match(input,13,FollowSets000.FOLLOW_13_in_ruleRegularGeometry1194); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getRegularGeometryAccess().getLeftCurlyBracketKeyword_3());
                 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:529:1: ( (lv_dimensions_4_0= ruleDimension ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:530:1: (lv_dimensions_4_0= ruleDimension )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:579:1: ( (lv_dimensions_4_0= ruleDimension ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:580:1: (lv_dimensions_4_0= ruleDimension )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:530:1: (lv_dimensions_4_0= ruleDimension )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:531:3: lv_dimensions_4_0= ruleDimension
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:580:1: (lv_dimensions_4_0= ruleDimension )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:581:3: lv_dimensions_4_0= ruleDimension
             {
              
             	        newCompositeNode(grammarAccess.getRegularGeometryAccess().getDimensionsDimensionParserRuleCall_4_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleDimension_in_ruleRegularGeometry1124);
+            pushFollow(FollowSets000.FOLLOW_ruleDimension_in_ruleRegularGeometry1215);
             lv_dimensions_4_0=ruleDimension();
 
             state._fsp--;
@@ -1272,35 +1409,35 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:547:2: (otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:597:2: (otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) ) )*
             loop7:
             do {
                 int alt7=2;
                 int LA7_0 = input.LA(1);
 
-                if ( (LA7_0==16) ) {
+                if ( (LA7_0==23) ) {
                     alt7=1;
                 }
 
 
                 switch (alt7) {
             	case 1 :
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:547:4: otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:597:4: otherlv_5= 'x' ( (lv_dimensions_6_0= ruleDimension ) )
             	    {
-            	    otherlv_5=(Token)match(input,16,FollowSets000.FOLLOW_16_in_ruleRegularGeometry1137); 
+            	    otherlv_5=(Token)match(input,23,FollowSets000.FOLLOW_23_in_ruleRegularGeometry1228); 
 
             	        	newLeafNode(otherlv_5, grammarAccess.getRegularGeometryAccess().getXKeyword_5_0());
             	        
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:551:1: ( (lv_dimensions_6_0= ruleDimension ) )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:552:1: (lv_dimensions_6_0= ruleDimension )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:601:1: ( (lv_dimensions_6_0= ruleDimension ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:602:1: (lv_dimensions_6_0= ruleDimension )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:552:1: (lv_dimensions_6_0= ruleDimension )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:553:3: lv_dimensions_6_0= ruleDimension
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:602:1: (lv_dimensions_6_0= ruleDimension )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:603:3: lv_dimensions_6_0= ruleDimension
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getRegularGeometryAccess().getDimensionsDimensionParserRuleCall_5_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleDimension_in_ruleRegularGeometry1158);
+            	    pushFollow(FollowSets000.FOLLOW_ruleDimension_in_ruleRegularGeometry1249);
             	    lv_dimensions_6_0=ruleDimension();
 
             	    state._fsp--;
@@ -1331,7 +1468,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_7=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleRegularGeometry1172); 
+            otherlv_7=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleRegularGeometry1263); 
 
                 	newLeafNode(otherlv_7, grammarAccess.getRegularGeometryAccess().getRightCurlyBracketKeyword_6());
                 
@@ -1356,7 +1493,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDimension"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:581:1: entryRuleDimension returns [EObject current=null] : iv_ruleDimension= ruleDimension EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:631:1: entryRuleDimension returns [EObject current=null] : iv_ruleDimension= ruleDimension EOF ;
     public final EObject entryRuleDimension() throws RecognitionException {
         EObject current = null;
 
@@ -1364,17 +1501,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:582:2: (iv_ruleDimension= ruleDimension EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:583:2: iv_ruleDimension= ruleDimension EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:632:2: (iv_ruleDimension= ruleDimension EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:633:2: iv_ruleDimension= ruleDimension EOF
             {
              newCompositeNode(grammarAccess.getDimensionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleDimension_in_entryRuleDimension1208);
+            pushFollow(FollowSets000.FOLLOW_ruleDimension_in_entryRuleDimension1299);
             iv_ruleDimension=ruleDimension();
 
             state._fsp--;
 
              current =iv_ruleDimension; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleDimension1218); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleDimension1309); 
 
             }
 
@@ -1392,163 +1529,98 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDimension"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:590:1: ruleDimension returns [EObject current=null] : ( ( () ( (lv_size_1_0= ruleEInt ) ) ) | ( ( (lv_isCircular_2_0= '(' ) ) ( (lv_size_3_0= ruleEInt ) ) otherlv_4= ')' ) ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:640:1: ruleDimension returns [EObject current=null] : ( () ( (lv_extent_1_0= ruleEInt ) ) ( (lv_isCircular_2_0= 'circular' ) )? ) ;
     public final EObject ruleDimension() throws RecognitionException {
         EObject current = null;
 
         Token lv_isCircular_2_0=null;
-        Token otherlv_4=null;
-        AntlrDatatypeRuleToken lv_size_1_0 = null;
-
-        AntlrDatatypeRuleToken lv_size_3_0 = null;
+        AntlrDatatypeRuleToken lv_extent_1_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:593:28: ( ( ( () ( (lv_size_1_0= ruleEInt ) ) ) | ( ( (lv_isCircular_2_0= '(' ) ) ( (lv_size_3_0= ruleEInt ) ) otherlv_4= ')' ) ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:594:1: ( ( () ( (lv_size_1_0= ruleEInt ) ) ) | ( ( (lv_isCircular_2_0= '(' ) ) ( (lv_size_3_0= ruleEInt ) ) otherlv_4= ')' ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:643:28: ( ( () ( (lv_extent_1_0= ruleEInt ) ) ( (lv_isCircular_2_0= 'circular' ) )? ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:644:1: ( () ( (lv_extent_1_0= ruleEInt ) ) ( (lv_isCircular_2_0= 'circular' ) )? )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:594:1: ( ( () ( (lv_size_1_0= ruleEInt ) ) ) | ( ( (lv_isCircular_2_0= '(' ) ) ( (lv_size_3_0= ruleEInt ) ) otherlv_4= ')' ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:644:1: ( () ( (lv_extent_1_0= ruleEInt ) ) ( (lv_isCircular_2_0= 'circular' ) )? )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:644:2: () ( (lv_extent_1_0= ruleEInt ) ) ( (lv_isCircular_2_0= 'circular' ) )?
+            {
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:644:2: ()
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:645:5: 
+            {
+
+                    current = forceCreateModelElement(
+                        grammarAccess.getDimensionAccess().getDimensionAction_0(),
+                        current);
+                
+
+            }
+
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:650:2: ( (lv_extent_1_0= ruleEInt ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:651:1: (lv_extent_1_0= ruleEInt )
+            {
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:651:1: (lv_extent_1_0= ruleEInt )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:652:3: lv_extent_1_0= ruleEInt
+            {
+             
+            	        newCompositeNode(grammarAccess.getDimensionAccess().getExtentEIntParserRuleCall_1_0()); 
+            	    
+            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_ruleDimension1364);
+            lv_extent_1_0=ruleEInt();
+
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getDimensionRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"extent",
+                    		lv_extent_1_0, 
+                    		"EInt");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:668:2: ( (lv_isCircular_2_0= 'circular' ) )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
-            if ( (LA8_0==RULE_INT||LA8_0==32) ) {
+            if ( (LA8_0==24) ) {
                 alt8=1;
-            }
-            else if ( (LA8_0==20) ) {
-                alt8=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 8, 0, input);
-
-                throw nvae;
             }
             switch (alt8) {
                 case 1 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:594:2: ( () ( (lv_size_1_0= ruleEInt ) ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:669:1: (lv_isCircular_2_0= 'circular' )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:594:2: ( () ( (lv_size_1_0= ruleEInt ) ) )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:594:3: () ( (lv_size_1_0= ruleEInt ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:669:1: (lv_isCircular_2_0= 'circular' )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:670:3: lv_isCircular_2_0= 'circular'
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:594:3: ()
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:595:5: 
-                    {
+                    lv_isCircular_2_0=(Token)match(input,24,FollowSets000.FOLLOW_24_in_ruleDimension1382); 
 
-                            current = forceCreateModelElement(
-                                grammarAccess.getDimensionAccess().getDimensionAction_0_0(),
-                                current);
-                        
-
-                    }
-
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:600:2: ( (lv_size_1_0= ruleEInt ) )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:601:1: (lv_size_1_0= ruleEInt )
-                    {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:601:1: (lv_size_1_0= ruleEInt )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:602:3: lv_size_1_0= ruleEInt
-                    {
-                     
-                    	        newCompositeNode(grammarAccess.getDimensionAccess().getSizeEIntParserRuleCall_0_1_0()); 
-                    	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEInt_in_ruleDimension1274);
-                    lv_size_1_0=ruleEInt();
-
-                    state._fsp--;
-
-
-                    	        if (current==null) {
-                    	            current = createModelElementForParent(grammarAccess.getDimensionRule());
-                    	        }
-                           		set(
-                           			current, 
-                           			"size",
-                            		lv_size_1_0, 
-                            		"EInt");
-                    	        afterParserOrEnumRuleCall();
-                    	    
-
-                    }
-
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:619:6: ( ( (lv_isCircular_2_0= '(' ) ) ( (lv_size_3_0= ruleEInt ) ) otherlv_4= ')' )
-                    {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:619:6: ( ( (lv_isCircular_2_0= '(' ) ) ( (lv_size_3_0= ruleEInt ) ) otherlv_4= ')' )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:619:7: ( (lv_isCircular_2_0= '(' ) ) ( (lv_size_3_0= ruleEInt ) ) otherlv_4= ')'
-                    {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:619:7: ( (lv_isCircular_2_0= '(' ) )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:620:1: (lv_isCircular_2_0= '(' )
-                    {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:620:1: (lv_isCircular_2_0= '(' )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:621:3: lv_isCircular_2_0= '('
-                    {
-                    lv_isCircular_2_0=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleDimension1300); 
-
-                            newLeafNode(lv_isCircular_2_0, grammarAccess.getDimensionAccess().getIsCircularLeftParenthesisKeyword_1_0_0());
+                            newLeafNode(lv_isCircular_2_0, grammarAccess.getDimensionAccess().getIsCircularCircularKeyword_2_0());
                         
 
                     	        if (current==null) {
                     	            current = createModelElement(grammarAccess.getDimensionRule());
                     	        }
-                           		setWithLastConsumed(current, "isCircular", true, "(");
+                           		setWithLastConsumed(current, "isCircular", true, "circular");
                     	    
-
-                    }
-
-
-                    }
-
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:634:2: ( (lv_size_3_0= ruleEInt ) )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:635:1: (lv_size_3_0= ruleEInt )
-                    {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:635:1: (lv_size_3_0= ruleEInt )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:636:3: lv_size_3_0= ruleEInt
-                    {
-                     
-                    	        newCompositeNode(grammarAccess.getDimensionAccess().getSizeEIntParserRuleCall_1_1_0()); 
-                    	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEInt_in_ruleDimension1334);
-                    lv_size_3_0=ruleEInt();
-
-                    state._fsp--;
-
-
-                    	        if (current==null) {
-                    	            current = createModelElementForParent(grammarAccess.getDimensionRule());
-                    	        }
-                           		set(
-                           			current, 
-                           			"size",
-                            		lv_size_3_0, 
-                            		"EInt");
-                    	        afterParserOrEnumRuleCall();
-                    	    
-
-                    }
-
-
-                    }
-
-                    otherlv_4=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleDimension1346); 
-
-                        	newLeafNode(otherlv_4, grammarAccess.getDimensionAccess().getRightParenthesisKeyword_1_2());
-                        
 
                     }
 
 
                     }
                     break;
+
+            }
+
 
             }
 
@@ -1570,7 +1642,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConditional"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:664:1: entryRuleConditional returns [EObject current=null] : iv_ruleConditional= ruleConditional EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:691:1: entryRuleConditional returns [EObject current=null] : iv_ruleConditional= ruleConditional EOF ;
     public final EObject entryRuleConditional() throws RecognitionException {
         EObject current = null;
 
@@ -1578,17 +1650,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:665:2: (iv_ruleConditional= ruleConditional EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:666:2: iv_ruleConditional= ruleConditional EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:692:2: (iv_ruleConditional= ruleConditional EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:693:2: iv_ruleConditional= ruleConditional EOF
             {
              newCompositeNode(grammarAccess.getConditionalRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleConditional_in_entryRuleConditional1383);
+            pushFollow(FollowSets000.FOLLOW_ruleConditional_in_entryRuleConditional1432);
             iv_ruleConditional=ruleConditional();
 
             state._fsp--;
 
              current =iv_ruleConditional; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleConditional1393); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleConditional1442); 
 
             }
 
@@ -1606,7 +1678,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConditional"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:673:1: ruleConditional returns [EObject current=null] : (this_OrExpression_0= ruleOrExpression | ( () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}' ) ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:700:1: ruleConditional returns [EObject current=null] : (this_OrExpression_0= ruleOrExpression | ( () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}' ) ) ;
     public final EObject ruleConditional() throws RecognitionException {
         EObject current = null;
 
@@ -1628,17 +1700,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:676:28: ( (this_OrExpression_0= ruleOrExpression | ( () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}' ) ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:677:1: (this_OrExpression_0= ruleOrExpression | ( () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}' ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:703:28: ( (this_OrExpression_0= ruleOrExpression | ( () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}' ) ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:704:1: (this_OrExpression_0= ruleOrExpression | ( () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}' ) )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:677:1: (this_OrExpression_0= ruleOrExpression | ( () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}' ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:704:1: (this_OrExpression_0= ruleOrExpression | ( () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}' ) )
             int alt9=2;
             int LA9_0 = input.LA(1);
 
-            if ( (LA9_0==RULE_INT||LA9_0==20||LA9_0==22||LA9_0==32||LA9_0==36) ) {
+            if ( (LA9_0==RULE_INT||LA9_0==16||LA9_0==19||LA9_0==33||LA9_0==37) ) {
                 alt9=1;
             }
-            else if ( (LA9_0==24) ) {
+            else if ( (LA9_0==25) ) {
                 alt9=2;
             }
             else {
@@ -1649,12 +1721,12 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:678:5: this_OrExpression_0= ruleOrExpression
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:705:5: this_OrExpression_0= ruleOrExpression
                     {
                      
                             newCompositeNode(grammarAccess.getConditionalAccess().getOrExpressionParserRuleCall_0()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleOrExpression_in_ruleConditional1440);
+                    pushFollow(FollowSets000.FOLLOW_ruleOrExpression_in_ruleConditional1489);
                     this_OrExpression_0=ruleOrExpression();
 
                     state._fsp--;
@@ -1667,13 +1739,13 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:687:6: ( () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}' )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:714:6: ( () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}' )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:687:6: ( () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}' )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:687:7: () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}'
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:714:6: ( () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}' )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:714:7: () otherlv_2= 'if' ( (lv_condition_3_0= ruleConditional ) ) otherlv_4= '{' ( (lv_ifTrueExpression_5_0= ruleConditional ) ) otherlv_6= '}' otherlv_7= 'else' otherlv_8= '{' ( (lv_ifFalseExpression_9_0= ruleConditional ) ) otherlv_10= '}'
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:687:7: ()
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:688:5: 
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:714:7: ()
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:715:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -1683,20 +1755,20 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_2=(Token)match(input,24,FollowSets000.FOLLOW_24_in_ruleConditional1467); 
+                    otherlv_2=(Token)match(input,25,FollowSets000.FOLLOW_25_in_ruleConditional1516); 
 
                         	newLeafNode(otherlv_2, grammarAccess.getConditionalAccess().getIfKeyword_1_1());
                         
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:697:1: ( (lv_condition_3_0= ruleConditional ) )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:698:1: (lv_condition_3_0= ruleConditional )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:724:1: ( (lv_condition_3_0= ruleConditional ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:725:1: (lv_condition_3_0= ruleConditional )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:698:1: (lv_condition_3_0= ruleConditional )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:699:3: lv_condition_3_0= ruleConditional
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:725:1: (lv_condition_3_0= ruleConditional )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:726:3: lv_condition_3_0= ruleConditional
                     {
                      
                     	        newCompositeNode(grammarAccess.getConditionalAccess().getConditionConditionalParserRuleCall_1_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleConditional_in_ruleConditional1488);
+                    pushFollow(FollowSets000.FOLLOW_ruleConditional_in_ruleConditional1537);
                     lv_condition_3_0=ruleConditional();
 
                     state._fsp--;
@@ -1718,20 +1790,20 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleConditional1500); 
+                    otherlv_4=(Token)match(input,13,FollowSets000.FOLLOW_13_in_ruleConditional1549); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getConditionalAccess().getLeftCurlyBracketKeyword_1_3());
                         
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:719:1: ( (lv_ifTrueExpression_5_0= ruleConditional ) )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:720:1: (lv_ifTrueExpression_5_0= ruleConditional )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:746:1: ( (lv_ifTrueExpression_5_0= ruleConditional ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:747:1: (lv_ifTrueExpression_5_0= ruleConditional )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:720:1: (lv_ifTrueExpression_5_0= ruleConditional )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:721:3: lv_ifTrueExpression_5_0= ruleConditional
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:747:1: (lv_ifTrueExpression_5_0= ruleConditional )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:748:3: lv_ifTrueExpression_5_0= ruleConditional
                     {
                      
                     	        newCompositeNode(grammarAccess.getConditionalAccess().getIfTrueExpressionConditionalParserRuleCall_1_4_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleConditional_in_ruleConditional1521);
+                    pushFollow(FollowSets000.FOLLOW_ruleConditional_in_ruleConditional1570);
                     lv_ifTrueExpression_5_0=ruleConditional();
 
                     state._fsp--;
@@ -1753,28 +1825,28 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_6=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleConditional1533); 
+                    otherlv_6=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleConditional1582); 
 
                         	newLeafNode(otherlv_6, grammarAccess.getConditionalAccess().getRightCurlyBracketKeyword_1_5());
                         
-                    otherlv_7=(Token)match(input,25,FollowSets000.FOLLOW_25_in_ruleConditional1545); 
+                    otherlv_7=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleConditional1594); 
 
                         	newLeafNode(otherlv_7, grammarAccess.getConditionalAccess().getElseKeyword_1_6());
                         
-                    otherlv_8=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleConditional1557); 
+                    otherlv_8=(Token)match(input,13,FollowSets000.FOLLOW_13_in_ruleConditional1606); 
 
                         	newLeafNode(otherlv_8, grammarAccess.getConditionalAccess().getLeftCurlyBracketKeyword_1_7());
                         
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:749:1: ( (lv_ifFalseExpression_9_0= ruleConditional ) )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:750:1: (lv_ifFalseExpression_9_0= ruleConditional )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:776:1: ( (lv_ifFalseExpression_9_0= ruleConditional ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:777:1: (lv_ifFalseExpression_9_0= ruleConditional )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:750:1: (lv_ifFalseExpression_9_0= ruleConditional )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:751:3: lv_ifFalseExpression_9_0= ruleConditional
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:777:1: (lv_ifFalseExpression_9_0= ruleConditional )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:778:3: lv_ifFalseExpression_9_0= ruleConditional
                     {
                      
                     	        newCompositeNode(grammarAccess.getConditionalAccess().getIfFalseExpressionConditionalParserRuleCall_1_8_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleConditional_in_ruleConditional1578);
+                    pushFollow(FollowSets000.FOLLOW_ruleConditional_in_ruleConditional1627);
                     lv_ifFalseExpression_9_0=ruleConditional();
 
                     state._fsp--;
@@ -1796,7 +1868,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleConditional1590); 
+                    otherlv_10=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleConditional1639); 
 
                         	newLeafNode(otherlv_10, grammarAccess.getConditionalAccess().getRightCurlyBracketKeyword_1_9());
                         
@@ -1827,7 +1899,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOrExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:779:1: entryRuleOrExpression returns [EObject current=null] : iv_ruleOrExpression= ruleOrExpression EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:806:1: entryRuleOrExpression returns [EObject current=null] : iv_ruleOrExpression= ruleOrExpression EOF ;
     public final EObject entryRuleOrExpression() throws RecognitionException {
         EObject current = null;
 
@@ -1835,17 +1907,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:780:2: (iv_ruleOrExpression= ruleOrExpression EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:781:2: iv_ruleOrExpression= ruleOrExpression EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:807:2: (iv_ruleOrExpression= ruleOrExpression EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:808:2: iv_ruleOrExpression= ruleOrExpression EOF
             {
              newCompositeNode(grammarAccess.getOrExpressionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleOrExpression_in_entryRuleOrExpression1627);
+            pushFollow(FollowSets000.FOLLOW_ruleOrExpression_in_entryRuleOrExpression1676);
             iv_ruleOrExpression=ruleOrExpression();
 
             state._fsp--;
 
              current =iv_ruleOrExpression; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleOrExpression1637); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleOrExpression1686); 
 
             }
 
@@ -1863,7 +1935,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOrExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:788:1: ruleOrExpression returns [EObject current=null] : (this_AndExpression_0= ruleAndExpression ( () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) ) )* ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:815:1: ruleOrExpression returns [EObject current=null] : (this_AndExpression_0= ruleAndExpression ( () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) ) )* ) ;
     public final EObject ruleOrExpression() throws RecognitionException {
         EObject current = null;
 
@@ -1876,16 +1948,16 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:791:28: ( (this_AndExpression_0= ruleAndExpression ( () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) ) )* ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:792:1: (this_AndExpression_0= ruleAndExpression ( () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:818:28: ( (this_AndExpression_0= ruleAndExpression ( () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) ) )* ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:819:1: (this_AndExpression_0= ruleAndExpression ( () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) ) )* )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:792:1: (this_AndExpression_0= ruleAndExpression ( () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) ) )* )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:793:5: this_AndExpression_0= ruleAndExpression ( () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:819:1: (this_AndExpression_0= ruleAndExpression ( () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:820:5: this_AndExpression_0= ruleAndExpression ( () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getOrExpressionAccess().getAndExpressionParserRuleCall_0()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleAndExpression_in_ruleOrExpression1684);
+            pushFollow(FollowSets000.FOLLOW_ruleAndExpression_in_ruleOrExpression1733);
             this_AndExpression_0=ruleAndExpression();
 
             state._fsp--;
@@ -1894,23 +1966,23 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                     current = this_AndExpression_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:801:1: ( () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:828:1: ( () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) ) )*
             loop10:
             do {
                 int alt10=2;
                 int LA10_0 = input.LA(1);
 
-                if ( (LA10_0==26) ) {
+                if ( (LA10_0==27) ) {
                     alt10=1;
                 }
 
 
                 switch (alt10) {
             	case 1 :
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:801:2: () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:828:2: () otherlv_2= '|' ( (lv_right_3_0= ruleAndExpression ) )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:801:2: ()
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:802:5: 
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:828:2: ()
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:829:5: 
             	    {
 
             	            current = forceCreateModelElementAndSet(
@@ -1920,20 +1992,20 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    otherlv_2=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleOrExpression1705); 
+            	    otherlv_2=(Token)match(input,27,FollowSets000.FOLLOW_27_in_ruleOrExpression1754); 
 
             	        	newLeafNode(otherlv_2, grammarAccess.getOrExpressionAccess().getVerticalLineKeyword_1_1());
             	        
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:811:1: ( (lv_right_3_0= ruleAndExpression ) )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:812:1: (lv_right_3_0= ruleAndExpression )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:838:1: ( (lv_right_3_0= ruleAndExpression ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:839:1: (lv_right_3_0= ruleAndExpression )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:812:1: (lv_right_3_0= ruleAndExpression )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:813:3: lv_right_3_0= ruleAndExpression
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:839:1: (lv_right_3_0= ruleAndExpression )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:840:3: lv_right_3_0= ruleAndExpression
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getOrExpressionAccess().getRightAndExpressionParserRuleCall_1_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleAndExpression_in_ruleOrExpression1726);
+            	    pushFollow(FollowSets000.FOLLOW_ruleAndExpression_in_ruleOrExpression1775);
             	    lv_right_3_0=ruleAndExpression();
 
             	    state._fsp--;
@@ -1985,7 +2057,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAndExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:837:1: entryRuleAndExpression returns [EObject current=null] : iv_ruleAndExpression= ruleAndExpression EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:864:1: entryRuleAndExpression returns [EObject current=null] : iv_ruleAndExpression= ruleAndExpression EOF ;
     public final EObject entryRuleAndExpression() throws RecognitionException {
         EObject current = null;
 
@@ -1993,17 +2065,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:838:2: (iv_ruleAndExpression= ruleAndExpression EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:839:2: iv_ruleAndExpression= ruleAndExpression EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:865:2: (iv_ruleAndExpression= ruleAndExpression EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:866:2: iv_ruleAndExpression= ruleAndExpression EOF
             {
              newCompositeNode(grammarAccess.getAndExpressionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAndExpression_in_entryRuleAndExpression1764);
+            pushFollow(FollowSets000.FOLLOW_ruleAndExpression_in_entryRuleAndExpression1813);
             iv_ruleAndExpression=ruleAndExpression();
 
             state._fsp--;
 
              current =iv_ruleAndExpression; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAndExpression1774); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAndExpression1823); 
 
             }
 
@@ -2021,7 +2093,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAndExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:846:1: ruleAndExpression returns [EObject current=null] : (this_EqualExpression_0= ruleEqualExpression ( () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) ) )* ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:873:1: ruleAndExpression returns [EObject current=null] : (this_EqualExpression_0= ruleEqualExpression ( () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) ) )* ) ;
     public final EObject ruleAndExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2034,16 +2106,16 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:849:28: ( (this_EqualExpression_0= ruleEqualExpression ( () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) ) )* ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:850:1: (this_EqualExpression_0= ruleEqualExpression ( () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:876:28: ( (this_EqualExpression_0= ruleEqualExpression ( () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) ) )* ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:877:1: (this_EqualExpression_0= ruleEqualExpression ( () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) ) )* )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:850:1: (this_EqualExpression_0= ruleEqualExpression ( () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) ) )* )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:851:5: this_EqualExpression_0= ruleEqualExpression ( () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:877:1: (this_EqualExpression_0= ruleEqualExpression ( () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:878:5: this_EqualExpression_0= ruleEqualExpression ( () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getAndExpressionAccess().getEqualExpressionParserRuleCall_0()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleEqualExpression_in_ruleAndExpression1821);
+            pushFollow(FollowSets000.FOLLOW_ruleEqualExpression_in_ruleAndExpression1870);
             this_EqualExpression_0=ruleEqualExpression();
 
             state._fsp--;
@@ -2052,23 +2124,23 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                     current = this_EqualExpression_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:859:1: ( () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:886:1: ( () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) ) )*
             loop11:
             do {
                 int alt11=2;
                 int LA11_0 = input.LA(1);
 
-                if ( (LA11_0==27) ) {
+                if ( (LA11_0==28) ) {
                     alt11=1;
                 }
 
 
                 switch (alt11) {
             	case 1 :
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:859:2: () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:886:2: () otherlv_2= '&' ( (lv_right_3_0= ruleEqualExpression ) )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:859:2: ()
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:860:5: 
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:886:2: ()
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:887:5: 
             	    {
 
             	            current = forceCreateModelElementAndSet(
@@ -2078,20 +2150,20 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    otherlv_2=(Token)match(input,27,FollowSets000.FOLLOW_27_in_ruleAndExpression1842); 
+            	    otherlv_2=(Token)match(input,28,FollowSets000.FOLLOW_28_in_ruleAndExpression1891); 
 
             	        	newLeafNode(otherlv_2, grammarAccess.getAndExpressionAccess().getAmpersandKeyword_1_1());
             	        
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:869:1: ( (lv_right_3_0= ruleEqualExpression ) )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:870:1: (lv_right_3_0= ruleEqualExpression )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:896:1: ( (lv_right_3_0= ruleEqualExpression ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:897:1: (lv_right_3_0= ruleEqualExpression )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:870:1: (lv_right_3_0= ruleEqualExpression )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:871:3: lv_right_3_0= ruleEqualExpression
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:897:1: (lv_right_3_0= ruleEqualExpression )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:898:3: lv_right_3_0= ruleEqualExpression
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getAndExpressionAccess().getRightEqualExpressionParserRuleCall_1_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleEqualExpression_in_ruleAndExpression1863);
+            	    pushFollow(FollowSets000.FOLLOW_ruleEqualExpression_in_ruleAndExpression1912);
             	    lv_right_3_0=ruleEqualExpression();
 
             	    state._fsp--;
@@ -2143,7 +2215,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEqualExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:895:1: entryRuleEqualExpression returns [EObject current=null] : iv_ruleEqualExpression= ruleEqualExpression EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:922:1: entryRuleEqualExpression returns [EObject current=null] : iv_ruleEqualExpression= ruleEqualExpression EOF ;
     public final EObject entryRuleEqualExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2151,17 +2223,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:896:2: (iv_ruleEqualExpression= ruleEqualExpression EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:897:2: iv_ruleEqualExpression= ruleEqualExpression EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:923:2: (iv_ruleEqualExpression= ruleEqualExpression EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:924:2: iv_ruleEqualExpression= ruleEqualExpression EOF
             {
              newCompositeNode(grammarAccess.getEqualExpressionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEqualExpression_in_entryRuleEqualExpression1901);
+            pushFollow(FollowSets000.FOLLOW_ruleEqualExpression_in_entryRuleEqualExpression1950);
             iv_ruleEqualExpression=ruleEqualExpression();
 
             state._fsp--;
 
              current =iv_ruleEqualExpression; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEqualExpression1911); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEqualExpression1960); 
 
             }
 
@@ -2179,7 +2251,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEqualExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:904:1: ruleEqualExpression returns [EObject current=null] : (this_ComparisonExpression_0= ruleComparisonExpression ( () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) ) )* ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:931:1: ruleEqualExpression returns [EObject current=null] : (this_ComparisonExpression_0= ruleComparisonExpression ( () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) ) )* ) ;
     public final EObject ruleEqualExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2192,16 +2264,16 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:907:28: ( (this_ComparisonExpression_0= ruleComparisonExpression ( () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) ) )* ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:908:1: (this_ComparisonExpression_0= ruleComparisonExpression ( () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:934:28: ( (this_ComparisonExpression_0= ruleComparisonExpression ( () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) ) )* ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:935:1: (this_ComparisonExpression_0= ruleComparisonExpression ( () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) ) )* )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:908:1: (this_ComparisonExpression_0= ruleComparisonExpression ( () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) ) )* )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:909:5: this_ComparisonExpression_0= ruleComparisonExpression ( () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:935:1: (this_ComparisonExpression_0= ruleComparisonExpression ( () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:936:5: this_ComparisonExpression_0= ruleComparisonExpression ( () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getEqualExpressionAccess().getComparisonExpressionParserRuleCall_0()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleComparisonExpression_in_ruleEqualExpression1958);
+            pushFollow(FollowSets000.FOLLOW_ruleComparisonExpression_in_ruleEqualExpression2007);
             this_ComparisonExpression_0=ruleComparisonExpression();
 
             state._fsp--;
@@ -2210,23 +2282,23 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                     current = this_ComparisonExpression_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:917:1: ( () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:944:1: ( () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) ) )*
             loop12:
             do {
                 int alt12=2;
                 int LA12_0 = input.LA(1);
 
-                if ( (LA12_0==28) ) {
+                if ( (LA12_0==29) ) {
                     alt12=1;
                 }
 
 
                 switch (alt12) {
             	case 1 :
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:917:2: () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:944:2: () otherlv_2= '==' ( (lv_right_3_0= ruleComparisonExpression ) )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:917:2: ()
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:918:5: 
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:944:2: ()
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:945:5: 
             	    {
 
             	            current = forceCreateModelElementAndSet(
@@ -2236,20 +2308,20 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    otherlv_2=(Token)match(input,28,FollowSets000.FOLLOW_28_in_ruleEqualExpression1979); 
+            	    otherlv_2=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleEqualExpression2028); 
 
             	        	newLeafNode(otherlv_2, grammarAccess.getEqualExpressionAccess().getEqualsSignEqualsSignKeyword_1_1());
             	        
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:927:1: ( (lv_right_3_0= ruleComparisonExpression ) )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:928:1: (lv_right_3_0= ruleComparisonExpression )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:954:1: ( (lv_right_3_0= ruleComparisonExpression ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:955:1: (lv_right_3_0= ruleComparisonExpression )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:928:1: (lv_right_3_0= ruleComparisonExpression )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:929:3: lv_right_3_0= ruleComparisonExpression
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:955:1: (lv_right_3_0= ruleComparisonExpression )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:956:3: lv_right_3_0= ruleComparisonExpression
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getEqualExpressionAccess().getRightComparisonExpressionParserRuleCall_1_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleComparisonExpression_in_ruleEqualExpression2000);
+            	    pushFollow(FollowSets000.FOLLOW_ruleComparisonExpression_in_ruleEqualExpression2049);
             	    lv_right_3_0=ruleComparisonExpression();
 
             	    state._fsp--;
@@ -2301,7 +2373,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleComparisonExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:953:1: entryRuleComparisonExpression returns [EObject current=null] : iv_ruleComparisonExpression= ruleComparisonExpression EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:980:1: entryRuleComparisonExpression returns [EObject current=null] : iv_ruleComparisonExpression= ruleComparisonExpression EOF ;
     public final EObject entryRuleComparisonExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2309,17 +2381,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:954:2: (iv_ruleComparisonExpression= ruleComparisonExpression EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:955:2: iv_ruleComparisonExpression= ruleComparisonExpression EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:981:2: (iv_ruleComparisonExpression= ruleComparisonExpression EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:982:2: iv_ruleComparisonExpression= ruleComparisonExpression EOF
             {
              newCompositeNode(grammarAccess.getComparisonExpressionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleComparisonExpression_in_entryRuleComparisonExpression2038);
+            pushFollow(FollowSets000.FOLLOW_ruleComparisonExpression_in_entryRuleComparisonExpression2087);
             iv_ruleComparisonExpression=ruleComparisonExpression();
 
             state._fsp--;
 
              current =iv_ruleComparisonExpression; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleComparisonExpression2048); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleComparisonExpression2097); 
 
             }
 
@@ -2337,7 +2409,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComparisonExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:962:1: ruleComparisonExpression returns [EObject current=null] : (this_AddExpression_0= ruleAddExpression ( ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) ) )* ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:989:1: ruleComparisonExpression returns [EObject current=null] : (this_AddExpression_0= ruleAddExpression ( ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) ) )* ) ;
     public final EObject ruleComparisonExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2351,16 +2423,16 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:965:28: ( (this_AddExpression_0= ruleAddExpression ( ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) ) )* ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:966:1: (this_AddExpression_0= ruleAddExpression ( ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:992:28: ( (this_AddExpression_0= ruleAddExpression ( ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) ) )* ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:993:1: (this_AddExpression_0= ruleAddExpression ( ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) ) )* )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:966:1: (this_AddExpression_0= ruleAddExpression ( ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) ) )* )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:967:5: this_AddExpression_0= ruleAddExpression ( ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:993:1: (this_AddExpression_0= ruleAddExpression ( ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:994:5: this_AddExpression_0= ruleAddExpression ( ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getComparisonExpressionAccess().getAddExpressionParserRuleCall_0()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleAddExpression_in_ruleComparisonExpression2095);
+            pushFollow(FollowSets000.FOLLOW_ruleAddExpression_in_ruleComparisonExpression2144);
             this_AddExpression_0=ruleAddExpression();
 
             state._fsp--;
@@ -2369,29 +2441,29 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                     current = this_AddExpression_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:975:1: ( ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1002:1: ( ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) ) )*
             loop14:
             do {
                 int alt14=2;
                 int LA14_0 = input.LA(1);
 
-                if ( ((LA14_0>=29 && LA14_0<=30)) ) {
+                if ( ((LA14_0>=30 && LA14_0<=31)) ) {
                     alt14=1;
                 }
 
 
                 switch (alt14) {
             	case 1 :
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:975:2: ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1002:2: ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) ) ( (lv_right_5_0= ruleAddExpression ) )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:975:2: ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1002:2: ( ( () otherlv_2= '>' ) | ( () otherlv_4= '<' ) )
             	    int alt13=2;
             	    int LA13_0 = input.LA(1);
 
-            	    if ( (LA13_0==29) ) {
+            	    if ( (LA13_0==30) ) {
             	        alt13=1;
             	    }
-            	    else if ( (LA13_0==30) ) {
+            	    else if ( (LA13_0==31) ) {
             	        alt13=2;
             	    }
             	    else {
@@ -2402,13 +2474,13 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
             	    }
             	    switch (alt13) {
             	        case 1 :
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:975:3: ( () otherlv_2= '>' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1002:3: ( () otherlv_2= '>' )
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:975:3: ( () otherlv_2= '>' )
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:975:4: () otherlv_2= '>'
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1002:3: ( () otherlv_2= '>' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1002:4: () otherlv_2= '>'
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:975:4: ()
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:976:5: 
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1002:4: ()
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1003:5: 
             	            {
 
             	                    current = forceCreateModelElementAndSet(
@@ -2418,7 +2490,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	            }
 
-            	            otherlv_2=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleComparisonExpression2118); 
+            	            otherlv_2=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleComparisonExpression2167); 
 
             	                	newLeafNode(otherlv_2, grammarAccess.getComparisonExpressionAccess().getGreaterThanSignKeyword_1_0_0_1());
             	                
@@ -2429,13 +2501,13 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:986:6: ( () otherlv_4= '<' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1013:6: ( () otherlv_4= '<' )
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:986:6: ( () otherlv_4= '<' )
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:986:7: () otherlv_4= '<'
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1013:6: ( () otherlv_4= '<' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1013:7: () otherlv_4= '<'
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:986:7: ()
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:987:5: 
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1013:7: ()
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1014:5: 
             	            {
 
             	                    current = forceCreateModelElementAndSet(
@@ -2445,7 +2517,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	            }
 
-            	            otherlv_4=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleComparisonExpression2147); 
+            	            otherlv_4=(Token)match(input,31,FollowSets000.FOLLOW_31_in_ruleComparisonExpression2196); 
 
             	                	newLeafNode(otherlv_4, grammarAccess.getComparisonExpressionAccess().getLessThanSignKeyword_1_0_1_1());
             	                
@@ -2458,16 +2530,16 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:996:3: ( (lv_right_5_0= ruleAddExpression ) )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:997:1: (lv_right_5_0= ruleAddExpression )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1023:3: ( (lv_right_5_0= ruleAddExpression ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1024:1: (lv_right_5_0= ruleAddExpression )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:997:1: (lv_right_5_0= ruleAddExpression )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:998:3: lv_right_5_0= ruleAddExpression
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1024:1: (lv_right_5_0= ruleAddExpression )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1025:3: lv_right_5_0= ruleAddExpression
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getComparisonExpressionAccess().getRightAddExpressionParserRuleCall_1_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleAddExpression_in_ruleComparisonExpression2170);
+            	    pushFollow(FollowSets000.FOLLOW_ruleAddExpression_in_ruleComparisonExpression2219);
             	    lv_right_5_0=ruleAddExpression();
 
             	    state._fsp--;
@@ -2519,7 +2591,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAddExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1022:1: entryRuleAddExpression returns [EObject current=null] : iv_ruleAddExpression= ruleAddExpression EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1049:1: entryRuleAddExpression returns [EObject current=null] : iv_ruleAddExpression= ruleAddExpression EOF ;
     public final EObject entryRuleAddExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2527,17 +2599,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1023:2: (iv_ruleAddExpression= ruleAddExpression EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1024:2: iv_ruleAddExpression= ruleAddExpression EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1050:2: (iv_ruleAddExpression= ruleAddExpression EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1051:2: iv_ruleAddExpression= ruleAddExpression EOF
             {
              newCompositeNode(grammarAccess.getAddExpressionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAddExpression_in_entryRuleAddExpression2208);
+            pushFollow(FollowSets000.FOLLOW_ruleAddExpression_in_entryRuleAddExpression2257);
             iv_ruleAddExpression=ruleAddExpression();
 
             state._fsp--;
 
              current =iv_ruleAddExpression; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAddExpression2218); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAddExpression2267); 
 
             }
 
@@ -2555,7 +2627,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAddExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1031:1: ruleAddExpression returns [EObject current=null] : (this_MultExpression_0= ruleMultExpression ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) ) )* ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1058:1: ruleAddExpression returns [EObject current=null] : (this_MultExpression_0= ruleMultExpression ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) ) )* ) ;
     public final EObject ruleAddExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2569,16 +2641,16 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1034:28: ( (this_MultExpression_0= ruleMultExpression ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) ) )* ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1035:1: (this_MultExpression_0= ruleMultExpression ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1061:28: ( (this_MultExpression_0= ruleMultExpression ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) ) )* ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1062:1: (this_MultExpression_0= ruleMultExpression ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) ) )* )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1035:1: (this_MultExpression_0= ruleMultExpression ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) ) )* )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1036:5: this_MultExpression_0= ruleMultExpression ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1062:1: (this_MultExpression_0= ruleMultExpression ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1063:5: this_MultExpression_0= ruleMultExpression ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getAddExpressionAccess().getMultExpressionParserRuleCall_0()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleMultExpression_in_ruleAddExpression2265);
+            pushFollow(FollowSets000.FOLLOW_ruleMultExpression_in_ruleAddExpression2314);
             this_MultExpression_0=ruleMultExpression();
 
             state._fsp--;
@@ -2587,29 +2659,29 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                     current = this_MultExpression_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1044:1: ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1071:1: ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) ) )*
             loop16:
             do {
                 int alt16=2;
                 int LA16_0 = input.LA(1);
 
-                if ( ((LA16_0>=31 && LA16_0<=32)) ) {
+                if ( ((LA16_0>=32 && LA16_0<=33)) ) {
                     alt16=1;
                 }
 
 
                 switch (alt16) {
             	case 1 :
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1044:2: ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1071:2: ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultExpression ) )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1044:2: ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1071:2: ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) )
             	    int alt15=2;
             	    int LA15_0 = input.LA(1);
 
-            	    if ( (LA15_0==31) ) {
+            	    if ( (LA15_0==32) ) {
             	        alt15=1;
             	    }
-            	    else if ( (LA15_0==32) ) {
+            	    else if ( (LA15_0==33) ) {
             	        alt15=2;
             	    }
             	    else {
@@ -2620,13 +2692,13 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
             	    }
             	    switch (alt15) {
             	        case 1 :
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1044:3: ( () otherlv_2= '+' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1071:3: ( () otherlv_2= '+' )
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1044:3: ( () otherlv_2= '+' )
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1044:4: () otherlv_2= '+'
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1071:3: ( () otherlv_2= '+' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1071:4: () otherlv_2= '+'
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1044:4: ()
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1045:5: 
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1071:4: ()
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1072:5: 
             	            {
 
             	                    current = forceCreateModelElementAndSet(
@@ -2636,7 +2708,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	            }
 
-            	            otherlv_2=(Token)match(input,31,FollowSets000.FOLLOW_31_in_ruleAddExpression2288); 
+            	            otherlv_2=(Token)match(input,32,FollowSets000.FOLLOW_32_in_ruleAddExpression2337); 
 
             	                	newLeafNode(otherlv_2, grammarAccess.getAddExpressionAccess().getPlusSignKeyword_1_0_0_1());
             	                
@@ -2647,13 +2719,13 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1055:6: ( () otherlv_4= '-' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1082:6: ( () otherlv_4= '-' )
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1055:6: ( () otherlv_4= '-' )
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1055:7: () otherlv_4= '-'
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1082:6: ( () otherlv_4= '-' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1082:7: () otherlv_4= '-'
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1055:7: ()
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1056:5: 
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1082:7: ()
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1083:5: 
             	            {
 
             	                    current = forceCreateModelElementAndSet(
@@ -2663,7 +2735,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	            }
 
-            	            otherlv_4=(Token)match(input,32,FollowSets000.FOLLOW_32_in_ruleAddExpression2317); 
+            	            otherlv_4=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleAddExpression2366); 
 
             	                	newLeafNode(otherlv_4, grammarAccess.getAddExpressionAccess().getHyphenMinusKeyword_1_0_1_1());
             	                
@@ -2676,16 +2748,16 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1065:3: ( (lv_right_5_0= ruleMultExpression ) )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1066:1: (lv_right_5_0= ruleMultExpression )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1092:3: ( (lv_right_5_0= ruleMultExpression ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1093:1: (lv_right_5_0= ruleMultExpression )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1066:1: (lv_right_5_0= ruleMultExpression )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1067:3: lv_right_5_0= ruleMultExpression
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1093:1: (lv_right_5_0= ruleMultExpression )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1094:3: lv_right_5_0= ruleMultExpression
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getAddExpressionAccess().getRightMultExpressionParserRuleCall_1_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleMultExpression_in_ruleAddExpression2340);
+            	    pushFollow(FollowSets000.FOLLOW_ruleMultExpression_in_ruleAddExpression2389);
             	    lv_right_5_0=ruleMultExpression();
 
             	    state._fsp--;
@@ -2737,7 +2809,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMultExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1091:1: entryRuleMultExpression returns [EObject current=null] : iv_ruleMultExpression= ruleMultExpression EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1118:1: entryRuleMultExpression returns [EObject current=null] : iv_ruleMultExpression= ruleMultExpression EOF ;
     public final EObject entryRuleMultExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2745,17 +2817,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1092:2: (iv_ruleMultExpression= ruleMultExpression EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1093:2: iv_ruleMultExpression= ruleMultExpression EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1119:2: (iv_ruleMultExpression= ruleMultExpression EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1120:2: iv_ruleMultExpression= ruleMultExpression EOF
             {
              newCompositeNode(grammarAccess.getMultExpressionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleMultExpression_in_entryRuleMultExpression2378);
+            pushFollow(FollowSets000.FOLLOW_ruleMultExpression_in_entryRuleMultExpression2427);
             iv_ruleMultExpression=ruleMultExpression();
 
             state._fsp--;
 
              current =iv_ruleMultExpression; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleMultExpression2388); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleMultExpression2437); 
 
             }
 
@@ -2773,7 +2845,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMultExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1100:1: ruleMultExpression returns [EObject current=null] : (this_UnaryExpression_0= ruleUnaryExpression ( ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) ) )* ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1127:1: ruleMultExpression returns [EObject current=null] : (this_UnaryExpression_0= ruleUnaryExpression ( ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) ) )* ) ;
     public final EObject ruleMultExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2788,16 +2860,16 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1103:28: ( (this_UnaryExpression_0= ruleUnaryExpression ( ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) ) )* ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1104:1: (this_UnaryExpression_0= ruleUnaryExpression ( ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1130:28: ( (this_UnaryExpression_0= ruleUnaryExpression ( ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) ) )* ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1131:1: (this_UnaryExpression_0= ruleUnaryExpression ( ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) ) )* )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1104:1: (this_UnaryExpression_0= ruleUnaryExpression ( ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) ) )* )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1105:5: this_UnaryExpression_0= ruleUnaryExpression ( ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1131:1: (this_UnaryExpression_0= ruleUnaryExpression ( ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) ) )* )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1132:5: this_UnaryExpression_0= ruleUnaryExpression ( ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getMultExpressionAccess().getUnaryExpressionParserRuleCall_0()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleUnaryExpression_in_ruleMultExpression2435);
+            pushFollow(FollowSets000.FOLLOW_ruleUnaryExpression_in_ruleMultExpression2484);
             this_UnaryExpression_0=ruleUnaryExpression();
 
             state._fsp--;
@@ -2806,35 +2878,35 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                     current = this_UnaryExpression_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1113:1: ( ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) ) )*
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1140:1: ( ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) ) )*
             loop18:
             do {
                 int alt18=2;
                 int LA18_0 = input.LA(1);
 
-                if ( ((LA18_0>=33 && LA18_0<=35)) ) {
+                if ( ((LA18_0>=34 && LA18_0<=36)) ) {
                     alt18=1;
                 }
 
 
                 switch (alt18) {
             	case 1 :
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1113:2: ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1140:2: ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) ) ( (lv_right_7_0= ruleUnaryExpression ) )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1113:2: ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1140:2: ( ( () otherlv_2= '*' ) | ( () otherlv_4= '/' ) | ( () otherlv_6= '%' ) )
             	    int alt17=3;
             	    switch ( input.LA(1) ) {
-            	    case 33:
+            	    case 34:
             	        {
             	        alt17=1;
             	        }
             	        break;
-            	    case 34:
+            	    case 35:
             	        {
             	        alt17=2;
             	        }
             	        break;
-            	    case 35:
+            	    case 36:
             	        {
             	        alt17=3;
             	        }
@@ -2848,13 +2920,13 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	    switch (alt17) {
             	        case 1 :
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1113:3: ( () otherlv_2= '*' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1140:3: ( () otherlv_2= '*' )
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1113:3: ( () otherlv_2= '*' )
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1113:4: () otherlv_2= '*'
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1140:3: ( () otherlv_2= '*' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1140:4: () otherlv_2= '*'
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1113:4: ()
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1114:5: 
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1140:4: ()
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1141:5: 
             	            {
 
             	                    current = forceCreateModelElementAndSet(
@@ -2864,7 +2936,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	            }
 
-            	            otherlv_2=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleMultExpression2458); 
+            	            otherlv_2=(Token)match(input,34,FollowSets000.FOLLOW_34_in_ruleMultExpression2507); 
 
             	                	newLeafNode(otherlv_2, grammarAccess.getMultExpressionAccess().getAsteriskKeyword_1_0_0_1());
             	                
@@ -2875,13 +2947,13 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1124:6: ( () otherlv_4= '/' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1151:6: ( () otherlv_4= '/' )
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1124:6: ( () otherlv_4= '/' )
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1124:7: () otherlv_4= '/'
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1151:6: ( () otherlv_4= '/' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1151:7: () otherlv_4= '/'
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1124:7: ()
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1125:5: 
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1151:7: ()
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1152:5: 
             	            {
 
             	                    current = forceCreateModelElementAndSet(
@@ -2891,7 +2963,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	            }
 
-            	            otherlv_4=(Token)match(input,34,FollowSets000.FOLLOW_34_in_ruleMultExpression2487); 
+            	            otherlv_4=(Token)match(input,35,FollowSets000.FOLLOW_35_in_ruleMultExpression2536); 
 
             	                	newLeafNode(otherlv_4, grammarAccess.getMultExpressionAccess().getSolidusKeyword_1_0_1_1());
             	                
@@ -2902,13 +2974,13 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 3 :
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1135:6: ( () otherlv_6= '%' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1162:6: ( () otherlv_6= '%' )
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1135:6: ( () otherlv_6= '%' )
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1135:7: () otherlv_6= '%'
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1162:6: ( () otherlv_6= '%' )
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1162:7: () otherlv_6= '%'
             	            {
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1135:7: ()
-            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1136:5: 
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1162:7: ()
+            	            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1163:5: 
             	            {
 
             	                    current = forceCreateModelElementAndSet(
@@ -2918,7 +2990,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	            }
 
-            	            otherlv_6=(Token)match(input,35,FollowSets000.FOLLOW_35_in_ruleMultExpression2516); 
+            	            otherlv_6=(Token)match(input,36,FollowSets000.FOLLOW_36_in_ruleMultExpression2565); 
 
             	                	newLeafNode(otherlv_6, grammarAccess.getMultExpressionAccess().getPercentSignKeyword_1_0_2_1());
             	                
@@ -2931,16 +3003,16 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1145:3: ( (lv_right_7_0= ruleUnaryExpression ) )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1146:1: (lv_right_7_0= ruleUnaryExpression )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1172:3: ( (lv_right_7_0= ruleUnaryExpression ) )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1173:1: (lv_right_7_0= ruleUnaryExpression )
             	    {
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1146:1: (lv_right_7_0= ruleUnaryExpression )
-            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1147:3: lv_right_7_0= ruleUnaryExpression
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1173:1: (lv_right_7_0= ruleUnaryExpression )
+            	    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1174:3: lv_right_7_0= ruleUnaryExpression
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getMultExpressionAccess().getRightUnaryExpressionParserRuleCall_1_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleUnaryExpression_in_ruleMultExpression2539);
+            	    pushFollow(FollowSets000.FOLLOW_ruleUnaryExpression_in_ruleMultExpression2588);
             	    lv_right_7_0=ruleUnaryExpression();
 
             	    state._fsp--;
@@ -2992,7 +3064,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUnaryExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1171:1: entryRuleUnaryExpression returns [EObject current=null] : iv_ruleUnaryExpression= ruleUnaryExpression EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1198:1: entryRuleUnaryExpression returns [EObject current=null] : iv_ruleUnaryExpression= ruleUnaryExpression EOF ;
     public final EObject entryRuleUnaryExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3000,17 +3072,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1172:2: (iv_ruleUnaryExpression= ruleUnaryExpression EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1173:2: iv_ruleUnaryExpression= ruleUnaryExpression EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1199:2: (iv_ruleUnaryExpression= ruleUnaryExpression EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1200:2: iv_ruleUnaryExpression= ruleUnaryExpression EOF
             {
              newCompositeNode(grammarAccess.getUnaryExpressionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleUnaryExpression_in_entryRuleUnaryExpression2577);
+            pushFollow(FollowSets000.FOLLOW_ruleUnaryExpression_in_entryRuleUnaryExpression2626);
             iv_ruleUnaryExpression=ruleUnaryExpression();
 
             state._fsp--;
 
              current =iv_ruleUnaryExpression; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleUnaryExpression2587); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleUnaryExpression2636); 
 
             }
 
@@ -3028,7 +3100,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUnaryExpression"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1180:1: ruleUnaryExpression returns [EObject current=null] : (this_LiteralsExpression_0= ruleLiteralsExpression | ( () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) ) ) | ( () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) ) ) ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1207:1: ruleUnaryExpression returns [EObject current=null] : (this_LiteralsExpression_0= ruleLiteralsExpression | ( () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) ) ) | ( () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) ) ) ) ;
     public final EObject ruleUnaryExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3044,28 +3116,28 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1183:28: ( (this_LiteralsExpression_0= ruleLiteralsExpression | ( () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) ) ) | ( () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) ) ) ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1184:1: (this_LiteralsExpression_0= ruleLiteralsExpression | ( () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) ) ) | ( () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) ) ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1210:28: ( (this_LiteralsExpression_0= ruleLiteralsExpression | ( () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) ) ) | ( () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) ) ) ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1211:1: (this_LiteralsExpression_0= ruleLiteralsExpression | ( () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) ) ) | ( () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) ) ) )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1184:1: (this_LiteralsExpression_0= ruleLiteralsExpression | ( () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) ) ) | ( () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) ) ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1211:1: (this_LiteralsExpression_0= ruleLiteralsExpression | ( () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) ) ) | ( () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) ) ) )
             int alt19=3;
             switch ( input.LA(1) ) {
             case RULE_INT:
-            case 20:
-            case 22:
+            case 16:
+            case 19:
                 {
                 alt19=1;
                 }
                 break;
-            case 32:
+            case 33:
                 {
                 int LA19_2 = input.LA(2);
 
-                if ( (LA19_2==20||LA19_2==22||LA19_2==32) ) {
-                    alt19=3;
-                }
-                else if ( (LA19_2==RULE_INT) ) {
+                if ( (LA19_2==RULE_INT) ) {
                     alt19=1;
+                }
+                else if ( (LA19_2==16||LA19_2==19||LA19_2==33) ) {
+                    alt19=3;
                 }
                 else {
                     NoViableAltException nvae =
@@ -3075,7 +3147,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                 }
                 }
                 break;
-            case 36:
+            case 37:
                 {
                 alt19=2;
                 }
@@ -3089,12 +3161,12 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             switch (alt19) {
                 case 1 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1185:5: this_LiteralsExpression_0= ruleLiteralsExpression
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1212:5: this_LiteralsExpression_0= ruleLiteralsExpression
                     {
                      
                             newCompositeNode(grammarAccess.getUnaryExpressionAccess().getLiteralsExpressionParserRuleCall_0()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleLiteralsExpression_in_ruleUnaryExpression2634);
+                    pushFollow(FollowSets000.FOLLOW_ruleLiteralsExpression_in_ruleUnaryExpression2683);
                     this_LiteralsExpression_0=ruleLiteralsExpression();
 
                     state._fsp--;
@@ -3107,13 +3179,13 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1194:6: ( () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1221:6: ( () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) ) )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1194:6: ( () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) ) )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1194:7: () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1221:6: ( () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1221:7: () otherlv_2= '!' ( (lv_target_3_0= ruleLiteralsExpression ) )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1194:7: ()
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1195:5: 
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1221:7: ()
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1222:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -3123,20 +3195,20 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_2=(Token)match(input,36,FollowSets000.FOLLOW_36_in_ruleUnaryExpression2661); 
+                    otherlv_2=(Token)match(input,37,FollowSets000.FOLLOW_37_in_ruleUnaryExpression2710); 
 
                         	newLeafNode(otherlv_2, grammarAccess.getUnaryExpressionAccess().getExclamationMarkKeyword_1_1());
                         
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1204:1: ( (lv_target_3_0= ruleLiteralsExpression ) )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1205:1: (lv_target_3_0= ruleLiteralsExpression )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1231:1: ( (lv_target_3_0= ruleLiteralsExpression ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1232:1: (lv_target_3_0= ruleLiteralsExpression )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1205:1: (lv_target_3_0= ruleLiteralsExpression )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1206:3: lv_target_3_0= ruleLiteralsExpression
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1232:1: (lv_target_3_0= ruleLiteralsExpression )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1233:3: lv_target_3_0= ruleLiteralsExpression
                     {
                      
                     	        newCompositeNode(grammarAccess.getUnaryExpressionAccess().getTargetLiteralsExpressionParserRuleCall_1_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleLiteralsExpression_in_ruleUnaryExpression2682);
+                    pushFollow(FollowSets000.FOLLOW_ruleLiteralsExpression_in_ruleUnaryExpression2731);
                     lv_target_3_0=ruleLiteralsExpression();
 
                     state._fsp--;
@@ -3165,13 +3237,13 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1223:6: ( () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1250:6: ( () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) ) )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1223:6: ( () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) ) )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1223:7: () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1250:6: ( () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1250:7: () otherlv_5= '-' ( (lv_target_6_0= ruleLiteralsExpression ) )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1223:7: ()
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1224:5: 
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1250:7: ()
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1251:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -3181,20 +3253,20 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,32,FollowSets000.FOLLOW_32_in_ruleUnaryExpression2711); 
+                    otherlv_5=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleUnaryExpression2760); 
 
                         	newLeafNode(otherlv_5, grammarAccess.getUnaryExpressionAccess().getHyphenMinusKeyword_2_1());
                         
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1233:1: ( (lv_target_6_0= ruleLiteralsExpression ) )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1234:1: (lv_target_6_0= ruleLiteralsExpression )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1260:1: ( (lv_target_6_0= ruleLiteralsExpression ) )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1261:1: (lv_target_6_0= ruleLiteralsExpression )
                     {
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1234:1: (lv_target_6_0= ruleLiteralsExpression )
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1235:3: lv_target_6_0= ruleLiteralsExpression
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1261:1: (lv_target_6_0= ruleLiteralsExpression )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1262:3: lv_target_6_0= ruleLiteralsExpression
                     {
                      
                     	        newCompositeNode(grammarAccess.getUnaryExpressionAccess().getTargetLiteralsExpressionParserRuleCall_2_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleLiteralsExpression_in_ruleUnaryExpression2732);
+                    pushFollow(FollowSets000.FOLLOW_ruleLiteralsExpression_in_ruleUnaryExpression2781);
                     lv_target_6_0=ruleLiteralsExpression();
 
                     state._fsp--;
@@ -3243,7 +3315,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntegerLiteral"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1259:1: entryRuleIntegerLiteral returns [EObject current=null] : iv_ruleIntegerLiteral= ruleIntegerLiteral EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1286:1: entryRuleIntegerLiteral returns [EObject current=null] : iv_ruleIntegerLiteral= ruleIntegerLiteral EOF ;
     public final EObject entryRuleIntegerLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -3251,17 +3323,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1260:2: (iv_ruleIntegerLiteral= ruleIntegerLiteral EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1261:2: iv_ruleIntegerLiteral= ruleIntegerLiteral EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1287:2: (iv_ruleIntegerLiteral= ruleIntegerLiteral EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1288:2: iv_ruleIntegerLiteral= ruleIntegerLiteral EOF
             {
              newCompositeNode(grammarAccess.getIntegerLiteralRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleIntegerLiteral_in_entryRuleIntegerLiteral2769);
+            pushFollow(FollowSets000.FOLLOW_ruleIntegerLiteral_in_entryRuleIntegerLiteral2818);
             iv_ruleIntegerLiteral=ruleIntegerLiteral();
 
             state._fsp--;
 
              current =iv_ruleIntegerLiteral; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleIntegerLiteral2779); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleIntegerLiteral2828); 
 
             }
 
@@ -3279,7 +3351,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntegerLiteral"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1268:1: ruleIntegerLiteral returns [EObject current=null] : ( (lv_val_0_0= ruleEInt ) ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1295:1: ruleIntegerLiteral returns [EObject current=null] : ( (lv_val_0_0= ruleEInt ) ) ;
     public final EObject ruleIntegerLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -3289,19 +3361,19 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1271:28: ( ( (lv_val_0_0= ruleEInt ) ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1272:1: ( (lv_val_0_0= ruleEInt ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1298:28: ( ( (lv_val_0_0= ruleEInt ) ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1299:1: ( (lv_val_0_0= ruleEInt ) )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1272:1: ( (lv_val_0_0= ruleEInt ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1273:1: (lv_val_0_0= ruleEInt )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1299:1: ( (lv_val_0_0= ruleEInt ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1300:1: (lv_val_0_0= ruleEInt )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1273:1: (lv_val_0_0= ruleEInt )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1274:3: lv_val_0_0= ruleEInt
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1300:1: (lv_val_0_0= ruleEInt )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1301:3: lv_val_0_0= ruleEInt
             {
              
             	        newCompositeNode(grammarAccess.getIntegerLiteralAccess().getValEIntParserRuleCall_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_ruleIntegerLiteral2824);
+            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_ruleIntegerLiteral2873);
             lv_val_0_0=ruleEInt();
 
             state._fsp--;
@@ -3341,7 +3413,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEInt"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1298:1: entryRuleEInt returns [String current=null] : iv_ruleEInt= ruleEInt EOF ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1325:1: entryRuleEInt returns [String current=null] : iv_ruleEInt= ruleEInt EOF ;
     public final String entryRuleEInt() throws RecognitionException {
         String current = null;
 
@@ -3349,17 +3421,17 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1299:2: (iv_ruleEInt= ruleEInt EOF )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1300:2: iv_ruleEInt= ruleEInt EOF
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1326:2: (iv_ruleEInt= ruleEInt EOF )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1327:2: iv_ruleEInt= ruleEInt EOF
             {
              newCompositeNode(grammarAccess.getEIntRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_entryRuleEInt2860);
+            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_entryRuleEInt2909);
             iv_ruleEInt=ruleEInt();
 
             state._fsp--;
 
              current =iv_ruleEInt.getText(); 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEInt2871); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEInt2920); 
 
             }
 
@@ -3377,7 +3449,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEInt"
-    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1307:1: ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_INT_1= RULE_INT ) ;
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1334:1: ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_INT_1= RULE_INT ) ;
     public final AntlrDatatypeRuleToken ruleEInt() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3387,24 +3459,24 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1310:28: ( ( (kw= '-' )? this_INT_1= RULE_INT ) )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1311:1: ( (kw= '-' )? this_INT_1= RULE_INT )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1337:28: ( ( (kw= '-' )? this_INT_1= RULE_INT ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1338:1: ( (kw= '-' )? this_INT_1= RULE_INT )
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1311:1: ( (kw= '-' )? this_INT_1= RULE_INT )
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1311:2: (kw= '-' )? this_INT_1= RULE_INT
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1338:1: ( (kw= '-' )? this_INT_1= RULE_INT )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1338:2: (kw= '-' )? this_INT_1= RULE_INT
             {
-            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1311:2: (kw= '-' )?
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1338:2: (kw= '-' )?
             int alt20=2;
             int LA20_0 = input.LA(1);
 
-            if ( (LA20_0==32) ) {
+            if ( (LA20_0==33) ) {
                 alt20=1;
             }
             switch (alt20) {
                 case 1 :
-                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1312:2: kw= '-'
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1339:2: kw= '-'
                     {
-                    kw=(Token)match(input,32,FollowSets000.FOLLOW_32_in_ruleEInt2910); 
+                    kw=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleEInt2959); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getEIntAccess().getHyphenMinusKeyword_0()); 
@@ -3415,7 +3487,7 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
 
             }
 
-            this_INT_1=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleEInt2927); 
+            this_INT_1=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleEInt2976); 
 
             		current.merge(this_INT_1);
                 
@@ -3441,6 +3513,90 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleEInt"
 
+
+    // $ANTLR start "ruleNeighborhood"
+    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1359:1: ruleNeighborhood returns [Enumerator current=null] : ( (enumLiteral_0= 'Neumann' ) | (enumLiteral_1= 'Moore' ) ) ;
+    public final Enumerator ruleNeighborhood() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+
+         enterRule(); 
+        try {
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1361:28: ( ( (enumLiteral_0= 'Neumann' ) | (enumLiteral_1= 'Moore' ) ) )
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1362:1: ( (enumLiteral_0= 'Neumann' ) | (enumLiteral_1= 'Moore' ) )
+            {
+            // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1362:1: ( (enumLiteral_0= 'Neumann' ) | (enumLiteral_1= 'Moore' ) )
+            int alt21=2;
+            int LA21_0 = input.LA(1);
+
+            if ( (LA21_0==38) ) {
+                alt21=1;
+            }
+            else if ( (LA21_0==39) ) {
+                alt21=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 21, 0, input);
+
+                throw nvae;
+            }
+            switch (alt21) {
+                case 1 :
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1362:2: (enumLiteral_0= 'Neumann' )
+                    {
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1362:2: (enumLiteral_0= 'Neumann' )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1362:4: enumLiteral_0= 'Neumann'
+                    {
+                    enumLiteral_0=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleNeighborhood3035); 
+
+                            current = grammarAccess.getNeighborhoodAccess().getNeumannEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                            newLeafNode(enumLiteral_0, grammarAccess.getNeighborhoodAccess().getNeumannEnumLiteralDeclaration_0()); 
+                        
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1368:6: (enumLiteral_1= 'Moore' )
+                    {
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1368:6: (enumLiteral_1= 'Moore' )
+                    // ../org.kermeta.language.sample.cellularautomata.rules.initialization.cs/src-gen/org/kermeta/language/sample/cellularautomata/rules/parser/antlr/internal/InternalInit.g:1368:8: enumLiteral_1= 'Moore'
+                    {
+                    enumLiteral_1=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleNeighborhood3052); 
+
+                            current = grammarAccess.getNeighborhoodAccess().getMooreEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                            newLeafNode(enumLiteral_1, grammarAccess.getNeighborhoodAccess().getMooreEnumLiteralDeclaration_1()); 
+                        
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleNeighborhood"
+
     // Delegated rules
 
 
@@ -3455,115 +3611,117 @@ public class InternalInitParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleRule_in_ruleCellularAutomataInitialization183 = new BitSet(new long[]{0x0000000000000802L});
         public static final BitSet FOLLOW_ruleRule_in_entryRuleRule220 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleRule230 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_11_in_ruleRule267 = new BitSet(new long[]{0x0000000000005000L});
-        public static final BitSet FOLLOW_ruleGlobalPosition_in_ruleRule288 = new BitSet(new long[]{0x0000000000001000L});
+        public static final BitSet FOLLOW_11_in_ruleRule267 = new BitSet(new long[]{0x0000000000011000L});
+        public static final BitSet FOLLOW_ruleCoordinateRanges_in_ruleRule288 = new BitSet(new long[]{0x0000000000001000L});
         public static final BitSet FOLLOW_12_in_ruleRule301 = new BitSet(new long[]{0x0000000000002000L});
-        public static final BitSet FOLLOW_13_in_ruleRule313 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_14_in_ruleRule325 = new BitSet(new long[]{0x0000001101500010L});
-        public static final BitSet FOLLOW_ruleConditional_in_ruleRule346 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleRule358 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleGlobalPosition_in_entryRuleGlobalPosition394 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleGlobalPosition404 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_14_in_ruleGlobalPosition450 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_ruleCoordinateRange_in_ruleGlobalPosition471 = new BitSet(new long[]{0x0000000000018000L});
-        public static final BitSet FOLLOW_16_in_ruleGlobalPosition484 = new BitSet(new long[]{0x0000000000038000L});
-        public static final BitSet FOLLOW_ruleCoordinateRange_in_ruleGlobalPosition505 = new BitSet(new long[]{0x0000000000018000L});
-        public static final BitSet FOLLOW_15_in_ruleGlobalPosition520 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleCoordinateRange_in_entryRuleCoordinateRange556 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleCoordinateRange566 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_17_in_ruleCoordinateRange603 = new BitSet(new long[]{0x0000000100500010L});
-        public static final BitSet FOLLOW_ruleEInt_in_ruleCoordinateRange624 = new BitSet(new long[]{0x0000000000040000L});
-        public static final BitSet FOLLOW_18_in_ruleCoordinateRange636 = new BitSet(new long[]{0x0000000100500010L});
-        public static final BitSet FOLLOW_ruleEInt_in_ruleCoordinateRange657 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleCoordinateRange669 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleLiteralsExpression_in_entryRuleLiteralsExpression705 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleLiteralsExpression715 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_20_in_ruleLiteralsExpression753 = new BitSet(new long[]{0x0000001101500010L});
-        public static final BitSet FOLLOW_ruleConditional_in_ruleLiteralsExpression775 = new BitSet(new long[]{0x0000000000200000L});
-        public static final BitSet FOLLOW_21_in_ruleLiteralsExpression786 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rulePositionLiteral_in_ruleLiteralsExpression815 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleIntegerLiteral_in_ruleLiteralsExpression842 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rulePositionLiteral_in_entryRulePositionLiteral877 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRulePositionLiteral887 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_22_in_rulePositionLiteral933 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_rulePositionLiteral945 = new BitSet(new long[]{0x0000000100500010L});
-        public static final BitSet FOLLOW_ruleEInt_in_rulePositionLiteral966 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_rulePositionLiteral978 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleRegularGeometry_in_entryRuleRegularGeometry1014 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleRegularGeometry1024 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_23_in_ruleRegularGeometry1070 = new BitSet(new long[]{0x0000000100500010L});
-        public static final BitSet FOLLOW_ruleEInt_in_ruleRegularGeometry1091 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_14_in_ruleRegularGeometry1103 = new BitSet(new long[]{0x0000000100500010L});
-        public static final BitSet FOLLOW_ruleDimension_in_ruleRegularGeometry1124 = new BitSet(new long[]{0x0000000000018000L});
-        public static final BitSet FOLLOW_16_in_ruleRegularGeometry1137 = new BitSet(new long[]{0x0000000100500010L});
-        public static final BitSet FOLLOW_ruleDimension_in_ruleRegularGeometry1158 = new BitSet(new long[]{0x0000000000018000L});
-        public static final BitSet FOLLOW_15_in_ruleRegularGeometry1172 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleDimension_in_entryRuleDimension1208 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleDimension1218 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEInt_in_ruleDimension1274 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_20_in_ruleDimension1300 = new BitSet(new long[]{0x0000000100500010L});
-        public static final BitSet FOLLOW_ruleEInt_in_ruleDimension1334 = new BitSet(new long[]{0x0000000000200000L});
-        public static final BitSet FOLLOW_21_in_ruleDimension1346 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleConditional_in_entryRuleConditional1383 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleConditional1393 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleOrExpression_in_ruleConditional1440 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_24_in_ruleConditional1467 = new BitSet(new long[]{0x0000001101500010L});
-        public static final BitSet FOLLOW_ruleConditional_in_ruleConditional1488 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_14_in_ruleConditional1500 = new BitSet(new long[]{0x0000001101500010L});
-        public static final BitSet FOLLOW_ruleConditional_in_ruleConditional1521 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleConditional1533 = new BitSet(new long[]{0x0000000002000000L});
-        public static final BitSet FOLLOW_25_in_ruleConditional1545 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_14_in_ruleConditional1557 = new BitSet(new long[]{0x0000001101500010L});
-        public static final BitSet FOLLOW_ruleConditional_in_ruleConditional1578 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleConditional1590 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleOrExpression_in_entryRuleOrExpression1627 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleOrExpression1637 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAndExpression_in_ruleOrExpression1684 = new BitSet(new long[]{0x0000000004000002L});
-        public static final BitSet FOLLOW_26_in_ruleOrExpression1705 = new BitSet(new long[]{0x0000001100500010L});
-        public static final BitSet FOLLOW_ruleAndExpression_in_ruleOrExpression1726 = new BitSet(new long[]{0x0000000004000002L});
-        public static final BitSet FOLLOW_ruleAndExpression_in_entryRuleAndExpression1764 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleAndExpression1774 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEqualExpression_in_ruleAndExpression1821 = new BitSet(new long[]{0x0000000008000002L});
-        public static final BitSet FOLLOW_27_in_ruleAndExpression1842 = new BitSet(new long[]{0x0000001100500010L});
-        public static final BitSet FOLLOW_ruleEqualExpression_in_ruleAndExpression1863 = new BitSet(new long[]{0x0000000008000002L});
-        public static final BitSet FOLLOW_ruleEqualExpression_in_entryRuleEqualExpression1901 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleEqualExpression1911 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleComparisonExpression_in_ruleEqualExpression1958 = new BitSet(new long[]{0x0000000010000002L});
-        public static final BitSet FOLLOW_28_in_ruleEqualExpression1979 = new BitSet(new long[]{0x0000001100500010L});
-        public static final BitSet FOLLOW_ruleComparisonExpression_in_ruleEqualExpression2000 = new BitSet(new long[]{0x0000000010000002L});
-        public static final BitSet FOLLOW_ruleComparisonExpression_in_entryRuleComparisonExpression2038 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleComparisonExpression2048 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAddExpression_in_ruleComparisonExpression2095 = new BitSet(new long[]{0x0000000060000002L});
-        public static final BitSet FOLLOW_29_in_ruleComparisonExpression2118 = new BitSet(new long[]{0x0000001100500010L});
-        public static final BitSet FOLLOW_30_in_ruleComparisonExpression2147 = new BitSet(new long[]{0x0000001100500010L});
-        public static final BitSet FOLLOW_ruleAddExpression_in_ruleComparisonExpression2170 = new BitSet(new long[]{0x0000000060000002L});
-        public static final BitSet FOLLOW_ruleAddExpression_in_entryRuleAddExpression2208 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleAddExpression2218 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleMultExpression_in_ruleAddExpression2265 = new BitSet(new long[]{0x0000000180000002L});
-        public static final BitSet FOLLOW_31_in_ruleAddExpression2288 = new BitSet(new long[]{0x0000001100500010L});
-        public static final BitSet FOLLOW_32_in_ruleAddExpression2317 = new BitSet(new long[]{0x0000001100500010L});
-        public static final BitSet FOLLOW_ruleMultExpression_in_ruleAddExpression2340 = new BitSet(new long[]{0x0000000180000002L});
-        public static final BitSet FOLLOW_ruleMultExpression_in_entryRuleMultExpression2378 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleMultExpression2388 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleUnaryExpression_in_ruleMultExpression2435 = new BitSet(new long[]{0x0000000E00000002L});
-        public static final BitSet FOLLOW_33_in_ruleMultExpression2458 = new BitSet(new long[]{0x0000001100500010L});
-        public static final BitSet FOLLOW_34_in_ruleMultExpression2487 = new BitSet(new long[]{0x0000001100500010L});
-        public static final BitSet FOLLOW_35_in_ruleMultExpression2516 = new BitSet(new long[]{0x0000001100500010L});
-        public static final BitSet FOLLOW_ruleUnaryExpression_in_ruleMultExpression2539 = new BitSet(new long[]{0x0000000E00000002L});
-        public static final BitSet FOLLOW_ruleUnaryExpression_in_entryRuleUnaryExpression2577 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleUnaryExpression2587 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleLiteralsExpression_in_ruleUnaryExpression2634 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_36_in_ruleUnaryExpression2661 = new BitSet(new long[]{0x0000000100500010L});
-        public static final BitSet FOLLOW_ruleLiteralsExpression_in_ruleUnaryExpression2682 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_32_in_ruleUnaryExpression2711 = new BitSet(new long[]{0x0000000100500010L});
-        public static final BitSet FOLLOW_ruleLiteralsExpression_in_ruleUnaryExpression2732 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleIntegerLiteral_in_entryRuleIntegerLiteral2769 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleIntegerLiteral2779 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEInt_in_ruleIntegerLiteral2824 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEInt_in_entryRuleEInt2860 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleEInt2871 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_32_in_ruleEInt2910 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_INT_in_ruleEInt2927 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_13_in_ruleRule313 = new BitSet(new long[]{0x0000002202090010L});
+        public static final BitSet FOLLOW_ruleConditional_in_ruleRule334 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_ruleRule346 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleCoordinateRanges_in_entryRuleCoordinateRanges382 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleCoordinateRanges392 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleCoordinateRange_in_ruleCoordinateRanges447 = new BitSet(new long[]{0x0000000000008002L});
+        public static final BitSet FOLLOW_15_in_ruleCoordinateRanges460 = new BitSet(new long[]{0x0000000000010000L});
+        public static final BitSet FOLLOW_ruleCoordinateRange_in_ruleCoordinateRanges481 = new BitSet(new long[]{0x0000000000008002L});
+        public static final BitSet FOLLOW_ruleCoordinateRange_in_entryRuleCoordinateRange519 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleCoordinateRange529 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_16_in_ruleCoordinateRange566 = new BitSet(new long[]{0x0000000200090010L});
+        public static final BitSet FOLLOW_ruleDimensionRange_in_ruleCoordinateRange587 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleCoordinateRange599 = new BitSet(new long[]{0x0000000200090010L});
+        public static final BitSet FOLLOW_ruleDimensionRange_in_ruleCoordinateRange620 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleCoordinateRange632 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleDimensionRange_in_entryRuleDimensionRange668 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleDimensionRange678 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEInt_in_ruleDimensionRange724 = new BitSet(new long[]{0x0000000000040002L});
+        public static final BitSet FOLLOW_18_in_ruleDimensionRange737 = new BitSet(new long[]{0x0000000200090010L});
+        public static final BitSet FOLLOW_ruleEInt_in_ruleDimensionRange758 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleLiteralsExpression_in_entryRuleLiteralsExpression796 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleLiteralsExpression806 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_16_in_ruleLiteralsExpression844 = new BitSet(new long[]{0x0000002202090010L});
+        public static final BitSet FOLLOW_ruleConditional_in_ruleLiteralsExpression866 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleLiteralsExpression877 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rulePositionLiteral_in_ruleLiteralsExpression906 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleIntegerLiteral_in_ruleLiteralsExpression933 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rulePositionLiteral_in_entryRulePositionLiteral968 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRulePositionLiteral978 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_19_in_rulePositionLiteral1024 = new BitSet(new long[]{0x0000000000100000L});
+        public static final BitSet FOLLOW_20_in_rulePositionLiteral1036 = new BitSet(new long[]{0x0000000200090010L});
+        public static final BitSet FOLLOW_ruleEInt_in_rulePositionLiteral1057 = new BitSet(new long[]{0x0000000000200000L});
+        public static final BitSet FOLLOW_21_in_rulePositionLiteral1069 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleRegularGeometry_in_entryRuleRegularGeometry1105 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleRegularGeometry1115 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_22_in_ruleRegularGeometry1161 = new BitSet(new long[]{0x000000C000000000L});
+        public static final BitSet FOLLOW_ruleNeighborhood_in_ruleRegularGeometry1182 = new BitSet(new long[]{0x0000000000002000L});
+        public static final BitSet FOLLOW_13_in_ruleRegularGeometry1194 = new BitSet(new long[]{0x0000000200090010L});
+        public static final BitSet FOLLOW_ruleDimension_in_ruleRegularGeometry1215 = new BitSet(new long[]{0x0000000000804000L});
+        public static final BitSet FOLLOW_23_in_ruleRegularGeometry1228 = new BitSet(new long[]{0x0000000200090010L});
+        public static final BitSet FOLLOW_ruleDimension_in_ruleRegularGeometry1249 = new BitSet(new long[]{0x0000000000804000L});
+        public static final BitSet FOLLOW_14_in_ruleRegularGeometry1263 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleDimension_in_entryRuleDimension1299 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleDimension1309 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEInt_in_ruleDimension1364 = new BitSet(new long[]{0x0000000001000002L});
+        public static final BitSet FOLLOW_24_in_ruleDimension1382 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleConditional_in_entryRuleConditional1432 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleConditional1442 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleOrExpression_in_ruleConditional1489 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_25_in_ruleConditional1516 = new BitSet(new long[]{0x0000002202090010L});
+        public static final BitSet FOLLOW_ruleConditional_in_ruleConditional1537 = new BitSet(new long[]{0x0000000000002000L});
+        public static final BitSet FOLLOW_13_in_ruleConditional1549 = new BitSet(new long[]{0x0000002202090010L});
+        public static final BitSet FOLLOW_ruleConditional_in_ruleConditional1570 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_ruleConditional1582 = new BitSet(new long[]{0x0000000004000000L});
+        public static final BitSet FOLLOW_26_in_ruleConditional1594 = new BitSet(new long[]{0x0000000000002000L});
+        public static final BitSet FOLLOW_13_in_ruleConditional1606 = new BitSet(new long[]{0x0000002202090010L});
+        public static final BitSet FOLLOW_ruleConditional_in_ruleConditional1627 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_ruleConditional1639 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleOrExpression_in_entryRuleOrExpression1676 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleOrExpression1686 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAndExpression_in_ruleOrExpression1733 = new BitSet(new long[]{0x0000000008000002L});
+        public static final BitSet FOLLOW_27_in_ruleOrExpression1754 = new BitSet(new long[]{0x0000002200090010L});
+        public static final BitSet FOLLOW_ruleAndExpression_in_ruleOrExpression1775 = new BitSet(new long[]{0x0000000008000002L});
+        public static final BitSet FOLLOW_ruleAndExpression_in_entryRuleAndExpression1813 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleAndExpression1823 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEqualExpression_in_ruleAndExpression1870 = new BitSet(new long[]{0x0000000010000002L});
+        public static final BitSet FOLLOW_28_in_ruleAndExpression1891 = new BitSet(new long[]{0x0000002200090010L});
+        public static final BitSet FOLLOW_ruleEqualExpression_in_ruleAndExpression1912 = new BitSet(new long[]{0x0000000010000002L});
+        public static final BitSet FOLLOW_ruleEqualExpression_in_entryRuleEqualExpression1950 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleEqualExpression1960 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleComparisonExpression_in_ruleEqualExpression2007 = new BitSet(new long[]{0x0000000020000002L});
+        public static final BitSet FOLLOW_29_in_ruleEqualExpression2028 = new BitSet(new long[]{0x0000002200090010L});
+        public static final BitSet FOLLOW_ruleComparisonExpression_in_ruleEqualExpression2049 = new BitSet(new long[]{0x0000000020000002L});
+        public static final BitSet FOLLOW_ruleComparisonExpression_in_entryRuleComparisonExpression2087 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleComparisonExpression2097 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAddExpression_in_ruleComparisonExpression2144 = new BitSet(new long[]{0x00000000C0000002L});
+        public static final BitSet FOLLOW_30_in_ruleComparisonExpression2167 = new BitSet(new long[]{0x0000002200090010L});
+        public static final BitSet FOLLOW_31_in_ruleComparisonExpression2196 = new BitSet(new long[]{0x0000002200090010L});
+        public static final BitSet FOLLOW_ruleAddExpression_in_ruleComparisonExpression2219 = new BitSet(new long[]{0x00000000C0000002L});
+        public static final BitSet FOLLOW_ruleAddExpression_in_entryRuleAddExpression2257 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleAddExpression2267 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleMultExpression_in_ruleAddExpression2314 = new BitSet(new long[]{0x0000000300000002L});
+        public static final BitSet FOLLOW_32_in_ruleAddExpression2337 = new BitSet(new long[]{0x0000002200090010L});
+        public static final BitSet FOLLOW_33_in_ruleAddExpression2366 = new BitSet(new long[]{0x0000002200090010L});
+        public static final BitSet FOLLOW_ruleMultExpression_in_ruleAddExpression2389 = new BitSet(new long[]{0x0000000300000002L});
+        public static final BitSet FOLLOW_ruleMultExpression_in_entryRuleMultExpression2427 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleMultExpression2437 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleUnaryExpression_in_ruleMultExpression2484 = new BitSet(new long[]{0x0000001C00000002L});
+        public static final BitSet FOLLOW_34_in_ruleMultExpression2507 = new BitSet(new long[]{0x0000002200090010L});
+        public static final BitSet FOLLOW_35_in_ruleMultExpression2536 = new BitSet(new long[]{0x0000002200090010L});
+        public static final BitSet FOLLOW_36_in_ruleMultExpression2565 = new BitSet(new long[]{0x0000002200090010L});
+        public static final BitSet FOLLOW_ruleUnaryExpression_in_ruleMultExpression2588 = new BitSet(new long[]{0x0000001C00000002L});
+        public static final BitSet FOLLOW_ruleUnaryExpression_in_entryRuleUnaryExpression2626 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleUnaryExpression2636 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleLiteralsExpression_in_ruleUnaryExpression2683 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_37_in_ruleUnaryExpression2710 = new BitSet(new long[]{0x0000000200090010L});
+        public static final BitSet FOLLOW_ruleLiteralsExpression_in_ruleUnaryExpression2731 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_33_in_ruleUnaryExpression2760 = new BitSet(new long[]{0x0000000200090010L});
+        public static final BitSet FOLLOW_ruleLiteralsExpression_in_ruleUnaryExpression2781 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleIntegerLiteral_in_entryRuleIntegerLiteral2818 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleIntegerLiteral2828 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEInt_in_ruleIntegerLiteral2873 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEInt_in_entryRuleEInt2909 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleEInt2920 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_33_in_ruleEInt2959 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_INT_in_ruleEInt2976 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_38_in_ruleNeighborhood3035 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_39_in_ruleNeighborhood3052 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

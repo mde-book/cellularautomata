@@ -27,7 +27,7 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	 */
 	public static CoreFactory init() {
 		try {
-			CoreFactory theCoreFactory = (CoreFactory)EPackage.Registry.INSTANCE.getEFactory("http://rules/core/1.0"); 
+			CoreFactory theCoreFactory = (CoreFactory)EPackage.Registry.INSTANCE.getEFactory(CorePackage.eNS_URI);
 			if (theCoreFactory != null) {
 				return theCoreFactory;
 			}
@@ -58,7 +58,6 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 		switch (eClass.getClassifierID()) {
 			case CorePackage.RULE: return createRule();
 			case CorePackage.ADD: return createAdd();
-			case CorePackage.UNARY_EXPRESSION: return createUnaryExpression();
 			case CorePackage.AND: return createAnd();
 			case CorePackage.OR: return createOr();
 			case CorePackage.NOT: return createNot();
@@ -66,7 +65,6 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.LOWER: return createLower();
 			case CorePackage.INTEGER_LITERAL: return createIntegerLiteral();
 			case CorePackage.CONDITIONAL: return createConditional();
-			case CorePackage.BINARY_EXPRESSION: return createBinaryExpression();
 			case CorePackage.MULT: return createMult();
 			case CorePackage.DIV: return createDiv();
 			case CorePackage.MOD: return createMod();
@@ -96,16 +94,6 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public Add createAdd() {
 		AddImpl add = new AddImpl();
 		return add;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public UnaryExpression createUnaryExpression() {
-		UnaryExpressionImpl unaryExpression = new UnaryExpressionImpl();
-		return unaryExpression;
 	}
 
 	/**
@@ -176,16 +164,6 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public Conditional createConditional() {
 		ConditionalImpl conditional = new ConditionalImpl();
 		return conditional;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public BinaryExpression createBinaryExpression() {
-		BinaryExpressionImpl binaryExpression = new BinaryExpressionImpl();
-		return binaryExpression;
 	}
 
 	/**

@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class BinaryExpressionImpl extends IntegerExpressionImpl implements BinaryExpression {
+public abstract class BinaryExpressionImpl extends IntegerExpressionImpl implements BinaryExpression {
 	/**
 	 * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
 	 * <!-- begin-user-doc -->

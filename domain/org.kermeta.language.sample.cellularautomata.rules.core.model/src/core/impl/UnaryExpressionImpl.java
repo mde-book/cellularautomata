@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class UnaryExpressionImpl extends IntegerExpressionImpl implements UnaryExpression {
+public abstract class UnaryExpressionImpl extends IntegerExpressionImpl implements UnaryExpression {
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
 	 * <!-- begin-user-doc -->

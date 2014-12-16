@@ -17,7 +17,7 @@ package core;
  * </p>
  *
  * @see core.CorePackage#getBinaryExpression()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface BinaryExpression extends IntegerExpression {

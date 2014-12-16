@@ -56,7 +56,7 @@ public class InitFactoryImpl extends EFactoryImpl implements InitFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION: return createCellularAutomatatInitialization();
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION: return createCellularAutomataInitialization();
 			case InitPackage.COORDINATE_RANGES: return createCoordinateRanges();
 			case InitPackage.COORDINATE_RANGE: return createCoordinateRange();
 			case InitPackage.DIMENSION_RANGE: return createDimensionRange();
@@ -71,9 +71,9 @@ public class InitFactoryImpl extends EFactoryImpl implements InitFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CellularAutomatatInitialization createCellularAutomatatInitialization() {
-		CellularAutomatatInitializationImpl cellularAutomatatInitialization = new CellularAutomatatInitializationImpl();
-		return cellularAutomatatInitialization;
+	public CellularAutomataInitialization createCellularAutomataInitialization() {
+		CellularAutomataInitializationImpl cellularAutomataInitialization = new CellularAutomataInitializationImpl();
+		return cellularAutomataInitialization;
 	}
 
 	/**

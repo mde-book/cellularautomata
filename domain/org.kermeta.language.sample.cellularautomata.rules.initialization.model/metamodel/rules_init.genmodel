@@ -6,9 +6,9 @@
     copyrightFields="false" usedGenPackages="../../org.kermeta.language.sample.cellularautomata.geometry.model/metamodel/geometry.genmodel#//geometry ../../org.kermeta.language.sample.cellularautomata.rules.core.model/metamodel/rules_core.genmodel#//core">
   <foreignModel>rules_init.ecore</foreignModel>
   <genPackages prefix="Init" disposableProviderFactory="true" ecorePackage="rules_init.ecore#/">
-    <genClasses ecoreClass="rules_init.ecore#//CellularAutomatatInitialization">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//CellularAutomatatInitialization/seedRules"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//CellularAutomatatInitialization/geometry"/>
+    <genClasses ecoreClass="rules_init.ecore#//CellularAutomataInitialization">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//CellularAutomataInitialization/seedRules"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//CellularAutomataInitialization/geometry"/>
     </genClasses>
     <genClasses ecoreClass="rules_init.ecore#//CoordinateRanges">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//CoordinateRanges/coordinateRanges"/>

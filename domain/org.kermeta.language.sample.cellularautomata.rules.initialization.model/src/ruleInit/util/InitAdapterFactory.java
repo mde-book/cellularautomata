@@ -71,8 +71,8 @@ public class InitAdapterFactory extends AdapterFactoryImpl {
 	protected InitSwitch<Adapter> modelSwitch =
 		new InitSwitch<Adapter>() {
 			@Override
-			public Adapter caseCellularAutomatatInitialization(CellularAutomatatInitialization object) {
-				return createCellularAutomatatInitializationAdapter();
+			public Adapter caseCellularAutomataInitialization(CellularAutomataInitialization object) {
+				return createCellularAutomataInitializationAdapter();
 			}
 			@Override
 			public Adapter caseCoordinateRanges(CoordinateRanges object) {
@@ -119,16 +119,16 @@ public class InitAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link ruleInit.CellularAutomatatInitialization <em>Cellular Automatat Initialization</em>}'.
+	 * Creates a new adapter for an object of class '{@link ruleInit.CellularAutomataInitialization <em>Cellular Automata Initialization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see ruleInit.CellularAutomatatInitialization
+	 * @see ruleInit.CellularAutomataInitialization
 	 * @generated
 	 */
-	public Adapter createCellularAutomatatInitializationAdapter() {
+	public Adapter createCellularAutomataInitializationAdapter() {
 		return null;
 	}
 
