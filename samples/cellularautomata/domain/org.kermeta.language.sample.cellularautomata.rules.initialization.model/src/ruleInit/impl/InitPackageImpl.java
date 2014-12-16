@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import ruleInit.CellularAutomatatInitialization;
+import ruleInit.CellularAutomataInitialization;
 import ruleInit.CoordinateRange;
 import ruleInit.CoordinateRanges;
 import ruleInit.DimensionRange;
@@ -33,7 +33,7 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass cellularAutomatatInitializationEClass = null;
+	private EClass cellularAutomataInitializationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,8 +133,8 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCellularAutomatatInitialization() {
-		return cellularAutomatatInitializationEClass;
+	public EClass getCellularAutomataInitialization() {
+		return cellularAutomataInitializationEClass;
 	}
 
 	/**
@@ -142,8 +142,8 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCellularAutomatatInitialization_SeedRules() {
-		return (EReference)cellularAutomatatInitializationEClass.getEStructuralFeatures().get(0);
+	public EReference getCellularAutomataInitialization_SeedRules() {
+		return (EReference)cellularAutomataInitializationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -151,8 +151,8 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCellularAutomatatInitialization_Geometry() {
-		return (EReference)cellularAutomatatInitializationEClass.getEStructuralFeatures().get(1);
+	public EReference getCellularAutomataInitialization_Geometry() {
+		return (EReference)cellularAutomataInitializationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -264,9 +264,9 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		cellularAutomatatInitializationEClass = createEClass(CELLULAR_AUTOMATAT_INITIALIZATION);
-		createEReference(cellularAutomatatInitializationEClass, CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES);
-		createEReference(cellularAutomatatInitializationEClass, CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY);
+		cellularAutomataInitializationEClass = createEClass(CELLULAR_AUTOMATA_INITIALIZATION);
+		createEReference(cellularAutomataInitializationEClass, CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES);
+		createEReference(cellularAutomataInitializationEClass, CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY);
 
 		coordinateRangesEClass = createEClass(COORDINATE_RANGES);
 		createEReference(coordinateRangesEClass, COORDINATE_RANGES__COORDINATE_RANGES);
@@ -318,9 +318,9 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 		positionLiteralEClass.getESuperTypes().add(theCorePackage.getIntegerExpression());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(cellularAutomatatInitializationEClass, CellularAutomatatInitialization.class, "CellularAutomatatInitialization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCellularAutomatatInitialization_SeedRules(), theCorePackage.getRule(), null, "seedRules", null, 0, -1, CellularAutomatatInitialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCellularAutomatatInitialization_Geometry(), theGeometryPackage.getGeometry(), null, "geometry", null, 0, 1, CellularAutomatatInitialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(cellularAutomataInitializationEClass, CellularAutomataInitialization.class, "CellularAutomataInitialization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCellularAutomataInitialization_SeedRules(), theCorePackage.getRule(), null, "seedRules", null, 0, -1, CellularAutomataInitialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCellularAutomataInitialization_Geometry(), theGeometryPackage.getGeometry(), null, "geometry", null, 0, 1, CellularAutomataInitialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(coordinateRangesEClass, CoordinateRanges.class, "CoordinateRanges", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCoordinateRanges_CoordinateRanges(), this.getCoordinateRange(), null, "coordinateRanges", null, 0, -1, CoordinateRanges.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

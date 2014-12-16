@@ -123,13 +123,13 @@ public interface GeometryPackage extends EPackage {
 	int DIMENSION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Size</b></em>' attribute.
+	 * The feature id for the '<em><b>Extent</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIMENSION__SIZE = 0;
+	int DIMENSION__EXTENT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Is Circular</b></em>' attribute.
@@ -214,15 +214,15 @@ public interface GeometryPackage extends EPackage {
 	EClass getDimension();
 
 	/**
-	 * Returns the meta object for the attribute '{@link geometry.Dimension#getSize <em>Size</em>}'.
+	 * Returns the meta object for the attribute '{@link geometry.Dimension#getExtent <em>Extent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Size</em>'.
-	 * @see geometry.Dimension#getSize()
+	 * @return the meta object for the attribute '<em>Extent</em>'.
+	 * @see geometry.Dimension#getExtent()
 	 * @see #getDimension()
 	 * @generated
 	 */
-	EAttribute getDimension_Size();
+	EAttribute getDimension_Extent();
 
 	/**
 	 * Returns the meta object for the attribute '{@link geometry.Dimension#isIsCircular <em>Is Circular</em>}'.
@@ -314,12 +314,12 @@ public interface GeometryPackage extends EPackage {
 		EClass DIMENSION = eINSTANCE.getDimension();
 
 		/**
-		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Extent</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DIMENSION__SIZE = eINSTANCE.getDimension_Size();
+		EAttribute DIMENSION__EXTENT = eINSTANCE.getDimension_Extent();
 
 		/**
 		 * The meta object literal for the '<em><b>Is Circular</b></em>' attribute feature.

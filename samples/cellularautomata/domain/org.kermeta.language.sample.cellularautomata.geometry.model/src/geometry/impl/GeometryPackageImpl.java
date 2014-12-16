@@ -163,7 +163,7 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDimension_Size() {
+	public EAttribute getDimension_Extent() {
 		return (EAttribute)dimensionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -220,7 +220,7 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 		createEAttribute(regularGeometryEClass, REGULAR_GEOMETRY__NEIGHBORS);
 
 		dimensionEClass = createEClass(DIMENSION);
-		createEAttribute(dimensionEClass, DIMENSION__SIZE);
+		createEAttribute(dimensionEClass, DIMENSION__EXTENT);
 		createEAttribute(dimensionEClass, DIMENSION__IS_CIRCULAR);
 
 		// Create enums
@@ -265,7 +265,7 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 		initEAttribute(getRegularGeometry_Neighbors(), this.getNeighborhood(), "neighbors", "Moore", 0, 1, RegularGeometry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dimensionEClass, Dimension.class, "Dimension", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDimension_Size(), ecorePackage.getEInt(), "size", null, 1, 1, Dimension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDimension_Extent(), ecorePackage.getEInt(), "extent", null, 1, 1, Dimension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDimension_IsCircular(), ecorePackage.getEBoolean(), "isCircular", "false", 1, 1, Dimension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals

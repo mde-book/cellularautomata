@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://rules/init/1.0"
-            class="init.InitPackage"
+            class="ruleInit.InitPackage"
             genModel="metamodel/rules_init.genmodel"/>
    </extension>
 

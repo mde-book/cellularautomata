@@ -40,15 +40,6 @@ public interface CoreFactory extends EFactory {
 	Add createAdd();
 
 	/**
-	 * Returns a new object of class '<em>Unary Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Unary Expression</em>'.
-	 * @generated
-	 */
-	UnaryExpression createUnaryExpression();
-
-	/**
 	 * Returns a new object of class '<em>And</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -110,15 +101,6 @@ public interface CoreFactory extends EFactory {
 	 * @generated
 	 */
 	Conditional createConditional();
-
-	/**
-	 * Returns a new object of class '<em>Binary Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Binary Expression</em>'.
-	 * @generated
-	 */
-	BinaryExpression createBinaryExpression();
 
 	/**
 	 * Returns a new object of class '<em>Mult</em>'.

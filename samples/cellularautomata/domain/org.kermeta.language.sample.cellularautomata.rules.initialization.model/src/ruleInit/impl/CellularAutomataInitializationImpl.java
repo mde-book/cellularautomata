@@ -22,24 +22,24 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import ruleInit.CellularAutomatatInitialization;
+import ruleInit.CellularAutomataInitialization;
 import ruleInit.InitPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Cellular Automatat Initialization</b></em>'.
+ * An implementation of the model object '<em><b>Cellular Automata Initialization</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ruleInit.impl.CellularAutomatatInitializationImpl#getSeedRules <em>Seed Rules</em>}</li>
- *   <li>{@link ruleInit.impl.CellularAutomatatInitializationImpl#getGeometry <em>Geometry</em>}</li>
+ *   <li>{@link ruleInit.impl.CellularAutomataInitializationImpl#getSeedRules <em>Seed Rules</em>}</li>
+ *   <li>{@link ruleInit.impl.CellularAutomataInitializationImpl#getGeometry <em>Geometry</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CellularAutomatatInitializationImpl extends EObjectImpl implements CellularAutomatatInitialization {
+public class CellularAutomataInitializationImpl extends EObjectImpl implements CellularAutomataInitialization {
 	/**
 	 * The cached value of the '{@link #getSeedRules() <em>Seed Rules</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public class CellularAutomatatInitializationImpl extends EObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CellularAutomatatInitializationImpl() {
+	protected CellularAutomataInitializationImpl() {
 		super();
 	}
 
@@ -76,7 +76,7 @@ public class CellularAutomatatInitializationImpl extends EObjectImpl implements 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return InitPackage.Literals.CELLULAR_AUTOMATAT_INITIALIZATION;
+		return InitPackage.Literals.CELLULAR_AUTOMATA_INITIALIZATION;
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class CellularAutomatatInitializationImpl extends EObjectImpl implements 
 	 */
 	public EList<Rule> getSeedRules() {
 		if (seedRules == null) {
-			seedRules = new EObjectContainmentEList<Rule>(Rule.class, this, InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES);
+			seedRules = new EObjectContainmentEList<Rule>(Rule.class, this, InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES);
 		}
 		return seedRules;
 	}
@@ -109,7 +109,7 @@ public class CellularAutomatatInitializationImpl extends EObjectImpl implements 
 		Geometry oldGeometry = geometry;
 		geometry = newGeometry;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY, oldGeometry, newGeometry);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY, oldGeometry, newGeometry);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -124,14 +124,14 @@ public class CellularAutomatatInitializationImpl extends EObjectImpl implements 
 		if (newGeometry != geometry) {
 			NotificationChain msgs = null;
 			if (geometry != null)
-				msgs = ((InternalEObject)geometry).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY, null, msgs);
+				msgs = ((InternalEObject)geometry).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY, null, msgs);
 			if (newGeometry != null)
-				msgs = ((InternalEObject)newGeometry).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY, null, msgs);
+				msgs = ((InternalEObject)newGeometry).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY, null, msgs);
 			msgs = basicSetGeometry(newGeometry, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY, newGeometry, newGeometry));
+			eNotify(new ENotificationImpl(this, Notification.SET, InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY, newGeometry, newGeometry));
 	}
 
 	/**
@@ -142,9 +142,9 @@ public class CellularAutomatatInitializationImpl extends EObjectImpl implements 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES:
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES:
 				return ((InternalEList<?>)getSeedRules()).basicRemove(otherEnd, msgs);
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY:
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY:
 				return basicSetGeometry(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -158,9 +158,9 @@ public class CellularAutomatatInitializationImpl extends EObjectImpl implements 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES:
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES:
 				return getSeedRules();
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY:
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY:
 				return getGeometry();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -175,11 +175,11 @@ public class CellularAutomatatInitializationImpl extends EObjectImpl implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES:
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES:
 				getSeedRules().clear();
 				getSeedRules().addAll((Collection<? extends Rule>)newValue);
 				return;
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY:
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY:
 				setGeometry((Geometry)newValue);
 				return;
 		}
@@ -194,10 +194,10 @@ public class CellularAutomatatInitializationImpl extends EObjectImpl implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES:
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES:
 				getSeedRules().clear();
 				return;
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY:
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY:
 				setGeometry((Geometry)null);
 				return;
 		}
@@ -212,12 +212,12 @@ public class CellularAutomatatInitializationImpl extends EObjectImpl implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES:
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES:
 				return seedRules != null && !seedRules.isEmpty();
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY:
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY:
 				return geometry != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //CellularAutomatatInitializationImpl
+} //CellularAutomataInitializationImpl

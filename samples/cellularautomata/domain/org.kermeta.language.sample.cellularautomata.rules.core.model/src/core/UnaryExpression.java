@@ -16,7 +16,7 @@ package core;
  * </p>
  *
  * @see core.CorePackage#getUnaryExpression()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface UnaryExpression extends IntegerExpression {

@@ -58,14 +58,14 @@ public interface InitPackage extends EPackage {
 	InitPackage eINSTANCE = ruleInit.impl.InitPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link ruleInit.impl.CellularAutomatatInitializationImpl <em>Cellular Automatat Initialization</em>}' class.
+	 * The meta object id for the '{@link ruleInit.impl.CellularAutomataInitializationImpl <em>Cellular Automata Initialization</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see ruleInit.impl.CellularAutomatatInitializationImpl
-	 * @see ruleInit.impl.InitPackageImpl#getCellularAutomatatInitialization()
+	 * @see ruleInit.impl.CellularAutomataInitializationImpl
+	 * @see ruleInit.impl.InitPackageImpl#getCellularAutomataInitialization()
 	 * @generated
 	 */
-	int CELLULAR_AUTOMATAT_INITIALIZATION = 0;
+	int CELLULAR_AUTOMATA_INITIALIZATION = 0;
 
 	/**
 	 * The feature id for the '<em><b>Seed Rules</b></em>' containment reference list.
@@ -74,7 +74,7 @@ public interface InitPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES = 0;
+	int CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES = 0;
 
 	/**
 	 * The feature id for the '<em><b>Geometry</b></em>' containment reference.
@@ -83,16 +83,16 @@ public interface InitPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY = 1;
+	int CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY = 1;
 
 	/**
-	 * The number of structural features of the '<em>Cellular Automatat Initialization</em>' class.
+	 * The number of structural features of the '<em>Cellular Automata Initialization</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CELLULAR_AUTOMATAT_INITIALIZATION_FEATURE_COUNT = 2;
+	int CELLULAR_AUTOMATA_INITIALIZATION_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link ruleInit.impl.CoordinateRangesImpl <em>Coordinate Ranges</em>}' class.
@@ -217,36 +217,36 @@ public interface InitPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link ruleInit.CellularAutomatatInitialization <em>Cellular Automatat Initialization</em>}'.
+	 * Returns the meta object for class '{@link ruleInit.CellularAutomataInitialization <em>Cellular Automata Initialization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Cellular Automatat Initialization</em>'.
-	 * @see ruleInit.CellularAutomatatInitialization
+	 * @return the meta object for class '<em>Cellular Automata Initialization</em>'.
+	 * @see ruleInit.CellularAutomataInitialization
 	 * @generated
 	 */
-	EClass getCellularAutomatatInitialization();
+	EClass getCellularAutomataInitialization();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ruleInit.CellularAutomatatInitialization#getSeedRules <em>Seed Rules</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ruleInit.CellularAutomataInitialization#getSeedRules <em>Seed Rules</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Seed Rules</em>'.
-	 * @see ruleInit.CellularAutomatatInitialization#getSeedRules()
-	 * @see #getCellularAutomatatInitialization()
+	 * @see ruleInit.CellularAutomataInitialization#getSeedRules()
+	 * @see #getCellularAutomataInitialization()
 	 * @generated
 	 */
-	EReference getCellularAutomatatInitialization_SeedRules();
+	EReference getCellularAutomataInitialization_SeedRules();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link ruleInit.CellularAutomatatInitialization#getGeometry <em>Geometry</em>}'.
+	 * Returns the meta object for the containment reference '{@link ruleInit.CellularAutomataInitialization#getGeometry <em>Geometry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Geometry</em>'.
-	 * @see ruleInit.CellularAutomatatInitialization#getGeometry()
-	 * @see #getCellularAutomatatInitialization()
+	 * @see ruleInit.CellularAutomataInitialization#getGeometry()
+	 * @see #getCellularAutomataInitialization()
 	 * @generated
 	 */
-	EReference getCellularAutomatatInitialization_Geometry();
+	EReference getCellularAutomataInitialization_Geometry();
 
 	/**
 	 * Returns the meta object for class '{@link ruleInit.CoordinateRanges <em>Coordinate Ranges</em>}'.
@@ -366,14 +366,14 @@ public interface InitPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link ruleInit.impl.CellularAutomatatInitializationImpl <em>Cellular Automatat Initialization</em>}' class.
+		 * The meta object literal for the '{@link ruleInit.impl.CellularAutomataInitializationImpl <em>Cellular Automata Initialization</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see ruleInit.impl.CellularAutomatatInitializationImpl
-		 * @see ruleInit.impl.InitPackageImpl#getCellularAutomatatInitialization()
+		 * @see ruleInit.impl.CellularAutomataInitializationImpl
+		 * @see ruleInit.impl.InitPackageImpl#getCellularAutomataInitialization()
 		 * @generated
 		 */
-		EClass CELLULAR_AUTOMATAT_INITIALIZATION = eINSTANCE.getCellularAutomatatInitialization();
+		EClass CELLULAR_AUTOMATA_INITIALIZATION = eINSTANCE.getCellularAutomataInitialization();
 
 		/**
 		 * The meta object literal for the '<em><b>Seed Rules</b></em>' containment reference list feature.
@@ -381,7 +381,7 @@ public interface InitPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES = eINSTANCE.getCellularAutomatatInitialization_SeedRules();
+		EReference CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES = eINSTANCE.getCellularAutomataInitialization_SeedRules();
 
 		/**
 		 * The meta object literal for the '<em><b>Geometry</b></em>' containment reference feature.
@@ -389,7 +389,7 @@ public interface InitPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY = eINSTANCE.getCellularAutomatatInitialization_Geometry();
+		EReference CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY = eINSTANCE.getCellularAutomataInitialization_Geometry();
 
 		/**
 		 * The meta object literal for the '{@link ruleInit.impl.CoordinateRangesImpl <em>Coordinate Ranges</em>}' class.

@@ -22,13 +22,13 @@ public interface InitFactory extends EFactory {
 	InitFactory eINSTANCE = ruleInit.impl.InitFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Cellular Automatat Initialization</em>'.
+	 * Returns a new object of class '<em>Cellular Automata Initialization</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Cellular Automatat Initialization</em>'.
+	 * @return a new object of class '<em>Cellular Automata Initialization</em>'.
 	 * @generated
 	 */
-	CellularAutomatatInitialization createCellularAutomatatInitialization();
+	CellularAutomataInitialization createCellularAutomataInitialization();
 
 	/**
 	 * Returns a new object of class '<em>Coordinate Ranges</em>'.

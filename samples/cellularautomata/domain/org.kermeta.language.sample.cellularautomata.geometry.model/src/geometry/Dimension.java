@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link geometry.Dimension#getSize <em>Size</em>}</li>
+ *   <li>{@link geometry.Dimension#getExtent <em>Extent</em>}</li>
  *   <li>{@link geometry.Dimension#isIsCircular <em>Is Circular</em>}</li>
  * </ul>
  * </p>
@@ -23,30 +23,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Dimension extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Size</b></em>' attribute.
+	 * Returns the value of the '<em><b>Extent</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Size</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Extent</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Size</em>' attribute.
-	 * @see #setSize(int)
-	 * @see geometry.GeometryPackage#getDimension_Size()
+	 * @return the value of the '<em>Extent</em>' attribute.
+	 * @see #setExtent(int)
+	 * @see geometry.GeometryPackage#getDimension_Extent()
 	 * @model required="true"
 	 * @generated
 	 */
-	int getSize();
+	int getExtent();
 
 	/**
-	 * Sets the value of the '{@link geometry.Dimension#getSize <em>Size</em>}' attribute.
+	 * Sets the value of the '{@link geometry.Dimension#getExtent <em>Extent</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Size</em>' attribute.
-	 * @see #getSize()
+	 * @param value the new value of the '<em>Extent</em>' attribute.
+	 * @see #getExtent()
 	 * @generated
 	 */
-	void setSize(int value);
+	void setExtent(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Circular</b></em>' attribute.

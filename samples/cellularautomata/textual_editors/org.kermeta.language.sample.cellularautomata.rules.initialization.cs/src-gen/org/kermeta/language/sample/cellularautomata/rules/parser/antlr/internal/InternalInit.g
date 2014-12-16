@@ -24,6 +24,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -80,7 +81,7 @@ ruleCellularAutomataInitialization returns [EObject current=null]
 ((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getCellularAutomataInitializationAccess().getCellularAutomatatInitializationAction_0(),
+            grammarAccess.getCellularAutomataInitializationAccess().getCellularAutomataInitializationAction_0(),
             $current);
     }
 )(
@@ -158,16 +159,16 @@ ruleRule returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='where' 
+(	otherlv_0='init' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getRuleAccess().getWhereKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getRuleAccess().getInitKeyword_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getRuleAccess().getFilterGlobalPositionParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getRuleAccess().getFilterCoordinateRangesParserRuleCall_1_0()); 
 	    }
-		lv_filter_1_0=ruleGlobalPosition		{
+		lv_filter_1_0=ruleCoordinateRanges		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getRuleRule());
 	        }
@@ -175,44 +176,40 @@ ruleRule returns [EObject current=null]
        			$current, 
        			"filter",
         		lv_filter_1_0, 
-        		"GlobalPosition");
+        		"CoordinateRanges");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)?	otherlv_2='initValue' 
+)?	otherlv_2='by' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getRuleAccess().getInitValueKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getRuleAccess().getByKeyword_2());
     }
-	otherlv_3='=' 
+	otherlv_3='{' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getRuleAccess().getEqualsSignKeyword_3());
-    }
-	otherlv_4='{' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getRuleAccess().getLeftCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_3, grammarAccess.getRuleAccess().getLeftCurlyBracketKeyword_3());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getRuleAccess().getEvaluatedValConditionalParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getRuleAccess().getEvaluatedValConditionalParserRuleCall_4_0()); 
 	    }
-		lv_evaluatedVal_5_0=ruleConditional		{
+		lv_evaluatedVal_4_0=ruleConditional		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getRuleRule());
 	        }
        		set(
        			$current, 
        			"evaluatedVal",
-        		lv_evaluatedVal_5_0, 
+        		lv_evaluatedVal_4_0, 
         		"Conditional");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_6='}' 
+)	otherlv_5='}' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getRuleAccess().getRightCurlyBracketKeyword_6());
+    	newLeafNode(otherlv_5, grammarAccess.getRuleAccess().getRightCurlyBracketKeyword_5());
     }
 )
 ;
@@ -221,75 +218,67 @@ ruleRule returns [EObject current=null]
 
 
 
-// Entry rule entryRuleGlobalPosition
-entryRuleGlobalPosition returns [EObject current=null] 
+// Entry rule entryRuleCoordinateRanges
+entryRuleCoordinateRanges returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getGlobalPositionRule()); }
-	 iv_ruleGlobalPosition=ruleGlobalPosition 
-	 { $current=$iv_ruleGlobalPosition.current; } 
+	{ newCompositeNode(grammarAccess.getCoordinateRangesRule()); }
+	 iv_ruleCoordinateRanges=ruleCoordinateRanges 
+	 { $current=$iv_ruleCoordinateRanges.current; } 
 	 EOF 
 ;
 
-// Rule GlobalPosition
-ruleGlobalPosition returns [EObject current=null] 
+// Rule CoordinateRanges
+ruleCoordinateRanges returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 ((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getGlobalPositionAccess().getGlobalPositionAction_0(),
+            grammarAccess.getCoordinateRangesAccess().getCoordinateRangesAction_0(),
             $current);
     }
-)	otherlv_1='{' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getGlobalPositionAccess().getLeftCurlyBracketKeyword_1());
-    }
-(
+)(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGlobalPositionAccess().getCoordinateRangesCoordinateRangeParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getCoordinateRangesAccess().getCoordinateRangesCoordinateRangeParserRuleCall_1_0()); 
 	    }
-		lv_coordinateRanges_2_0=ruleCoordinateRange		{
+		lv_coordinateRanges_1_0=ruleCoordinateRange		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getGlobalPositionRule());
+	            $current = createModelElementForParent(grammarAccess.getCoordinateRangesRule());
 	        }
        		add(
        			$current, 
        			"coordinateRanges",
-        		lv_coordinateRanges_2_0, 
+        		lv_coordinateRanges_1_0, 
         		"CoordinateRange");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_3='x' 
+)(	otherlv_2=',' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getGlobalPositionAccess().getXKeyword_3_0());
+    	newLeafNode(otherlv_2, grammarAccess.getCoordinateRangesAccess().getCommaKeyword_2_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGlobalPositionAccess().getCoordinateRangesCoordinateRangeParserRuleCall_3_1_0()); 
+	        newCompositeNode(grammarAccess.getCoordinateRangesAccess().getCoordinateRangesCoordinateRangeParserRuleCall_2_1_0()); 
 	    }
-		lv_coordinateRanges_4_0=ruleCoordinateRange		{
+		lv_coordinateRanges_3_0=ruleCoordinateRange		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getGlobalPositionRule());
+	            $current = createModelElementForParent(grammarAccess.getCoordinateRangesRule());
 	        }
        		add(
        			$current, 
        			"coordinateRanges",
-        		lv_coordinateRanges_4_0, 
+        		lv_coordinateRanges_3_0, 
         		"CoordinateRange");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)?)*	otherlv_5='}' 
-    {
-    	newLeafNode(otherlv_5, grammarAccess.getGlobalPositionAccess().getRightCurlyBracketKeyword_4());
-    }
-)
+))*)
 ;
 
 
@@ -310,24 +299,24 @@ ruleCoordinateRange returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='[' 
+(	otherlv_0='(' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getCoordinateRangeAccess().getLeftSquareBracketKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getCoordinateRangeAccess().getLeftParenthesisKeyword_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getCoordinateRangeAccess().getLowerCoordinateEIntParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getCoordinateRangeAccess().getDimensionRangesDimensionRangeParserRuleCall_1_0()); 
 	    }
-		lv_lowerCoordinate_1_0=ruleEInt		{
+		lv_dimensionRanges_1_0=ruleDimensionRange		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCoordinateRangeRule());
 	        }
-       		set(
+       		add(
        			$current, 
-       			"lowerCoordinate",
-        		lv_lowerCoordinate_1_0, 
-        		"EInt");
+       			"dimensionRanges",
+        		lv_dimensionRanges_1_0, 
+        		"DimensionRange");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -339,26 +328,87 @@ ruleCoordinateRange returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getCoordinateRangeAccess().getUpperCoordinateEIntParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getCoordinateRangeAccess().getDimensionRangesDimensionRangeParserRuleCall_3_0()); 
 	    }
-		lv_upperCoordinate_3_0=ruleEInt		{
+		lv_dimensionRanges_3_0=ruleDimensionRange		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCoordinateRangeRule());
 	        }
+       		add(
+       			$current, 
+       			"dimensionRanges",
+        		lv_dimensionRanges_3_0, 
+        		"DimensionRange");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_4=')' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getCoordinateRangeAccess().getRightParenthesisKeyword_4());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDimensionRange
+entryRuleDimensionRange returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDimensionRangeRule()); }
+	 iv_ruleDimensionRange=ruleDimensionRange 
+	 { $current=$iv_ruleDimensionRange.current; } 
+	 EOF 
+;
+
+// Rule DimensionRange
+ruleDimensionRange returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		{ 
+	        newCompositeNode(grammarAccess.getDimensionRangeAccess().getLowerEIntParserRuleCall_0_0()); 
+	    }
+		lv_lower_0_0=ruleEInt		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getDimensionRangeRule());
+	        }
        		set(
        			$current, 
-       			"upperCoordinate",
-        		lv_upperCoordinate_3_0, 
+       			"lower",
+        		lv_lower_0_0, 
         		"EInt");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_4=']' 
+)(	otherlv_1='..' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getCoordinateRangeAccess().getRightSquareBracketKeyword_4());
+    	newLeafNode(otherlv_1, grammarAccess.getDimensionRangeAccess().getFullStopFullStopKeyword_1_0());
     }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getDimensionRangeAccess().getUpperEIntParserRuleCall_1_1_0()); 
+	    }
+		lv_upper_2_0=ruleEInt		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getDimensionRangeRule());
+	        }
+       		set(
+       			$current, 
+       			"upper",
+        		lv_upper_2_0, 
+        		"EInt");
+	        afterParserOrEnumRuleCall();
+	    }
+
 )
+))?)
 ;
 
 
@@ -507,17 +557,17 @@ ruleRegularGeometry returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getRegularGeometryAccess().getNeighborsNumberEIntParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getRegularGeometryAccess().getNeighborsNeighborhoodEnumRuleCall_2_0()); 
 	    }
-		lv_neighborsNumber_2_0=ruleEInt		{
+		lv_neighbors_2_0=ruleNeighborhood		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getRegularGeometryRule());
 	        }
        		set(
        			$current, 
-       			"neighborsNumber",
-        		lv_neighborsNumber_2_0, 
-        		"EInt");
+       			"neighbors",
+        		lv_neighbors_2_0, 
+        		"Neighborhood");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -591,69 +641,46 @@ ruleDimension returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(((
+((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getDimensionAccess().getDimensionAction_0_0(),
+            grammarAccess.getDimensionAccess().getDimensionAction_0(),
             $current);
     }
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getDimensionAccess().getSizeEIntParserRuleCall_0_1_0()); 
+	        newCompositeNode(grammarAccess.getDimensionAccess().getExtentEIntParserRuleCall_1_0()); 
 	    }
-		lv_size_1_0=ruleEInt		{
+		lv_extent_1_0=ruleEInt		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getDimensionRule());
 	        }
        		set(
        			$current, 
-       			"size",
-        		lv_size_1_0, 
+       			"extent",
+        		lv_extent_1_0, 
         		"EInt");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
-    |((
+)(
 (
-		lv_isCircular_2_0=	'(' 
+		lv_isCircular_2_0=	'circular' 
     {
-        newLeafNode(lv_isCircular_2_0, grammarAccess.getDimensionAccess().getIsCircularLeftParenthesisKeyword_1_0_0());
+        newLeafNode(lv_isCircular_2_0, grammarAccess.getDimensionAccess().getIsCircularCircularKeyword_2_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getDimensionRule());
 	        }
-       		setWithLastConsumed($current, "isCircular", true, "(");
+       		setWithLastConsumed($current, "isCircular", true, "circular");
 	    }
 
 )
-)(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getDimensionAccess().getSizeEIntParserRuleCall_1_1_0()); 
-	    }
-		lv_size_3_0=ruleEInt		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getDimensionRule());
-	        }
-       		set(
-       			$current, 
-       			"size",
-        		lv_size_3_0, 
-        		"EInt");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)	otherlv_4=')' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getDimensionAccess().getRightParenthesisKeyword_1_2());
-    }
-))
+)?)
 ;
 
 
@@ -1328,11 +1355,30 @@ ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 
 
 
+// Rule Neighborhood
+ruleNeighborhood returns [Enumerator current=null] 
+    @init { enterRule(); }
+    @after { leaveRule(); }:
+((	enumLiteral_0='Neumann' 
+	{
+        $current = grammarAccess.getNeighborhoodAccess().getNeumannEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_0, grammarAccess.getNeighborhoodAccess().getNeumannEnumLiteralDeclaration_0()); 
+    }
+)
+    |(	enumLiteral_1='Moore' 
+	{
+        $current = grammarAccess.getNeighborhoodAccess().getMooreEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_1, grammarAccess.getNeighborhoodAccess().getMooreEnumLiteralDeclaration_1()); 
+    }
+));
+
+
+
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
 RULE_INT : ('0'..'9')+;
 
-RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
+RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
 
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
