@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<ruleInit:CellularAutomatatInitialization
+<ruleInit:CellularAutomataInitialization
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -12,10 +12,15 @@
         xsi:type="core:IntegerLiteral"
         val="1"/>
     <filter
-        xsi:type="ruleInit:GlobalPosition">
-      <coordinateRanges
-          upperCoordinate="5"/>
-      <coordinateRanges/>
+        xsi:type="ruleInit:CoordinateRanges">
+      <coordinateRanges>
+        <dimensionRanges
+            lower="1"
+            upper="5"/>
+        <dimensionRanges
+            lower="1"
+            upper="1"/>
+      </coordinateRanges>
     </filter>
   </seedRules>
   <seedRules>
@@ -23,31 +28,37 @@
         xsi:type="core:IntegerLiteral"
         val="1"/>
     <filter
-        xsi:type="ruleInit:GlobalPosition">
-      <coordinateRanges/>
-      <coordinateRanges
-          upperCoordinate="5"/>
+        xsi:type="ruleInit:CoordinateRanges">
+      <coordinateRanges>
+        <dimensionRanges
+            lower="1"
+            upper="1"/>
+        <dimensionRanges
+            lower="1"
+            upper="5"/>
+      </coordinateRanges>
     </filter>
   </seedRules>
   <seedRules>
     <evaluatedVal
         xsi:type="core:IntegerLiteral"/>
     <filter
-        xsi:type="ruleInit:GlobalPosition">
-      <coordinateRanges
-          lowerCoordinate="1"
-          upperCoordinate="5"/>
-      <coordinateRanges
-          lowerCoordinate="1"
-          upperCoordinate="5"/>
+        xsi:type="ruleInit:CoordinateRanges">
+      <coordinateRanges>
+        <dimensionRanges
+            lower="1"
+            upper="5"/>
+        <dimensionRanges
+            lower="1"
+            upper="5"/>
+      </coordinateRanges>
     </filter>
   </seedRules>
   <geometry
-      xsi:type="geometry:RegularGeometry"
-      neighborsNumber="4">
+      xsi:type="geometry:RegularGeometry">
     <dimensions
-        size="5"/>
+        extent="5"/>
     <dimensions
-        size="5"/>
+        extent="5"/>
   </geometry>
-</ruleInit:CellularAutomatatInitialization>
+</ruleInit:CellularAutomataInitialization>
