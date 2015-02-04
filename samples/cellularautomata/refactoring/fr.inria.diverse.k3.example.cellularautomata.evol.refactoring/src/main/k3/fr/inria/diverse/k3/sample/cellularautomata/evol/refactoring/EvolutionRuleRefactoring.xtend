@@ -31,7 +31,10 @@ class EvolutionRuleRefactoring {
 	def public List<Rule> detectSplittableRules(List<Rule> rules){
 		val result = new ArrayList<Rule>()
 		rules.forEach[rule|
-			if(rule.isEqualSplittable) result.add(rule)
+			if(rule.isEqualSplittable) {
+				result.add(rule)
+				println("found a rule that can be split")	
+			}
 		]
 		return result
 	}
