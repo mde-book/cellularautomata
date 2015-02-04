@@ -222,6 +222,6 @@ class UniverseGenerator {
 		 	res.getContents.add(universe)
 		 		 	
 		 	res.save(null)
-		 	println("saved to p fr.inria.diverse.k3.example.cellularautomata.vm.generator/target/results/universe.vm.xmi")
+		 	println("saved to fr.inria.diverse.k3.example.cellularautomata.vm.generator/target/results/universe.vm.xmi")
 		}
 }
