@@ -257,24 +257,7 @@ class PopulationRangeAspect extends FilterAspect {
 		}
 		
 		def public Boolean matchesValue(Integer value) { 
-			var Boolean lowerOk = false
-			var Boolean upperOk = false
-			
-			if (_self.lowerRange != 0) {
-				if (value >= _self.lowerRange) { 
-					 lowerOk = true
-				} 
-			} else {
-				lowerOk = true
-			}
-			if (_self.upperRange != 0) {
-				if (value <= _self.upperRange) {
-					 upperOk = true
-				}
-			} else {
-				upperOk = true
-			}
-			return (lowerOk && upperOk)
+			return ((value >= _self.lowerRange) && (value <= _self.upperRange))
 		}
 	}
 
