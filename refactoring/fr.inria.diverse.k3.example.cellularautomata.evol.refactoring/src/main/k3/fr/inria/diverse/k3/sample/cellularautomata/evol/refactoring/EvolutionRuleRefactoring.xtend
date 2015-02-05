@@ -16,6 +16,7 @@ import static extension fr.inria.diverse.k3.sample.cellularautomata.evol.refacto
 class EvolutionRuleRefactoring {
 
 	def public refactorCondition(String ruleFile, String ruleOutFile){
+		initEMFRegistry()
 		val CellularAutomata automata = loadRules(ruleFile)
 		var splittableRules = detectSplittableRules(automata.rules)
 		while(!splittableRules.empty){			
@@ -32,36 +33,30 @@ class EvolutionRuleRefactoring {
 		val result = new ArrayList<Rule>()
 		rules.forEach[rule|
 			if(rule.isEqualSplittable) {
-				result.add(rule)
-				println("found a rule that can be split")	
+				result.add(rule)	
 			}
 		]
 		return result
 	}
 
 	public def CellularAutomata loadRules(String rulesFile) {
-		var fact = new XMIResourceFactoryImpl
-		if (!EPackage.Registry.INSTANCE.containsKey(EvolPackage.eNS_URI)) {
-			EPackage.Registry.INSTANCE.put(EvolPackage.eNS_URI, EvolPackage.eINSTANCE);
-		}
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", fact)
-	
 		var rs = new ResourceSetImpl()
-		var uri = URI.createURI(rulesFile)
-		var res = rs.getResource(uri, true)
+		var res = rs.getResource(URI.createURI(rulesFile), true)
 		return res.getContents.get(0) as CellularAutomata
 	}
 	public def saveRules(CellularAutomata automata, String rulesFile) {
+		var rs = new ResourceSetImpl()
+		var res = rs.createResource(URI.createURI(rulesFile))
+		res.getContents.add(automata)
+		res.save(null)
+	}	
+	
+	public def initEMFRegistry(){
 		var fact = new XMIResourceFactoryImpl
 		if (!EPackage.Registry.INSTANCE.containsKey(EvolPackage.eNS_URI)) {
 			EPackage.Registry.INSTANCE.put(EvolPackage.eNS_URI, EvolPackage.eINSTANCE);
 		}
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", fact)
+	}
 	
-		var rs = new ResourceSetImpl()
-		var uri = URI.createURI(rulesFile)
-		var res = rs.createResource(uri)
-		res.getContents.add(automata)
-		res.save(null)
-	}	
 }
