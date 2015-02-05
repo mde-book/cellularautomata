@@ -19,7 +19,6 @@ import static extension fr.inria.diverse.k3.sample.cellularautomata.evol.refacto
 
 @Aspect(className=typeof(Rule))
 class RuleAspect {
-	
 	def public Boolean isEqualSplittable() {
 		if(_self.filter instanceof PopulationRange){
 			val lower = (_self.filter as PopulationRange).lowerRange
@@ -31,11 +30,7 @@ class RuleAspect {
 						val equal = conditional.condition as Equal
 						if(equal.isLeftOrRigthCurrentCellPopulation && equal.isLeftOrRigthIntegerLiteralOnBorderOfRange(lower, upper)){
 							return true
-						}
-					}
-				}
-			} 
-		}
+		}	}	}	}	}
 		return false
 	}
 		
@@ -47,8 +42,10 @@ class RuleAspect {
 		val equalcondition = evaluatedValConditional.condition as Equal
 		
 		var Integer literalValue
-		if (equalcondition.left instanceof IntegerLiteral) literalValue = (equalcondition.left as IntegerLiteral).^val
-		if (equalcondition.right instanceof IntegerLiteral) literalValue = (equalcondition.right as IntegerLiteral).^val
+		if (equalcondition.left instanceof IntegerLiteral) 
+			literalValue = (equalcondition.left as IntegerLiteral).^val
+		if (equalcondition.right instanceof IntegerLiteral) 
+			literalValue= (equalcondition.right as IntegerLiteral).^val
 		
 		val lowerRule = CoreFactory.eINSTANCE.createRule
 		val upperRule = CoreFactory.eINSTANCE.createRule
