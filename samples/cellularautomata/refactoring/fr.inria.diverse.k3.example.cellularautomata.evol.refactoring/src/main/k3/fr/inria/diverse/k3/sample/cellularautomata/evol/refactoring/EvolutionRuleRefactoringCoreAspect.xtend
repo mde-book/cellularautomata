@@ -15,6 +15,7 @@ import evol.CurrentCellPopulation
 import evol.EvolFactory
 
 import static extension fr.inria.diverse.k3.sample.cellularautomata.evol.refactoring.EqualAspect.*
+import static extension fr.inria.diverse.k3.sample.cellularautomata.evol.refactoring.PopulationRangeAspect.*
 
 @Aspect(className=typeof(Rule))
 class RuleAspect {
@@ -39,11 +40,12 @@ class RuleAspect {
 	}
 		
 	def public List<Rule> splitEqual() {
-		val result = new ArrayList<Rule>
+		val result = new ArrayList<Rule>		
 		val lower = (_self.filter as PopulationRange).lowerRange
 		val upper = (_self.filter as PopulationRange).upperRange
+		val evaluatedValConditional = _self.evaluatedVal as Conditional
+		val equalcondition = evaluatedValConditional.condition as Equal
 		
-		val equalcondition = (_self.evaluatedVal as Conditional).condition as Equal
 		var Integer literalValue
 		if (equalcondition.left instanceof IntegerLiteral) literalValue = (equalcondition.left as IntegerLiteral).^val
 		if (equalcondition.right instanceof IntegerLiteral) literalValue = (equalcondition.right as IntegerLiteral).^val
@@ -51,28 +53,16 @@ class RuleAspect {
 		val lowerRule = CoreFactory.eINSTANCE.createRule
 		val upperRule = CoreFactory.eINSTANCE.createRule
 		if(literalValue == lower){
-			val lowerPopulationRange = EvolFactory.eINSTANCE.createPopulationRange
-			lowerPopulationRange.lowerRange = lower
-			lowerPopulationRange.upperRange = lower
-			lowerRule.filter = lowerPopulationRange
-			lowerRule.evaluatedVal = (_self.evaluatedVal as Conditional).ifTrueExpression
-			val upperPopulationRange = EvolFactory.eINSTANCE.createPopulationRange
-			upperPopulationRange.lowerRange = lower+1
-			upperPopulationRange.upperRange = upper
-			upperRule.filter = upperPopulationRange
-			upperRule.evaluatedVal = (_self.evaluatedVal as Conditional).ifFalseExpression
+			lowerRule.filter = EvolFactory.eINSTANCE.createPopulationRange.init(lower, lower)
+			lowerRule.evaluatedVal = evaluatedValConditional.ifTrueExpression
+			upperRule.filter = EvolFactory.eINSTANCE.createPopulationRange.init(lower+1, upper)
+			upperRule.evaluatedVal = evaluatedValConditional.ifFalseExpression
 		}
 		else{
-			val lowerPopulationRange = EvolFactory.eINSTANCE.createPopulationRange
-			lowerPopulationRange.lowerRange = lower
-			lowerPopulationRange.upperRange = upper-1
-			lowerRule.filter = lowerPopulationRange
-			lowerRule.evaluatedVal = (_self.evaluatedVal as Conditional).ifFalseExpression
-			val upperPopulationRange = EvolFactory.eINSTANCE.createPopulationRange
-			upperPopulationRange.lowerRange = upper
-			upperPopulationRange.upperRange = upper
-			upperRule.filter = upperPopulationRange
-			upperRule.evaluatedVal = (_self.evaluatedVal as Conditional).ifTrueExpression
+			lowerRule.filter = EvolFactory.eINSTANCE.createPopulationRange.init(lower, upper-1)
+			lowerRule.evaluatedVal = evaluatedValConditional.ifFalseExpression
+			upperRule.filter = EvolFactory.eINSTANCE.createPopulationRange.init(upper, upper)
+			upperRule.evaluatedVal = evaluatedValConditional.ifTrueExpression
 		}
 		
 		result.add(lowerRule)
@@ -91,5 +81,13 @@ class EqualAspect {
 		return (_self.left instanceof IntegerLiteral && ((_self.left as IntegerLiteral).^val == lower || (_self.left as IntegerLiteral).^val == upper))
 			|| (_self.right instanceof IntegerLiteral && ((_self.right as IntegerLiteral).^val == lower || (_self.right as IntegerLiteral).^val == upper))
 	}
-	
+}
+
+@Aspect(className=PopulationRange)
+class PopulationRangeAspect {
+	def public PopulationRange init(int lowerRange, int upperRange){
+		_self.lowerRange = lowerRange
+		_self.upperRange = upperRange
+		return _self
+	}
 }
