@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import static extension fr.inria.diverse.k3.sample.cellularautomata.evol.refactoring.RuleAspect.*
 
 class EvolutionRuleRefactoring {
-
 	def public refactorCondition(String ruleFile, String ruleOutFile){
 		initEMFRegistry()
 		val CellularAutomata automata = loadRules(ruleFile)
@@ -58,5 +57,4 @@ class EvolutionRuleRefactoring {
 		}
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", fact)
 	}
-	
 }
