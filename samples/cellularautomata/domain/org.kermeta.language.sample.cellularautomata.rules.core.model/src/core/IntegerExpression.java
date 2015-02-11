@@ -5,6 +5,7 @@ package core;
 import org.eclipse.emf.ecore.EObject;
 
 import core.util.visitor.CoreModelToTextVisitable;
+import core.util.visitor.CoreModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,7 +17,7 @@ import core.util.visitor.CoreModelToTextVisitable;
  * @model abstract="true"
  * @generated
  */
-public interface IntegerExpression extends EObject, CoreModelToTextVisitable{
+public interface IntegerExpression  extends EObject, CoreModelToTextVisitable{
 
 	/**
 	 * Visitor used by pure java visitor sample
