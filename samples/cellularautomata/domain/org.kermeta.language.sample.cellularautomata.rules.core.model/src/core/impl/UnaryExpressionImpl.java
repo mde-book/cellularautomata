@@ -5,13 +5,12 @@ package core.impl;
 import core.CorePackage;
 import core.IntegerExpression;
 import core.UnaryExpression;
+import core.util.visitor.CoreModelToTextVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -172,4 +171,8 @@ public abstract class UnaryExpressionImpl extends IntegerExpressionImpl implemen
 		return super.eIsSet(featureID);
 	}
 
+	@Override
+	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitUnaryExpression(this);
+	}
 } //UnaryExpressionImpl

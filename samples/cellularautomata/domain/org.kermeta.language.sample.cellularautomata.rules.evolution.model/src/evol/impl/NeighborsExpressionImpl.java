@@ -3,17 +3,16 @@
 package evol.impl;
 
 import core.impl.IntegerExpressionImpl;
-
+import core.util.visitor.CoreModelToTextVisitor;
 import evol.EvolPackage;
 import evol.NeighborsExpression;
 import evol.PopulationRange;
+import evol.util.visitor.EvolModelToTextVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -174,4 +173,15 @@ public abstract class NeighborsExpressionImpl extends IntegerExpressionImpl impl
 		return super.eIsSet(featureID);
 	}
 
+	/**
+	 * 
+	 */
+	@Override
+	public String accept(CoreModelToTextVisitor visitor) {
+		if(visitor instanceof EvolModelToTextVisitor)
+			return ((EvolModelToTextVisitor)visitor).visitNeighborsExpression(this);
+		else 
+			return visitor.visitIntegerExpression(this);
+	}
+	
 } //NeighborsExpressionImpl

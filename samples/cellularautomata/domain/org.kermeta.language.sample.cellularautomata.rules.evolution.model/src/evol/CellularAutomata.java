@@ -2,11 +2,11 @@
  */
 package evol;
 
-import core.Rule;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
+
+import core.Rule;
+import evol.util.visitor.EvolModelToTextVisitable;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface CellularAutomata extends EObject {
+public interface CellularAutomata extends EObject, EvolModelToTextVisitable {
 	/**
 	 * Returns the value of the '<em><b>Rules</b></em>' containment reference list.
 	 * The list contents are of type {@link core.Rule}.

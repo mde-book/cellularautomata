@@ -4,6 +4,7 @@ package core.impl;
 
 import core.CorePackage;
 import core.Not;
+import core.util.visitor.CoreModelToTextVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -35,5 +36,11 @@ public class NotImpl extends UnaryExpressionImpl implements Not {
 	protected EClass eStaticClass() {
 		return CorePackage.Literals.NOT;
 	}
-
+	/**
+	 * 
+	 */
+	@Override
+	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitNot(this);
+	}
 } //NotImpl

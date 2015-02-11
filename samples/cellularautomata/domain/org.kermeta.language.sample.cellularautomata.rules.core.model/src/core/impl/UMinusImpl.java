@@ -4,6 +4,7 @@ package core.impl;
 
 import core.CorePackage;
 import core.UMinus;
+import core.util.visitor.CoreModelToTextVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -26,14 +27,10 @@ public class UMinusImpl extends UnaryExpressionImpl implements UMinus {
 		super();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	
 	@Override
-	protected EClass eStaticClass() {
-		return CorePackage.Literals.UMINUS;
+	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitUMinus(this);
 	}
 
 } //UMinusImpl

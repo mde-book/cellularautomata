@@ -9,7 +9,8 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: evol,
  evol.impl,
- evol.util
+ evol.util,
+ evol.util.visitor
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.kermeta.language.sample.cellularautomata.rules.core.model

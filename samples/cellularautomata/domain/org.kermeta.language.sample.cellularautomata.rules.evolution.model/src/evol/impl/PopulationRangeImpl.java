@@ -2,16 +2,16 @@
  */
 package evol.impl;
 
-import core.impl.FilterImpl;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import core.impl.FilterImpl;
+import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.ModelToTextVisitor;
 import evol.EvolPackage;
 import evol.PopulationRange;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import evol.util.visitor.EvolModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -213,6 +213,14 @@ public class PopulationRangeImpl extends FilterImpl implements PopulationRange {
 		result.append(upperRange);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public String accept(CoreModelToTextVisitor visitor) {
+		if(visitor instanceof EvolModelToTextVisitor)
+			return ((EvolModelToTextVisitor)visitor).visitPopulationRange(this);
+		else 
+			return visitor.visitFilter(this);
 	}
 
 } //PopulationRangeImpl

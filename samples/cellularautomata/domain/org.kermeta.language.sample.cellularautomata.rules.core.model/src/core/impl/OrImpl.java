@@ -4,6 +4,7 @@ package core.impl;
 
 import core.CorePackage;
 import core.Or;
+import core.util.visitor.CoreModelToTextVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -35,5 +36,11 @@ public class OrImpl extends BinaryExpressionImpl implements Or {
 	protected EClass eStaticClass() {
 		return CorePackage.Literals.OR;
 	}
-
+	/**
+	 * 
+	 */
+	@Override
+	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitOr(this);
+	}
 } //OrImpl
