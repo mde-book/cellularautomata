@@ -2,10 +2,12 @@
  */
 package core.impl;
 
+import org.eclipse.emf.ecore.EClass;
+
 import core.Add;
 import core.CorePackage;
-
-import org.eclipse.emf.ecore.EClass;
+import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.ModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,5 +37,10 @@ public class AddImpl extends BinaryExpressionImpl implements Add {
 	protected EClass eStaticClass() {
 		return CorePackage.Literals.ADD;
 	}
-
+	
+	
+	@Override
+	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitAdd(this);
+	}
 } //AddImpl

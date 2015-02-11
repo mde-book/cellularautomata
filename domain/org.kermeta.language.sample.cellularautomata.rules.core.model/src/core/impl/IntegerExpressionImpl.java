@@ -4,9 +4,10 @@ package core.impl;
 
 import core.CorePackage;
 import core.IntegerExpression;
+import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.ModelToTextVisitor;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
@@ -37,5 +38,12 @@ public abstract class IntegerExpressionImpl extends EObjectImpl implements Integ
 	protected EClass eStaticClass() {
 		return CorePackage.Literals.INTEGER_EXPRESSION;
 	}
+
+	/**
+	 * 
+	 */
+//	public String accept(final CoreModelToTextVisitor visitor) {
+//		return visitor.visit(this);
+//	}
 
 } //IntegerExpressionImpl

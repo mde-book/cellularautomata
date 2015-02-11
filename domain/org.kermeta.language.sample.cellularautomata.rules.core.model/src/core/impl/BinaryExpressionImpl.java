@@ -5,13 +5,12 @@ package core.impl;
 import core.BinaryExpression;
 import core.CorePackage;
 import core.IntegerExpression;
+import core.util.visitor.CoreModelToTextVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -238,4 +237,11 @@ public abstract class BinaryExpressionImpl extends IntegerExpressionImpl impleme
 		return super.eIsSet(featureID);
 	}
 
+	
+	/**
+	 * 
+	 */
+//	public String accept(final CoreModelToTextVisitor visitor) {
+//		return visitor.visitBinaryExpression(this);
+//	}
 } //BinaryExpressionImpl

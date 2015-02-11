@@ -2,10 +2,12 @@
  */
 package evol.impl;
 
+import org.eclipse.emf.ecore.EClass;
+
+import core.util.visitor.CoreModelToTextVisitor;
 import evol.EvolPackage;
 import evol.Size;
-
-import org.eclipse.emf.ecore.EClass;
+import evol.util.visitor.EvolModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,5 +37,16 @@ public class SizeImpl extends NeighborsExpressionImpl implements Size {
 	protected EClass eStaticClass() {
 		return EvolPackage.Literals.SIZE;
 	}
+	/**
+	 * 
+	 */
+	@Override
+	public String accept(CoreModelToTextVisitor visitor) {
+		if(visitor instanceof EvolModelToTextVisitor)
+			return ((EvolModelToTextVisitor)visitor).visitSize(this);
+		else 
+			return visitor.visitIntegerExpression(this);
+	}
+	
 
 } //SizeImpl

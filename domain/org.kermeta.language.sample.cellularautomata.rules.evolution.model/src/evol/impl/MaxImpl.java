@@ -4,8 +4,11 @@ package evol.impl;
 
 import evol.EvolPackage;
 import evol.Max;
+import evol.util.visitor.EvolModelToTextVisitor;
 
 import org.eclipse.emf.ecore.EClass;
+
+import core.util.visitor.CoreModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,4 +39,20 @@ public class MaxImpl extends NeighborsExpressionImpl implements Max {
 		return EvolPackage.Literals.MAX;
 	}
 
+	/**
+	 * 
+	 */
+	@Override
+	public String accept(CoreModelToTextVisitor visitor) {
+		if(visitor instanceof EvolModelToTextVisitor)
+			return ((EvolModelToTextVisitor)visitor).visitMax(this);
+		else 
+			return visitor.visitIntegerExpression(this);
+	}
+	
+	public String accept(EvolModelToTextVisitor visitor) {
+		return visitor.visitMax(this);
+	}
+
+	
 } //MaxImpl

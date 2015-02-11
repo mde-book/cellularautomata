@@ -3,6 +3,7 @@
 package evol;
 
 import core.Filter;
+import evol.util.visitor.EvolModelToTextVisitable;
 
 /**
  * <!-- begin-user-doc -->

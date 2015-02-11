@@ -2,12 +2,13 @@
  */
 package evol.impl;
 
-import core.impl.IntegerExpressionImpl;
+import org.eclipse.emf.ecore.EClass;
 
+import core.impl.IntegerExpressionImpl;
+import core.util.visitor.CoreModelToTextVisitor;
 import evol.CurrentCellPopulation;
 import evol.EvolPackage;
-
-import org.eclipse.emf.ecore.EClass;
+import evol.util.visitor.EvolModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,5 +38,19 @@ public class CurrentCellPopulationImpl extends IntegerExpressionImpl implements 
 	protected EClass eStaticClass() {
 		return EvolPackage.Literals.CURRENT_CELL_POPULATION;
 	}
+
+	@Override
+	public String accept(CoreModelToTextVisitor visitor) {
+		if(visitor instanceof EvolModelToTextVisitor)
+			return ((EvolModelToTextVisitor)visitor).visitCurrentCellPopulation(this);
+		else 
+			return visitor.visitIntegerExpression(this);
+	}
+	
+	public String accept(EvolModelToTextVisitor visitor) {
+		return visitor.visitCurrentCellPopulation(this);
+	}
+
+
 
 } //CurrentCellPopulationImpl

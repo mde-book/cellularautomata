@@ -4,6 +4,7 @@ package core.impl;
 
 import core.CorePackage;
 import core.Minus;
+import core.util.visitor.CoreModelToTextVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -35,5 +36,11 @@ public class MinusImpl extends BinaryExpressionImpl implements Minus {
 	protected EClass eStaticClass() {
 		return CorePackage.Literals.MINUS;
 	}
-
+	/**
+	 * 
+	 */
+	@Override
+	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitMinus(this);
+	}
 } //MinusImpl

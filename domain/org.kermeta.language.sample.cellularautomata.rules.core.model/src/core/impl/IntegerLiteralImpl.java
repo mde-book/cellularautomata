@@ -4,11 +4,11 @@ package core.impl;
 
 import core.CorePackage;
 import core.IntegerLiteral;
+import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.ModelToTextVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -159,4 +159,11 @@ public class IntegerLiteralImpl extends IntegerExpressionImpl implements Integer
 		return result.toString();
 	}
 
+	/**
+	 * 
+	 */
+	@Override
+	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitIntegerLiteral(this);
+	}
 } //IntegerLiteralImpl

@@ -2,24 +2,21 @@
  */
 package evol.impl;
 
-import core.Rule;
-
-import evol.CellularAutomata;
-import evol.EvolPackage;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import core.Rule;
+import core.util.visitor.CoreModelToTextVisitor;
+import evol.CellularAutomata;
+import evol.EvolPackage;
+import evol.util.visitor.EvolModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -149,5 +146,18 @@ public class CellularAutomataImpl extends EObjectImpl implements CellularAutomat
 		}
 		return super.eIsSet(featureID);
 	}
+
+	@Override
+	public String accept(EvolModelToTextVisitor visitor) {
+		return visitor.visitCellularAutomata(this);
+	}
+
+
+
+
+
+
+	
+	
 
 } //CellularAutomataImpl

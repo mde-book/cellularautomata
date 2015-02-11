@@ -13,6 +13,7 @@ import core.CorePackage;
 import core.Filter;
 import core.IntegerExpression;
 import core.Rule;
+import core.util.visitor.CoreModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -237,5 +238,12 @@ public class RuleImpl extends EObjectImpl implements Rule {
 		}
 		return super.eIsSet(featureID);
 	}
-
+	
+	/**
+	 * 
+	 */
+	@Override
+	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitRule(this);
+	}
 } //RuleImpl

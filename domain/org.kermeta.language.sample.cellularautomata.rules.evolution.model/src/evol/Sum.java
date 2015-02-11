@@ -2,6 +2,8 @@
  */
 package evol;
 
+import evol.util.visitor.EvolModelToTextVisitable;
+
 
 /**
  * <!-- begin-user-doc -->
