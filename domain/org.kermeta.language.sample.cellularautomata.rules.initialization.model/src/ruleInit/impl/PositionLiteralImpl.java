@@ -3,11 +3,10 @@
 package ruleInit.impl;
 
 import core.impl.IntegerExpressionImpl;
+import core.util.visitor.CoreModelToTextVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import ruleInit.InitPackage;
@@ -159,6 +158,12 @@ public class PositionLiteralImpl extends IntegerExpressionImpl implements Positi
 		result.append(dimensionIndex);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public String accept(CoreModelToTextVisitor visitor) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 } //PositionLiteralImpl
