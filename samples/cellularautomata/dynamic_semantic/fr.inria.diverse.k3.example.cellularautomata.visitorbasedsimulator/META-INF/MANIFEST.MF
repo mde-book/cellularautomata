@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Visitorbasedsimulator
+Bundle-SymbolicName: fr.inria.diverse.k3.example.cellularautomata.visitorbasedsimulator
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: fr.inria.diverse.k3.example.cellularautomata.visitorbasedsimulator.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.kermeta.language.sample.cellularautomata.rules.evolution.model;bundle-version="1.0.0",
+ org.kermeta.language.sample.cellularautomata.rules.core.model;bundle-version="1.0.0",
+ org.kermeta.language.sample.cellularautomata.vm.model;bundle-version="1.0.0",
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.ecore,
+ org.eclipse.xtend.lib;bundle-version="2.7.3"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
