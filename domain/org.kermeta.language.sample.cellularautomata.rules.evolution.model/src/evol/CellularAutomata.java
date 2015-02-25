@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import core.Rule;
 import evol.util.visitor.EvolModelToTextVisitable;
+import evol.util.visitor.EvolEvaluationVisitable;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +25,7 @@ import evol.util.visitor.EvolModelToTextVisitable;
  * @model
  * @generated
  */
-public interface CellularAutomata extends EObject, EvolModelToTextVisitable {
+public interface CellularAutomata extends EObject, EvolModelToTextVisitable, EvolEvaluationVisitable {
 	/**
 	 * Returns the value of the '<em><b>Rules</b></em>' containment reference list.
 	 * The list contents are of type {@link core.Rule}.

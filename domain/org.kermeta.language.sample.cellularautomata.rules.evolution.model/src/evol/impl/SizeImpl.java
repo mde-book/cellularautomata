@@ -5,8 +5,10 @@ package evol.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 import evol.EvolPackage;
 import evol.Size;
+import evol.util.visitor.EvolEvaluationVisitor;
 import evol.util.visitor.EvolModelToTextVisitor;
 
 /**
@@ -48,5 +50,12 @@ public class SizeImpl extends NeighborsExpressionImpl implements Size {
 			return visitor.visitIntegerExpression(this);
 	}
 	
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
+		if(visitor instanceof EvolEvaluationVisitor)
+			return ((EvolEvaluationVisitor)visitor).visitSize(this);
+		else 
+			return visitor.visitIntegerExpression(this);
+	}
 
 } //SizeImpl

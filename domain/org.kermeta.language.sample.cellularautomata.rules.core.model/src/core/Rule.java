@@ -5,6 +5,7 @@ package core;
 import org.eclipse.emf.ecore.EObject;
 
 import core.util.visitor.CoreModelToTextVisitable;
+import core.util.visitor.EvaluationVisitable;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +24,7 @@ import core.util.visitor.CoreModelToTextVisitable;
  * @model
  * @generated
  */
-public interface Rule extends EObject, CoreModelToTextVisitable {
+public interface Rule extends EObject, CoreModelToTextVisitable, EvaluationVisitable {
 	/**
 	 * Returns the value of the '<em><b>Evaluated Val</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
