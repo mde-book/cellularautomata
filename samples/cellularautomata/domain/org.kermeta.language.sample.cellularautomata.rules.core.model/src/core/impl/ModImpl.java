@@ -5,6 +5,7 @@ package core.impl;
 import core.CorePackage;
 import core.Mod;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -42,6 +43,10 @@ public class ModImpl extends BinaryExpressionImpl implements Mod {
 	 */
 	@Override
 	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitMod(this);
+	}
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
 		return visitor.visitMod(this);
 	}
 } //ModImpl

@@ -6,6 +6,7 @@ import core.Conditional;
 import core.CorePackage;
 import core.IntegerExpression;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 import core.util.visitor.ModelToTextVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -309,6 +310,11 @@ public class ConditionalImpl extends IntegerExpressionImpl implements Conditiona
 	 */
 	@Override
 	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitConditional(this);
+	}
+	
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
 		return visitor.visitConditional(this);
 	}
 } //ConditionalImpl

@@ -5,6 +5,7 @@ package core;
 import org.eclipse.emf.ecore.EObject;
 
 import core.util.visitor.CoreModelToTextVisitable;
+import core.util.visitor.EvaluationVisitable;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,5 +17,5 @@ import core.util.visitor.CoreModelToTextVisitable;
  * @model abstract="true"
  * @generated
  */
-public interface Filter extends EObject, CoreModelToTextVisitable {
+public interface Filter extends EObject, CoreModelToTextVisitable, EvaluationVisitable {
 } // Filter

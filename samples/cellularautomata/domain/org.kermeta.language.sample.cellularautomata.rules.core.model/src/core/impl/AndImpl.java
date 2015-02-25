@@ -5,6 +5,7 @@ package core.impl;
 import core.And;
 import core.CorePackage;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -42,6 +43,11 @@ public class AndImpl extends BinaryExpressionImpl implements And {
 	 */
 	@Override
 	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitAnd(this);
+	}
+	
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
 		return visitor.visitAnd(this);
 	}
 } //AndImpl

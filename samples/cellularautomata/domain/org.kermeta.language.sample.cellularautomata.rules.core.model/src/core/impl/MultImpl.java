@@ -5,6 +5,7 @@ package core.impl;
 import core.CorePackage;
 import core.Mult;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -42,6 +43,11 @@ public class MultImpl extends BinaryExpressionImpl implements Mult {
 	 */
 	@Override
 	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitMult(this);
+	}
+	
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
 		return visitor.visitMult(this);
 	}
 } //MultImpl

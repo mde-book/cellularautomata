@@ -5,6 +5,7 @@ package core.impl;
 import core.CorePackage;
 import core.Div;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -42,6 +43,11 @@ public class DivImpl extends BinaryExpressionImpl implements Div {
 	 */
 	@Override
 	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitDiv(this);
+	}
+	
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
 		return visitor.visitDiv(this);
 	}
 } //DivImpl

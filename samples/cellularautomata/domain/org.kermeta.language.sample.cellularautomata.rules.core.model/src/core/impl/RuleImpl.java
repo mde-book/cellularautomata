@@ -14,6 +14,7 @@ import core.Filter;
 import core.IntegerExpression;
 import core.Rule;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -244,6 +245,11 @@ public class RuleImpl extends EObjectImpl implements Rule {
 	 */
 	@Override
 	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitRule(this);
+	}
+	
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
 		return visitor.visitRule(this);
 	}
 } //RuleImpl

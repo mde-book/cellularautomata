@@ -5,6 +5,7 @@ package core.impl;
 import core.CorePackage;
 import core.Greater;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -44,4 +45,10 @@ public class GreaterImpl extends BinaryExpressionImpl implements Greater {
 	public String accept(final CoreModelToTextVisitor visitor) {
 		return visitor.visitGreater(this);
 	}
+	
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
+		return visitor.visitGreater(this);
+	}
+	
 } //GreaterImpl

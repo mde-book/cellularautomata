@@ -8,9 +8,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import core.impl.FilterImpl;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 import core.util.visitor.ModelToTextVisitor;
 import evol.EvolPackage;
 import evol.PopulationRange;
+import evol.util.visitor.EvolEvaluationVisitor;
 import evol.util.visitor.EvolModelToTextVisitor;
 
 /**
@@ -223,4 +225,11 @@ public class PopulationRangeImpl extends FilterImpl implements PopulationRange {
 			return visitor.visitFilter(this);
 	}
 
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
+		if(visitor instanceof EvolEvaluationVisitor)
+			return ((EvolEvaluationVisitor)visitor).visitPopulationRange(this);
+		else 
+			return visitor.visitFilter(this);
+	}
 } //PopulationRangeImpl

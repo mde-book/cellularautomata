@@ -14,8 +14,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import core.Rule;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 import evol.CellularAutomata;
 import evol.EvolPackage;
+import evol.util.visitor.EvolEvaluationVisitor;
 import evol.util.visitor.EvolModelToTextVisitor;
 
 /**
@@ -148,14 +150,22 @@ public class CellularAutomataImpl extends EObjectImpl implements CellularAutomat
 	}
 
 	@Override
-	public String accept(EvolModelToTextVisitor visitor) {
-		return visitor.visitCellularAutomata(this);
+	public String accept(CoreModelToTextVisitor visitor) {
+		if(visitor instanceof EvolModelToTextVisitor)
+			return ((EvolModelToTextVisitor)visitor).visitCellularAutomata(this);
+		else 
+			return null;
 	}
 
 
 
 
-
+	@Override
+	public int accept(EvaluationVisitor visitor) {
+		if(visitor instanceof EvolEvaluationVisitor)
+			return ((EvolEvaluationVisitor)visitor).visitCellularAutomata(this);
+		else return 0;
+	}
 
 	
 	

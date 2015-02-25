@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import core.Add;
 import core.CorePackage;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 import core.util.visitor.ModelToTextVisitor;
 
 /**
@@ -41,6 +42,11 @@ public class AddImpl extends BinaryExpressionImpl implements Add {
 	
 	@Override
 	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitAdd(this);
+	}
+	
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
 		return visitor.visitAdd(this);
 	}
 } //AddImpl

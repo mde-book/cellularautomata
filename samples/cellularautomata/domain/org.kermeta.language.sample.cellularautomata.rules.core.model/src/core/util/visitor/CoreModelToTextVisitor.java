@@ -27,23 +27,23 @@ import core.UnaryExpression;
  */
 public interface CoreModelToTextVisitor {
 		
-	public  String visitIntegerExpression(IntegerExpression expression);
-	public  String visitBinaryExpression(BinaryExpression expression);
-	public  String visitUnaryExpression(UnaryExpression expression);
-	public  String visitAnd(And expression);
-	public  String visitAdd(Add expression);
-	public  String visitConditional(Conditional expression);
-	public  String visitDiv(Div expression);
-	public  String visitEqual(Equal expression);
-	public  String visitFilter(Filter filter);
-	public  String visitGreater(Greater expression);
-	public  String visitIntegerLiteral(IntegerLiteral expression);
-	public  String visitLower(Lower expression);
-	public  String visitMinus(Minus expression);
-	public  String visitMod(Mod expression);
-	public  String visitMult(Mult expression);
-	public  String visitNot(Not expression);
-	public  String visitOr(Or expression);
-	public  String visitRule(Rule rule);
-	public  String visitUMinus(UMinus expression);
+	String visitIntegerExpression(IntegerExpression expression);
+	String visitBinaryExpression(BinaryExpression expression);
+	String visitUnaryExpression(UnaryExpression expression);
+	String visitAnd(And expression);
+	String visitAdd(Add expression);
+	String visitConditional(Conditional expression);
+	String visitDiv(Div expression);
+	String visitEqual(Equal expression);
+	String visitFilter(Filter filter);
+	String visitGreater(Greater expression);
+	String visitIntegerLiteral(IntegerLiteral expression);
+	String visitLower(Lower expression);
+	String visitMinus(Minus expression);
+	String visitMod(Mod expression);
+	String visitMult(Mult expression);
+	String visitNot(Not expression);
+	String visitOr(Or expression);
+	String visitRule(Rule rule);
+	String visitUMinus(UMinus expression);
 } 

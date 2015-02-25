@@ -5,6 +5,7 @@ package core.impl;
 import core.CorePackage;
 import core.Lower;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -42,6 +43,11 @@ public class LowerImpl extends BinaryExpressionImpl implements Lower {
 	 */
 	@Override
 	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitLower(this);
+	}
+	
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
 		return visitor.visitLower(this);
 	}
 } //LowerImpl

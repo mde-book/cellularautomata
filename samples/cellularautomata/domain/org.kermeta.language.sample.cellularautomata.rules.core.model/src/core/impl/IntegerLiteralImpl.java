@@ -5,6 +5,7 @@ package core.impl;
 import core.CorePackage;
 import core.IntegerLiteral;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 import core.util.visitor.ModelToTextVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -164,6 +165,11 @@ public class IntegerLiteralImpl extends IntegerExpressionImpl implements Integer
 	 */
 	@Override
 	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitIntegerLiteral(this);
+	}
+	
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
 		return visitor.visitIntegerLiteral(this);
 	}
 } //IntegerLiteralImpl

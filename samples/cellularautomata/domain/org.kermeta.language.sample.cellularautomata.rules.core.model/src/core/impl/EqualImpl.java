@@ -5,6 +5,7 @@ package core.impl;
 import core.CorePackage;
 import core.Equal;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -42,6 +43,11 @@ public class EqualImpl extends BinaryExpressionImpl implements Equal {
 	 */
 	@Override
 	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitEqual(this);
+	}
+	
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
 		return visitor.visitEqual(this);
 	}
 } //EqualImpl

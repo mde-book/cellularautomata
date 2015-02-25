@@ -5,6 +5,7 @@ package core.impl;
 import core.CorePackage;
 import core.Minus;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -41,6 +42,10 @@ public class MinusImpl extends BinaryExpressionImpl implements Minus {
 	 */
 	@Override
 	public String accept(final CoreModelToTextVisitor visitor) {
+		return visitor.visitMinus(this);
+	}
+	@Override
+	public int accept(final EvaluationVisitor visitor) {
 		return visitor.visitMinus(this);
 	}
 } //MinusImpl

@@ -16,12 +16,12 @@ import evol.Sum;
  * 
  */
 public interface EvolModelToTextVisitor extends CoreModelToTextVisitor {
-	public abstract String visitCellularAutomata(CellularAutomata automata);
-	public abstract String visitCurrentCellPopulation(CurrentCellPopulation expression);
-	public abstract String visitMax(Max expression);
-	public abstract String visitMin(Min expression);
-	public abstract String visitNeighborsExpression(NeighborsExpression expression);
-	public abstract String visitPopulationRange(PopulationRange popRange);
-	public abstract String visitSize(Size expression);
-	public abstract String visitSum(Sum expression);
+	public String visitCellularAutomata(CellularAutomata automata);
+	public String visitCurrentCellPopulation(CurrentCellPopulation expression);
+	public String visitMax(Max expression);
+	public String visitMin(Min expression);
+	public String visitNeighborsExpression(NeighborsExpression expression);
+	public String visitPopulationRange(PopulationRange popRange);
+	public String visitSize(Size expression);
+	public String visitSum(Sum expression);
 } 
