@@ -119,6 +119,19 @@ class SimulatorVisitor implements EvolEvaluationVisitor{
 		return context.currentCell.getVal();
 	}
 	@Override
+	public int visitSum(Sum expression) {
+		if (expression.getNeighborsFilter() == null) {
+			return context.currentCell.getNeighbors().stream()
+					.mapToInt(cell -> cell.getVal()).sum();
+		} else {
+			Filter filter = expression.getNeighborsFilter();
+			return context.currentCell.getNeighbors().stream()
+					.filter(cell -> isFilterApplicableForCell(filter, cell))
+					.mapToInt(cell -> cell.getVal())
+					.sum();
+		}
+	}
+	@Override
 	public int visitMax(Max expression) {
 		Stream<Integer> selectedCellValues;
 		if (expression.getNeighborsFilter() == null) {
@@ -155,20 +168,6 @@ class SimulatorVisitor implements EvolEvaluationVisitor{
 					.mapToInt(c -> 1)
 					.sum();
 		}
-	}
-	@Override
-	public int visitSum(Sum expression) {
-		if (expression.getNeighborsFilter() == null) {
-			return context.currentCell.getNeighbors().stream()
-					.mapToInt(cell -> cell.getVal()).sum();
-		} else {
-			Filter filter = expression.getNeighborsFilter();
-			return context.currentCell.getNeighbors().stream()
-					.filter(cell -> isFilterApplicableForCell(filter, cell))
-					.mapToInt(cell -> cell.getVal())
-					.sum();
-		}
-		
 	}
 
 	@Override
