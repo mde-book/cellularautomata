@@ -76,6 +76,12 @@ class SimulatorVisitor implements EvolEvaluationVisitor{
 		return left > right ? 1 : 0;
 	}
 	@Override
+	public int visitAnd(And expression) {
+		boolean left = expression.getLeft().accept(this) != 0 ;
+		boolean right = expression.getRight().accept(this) != 0;
+		return left && right ? 1 : 0;
+	}
+	@Override
 	public int visitLower(Lower expression) {
 		int left = expression.getLeft().accept(this);
 		int right = expression.getRight().accept(this);
@@ -97,12 +103,6 @@ class SimulatorVisitor implements EvolEvaluationVisitor{
 	public int visitNot(Not expression) {
 		boolean target = expression.getTarget().accept(this) != 0 ;
 		return (!target) ? 1 : 0;
-	}
-	@Override
-	public int visitAnd(And expression) {
-		boolean left = expression.getLeft().accept(this) != 0 ;
-		boolean right = expression.getRight().accept(this) != 0;
-		return left && right ? 1 : 0;
 	}
 	@Override
 	public int visitOr(Or expression) {
