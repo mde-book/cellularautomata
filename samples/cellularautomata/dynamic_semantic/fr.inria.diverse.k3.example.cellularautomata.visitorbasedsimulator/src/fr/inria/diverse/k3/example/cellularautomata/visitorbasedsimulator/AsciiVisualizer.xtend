@@ -4,7 +4,7 @@ import vm.Universe
 
 public class SimpleAsciiArt2DVisualizer {
 
-	public Boolean useEmptyCellForZero
+	public Boolean useEmptyCellForZero = false;
 	
 	
 	def public SimpleAsciiArt2DVisualizer initialize(Boolean useEmptyCellForZero) {
