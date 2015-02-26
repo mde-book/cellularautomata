@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-
 import evol.CellularAutomata;
 import evol.EvolPackage;
 import vm.Universe;
@@ -20,20 +19,16 @@ public class Simulator {
 		Integer universeLength = Integer.parseInt(universeSize);
 		
 		SimpleAsciiArt2DVisualizer asciiArtVisualizer = new SimpleAsciiArt2DVisualizer();
-		asciiArtVisualizer.initialize(false);
 		asciiArtVisualizer.visualizeRegular2DUniverse(universeLength, grid);
 		
-		
+		SimulatorContext context = new SimulatorContext(grid);
+		SimulatorVisitor simVisitor = new SimulatorVisitor(context);
 		for(int i = 0; i<3; i++) {
-			SimulatorContext context = new SimulatorContext(grid);
-			SimulatorVisitor simVisitor = new SimulatorVisitor(context);
-			//automata.applyRules(context);
 			automata.accept(simVisitor);
 			asciiArtVisualizer.visualizeRegular2DUniverse(universeLength, grid);
 		}
 	}
-	
-	
+		
 	public CellularAutomata loadRule(String ruleFile) {
 		XMIResourceFactoryImpl fact = new XMIResourceFactoryImpl();
 		if (!EPackage.Registry.INSTANCE.containsKey(EvolPackage.eNS_URI)) {
