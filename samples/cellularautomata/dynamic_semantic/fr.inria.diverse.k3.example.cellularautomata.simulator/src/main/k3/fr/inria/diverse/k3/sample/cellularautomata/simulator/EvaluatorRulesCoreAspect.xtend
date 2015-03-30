@@ -147,11 +147,8 @@ class GreaterAspect extends BinaryExpressionAspect{
 @Aspect(className=typeof(Lower))
 class LowerAspect extends BinaryExpressionAspect{
 	def public Integer evaluate(Context context) {
-		if (_self.left.evaluate(context) < _self.right.evaluate(context)) {
-			return 1
-		} else {
-			return 0
-		}
+		if (_self.left.evaluate(context) < _self.right.evaluate(context)) return 1
+		else return 0
 	}
 }
 
