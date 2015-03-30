@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="vm" version="8.1.0">
+  <ownedViewpoints name="CellularAutomataVM">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="CellularAutomataVM" initialisation="true" domainClass="vm.Universe">
+      <defaultLayer name="Default">
+        <nodeMappings name="CellNode" domainClass="vm.Cell">
+          <style xsi:type="style:GaugeCompositeStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[self.eContainer(Universe).oclAsType(Universe).cells->indexOf(self)/]" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <sections maxValueExpression="[self.eContainer(Universe).oclAsType(Universe).cells->sortedBy(val)->collect(val)->last()/]" valueExpression="feature:val">
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </sections>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="NeighborEdge" sourceMapping="//@ownedViewpoints[name='CellularAutomataVM']/@ownedRepresentations[name='CellularAutomataVM']/@defaultLayer/@nodeMappings[name='CellNode']" targetMapping="//@ownedViewpoints[name='CellularAutomataVM']/@ownedRepresentations[name='CellularAutomataVM']/@defaultLayer/@nodeMappings[name='CellNode']" targetFinderExpression="[neighbors->select(n1 | self.eContainer(Universe).oclAsType(Universe).cells->indexOf(self) &lt; self.eContainer(Universe).oclAsType(Universe).cells->indexOf(n1)   )/]">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
