@@ -60,10 +60,7 @@ class RuleAspect {
 @Aspect(className=typeof(IntegerExpression))
 abstract class IntegerExpressionAspect
 {
-	def public Integer evaluate(Context context) {
-		return -1
-		//raise NotImplementedException.new.initialize("evaluate not implemented for "+self.toString)
-	}
+	def abstract public Integer evaluate(Context context)
 }
 
 @Aspect(className=typeof(IntegerLiteral))
