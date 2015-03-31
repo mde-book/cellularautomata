@@ -124,7 +124,7 @@ class UniverseGenerator {
 			var Integer cellNumber = universeLength * universeWidth
 			println("Generating "+cellNumber.toString+" Cells...")
 			
-			for (int i : 0..cellNumber) {
+			for (int i : 0..cellNumber-1) {
 				var Cell cell = new VmFactoryImpl().createCell
 				cell.init
 				cell.globalPosition = i
