@@ -3,14 +3,16 @@
 package ruleInit.provider;
 
 
+import geometry.Dimension;
+import geometry.RegularGeometry;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -23,6 +25,8 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import ruleInit.CoordinateRange;
+import ruleInit.DimensionRange;
+import ruleInit.InitFactory;
 import ruleInit.InitPackage;
 
 /**
@@ -60,54 +64,61 @@ public class CoordinateRangeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addLowerCoordinatePropertyDescriptor(object);
-			addUpperCoordinatePropertyDescriptor(object);
+			addDimensionRangesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Lower Coordinate feature.
+	 * This adds a property descriptor for the Dimension Ranges feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addLowerCoordinatePropertyDescriptor(Object object) {
+	protected void addDimensionRangesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CoordinateRange_lowerCoordinate_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CoordinateRange_lowerCoordinate_feature", "_UI_CoordinateRange_type"),
-				 InitPackage.Literals.COORDINATE_RANGE__LOWER_COORDINATE,
+				 getString("_UI_CoordinateRange_dimensionRanges_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CoordinateRange_dimensionRanges_feature", "_UI_CoordinateRange_type"),
+				 InitPackage.Literals.COORDINATE_RANGE__DIMENSION_RANGES,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Upper Coordinate feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addUpperCoordinatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CoordinateRange_upperCoordinate_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CoordinateRange_upperCoordinate_feature", "_UI_CoordinateRange_type"),
-				 InitPackage.Literals.COORDINATE_RANGE__UPPER_COORDINATE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(InitPackage.Literals.COORDINATE_RANGE__DIMENSION_RANGES);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -129,17 +140,26 @@ public class CoordinateRangeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		CoordinateRange coordinateRange = (CoordinateRange)object;
-		String coordinateRangeString;
-		if(coordinateRange.getLowerCoordinate() == coordinateRange.getUpperCoordinate()){
-			coordinateRangeString = getString("_UI_CoordinateRange_type") + " " +
-									coordinateRange.getLowerCoordinate();
+		CoordinateRange coordRange = (CoordinateRange)object;
+		String dimRangesString = ("(");
+		int count = 0;
+		for(DimensionRange dimRange : coordRange.getDimensionRanges()){
+			String dimensionRangeString;
+			if(dimRange.getLower() == dimRange.getUpper()){
+				dimensionRangeString = "" + dimRange.getLower();
+			}
+			else {
+				dimensionRangeString = dimRange.getLower() + ".." + dimRange.getUpper();				
+			}
+			if(count>0){
+				dimRangesString += ", " +dimensionRangeString;
+			}
+			else dimRangesString += dimensionRangeString;
+			count++;
 		}
-		else {
-			coordinateRangeString = getString("_UI_CoordinateRange_type") + " " +
-					coordinateRange.getLowerCoordinate() + ".." + coordinateRange.getUpperCoordinate();				
-		}
-		return coordinateRangeString;
+
+		dimRangesString += (")");
+		return getString("_UI_CoordinateRange_type") + " " +dimRangesString;
 	}
 
 	/**
@@ -154,9 +174,8 @@ public class CoordinateRangeItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CoordinateRange.class)) {
-			case InitPackage.COORDINATE_RANGE__LOWER_COORDINATE:
-			case InitPackage.COORDINATE_RANGE__UPPER_COORDINATE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			case InitPackage.COORDINATE_RANGE__DIMENSION_RANGES:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -172,6 +191,11 @@ public class CoordinateRangeItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(InitPackage.Literals.COORDINATE_RANGE__DIMENSION_RANGES,
+				 InitFactory.eINSTANCE.createDimensionRange()));
 	}
 
 	/**

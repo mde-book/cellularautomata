@@ -30,13 +30,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class UnaryExpressionItemProvider
-	extends IntegerExpressionItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends IntegerExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -147,17 +141,7 @@ public class UnaryExpressionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CorePackage.Literals.UNARY_EXPRESSION__TARGET,
-				 CoreFactory.eINSTANCE.createBinaryExpression()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.UNARY_EXPRESSION__TARGET,
 				 CoreFactory.eINSTANCE.createAdd()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.UNARY_EXPRESSION__TARGET,
-				 CoreFactory.eINSTANCE.createUnaryExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter

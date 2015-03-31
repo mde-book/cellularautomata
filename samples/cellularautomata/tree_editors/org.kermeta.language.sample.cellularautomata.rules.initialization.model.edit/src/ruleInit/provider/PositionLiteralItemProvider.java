@@ -33,13 +33,7 @@ import ruleInit.PositionLiteral;
  * @generated
  */
 public class PositionLiteralItemProvider
-	extends IntegerExpressionItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends IntegerExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

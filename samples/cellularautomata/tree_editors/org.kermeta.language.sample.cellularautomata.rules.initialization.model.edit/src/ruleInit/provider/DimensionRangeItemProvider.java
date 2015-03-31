@@ -3,38 +3,35 @@
 package ruleInit.provider;
 
 
-import core.provider.FilterItemProvider;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import ruleInit.GlobalPosition;
-import ruleInit.InitFactory;
+import ruleInit.CoordinateRange;
+import ruleInit.DimensionRange;
 import ruleInit.InitPackage;
 
 /**
- * This is the item provider adapter for a {@link ruleInit.GlobalPosition} object.
+ * This is the item provider adapter for a {@link ruleInit.DimensionRange} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class GlobalPositionItemProvider
-	extends FilterItemProvider
+public class DimensionRangeItemProvider 
+	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -47,7 +44,7 @@ public class GlobalPositionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GlobalPositionItemProvider(AdapterFactory adapterFactory) {
+	public DimensionRangeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -62,61 +59,89 @@ public class GlobalPositionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addLowerPropertyDescriptor(object);
+			addUpperPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Lower feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(InitPackage.Literals.GLOBAL_POSITION__COORDINATE_RANGES);
-		}
-		return childrenFeatures;
+	protected void addLowerPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DimensionRange_lower_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DimensionRange_lower_feature", "_UI_DimensionRange_type"),
+				 InitPackage.Literals.DIMENSION_RANGE__LOWER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Upper feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addUpperPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DimensionRange_upper_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DimensionRange_upper_feature", "_UI_DimensionRange_type"),
+				 InitPackage.Literals.DIMENSION_RANGE__UPPER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This returns GlobalPosition.gif.
+	 * This returns DimensionRange.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/GlobalPosition"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/DimensionRange"));
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_GlobalPosition_type");
+		
+		DimensionRange dimensionRange = (DimensionRange)object;
+		String dimensionRangeString;
+		if(dimensionRange.getLower() == dimensionRange.getUpper()){
+			dimensionRangeString = getString("_UI_DimensionRange_type") + " " +
+					dimensionRange.getLower();
+		}
+		else {
+			dimensionRangeString = getString("_UI_DimensionRange_type") + " " +
+					dimensionRange.getLower() + ".." + dimensionRange.getUpper();				
+		}
+		return dimensionRangeString;
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -129,9 +154,10 @@ public class GlobalPositionItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(GlobalPosition.class)) {
-			case InitPackage.GLOBAL_POSITION__COORDINATE_RANGES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+		switch (notification.getFeatureID(DimensionRange.class)) {
+			case InitPackage.DIMENSION_RANGE__LOWER:
+			case InitPackage.DIMENSION_RANGE__UPPER:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -147,11 +173,6 @@ public class GlobalPositionItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(InitPackage.Literals.GLOBAL_POSITION__COORDINATE_RANGES,
-				 InitFactory.eINSTANCE.createCoordinateRange()));
 	}
 
 	/**

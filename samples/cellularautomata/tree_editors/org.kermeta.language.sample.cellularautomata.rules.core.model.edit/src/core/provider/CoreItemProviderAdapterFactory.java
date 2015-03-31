@@ -118,29 +118,6 @@ public class CoreItemProviderAdapterFactory extends CoreAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link core.UnaryExpression} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected UnaryExpressionItemProvider unaryExpressionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link core.UnaryExpression}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createUnaryExpressionAdapter() {
-		if (unaryExpressionItemProvider == null) {
-			unaryExpressionItemProvider = new UnaryExpressionItemProvider(this);
-		}
-
-		return unaryExpressionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link core.And} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -299,29 +276,6 @@ public class CoreItemProviderAdapterFactory extends CoreAdapterFactory implement
 		}
 
 		return conditionalItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link core.BinaryExpression} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected BinaryExpressionItemProvider binaryExpressionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link core.BinaryExpression}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createBinaryExpressionAdapter() {
-		if (binaryExpressionItemProvider == null) {
-			binaryExpressionItemProvider = new BinaryExpressionItemProvider(this);
-		}
-
-		return binaryExpressionItemProvider;
 	}
 
 	/**
@@ -563,7 +517,6 @@ public class CoreItemProviderAdapterFactory extends CoreAdapterFactory implement
 	public void dispose() {
 		if (ruleItemProvider != null) ruleItemProvider.dispose();
 		if (addItemProvider != null) addItemProvider.dispose();
-		if (unaryExpressionItemProvider != null) unaryExpressionItemProvider.dispose();
 		if (andItemProvider != null) andItemProvider.dispose();
 		if (orItemProvider != null) orItemProvider.dispose();
 		if (notItemProvider != null) notItemProvider.dispose();
@@ -571,7 +524,6 @@ public class CoreItemProviderAdapterFactory extends CoreAdapterFactory implement
 		if (lowerItemProvider != null) lowerItemProvider.dispose();
 		if (integerLiteralItemProvider != null) integerLiteralItemProvider.dispose();
 		if (conditionalItemProvider != null) conditionalItemProvider.dispose();
-		if (binaryExpressionItemProvider != null) binaryExpressionItemProvider.dispose();
 		if (multItemProvider != null) multItemProvider.dispose();
 		if (divItemProvider != null) divItemProvider.dispose();
 		if (modItemProvider != null) modItemProvider.dispose();

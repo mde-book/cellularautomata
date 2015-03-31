@@ -1,11 +1,11 @@
 /**
  */
-package core.provider;
+package ruleInit.provider;
 
 
 import core.CoreFactory;
-import core.CorePackage;
-import core.Rule;
+
+import geometry.GeometryFactory;
 
 import java.util.Collection;
 import java.util.List;
@@ -26,13 +26,16 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import ruleInit.CellularAutomataInitialization;
+import ruleInit.InitPackage;
+
 /**
- * This is the item provider adapter for a {@link core.Rule} object.
+ * This is the item provider adapter for a {@link ruleInit.CellularAutomataInitialization} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class RuleItemProvider
+public class CellularAutomataInitializationItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -46,7 +49,7 @@ public class RuleItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RuleItemProvider(AdapterFactory adapterFactory) {
+	public CellularAutomataInitializationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -77,8 +80,8 @@ public class RuleItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CorePackage.Literals.RULE__EVALUATED_VAL);
-			childrenFeatures.add(CorePackage.Literals.RULE__FILTER);
+			childrenFeatures.add(InitPackage.Literals.CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES);
+			childrenFeatures.add(InitPackage.Literals.CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY);
 		}
 		return childrenFeatures;
 	}
@@ -97,14 +100,14 @@ public class RuleItemProvider
 	}
 
 	/**
-	 * This returns Rule.gif.
+	 * This returns CellularAutomataInitialization.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Rule"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/CellularAutomataInitialization"));
 	}
 
 	/**
@@ -115,8 +118,9 @@ public class RuleItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Rule_type");
+		return getString("_UI_CellularAutomataInitialization_type");
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -129,9 +133,9 @@ public class RuleItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Rule.class)) {
-			case CorePackage.RULE__EVALUATED_VAL:
-			case CorePackage.RULE__FILTER:
+		switch (notification.getFeatureID(CellularAutomataInitialization.class)) {
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES:
+			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -151,73 +155,13 @@ public class RuleItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createAdd()));
+				(InitPackage.Literals.CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES,
+				 CoreFactory.eINSTANCE.createRule()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createAnd()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createNot()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createGreater()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createLower()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createIntegerLiteral()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createConditional()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createMult()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createDiv()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createMod()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createUMinus()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createMinus()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.RULE__EVALUATED_VAL,
-				 CoreFactory.eINSTANCE.createEqual()));
+				(InitPackage.Literals.CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY,
+				 GeometryFactory.eINSTANCE.createRegularGeometry()));
 	}
 
 	/**
@@ -228,7 +172,7 @@ public class RuleItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return Rules_coreEditPlugin.INSTANCE;
+		return Rules_initEditPlugin.INSTANCE;
 	}
 
 }
