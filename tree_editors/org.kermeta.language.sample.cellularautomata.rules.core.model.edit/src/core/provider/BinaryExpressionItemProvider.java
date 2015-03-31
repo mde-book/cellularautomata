@@ -30,13 +30,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class BinaryExpressionItemProvider
-	extends IntegerExpressionItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends IntegerExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -149,17 +143,7 @@ public class BinaryExpressionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CorePackage.Literals.BINARY_EXPRESSION__LEFT,
-				 CoreFactory.eINSTANCE.createBinaryExpression()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.BINARY_EXPRESSION__LEFT,
 				 CoreFactory.eINSTANCE.createAdd()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.BINARY_EXPRESSION__LEFT,
-				 CoreFactory.eINSTANCE.createUnaryExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -229,17 +213,7 @@ public class BinaryExpressionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CorePackage.Literals.BINARY_EXPRESSION__RIGHT,
-				 CoreFactory.eINSTANCE.createBinaryExpression()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.BINARY_EXPRESSION__RIGHT,
 				 CoreFactory.eINSTANCE.createAdd()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.BINARY_EXPRESSION__RIGHT,
-				 CoreFactory.eINSTANCE.createUnaryExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter

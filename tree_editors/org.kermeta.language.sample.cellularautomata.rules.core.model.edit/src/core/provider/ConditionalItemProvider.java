@@ -30,13 +30,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class ConditionalItemProvider
-	extends IntegerExpressionItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends IntegerExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -151,17 +145,7 @@ public class ConditionalItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CorePackage.Literals.CONDITIONAL__IF_TRUE_EXPRESSION,
-				 CoreFactory.eINSTANCE.createBinaryExpression()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.CONDITIONAL__IF_TRUE_EXPRESSION,
 				 CoreFactory.eINSTANCE.createAdd()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.CONDITIONAL__IF_TRUE_EXPRESSION,
-				 CoreFactory.eINSTANCE.createUnaryExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -231,17 +215,7 @@ public class ConditionalItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CorePackage.Literals.CONDITIONAL__IF_FALSE_EXPRESSION,
-				 CoreFactory.eINSTANCE.createBinaryExpression()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.CONDITIONAL__IF_FALSE_EXPRESSION,
 				 CoreFactory.eINSTANCE.createAdd()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.CONDITIONAL__IF_FALSE_EXPRESSION,
-				 CoreFactory.eINSTANCE.createUnaryExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -311,17 +285,7 @@ public class ConditionalItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CorePackage.Literals.CONDITIONAL__CONDITION,
-				 CoreFactory.eINSTANCE.createBinaryExpression()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.CONDITIONAL__CONDITION,
 				 CoreFactory.eINSTANCE.createAdd()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.CONDITIONAL__CONDITION,
-				 CoreFactory.eINSTANCE.createUnaryExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter

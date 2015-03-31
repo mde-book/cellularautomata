@@ -72,49 +72,49 @@ public class InitItemProviderAdapterFactory extends InitAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link ruleInit.CellularAutomatatInitialization} instances.
+	 * This keeps track of the one adapter used for all {@link ruleInit.CellularAutomataInitialization} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CellularAutomatatInitializationItemProvider cellularAutomatatInitializationItemProvider;
+	protected CellularAutomataInitializationItemProvider cellularAutomataInitializationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link ruleInit.CellularAutomatatInitialization}.
+	 * This creates an adapter for a {@link ruleInit.CellularAutomataInitialization}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCellularAutomatatInitializationAdapter() {
-		if (cellularAutomatatInitializationItemProvider == null) {
-			cellularAutomatatInitializationItemProvider = new CellularAutomatatInitializationItemProvider(this);
+	public Adapter createCellularAutomataInitializationAdapter() {
+		if (cellularAutomataInitializationItemProvider == null) {
+			cellularAutomataInitializationItemProvider = new CellularAutomataInitializationItemProvider(this);
 		}
 
-		return cellularAutomatatInitializationItemProvider;
+		return cellularAutomataInitializationItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link ruleInit.GlobalPosition} instances.
+	 * This keeps track of the one adapter used for all {@link ruleInit.CoordinateRanges} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GlobalPositionItemProvider globalPositionItemProvider;
+	protected CoordinateRangesItemProvider coordinateRangesItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link ruleInit.GlobalPosition}.
+	 * This creates an adapter for a {@link ruleInit.CoordinateRanges}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createGlobalPositionAdapter() {
-		if (globalPositionItemProvider == null) {
-			globalPositionItemProvider = new GlobalPositionItemProvider(this);
+	public Adapter createCoordinateRangesAdapter() {
+		if (coordinateRangesItemProvider == null) {
+			coordinateRangesItemProvider = new CoordinateRangesItemProvider(this);
 		}
 
-		return globalPositionItemProvider;
+		return coordinateRangesItemProvider;
 	}
 
 	/**
@@ -161,6 +161,29 @@ public class InitItemProviderAdapterFactory extends InitAdapterFactory implement
 		}
 
 		return coordinateRangeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link ruleInit.DimensionRange} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DimensionRangeItemProvider dimensionRangeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ruleInit.DimensionRange}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDimensionRangeAdapter() {
+		if (dimensionRangeItemProvider == null) {
+			dimensionRangeItemProvider = new DimensionRangeItemProvider(this);
+		}
+
+		return dimensionRangeItemProvider;
 	}
 
 	/**
@@ -262,10 +285,11 @@ public class InitItemProviderAdapterFactory extends InitAdapterFactory implement
 	 * @generated
 	 */
 	public void dispose() {
-		if (cellularAutomatatInitializationItemProvider != null) cellularAutomatatInitializationItemProvider.dispose();
-		if (globalPositionItemProvider != null) globalPositionItemProvider.dispose();
-		if (positionLiteralItemProvider != null) positionLiteralItemProvider.dispose();
+		if (cellularAutomataInitializationItemProvider != null) cellularAutomataInitializationItemProvider.dispose();
+		if (coordinateRangesItemProvider != null) coordinateRangesItemProvider.dispose();
 		if (coordinateRangeItemProvider != null) coordinateRangeItemProvider.dispose();
+		if (dimensionRangeItemProvider != null) dimensionRangeItemProvider.dispose();
+		if (positionLiteralItemProvider != null) positionLiteralItemProvider.dispose();
 	}
 
 }

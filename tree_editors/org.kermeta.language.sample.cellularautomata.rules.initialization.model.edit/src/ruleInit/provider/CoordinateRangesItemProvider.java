@@ -3,9 +3,7 @@
 package ruleInit.provider;
 
 
-import core.CoreFactory;
-
-import geometry.GeometryFactory;
+import core.provider.FilterItemProvider;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,39 +15,27 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import ruleInit.CellularAutomatatInitialization;
+import ruleInit.CoordinateRanges;
+import ruleInit.InitFactory;
 import ruleInit.InitPackage;
 
 /**
- * This is the item provider adapter for a {@link ruleInit.CellularAutomatatInitialization} object.
+ * This is the item provider adapter for a {@link ruleInit.CoordinateRanges} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CellularAutomatatInitializationItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class CoordinateRangesItemProvider extends FilterItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CellularAutomatatInitializationItemProvider(AdapterFactory adapterFactory) {
+	public CoordinateRangesItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -80,8 +66,7 @@ public class CellularAutomatatInitializationItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(InitPackage.Literals.CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES);
-			childrenFeatures.add(InitPackage.Literals.CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY);
+			childrenFeatures.add(InitPackage.Literals.COORDINATE_RANGES__COORDINATE_RANGES);
 		}
 		return childrenFeatures;
 	}
@@ -100,14 +85,14 @@ public class CellularAutomatatInitializationItemProvider
 	}
 
 	/**
-	 * This returns CellularAutomatatInitialization.gif.
+	 * This returns CoordinateRanges.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CellularAutomatatInitialization"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/CoordinateRanges"));
 	}
 
 	/**
@@ -118,8 +103,9 @@ public class CellularAutomatatInitializationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_CellularAutomatatInitialization_type");
+		return getString("_UI_CoordinateRanges_type");
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -132,9 +118,8 @@ public class CellularAutomatatInitializationItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(CellularAutomatatInitialization.class)) {
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES:
-			case InitPackage.CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY:
+		switch (notification.getFeatureID(CoordinateRanges.class)) {
+			case InitPackage.COORDINATE_RANGES__COORDINATE_RANGES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -154,13 +139,8 @@ public class CellularAutomatatInitializationItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(InitPackage.Literals.CELLULAR_AUTOMATAT_INITIALIZATION__SEED_RULES,
-				 CoreFactory.eINSTANCE.createRule()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(InitPackage.Literals.CELLULAR_AUTOMATAT_INITIALIZATION__GEOMETRY,
-				 GeometryFactory.eINSTANCE.createRegularGeometry()));
+				(InitPackage.Literals.COORDINATE_RANGES__COORDINATE_RANGES,
+				 InitFactory.eINSTANCE.createCoordinateRange()));
 	}
 
 	/**
