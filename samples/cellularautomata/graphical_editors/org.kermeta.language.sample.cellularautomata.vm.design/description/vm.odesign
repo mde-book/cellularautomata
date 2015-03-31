@@ -3,8 +3,8 @@
   <ownedViewpoints name="CellularAutomataVM">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="CellularAutomataVM" initialisation="true" domainClass="vm.Universe">
       <defaultLayer name="Default">
-        <nodeMappings name="CellNode" domainClass="vm.Cell">
-          <style xsi:type="style:GaugeCompositeStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[self.eContainer(Universe).oclAsType(Universe).cells->indexOf(self)/]" labelPosition="node" resizeKind="NSEW">
+        <nodeMappings name="CellNode" semanticCandidatesExpression="[ thisEObject.cells/]" domainClass="vm.Cell">
+          <style xsi:type="style:GaugeCompositeStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="['('+self.eContainer(Universe).cells->indexOf(self) + ')\n' + self.val/]" sizeComputationExpression="4" labelPosition="node">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <sections maxValueExpression="[self.eContainer(Universe).oclAsType(Universe).cells->sortedBy(val)->collect(val)->last()/]" valueExpression="feature:val">
