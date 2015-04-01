@@ -1,24 +1,24 @@
 package fr.inria.diverse.k3.sample.cellularautomata.init.refactoring
 
-import core.Rule
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
+import core.Rule
+import geometry.RegularGeometry
 import ruleInit.CellularAutomataInitialization
 import ruleInit.CoordinateRanges
 import ruleInit.DimensionRange
 
 import static extension fr.inria.diverse.k3.sample.cellularautomata.init.refactoring.RuleAspect.*
-import geometry.RegularGeometry
 
 @Aspect(className=CellularAutomataInitialization)
 class CellularAutomataInitializationAspect{
-	def public void extendDimension( int dimensionIndex, int increment){
+	def public void extendDimension( int dimIndex, int incr){
 		if(_self.geometry instanceof RegularGeometry){
-			val geometry = _self.geometry as RegularGeometry
-			val int dimensionPreviousSize = geometry.dimensions.get(dimensionIndex).extent
-			geometry.dimensions.get(dimensionIndex).extent = dimensionPreviousSize + increment
+			val dimension = (_self.geometry as RegularGeometry).dimensions.get(dimIndex)
+			val int dimPrevSize = dimension.extent
+			dimension.extent = dimPrevSize + incr
 			
 			_self.seedRules.forEach[rule|
-				rule.extendDimension(dimensionIndex, dimensionPreviousSize, increment)
+				rule.extendDimension(dimIndex, dimPrevSize, incr)
 			]
 		}
 	}
@@ -26,12 +26,12 @@ class CellularAutomataInitializationAspect{
 
 @Aspect(className=Rule)
 class RuleAspect {
-	def public void extendDimension( int dimension, int dimensionPreviousSize, int increment){
+	def public void extendDimension( int dimension, int dimPrevSize, int incr){
 		if(_self.filter instanceof CoordinateRanges){
 			(_self.filter as CoordinateRanges).coordinateRanges.forEach[coordinateRange |
-				val DimensionRange dimensionRangeToExtend = coordinateRange.dimensionRanges.get(dimension) 
-				if (dimensionRangeToExtend.upper == dimensionPreviousSize){
-					dimensionRangeToExtend.upper = dimensionPreviousSize + increment
+				val DimensionRange dimRangeToExtend = coordinateRange.dimensionRanges.get(dimension) 
+				if (dimRangeToExtend.upper == dimPrevSize){
+					dimRangeToExtend.upper = dimPrevSize + incr
 				} 
 			]
 		}
