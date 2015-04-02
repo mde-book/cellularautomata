@@ -22,11 +22,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Conditional" eSuperTypes="#//IntegerExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        eType="#//IntegerExpression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ifTrueExpression" lowerBound="1"
         eType="#//IntegerExpression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ifFalseExpression" lowerBound="1"
-        eType="#//IntegerExpression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
         eType="#//IntegerExpression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BinaryExpression" abstract="true" eSuperTypes="#//IntegerExpression">
