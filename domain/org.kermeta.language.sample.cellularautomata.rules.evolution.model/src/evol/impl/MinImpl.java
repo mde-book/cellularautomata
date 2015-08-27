@@ -4,8 +4,8 @@ package evol.impl;
 
 import evol.EvolPackage;
 import evol.Min;
-import evol.util.visitor.EvolEvaluationVisitor;
-import evol.util.visitor.EvolModelToTextVisitor;
+import evol.util.visitor.CAERVisitor;
+import evol.util.visitor.CAERModelToTextVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -45,20 +45,20 @@ public class MinImpl extends NeighborsExpressionImpl implements Min {
 	 */
 	@Override
 	public String accept(CoreModelToTextVisitor visitor) {
-		if(visitor instanceof EvolModelToTextVisitor)
-			return ((EvolModelToTextVisitor)visitor).visitMin(this);
+		if(visitor instanceof CAERModelToTextVisitor)
+			return ((CAERModelToTextVisitor)visitor).visitMin(this);
 		else 
 			return visitor.visitIntegerExpression(this);
 	}
 	
-	public String accept(EvolModelToTextVisitor visitor) {
+	public String accept(CAERModelToTextVisitor visitor) {
 		return visitor.visitMin(this);
 	}
 
 	@Override
 	public int accept(final EvaluationVisitor visitor) {
-		if(visitor instanceof EvolEvaluationVisitor)
-			return ((EvolEvaluationVisitor)visitor).visitMin(this);
+		if(visitor instanceof CAERVisitor)
+			return ((CAERVisitor)visitor).visitMin(this);
 		else 
 			return visitor.visitIntegerExpression(this);
 	}

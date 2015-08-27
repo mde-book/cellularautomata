@@ -8,8 +8,8 @@ import core.util.visitor.CoreModelToTextVisitor;
 import core.util.visitor.EvaluationVisitor;
 import evol.EvolPackage;
 import evol.Size;
-import evol.util.visitor.EvolEvaluationVisitor;
-import evol.util.visitor.EvolModelToTextVisitor;
+import evol.util.visitor.CAERVisitor;
+import evol.util.visitor.CAERModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,16 +44,16 @@ public class SizeImpl extends NeighborsExpressionImpl implements Size {
 	 */
 	@Override
 	public String accept(CoreModelToTextVisitor visitor) {
-		if(visitor instanceof EvolModelToTextVisitor)
-			return ((EvolModelToTextVisitor)visitor).visitSize(this);
+		if(visitor instanceof CAERModelToTextVisitor)
+			return ((CAERModelToTextVisitor)visitor).visitSize(this);
 		else 
 			return visitor.visitIntegerExpression(this);
 	}
 	
 	@Override
 	public int accept(final EvaluationVisitor visitor) {
-		if(visitor instanceof EvolEvaluationVisitor)
-			return ((EvolEvaluationVisitor)visitor).visitSize(this);
+		if(visitor instanceof CAERVisitor)
+			return ((CAERVisitor)visitor).visitSize(this);
 		else 
 			return visitor.visitIntegerExpression(this);
 	}

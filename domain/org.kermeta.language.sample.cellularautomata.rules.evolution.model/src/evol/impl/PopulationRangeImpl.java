@@ -12,8 +12,8 @@ import core.util.visitor.EvaluationVisitor;
 import core.util.visitor.ModelToTextVisitor;
 import evol.EvolPackage;
 import evol.PopulationRange;
-import evol.util.visitor.EvolEvaluationVisitor;
-import evol.util.visitor.EvolModelToTextVisitor;
+import evol.util.visitor.CAERVisitor;
+import evol.util.visitor.CAERModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -219,16 +219,16 @@ public class PopulationRangeImpl extends FilterImpl implements PopulationRange {
 
 	@Override
 	public String accept(CoreModelToTextVisitor visitor) {
-		if(visitor instanceof EvolModelToTextVisitor)
-			return ((EvolModelToTextVisitor)visitor).visitPopulationRange(this);
+		if(visitor instanceof CAERModelToTextVisitor)
+			return ((CAERModelToTextVisitor)visitor).visitPopulationRange(this);
 		else 
 			return visitor.visitFilter(this);
 	}
 
 	@Override
 	public int accept(final EvaluationVisitor visitor) {
-		if(visitor instanceof EvolEvaluationVisitor)
-			return ((EvolEvaluationVisitor)visitor).visitPopulationRange(this);
+		if(visitor instanceof CAERVisitor)
+			return ((CAERVisitor)visitor).visitPopulationRange(this);
 		else 
 			return visitor.visitFilter(this);
 	}

@@ -8,8 +8,8 @@ import core.util.visitor.CoreModelToTextVisitor;
 import core.util.visitor.EvaluationVisitor;
 import evol.EvolPackage;
 import evol.Sum;
-import evol.util.visitor.EvolEvaluationVisitor;
-import evol.util.visitor.EvolModelToTextVisitor;
+import evol.util.visitor.CAERVisitor;
+import evol.util.visitor.CAERModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,16 +43,16 @@ public class SumImpl extends NeighborsExpressionImpl implements Sum {
 
 	@Override
 	public String accept(CoreModelToTextVisitor visitor) {
-		if(visitor instanceof EvolModelToTextVisitor)
-			return ((EvolModelToTextVisitor)visitor).visitSum(this);
+		if(visitor instanceof CAERModelToTextVisitor)
+			return ((CAERModelToTextVisitor)visitor).visitSum(this);
 		else 
 			return visitor.visitIntegerExpression(this);
 	}
 		
 	@Override
 	public int accept(final EvaluationVisitor visitor) {
-		if(visitor instanceof EvolEvaluationVisitor)
-			return ((EvolEvaluationVisitor)visitor).visitSum(this);
+		if(visitor instanceof CAERVisitor)
+			return ((CAERVisitor)visitor).visitSum(this);
 		else 
 			return visitor.visitIntegerExpression(this);
 	}

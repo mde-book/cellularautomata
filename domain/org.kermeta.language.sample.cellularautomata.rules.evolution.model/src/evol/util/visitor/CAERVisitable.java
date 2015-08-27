@@ -2,13 +2,13 @@
  */
 package evol.util.visitor;
 
-import core.util.visitor.CoreModelToTextVisitable;
+import core.util.visitor.EvaluationVisitable;
 
 
 /**
  * 
  */
-public interface EvolModelToTextVisitable extends CoreModelToTextVisitable {
+public interface CAERVisitable extends EvaluationVisitable {
 	//@Override
 	//public  String accept(EvolModelToTextVisitor visitor);
 } 

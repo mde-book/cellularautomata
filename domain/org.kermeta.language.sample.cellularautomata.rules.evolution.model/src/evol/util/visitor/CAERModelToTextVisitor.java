@@ -15,7 +15,7 @@ import evol.Sum;
 /**
  * 
  */
-public interface EvolModelToTextVisitor extends CoreModelToTextVisitor {
+public interface CAERModelToTextVisitor extends CoreModelToTextVisitor {
 	public String visitCellularAutomata(CellularAutomata automata);
 	public String visitCurrentCellPopulation(CurrentCellPopulation expression);
 	public String visitMax(Max expression);

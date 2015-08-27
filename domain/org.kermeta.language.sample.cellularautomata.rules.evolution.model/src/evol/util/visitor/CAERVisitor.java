@@ -13,9 +13,9 @@ import evol.Size;
 import evol.Sum;
 
 /**
- * 
+ * Visitor for Evaluation of CAER models
  */
-public interface EvolEvaluationVisitor extends EvaluationVisitor {
+public interface CAERVisitor extends EvaluationVisitor {
 	int visitCellularAutomata(CellularAutomata automata);
 	int visitCurrentCellPopulation(CurrentCellPopulation expression);
 	int visitMax(Max expression);

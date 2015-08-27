@@ -17,8 +17,8 @@ import core.util.visitor.CoreModelToTextVisitor;
 import core.util.visitor.EvaluationVisitor;
 import evol.CellularAutomata;
 import evol.EvolPackage;
-import evol.util.visitor.EvolEvaluationVisitor;
-import evol.util.visitor.EvolModelToTextVisitor;
+import evol.util.visitor.CAERVisitor;
+import evol.util.visitor.CAERModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -151,8 +151,8 @@ public class CellularAutomataImpl extends EObjectImpl implements CellularAutomat
 
 	@Override
 	public String accept(CoreModelToTextVisitor visitor) {
-		if(visitor instanceof EvolModelToTextVisitor)
-			return ((EvolModelToTextVisitor)visitor).visitCellularAutomata(this);
+		if(visitor instanceof CAERModelToTextVisitor)
+			return ((CAERModelToTextVisitor)visitor).visitCellularAutomata(this);
 		else 
 			return null;
 	}
@@ -162,8 +162,8 @@ public class CellularAutomataImpl extends EObjectImpl implements CellularAutomat
 
 	@Override
 	public int accept(EvaluationVisitor visitor) {
-		if(visitor instanceof EvolEvaluationVisitor)
-			return ((EvolEvaluationVisitor)visitor).visitCellularAutomata(this);
+		if(visitor instanceof CAERVisitor)
+			return ((CAERVisitor)visitor).visitCellularAutomata(this);
 		else return 0;
 	}
 

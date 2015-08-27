@@ -9,8 +9,8 @@ import core.util.visitor.CoreModelToTextVisitor;
 import core.util.visitor.EvaluationVisitor;
 import evol.CurrentCellPopulation;
 import evol.EvolPackage;
-import evol.util.visitor.EvolEvaluationVisitor;
-import evol.util.visitor.EvolModelToTextVisitor;
+import evol.util.visitor.CAERVisitor;
+import evol.util.visitor.CAERModelToTextVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,20 +43,20 @@ public class CurrentCellPopulationImpl extends IntegerExpressionImpl implements 
 
 	@Override
 	public String accept(CoreModelToTextVisitor visitor) {
-		if(visitor instanceof EvolModelToTextVisitor)
-			return ((EvolModelToTextVisitor)visitor).visitCurrentCellPopulation(this);
+		if(visitor instanceof CAERModelToTextVisitor)
+			return ((CAERModelToTextVisitor)visitor).visitCurrentCellPopulation(this);
 		else 
 			return visitor.visitIntegerExpression(this);
 	}
 	
-	public String accept(EvolModelToTextVisitor visitor) {
+	public String accept(CAERModelToTextVisitor visitor) {
 		return visitor.visitCurrentCellPopulation(this);
 	}
 
 	@Override
 	public int accept(final EvaluationVisitor visitor) {
-		if(visitor instanceof EvolEvaluationVisitor)
-			return ((EvolEvaluationVisitor)visitor).visitCurrentCellPopulation(this);
+		if(visitor instanceof CAERVisitor)
+			return ((CAERVisitor)visitor).visitCurrentCellPopulation(this);
 		else 
 			return visitor.visitIntegerExpression(this);
 	}
