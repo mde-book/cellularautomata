@@ -41,7 +41,7 @@ class CellAspect{
 @Aspect(className=Universe)
 class UniverseAspect{
 	public def void copyUniverse(){
-//		_self.cells.forEach[cell |	cell.computeGameOfLifeFutureValue]
-//		_self.cells.forEach[ cell | cell.^val = cell.futureValue]
+		_self.cells.forEach[cell | cell.copyCell]
+		_self.cells.forEach[cell | cell.linkNeigbours]
 	}
 }
