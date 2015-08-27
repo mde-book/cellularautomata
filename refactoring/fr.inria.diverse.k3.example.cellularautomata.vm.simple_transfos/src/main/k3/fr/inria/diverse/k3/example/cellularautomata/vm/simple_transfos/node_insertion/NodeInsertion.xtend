@@ -25,7 +25,6 @@ class UniverseAspect{
 }
 @Aspect(className=Cell)
 class CellAspect{
-	
 	public def boolean insertNeighbors(){
 		val hasInsertedNeighbor = _self.neighborsWithHighValDifference().size > 0
 		_self.neighborsWithHighValDifference().forEach[ neighborCell | 
