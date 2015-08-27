@@ -6,15 +6,16 @@
     copyrightFields="false" usedGenPackages="../../org.kermeta.language.sample.cellularautomata.geometry.model/metamodel/geometry.genmodel#//geometry ../../org.kermeta.language.sample.cellularautomata.rules.core.model/metamodel/rules_core.genmodel#//core">
   <foreignModel>rules_init.ecore</foreignModel>
   <genPackages prefix="Init" disposableProviderFactory="true" ecorePackage="rules_init.ecore#/">
+    <genDataTypes ecoreDataType="rules_init.ecore#//Integer"/>
     <genClasses ecoreClass="rules_init.ecore#//CellularAutomataInitialization">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//CellularAutomataInitialization/seedRules"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//CellularAutomataInitialization/geometry"/>
     </genClasses>
-    <genClasses ecoreClass="rules_init.ecore#//CoordinateRanges">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//CoordinateRanges/coordinateRanges"/>
+    <genClasses ecoreClass="rules_init.ecore#//AreaFilter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rules_init.ecore#//AreaFilter/areas"/>
     </genClasses>
-    <genClasses ecoreClass="rules_init.ecore#//CoordinateRange">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rules_init.ecore#//CoordinateRange/dimensionRanges"/>
+    <genClasses ecoreClass="rules_init.ecore#//Area">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference rules_init.ecore#//Area/dimensionRanges"/>
     </genClasses>
     <genClasses ecoreClass="rules_init.ecore#//DimensionRange">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rules_init.ecore#//DimensionRange/lower"/>

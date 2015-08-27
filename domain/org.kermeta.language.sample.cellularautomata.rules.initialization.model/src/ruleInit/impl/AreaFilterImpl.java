@@ -4,6 +4,7 @@ package ruleInit.impl;
 
 import core.impl.FilterImpl;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 
 import java.util.Collection;
 
@@ -14,40 +15,40 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import ruleInit.CoordinateRange;
-import ruleInit.CoordinateRanges;
+import ruleInit.Area;
+import ruleInit.AreaFilter;
 import ruleInit.InitPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Coordinate Ranges</b></em>'.
+ * An implementation of the model object '<em><b>Area Filter</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ruleInit.impl.CoordinateRangesImpl#getCoordinateRanges <em>Coordinate Ranges</em>}</li>
+ *   <li>{@link ruleInit.impl.AreaFilterImpl#getAreas <em>Areas</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CoordinateRangesImpl extends FilterImpl implements CoordinateRanges {
+public class AreaFilterImpl extends FilterImpl implements AreaFilter {
 	/**
-	 * The cached value of the '{@link #getCoordinateRanges() <em>Coordinate Ranges</em>}' containment reference list.
+	 * The cached value of the '{@link #getAreas() <em>Areas</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCoordinateRanges()
+	 * @see #getAreas()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CoordinateRange> coordinateRanges;
+	protected EList<Area> areas;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CoordinateRangesImpl() {
+	protected AreaFilterImpl() {
 		super();
 	}
 
@@ -58,7 +59,7 @@ public class CoordinateRangesImpl extends FilterImpl implements CoordinateRanges
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return InitPackage.Literals.COORDINATE_RANGES;
+		return InitPackage.Literals.AREA_FILTER;
 	}
 
 	/**
@@ -66,11 +67,11 @@ public class CoordinateRangesImpl extends FilterImpl implements CoordinateRanges
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CoordinateRange> getCoordinateRanges() {
-		if (coordinateRanges == null) {
-			coordinateRanges = new EObjectContainmentEList<CoordinateRange>(CoordinateRange.class, this, InitPackage.COORDINATE_RANGES__COORDINATE_RANGES);
+	public EList<Area> getAreas() {
+		if (areas == null) {
+			areas = new EObjectContainmentEList<Area>(Area.class, this, InitPackage.AREA_FILTER__AREAS);
 		}
-		return coordinateRanges;
+		return areas;
 	}
 
 	/**
@@ -81,8 +82,8 @@ public class CoordinateRangesImpl extends FilterImpl implements CoordinateRanges
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGES__COORDINATE_RANGES:
-				return ((InternalEList<?>)getCoordinateRanges()).basicRemove(otherEnd, msgs);
+			case InitPackage.AREA_FILTER__AREAS:
+				return ((InternalEList<?>)getAreas()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -95,8 +96,8 @@ public class CoordinateRangesImpl extends FilterImpl implements CoordinateRanges
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGES__COORDINATE_RANGES:
-				return getCoordinateRanges();
+			case InitPackage.AREA_FILTER__AREAS:
+				return getAreas();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,9 +111,9 @@ public class CoordinateRangesImpl extends FilterImpl implements CoordinateRanges
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGES__COORDINATE_RANGES:
-				getCoordinateRanges().clear();
-				getCoordinateRanges().addAll((Collection<? extends CoordinateRange>)newValue);
+			case InitPackage.AREA_FILTER__AREAS:
+				getAreas().clear();
+				getAreas().addAll((Collection<? extends Area>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -126,8 +127,8 @@ public class CoordinateRangesImpl extends FilterImpl implements CoordinateRanges
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGES__COORDINATE_RANGES:
-				getCoordinateRanges().clear();
+			case InitPackage.AREA_FILTER__AREAS:
+				getAreas().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -141,8 +142,8 @@ public class CoordinateRangesImpl extends FilterImpl implements CoordinateRanges
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGES__COORDINATE_RANGES:
-				return coordinateRanges != null && !coordinateRanges.isEmpty();
+			case InitPackage.AREA_FILTER__AREAS:
+				return areas != null && !areas.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -152,4 +153,9 @@ public class CoordinateRangesImpl extends FilterImpl implements CoordinateRanges
 		return null;
 	}
 
-} //CoordinateRangesImpl
+	@Override
+	public int accept(EvaluationVisitor visitor) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+} //AreaFilterImpl

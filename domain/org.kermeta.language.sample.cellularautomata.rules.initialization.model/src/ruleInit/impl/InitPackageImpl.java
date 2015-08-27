@@ -8,14 +8,15 @@ import geometry.GeometryPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import ruleInit.Area;
+import ruleInit.AreaFilter;
 import ruleInit.CellularAutomataInitialization;
-import ruleInit.CoordinateRange;
-import ruleInit.CoordinateRanges;
 import ruleInit.DimensionRange;
 import ruleInit.InitFactory;
 import ruleInit.InitPackage;
@@ -40,14 +41,14 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass coordinateRangesEClass = null;
+	private EClass areaFilterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass coordinateRangeEClass = null;
+	private EClass areaEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -62,6 +63,13 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * @generated
 	 */
 	private EClass positionLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType integerEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -160,8 +168,8 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCoordinateRanges() {
-		return coordinateRangesEClass;
+	public EClass getAreaFilter() {
+		return areaFilterEClass;
 	}
 
 	/**
@@ -169,8 +177,8 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCoordinateRanges_CoordinateRanges() {
-		return (EReference)coordinateRangesEClass.getEStructuralFeatures().get(0);
+	public EReference getAreaFilter_Areas() {
+		return (EReference)areaFilterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -178,8 +186,8 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCoordinateRange() {
-		return coordinateRangeEClass;
+	public EClass getArea() {
+		return areaEClass;
 	}
 
 	/**
@@ -187,8 +195,8 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCoordinateRange_DimensionRanges() {
-		return (EReference)coordinateRangeEClass.getEStructuralFeatures().get(0);
+	public EReference getArea_DimensionRanges() {
+		return (EReference)areaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -241,6 +249,15 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getInteger() {
+		return integerEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InitFactory getInitFactory() {
 		return (InitFactory)getEFactoryInstance();
 	}
@@ -268,11 +285,11 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 		createEReference(cellularAutomataInitializationEClass, CELLULAR_AUTOMATA_INITIALIZATION__SEED_RULES);
 		createEReference(cellularAutomataInitializationEClass, CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY);
 
-		coordinateRangesEClass = createEClass(COORDINATE_RANGES);
-		createEReference(coordinateRangesEClass, COORDINATE_RANGES__COORDINATE_RANGES);
+		areaFilterEClass = createEClass(AREA_FILTER);
+		createEReference(areaFilterEClass, AREA_FILTER__AREAS);
 
-		coordinateRangeEClass = createEClass(COORDINATE_RANGE);
-		createEReference(coordinateRangeEClass, COORDINATE_RANGE__DIMENSION_RANGES);
+		areaEClass = createEClass(AREA);
+		createEReference(areaEClass, AREA__DIMENSION_RANGES);
 
 		dimensionRangeEClass = createEClass(DIMENSION_RANGE);
 		createEAttribute(dimensionRangeEClass, DIMENSION_RANGE__LOWER);
@@ -280,6 +297,9 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 
 		positionLiteralEClass = createEClass(POSITION_LITERAL);
 		createEAttribute(positionLiteralEClass, POSITION_LITERAL__DIMENSION_INDEX);
+
+		// Create data types
+		integerEDataType = createEDataType(INTEGER);
 	}
 
 	/**
@@ -314,7 +334,7 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		coordinateRangesEClass.getESuperTypes().add(theCorePackage.getFilter());
+		areaFilterEClass.getESuperTypes().add(theCorePackage.getFilter());
 		positionLiteralEClass.getESuperTypes().add(theCorePackage.getIntegerExpression());
 
 		// Initialize classes and features; add operations and parameters
@@ -322,18 +342,21 @@ public class InitPackageImpl extends EPackageImpl implements InitPackage {
 		initEReference(getCellularAutomataInitialization_SeedRules(), theCorePackage.getRule(), null, "seedRules", null, 0, -1, CellularAutomataInitialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCellularAutomataInitialization_Geometry(), theGeometryPackage.getGeometry(), null, "geometry", null, 0, 1, CellularAutomataInitialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(coordinateRangesEClass, CoordinateRanges.class, "CoordinateRanges", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCoordinateRanges_CoordinateRanges(), this.getCoordinateRange(), null, "coordinateRanges", null, 0, -1, CoordinateRanges.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(areaFilterEClass, AreaFilter.class, "AreaFilter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAreaFilter_Areas(), this.getArea(), null, "areas", null, 0, -1, AreaFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(coordinateRangeEClass, CoordinateRange.class, "CoordinateRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCoordinateRange_DimensionRanges(), this.getDimensionRange(), null, "dimensionRanges", null, 0, -1, CoordinateRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(areaEClass, Area.class, "Area", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getArea_DimensionRanges(), this.getDimensionRange(), null, "dimensionRanges", null, 0, -1, Area.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dimensionRangeEClass, DimensionRange.class, "DimensionRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDimensionRange_Lower(), ecorePackage.getEInt(), "lower", null, 0, 1, DimensionRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDimensionRange_Upper(), ecorePackage.getEInt(), "upper", null, 0, 1, DimensionRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDimensionRange_Lower(), this.getInteger(), "lower", null, 0, 1, DimensionRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDimensionRange_Upper(), this.getInteger(), "upper", null, 0, 1, DimensionRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(positionLiteralEClass, PositionLiteral.class, "PositionLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPositionLiteral_DimensionIndex(), ecorePackage.getEInt(), "dimensionIndex", null, 1, 1, PositionLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPositionLiteral_DimensionIndex(), this.getInteger(), "dimensionIndex", null, 1, 1, PositionLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize data types
+		initEDataType(integerEDataType, int.class, "Integer", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

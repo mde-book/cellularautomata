@@ -33,7 +33,7 @@ public interface DimensionRange extends EObject {
 	 * @return the value of the '<em>Lower</em>' attribute.
 	 * @see #setLower(int)
 	 * @see ruleInit.InitPackage#getDimensionRange_Lower()
-	 * @model
+	 * @model dataType="ruleInit.Integer"
 	 * @generated
 	 */
 	int getLower();
@@ -59,7 +59,7 @@ public interface DimensionRange extends EObject {
 	 * @return the value of the '<em>Upper</em>' attribute.
 	 * @see #setUpper(int)
 	 * @see ruleInit.InitPackage#getDimensionRange_Upper()
-	 * @model
+	 * @model dataType="ruleInit.Integer"
 	 * @generated
 	 */
 	int getUpper();

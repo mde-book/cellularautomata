@@ -32,7 +32,7 @@ public interface PositionLiteral extends IntegerExpression {
 	 * @return the value of the '<em>Dimension Index</em>' attribute.
 	 * @see #setDimensionIndex(int)
 	 * @see ruleInit.InitPackage#getPositionLiteral_DimensionIndex()
-	 * @model required="true"
+	 * @model dataType="ruleInit.Integer" required="true"
 	 * @generated
 	 */
 	int getDimensionIndex();
