@@ -8,14 +8,14 @@ import vm.Universe
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.emf.ecore.EPackage
 import vm.VmPackage
-import vm.impl.VmFactoryImpl
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
+import java.util.HashSet
 
+//MDE_BOOK_START
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.node_insertion.CellAspect.*
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.node_insertion.UniverseAspect.*
-import java.util.HashSet
 
 @Aspect(className=Universe)
 class UniverseAspect{
@@ -27,31 +27,33 @@ class UniverseAspect{
 class CellAspect{
 	
 	public def boolean insertNeighbors(){
-		val hasInsertedNeighbor = _self.neighborsWithHighValueDifference().size > 0
-		_self.neighborsWithHighValueDifference().forEach[ neighborCell | 
+		val hasInsertedNeighbor = _self.neighborsWithHighValDifference().size > 0
+		_self.neighborsWithHighValDifference().forEach[ neighborCell | 
 			_self.neighbors.remove(neighborCell)
 			neighborCell.neighbors.remove(_self)
 			val intermediateCell = VmPackage.eINSTANCE.vmFactory.createCell
+			intermediateCell.^val = _self.intermediateVal(neighborCell)
 			_self.neighbors.add(intermediateCell)
 			neighborCell.neighbors.add(intermediateCell)
 			intermediateCell.neighbors.addAll(newArrayList(_self,neighborCell))
 		]
 		return hasInsertedNeighbor
 	}
-	public def HashSet<Cell> neighborsWithHighValueDifference(){
+	public def HashSet<Cell> neighborsWithHighValDifference(){
 		val commonNeighbors = new HashSet<Cell>
-		commonNeighbors.addAll(_self.neighbors.filter[otherCell | _self.valueDifference(otherCell) > 10])
+		commonNeighbors.addAll(_self.neighbors.filter[otherCell | 
+			Math.abs(_self.^val - otherCell.^val) > 10
+		])
 		return commonNeighbors
 	}
 	
-	public def int valueDifference(Cell otherCell){
-		min max
-		return 0 // TODO
-	}
-	public def int intermediateValue(Cell otherCell){
-		return 0 // TODO
+	public def int intermediateVal(Cell otherCell){
+		val min = Math.min(_self.^val, otherCell.^val)
+		val max = Math.max(_self.^val, otherCell.^val)
+		return min+((max-min)/2)
 	}
 }
+//MDE_BOOK_END
 
 class NodeInsertion {		
 	public def void insertNode(String inputModel, String resultModel, Integer universeLength, Integer universeWidth){
