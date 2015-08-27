@@ -18,24 +18,24 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import ruleInit.CoordinateRanges;
+import ruleInit.AreaFilter;
 import ruleInit.InitFactory;
 import ruleInit.InitPackage;
 
 /**
- * This is the item provider adapter for a {@link ruleInit.CoordinateRanges} object.
+ * This is the item provider adapter for a {@link ruleInit.AreaFilter} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CoordinateRangesItemProvider extends FilterItemProvider {
+public class AreaFilterItemProvider extends FilterItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CoordinateRangesItemProvider(AdapterFactory adapterFactory) {
+	public AreaFilterItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -66,7 +66,7 @@ public class CoordinateRangesItemProvider extends FilterItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(InitPackage.Literals.COORDINATE_RANGES__COORDINATE_RANGES);
+			childrenFeatures.add(InitPackage.Literals.AREA_FILTER__AREAS);
 		}
 		return childrenFeatures;
 	}
@@ -85,14 +85,14 @@ public class CoordinateRangesItemProvider extends FilterItemProvider {
 	}
 
 	/**
-	 * This returns CoordinateRanges.gif.
+	 * This returns AreaFilter.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CoordinateRanges"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/AreaFilter"));
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class CoordinateRangesItemProvider extends FilterItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_CoordinateRanges_type");
+		return getString("_UI_AreaFilter_type");
 	}
 	
 
@@ -118,8 +118,8 @@ public class CoordinateRangesItemProvider extends FilterItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(CoordinateRanges.class)) {
-			case InitPackage.COORDINATE_RANGES__COORDINATE_RANGES:
+		switch (notification.getFeatureID(AreaFilter.class)) {
+			case InitPackage.AREA_FILTER__AREAS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -139,8 +139,8 @@ public class CoordinateRangesItemProvider extends FilterItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(InitPackage.Literals.COORDINATE_RANGES__COORDINATE_RANGES,
-				 InitFactory.eINSTANCE.createCoordinateRange()));
+				(InitPackage.Literals.AREA_FILTER__AREAS,
+				 InitFactory.eINSTANCE.createArea()));
 	}
 
 	/**

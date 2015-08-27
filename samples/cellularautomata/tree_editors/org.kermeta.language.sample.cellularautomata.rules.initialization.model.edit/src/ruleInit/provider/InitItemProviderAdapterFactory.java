@@ -95,26 +95,49 @@ public class InitItemProviderAdapterFactory extends InitAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link ruleInit.CoordinateRanges} instances.
+	 * This keeps track of the one adapter used for all {@link ruleInit.AreaFilter} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CoordinateRangesItemProvider coordinateRangesItemProvider;
+	protected AreaFilterItemProvider areaFilterItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link ruleInit.CoordinateRanges}.
+	 * This creates an adapter for a {@link ruleInit.AreaFilter}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCoordinateRangesAdapter() {
-		if (coordinateRangesItemProvider == null) {
-			coordinateRangesItemProvider = new CoordinateRangesItemProvider(this);
+	public Adapter createAreaFilterAdapter() {
+		if (areaFilterItemProvider == null) {
+			areaFilterItemProvider = new AreaFilterItemProvider(this);
 		}
 
-		return coordinateRangesItemProvider;
+		return areaFilterItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link ruleInit.Area} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AreaItemProvider areaItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ruleInit.Area}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAreaAdapter() {
+		if (areaItemProvider == null) {
+			areaItemProvider = new AreaItemProvider(this);
+		}
+
+		return areaItemProvider;
 	}
 
 	/**
@@ -138,29 +161,6 @@ public class InitItemProviderAdapterFactory extends InitAdapterFactory implement
 		}
 
 		return positionLiteralItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link ruleInit.CoordinateRange} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CoordinateRangeItemProvider coordinateRangeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link ruleInit.CoordinateRange}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCoordinateRangeAdapter() {
-		if (coordinateRangeItemProvider == null) {
-			coordinateRangeItemProvider = new CoordinateRangeItemProvider(this);
-		}
-
-		return coordinateRangeItemProvider;
 	}
 
 	/**
@@ -286,8 +286,8 @@ public class InitItemProviderAdapterFactory extends InitAdapterFactory implement
 	 */
 	public void dispose() {
 		if (cellularAutomataInitializationItemProvider != null) cellularAutomataInitializationItemProvider.dispose();
-		if (coordinateRangesItemProvider != null) coordinateRangesItemProvider.dispose();
-		if (coordinateRangeItemProvider != null) coordinateRangeItemProvider.dispose();
+		if (areaFilterItemProvider != null) areaFilterItemProvider.dispose();
+		if (areaItemProvider != null) areaItemProvider.dispose();
 		if (dimensionRangeItemProvider != null) dimensionRangeItemProvider.dispose();
 		if (positionLiteralItemProvider != null) positionLiteralItemProvider.dispose();
 	}

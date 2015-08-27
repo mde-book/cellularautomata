@@ -20,7 +20,6 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import ruleInit.CoordinateRange;
 import ruleInit.DimensionRange;
 import ruleInit.InitPackage;
 
