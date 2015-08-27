@@ -29,7 +29,6 @@ class UniverseAspect{
 		_self.cells.forEach[ cell | cell.^val = cell.futureValue]
 	}
 }
-
 @Aspect(className=Cell)
 class CellAspect{
 	public Integer futureValue
