@@ -3,7 +3,7 @@
 package evol;
 
 import core.IntegerExpression;
-import evol.util.visitor.EvolModelToTextVisitable;
+import evol.util.visitor.CAERModelToTextVisitable;
 
 /**
  * <!-- begin-user-doc -->

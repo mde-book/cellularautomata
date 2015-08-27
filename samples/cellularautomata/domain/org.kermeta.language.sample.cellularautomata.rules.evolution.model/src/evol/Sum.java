@@ -2,7 +2,7 @@
  */
 package evol;
 
-import evol.util.visitor.EvolModelToTextVisitable;
+import evol.util.visitor.CAERModelToTextVisitable;
 
 
 /**

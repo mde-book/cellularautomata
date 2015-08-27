@@ -7,7 +7,7 @@ import core.util.visitor.CoreModelToTextVisitor;
 import evol.EvolPackage;
 import evol.NeighborsExpression;
 import evol.PopulationRange;
-import evol.util.visitor.EvolModelToTextVisitor;
+import evol.util.visitor.CAERModelToTextVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -178,8 +178,8 @@ public abstract class NeighborsExpressionImpl extends IntegerExpressionImpl impl
 	 */
 	@Override
 	public String accept(CoreModelToTextVisitor visitor) {
-		if(visitor instanceof EvolModelToTextVisitor)
-			return ((EvolModelToTextVisitor)visitor).visitNeighborsExpression(this);
+		if(visitor instanceof CAERModelToTextVisitor)
+			return ((CAERModelToTextVisitor)visitor).visitNeighborsExpression(this);
 		else 
 			return visitor.visitIntegerExpression(this);
 	}
