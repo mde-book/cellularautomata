@@ -13,10 +13,10 @@ import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import java.util.HashSet
 
-//MDE_BOOK_START
+
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.node_insertion.CellAspect.*
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.node_insertion.UniverseAspect.*
-
+//MDE_BOOK_START
 @Aspect(className=Universe)
 class UniverseAspect{
 	public def void insertNeighbors(){
