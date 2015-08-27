@@ -14,3 +14,4 @@ Require-Bundle: fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version
  org.kermeta.language.sample.cellularautomata.vm.model;bundle-version="1.0.0"
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: fr.inria.diverse.k3.sample.cellularautomata.visualize.asciiart

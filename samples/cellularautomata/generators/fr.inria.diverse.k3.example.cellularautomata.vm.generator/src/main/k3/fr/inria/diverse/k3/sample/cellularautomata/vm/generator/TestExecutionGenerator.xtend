@@ -4,6 +4,6 @@ class TestExecutionGenerator {
 	
 	def static void main(String[] args)  {
 		var UniverseGenerator universeGenerator = new UniverseGenerator
-		universeGenerator.generateInitialUniverseForAutomataFile("src/main/examples/Moore5x5_corner.rulesInit.xmi")
+		universeGenerator.generateInitialUniverseForAutomataFile("src/main/examples/Neumann5x5_corner.rulesInit.xmi")
 	}
 } 
