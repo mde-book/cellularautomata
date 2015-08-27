@@ -23,15 +23,15 @@ CellularAutomataInitialization returns CellularAutomataInitialization:
  */
 
 Rule returns core::Rule:
-	'init' (filter=CoordinateRanges)? 'by' '{' evaluatedVal=Conditional '}'
+	'init' (filter=AreaFilter)? 'by' '{' evaluatedVal=Conditional '}'
 ;
 
-CoordinateRanges returns CoordinateRanges:
-	{CoordinateRanges}
-	coordinateRanges+=CoordinateRange (',' coordinateRanges+=CoordinateRange)* 
+AreaFilter returns AreaFilter:
+	{AreaFilter}
+	areas+=Area (',' areas+=Area)* 
 ;
 
-CoordinateRange returns CoordinateRange:
+Area returns Area:
 	'(' (dimensionRanges+=DimensionRange) ',' (dimensionRanges+=DimensionRange) ')'
 ;
 
