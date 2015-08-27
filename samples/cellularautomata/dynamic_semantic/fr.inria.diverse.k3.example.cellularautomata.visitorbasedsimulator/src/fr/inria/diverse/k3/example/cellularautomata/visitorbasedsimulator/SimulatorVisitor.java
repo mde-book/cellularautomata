@@ -4,7 +4,7 @@ package fr.inria.diverse.k3.example.cellularautomata.visitorbasedsimulator;
 
 import vm.*;
 import evol.*;
-import evol.util.visitor.EvolEvaluationVisitor;
+import evol.util.visitor.CAERVisitor;
 import core.*;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-class SimulatorVisitor implements EvolEvaluationVisitor{
+class SimulatorVisitor implements CAERVisitor{
 	public SimulatorContext context;
 
 	public SimulatorVisitor(SimulatorContext context) {

@@ -23,13 +23,15 @@ class Simulator {
 			var CellularAutomata automata = loadRule(ruleFile)
 			var Integer universeLength = Integer.parseInt(universeSize)
 			
+				println("Initialization")
 			var SimpleAsciiArt2DVisualizer asciiArtVisualizer = new SimpleAsciiArt2DVisualizer
 			asciiArtVisualizer.initialize(false)
 			asciiArtVisualizer.visualizeRegular2DUniverse(universeLength, grid)
 			
+			var Context context = new Context
+			context.initialize (grid)
 			for(int i :0..3) {
-				var Context context = new Context
-				context.initialize (grid)
+				println("Step "+i)
 				automata.applyRules(context)
 				asciiArtVisualizer.visualizeRegular2DUniverse(universeLength, grid)
 			}
