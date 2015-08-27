@@ -3,9 +3,6 @@
 package ruleInit.provider;
 
 
-import geometry.Dimension;
-import geometry.RegularGeometry;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -20,22 +17,21 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import ruleInit.CoordinateRange;
+import ruleInit.Area;
 import ruleInit.DimensionRange;
 import ruleInit.InitFactory;
 import ruleInit.InitPackage;
 
 /**
- * This is the item provider adapter for a {@link ruleInit.CoordinateRange} object.
+ * This is the item provider adapter for a {@link ruleInit.Area} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CoordinateRangeItemProvider
+public class AreaItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -49,7 +45,7 @@ public class CoordinateRangeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CoordinateRangeItemProvider(AdapterFactory adapterFactory) {
+	public AreaItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -80,9 +76,9 @@ public class CoordinateRangeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CoordinateRange_dimensionRanges_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CoordinateRange_dimensionRanges_feature", "_UI_CoordinateRange_type"),
-				 InitPackage.Literals.COORDINATE_RANGE__DIMENSION_RANGES,
+				 getString("_UI_Area_dimensionRanges_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Area_dimensionRanges_feature", "_UI_Area_type"),
+				 InitPackage.Literals.AREA__DIMENSION_RANGES,
 				 true,
 				 false,
 				 true,
@@ -103,7 +99,7 @@ public class CoordinateRangeItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(InitPackage.Literals.COORDINATE_RANGE__DIMENSION_RANGES);
+			childrenFeatures.add(InitPackage.Literals.AREA__DIMENSION_RANGES);
 		}
 		return childrenFeatures;
 	}
@@ -122,14 +118,14 @@ public class CoordinateRangeItemProvider
 	}
 
 	/**
-	 * This returns CoordinateRange.gif.
+	 * This returns Area.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CoordinateRange"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Area"));
 	}
 
 	/**
@@ -140,7 +136,7 @@ public class CoordinateRangeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		CoordinateRange coordRange = (CoordinateRange)object;
+		Area coordRange = (Area)object;
 		String dimRangesString = ("(");
 		int count = 0;
 		for(DimensionRange dimRange : coordRange.getDimensionRanges()){
@@ -159,8 +155,9 @@ public class CoordinateRangeItemProvider
 		}
 
 		dimRangesString += (")");
-		return getString("_UI_CoordinateRange_type") + " " +dimRangesString;
+		return getString("_UI_Area_type") + " " +dimRangesString;
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -173,8 +170,8 @@ public class CoordinateRangeItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(CoordinateRange.class)) {
-			case InitPackage.COORDINATE_RANGE__DIMENSION_RANGES:
+		switch (notification.getFeatureID(Area.class)) {
+			case InitPackage.AREA__DIMENSION_RANGES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -194,7 +191,7 @@ public class CoordinateRangeItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(InitPackage.Literals.COORDINATE_RANGE__DIMENSION_RANGES,
+				(InitPackage.Literals.AREA__DIMENSION_RANGES,
 				 InitFactory.eINSTANCE.createDimensionRange()));
 	}
 
