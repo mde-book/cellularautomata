@@ -4,6 +4,7 @@ package ruleInit.impl;
 
 import core.impl.IntegerExpressionImpl;
 import core.util.visitor.CoreModelToTextVisitor;
+import core.util.visitor.EvaluationVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
@@ -164,6 +165,12 @@ public class PositionLiteralImpl extends IntegerExpressionImpl implements Positi
 	public String accept(CoreModelToTextVisitor visitor) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int accept(EvaluationVisitor visitor) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 } //PositionLiteralImpl

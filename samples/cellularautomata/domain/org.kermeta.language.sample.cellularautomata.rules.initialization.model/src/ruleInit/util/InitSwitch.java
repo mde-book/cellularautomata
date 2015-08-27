@@ -75,16 +75,16 @@ public class InitSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case InitPackage.COORDINATE_RANGES: {
-				CoordinateRanges coordinateRanges = (CoordinateRanges)theEObject;
-				T result = caseCoordinateRanges(coordinateRanges);
-				if (result == null) result = caseFilter(coordinateRanges);
+			case InitPackage.AREA_FILTER: {
+				AreaFilter areaFilter = (AreaFilter)theEObject;
+				T result = caseAreaFilter(areaFilter);
+				if (result == null) result = caseFilter(areaFilter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case InitPackage.COORDINATE_RANGE: {
-				CoordinateRange coordinateRange = (CoordinateRange)theEObject;
-				T result = caseCoordinateRange(coordinateRange);
+			case InitPackage.AREA: {
+				Area area = (Area)theEObject;
+				T result = caseArea(area);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -121,32 +121,32 @@ public class InitSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Coordinate Ranges</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Area Filter</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Coordinate Ranges</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Area Filter</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCoordinateRanges(CoordinateRanges object) {
+	public T caseAreaFilter(AreaFilter object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Coordinate Range</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Area</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Coordinate Range</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Area</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCoordinateRange(CoordinateRange object) {
+	public T caseArea(Area object) {
 		return null;
 	}
 

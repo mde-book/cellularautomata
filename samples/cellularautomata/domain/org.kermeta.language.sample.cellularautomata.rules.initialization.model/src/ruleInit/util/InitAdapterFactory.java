@@ -75,12 +75,12 @@ public class InitAdapterFactory extends AdapterFactoryImpl {
 				return createCellularAutomataInitializationAdapter();
 			}
 			@Override
-			public Adapter caseCoordinateRanges(CoordinateRanges object) {
-				return createCoordinateRangesAdapter();
+			public Adapter caseAreaFilter(AreaFilter object) {
+				return createAreaFilterAdapter();
 			}
 			@Override
-			public Adapter caseCoordinateRange(CoordinateRange object) {
-				return createCoordinateRangeAdapter();
+			public Adapter caseArea(Area object) {
+				return createAreaAdapter();
 			}
 			@Override
 			public Adapter caseDimensionRange(DimensionRange object) {
@@ -133,30 +133,30 @@ public class InitAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link ruleInit.CoordinateRanges <em>Coordinate Ranges</em>}'.
+	 * Creates a new adapter for an object of class '{@link ruleInit.AreaFilter <em>Area Filter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see ruleInit.CoordinateRanges
+	 * @see ruleInit.AreaFilter
 	 * @generated
 	 */
-	public Adapter createCoordinateRangesAdapter() {
+	public Adapter createAreaFilterAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link ruleInit.CoordinateRange <em>Coordinate Range</em>}'.
+	 * Creates a new adapter for an object of class '{@link ruleInit.Area <em>Area</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see ruleInit.CoordinateRange
+	 * @see ruleInit.Area
 	 * @generated
 	 */
-	public Adapter createCoordinateRangeAdapter() {
+	public Adapter createAreaAdapter() {
 		return null;
 	}
 

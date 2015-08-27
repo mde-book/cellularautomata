@@ -31,22 +31,22 @@ public interface InitFactory extends EFactory {
 	CellularAutomataInitialization createCellularAutomataInitialization();
 
 	/**
-	 * Returns a new object of class '<em>Coordinate Ranges</em>'.
+	 * Returns a new object of class '<em>Area Filter</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Coordinate Ranges</em>'.
+	 * @return a new object of class '<em>Area Filter</em>'.
 	 * @generated
 	 */
-	CoordinateRanges createCoordinateRanges();
+	AreaFilter createAreaFilter();
 
 	/**
-	 * Returns a new object of class '<em>Coordinate Range</em>'.
+	 * Returns a new object of class '<em>Area</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Coordinate Range</em>'.
+	 * @return a new object of class '<em>Area</em>'.
 	 * @generated
 	 */
-	CoordinateRange createCoordinateRange();
+	Area createArea();
 
 	/**
 	 * Returns a new object of class '<em>Dimension Range</em>'.

@@ -3,6 +3,7 @@
 package ruleInit.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -57,12 +58,42 @@ public class InitFactoryImpl extends EFactoryImpl implements InitFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case InitPackage.CELLULAR_AUTOMATA_INITIALIZATION: return createCellularAutomataInitialization();
-			case InitPackage.COORDINATE_RANGES: return createCoordinateRanges();
-			case InitPackage.COORDINATE_RANGE: return createCoordinateRange();
+			case InitPackage.AREA_FILTER: return createAreaFilter();
+			case InitPackage.AREA: return createArea();
 			case InitPackage.DIMENSION_RANGE: return createDimensionRange();
 			case InitPackage.POSITION_LITERAL: return createPositionLiteral();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case InitPackage.INTEGER:
+				return createIntegerFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case InitPackage.INTEGER:
+				return convertIntegerToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -81,9 +112,9 @@ public class InitFactoryImpl extends EFactoryImpl implements InitFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CoordinateRanges createCoordinateRanges() {
-		CoordinateRangesImpl coordinateRanges = new CoordinateRangesImpl();
-		return coordinateRanges;
+	public AreaFilter createAreaFilter() {
+		AreaFilterImpl areaFilter = new AreaFilterImpl();
+		return areaFilter;
 	}
 
 	/**
@@ -91,9 +122,9 @@ public class InitFactoryImpl extends EFactoryImpl implements InitFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CoordinateRange createCoordinateRange() {
-		CoordinateRangeImpl coordinateRange = new CoordinateRangeImpl();
-		return coordinateRange;
+	public Area createArea() {
+		AreaImpl area = new AreaImpl();
+		return area;
 	}
 
 	/**
@@ -114,6 +145,24 @@ public class InitFactoryImpl extends EFactoryImpl implements InitFactory {
 	public PositionLiteral createPositionLiteral() {
 		PositionLiteralImpl positionLiteral = new PositionLiteralImpl();
 		return positionLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer createIntegerFromString(EDataType eDataType, String initialValue) {
+		return (Integer)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertIntegerToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

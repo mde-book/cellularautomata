@@ -6,6 +6,7 @@ import core.CorePackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -95,42 +96,42 @@ public interface InitPackage extends EPackage {
 	int CELLULAR_AUTOMATA_INITIALIZATION_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link ruleInit.impl.CoordinateRangesImpl <em>Coordinate Ranges</em>}' class.
+	 * The meta object id for the '{@link ruleInit.impl.AreaFilterImpl <em>Area Filter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see ruleInit.impl.CoordinateRangesImpl
-	 * @see ruleInit.impl.InitPackageImpl#getCoordinateRanges()
+	 * @see ruleInit.impl.AreaFilterImpl
+	 * @see ruleInit.impl.InitPackageImpl#getAreaFilter()
 	 * @generated
 	 */
-	int COORDINATE_RANGES = 1;
+	int AREA_FILTER = 1;
 
 	/**
-	 * The feature id for the '<em><b>Coordinate Ranges</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Areas</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COORDINATE_RANGES__COORDINATE_RANGES = CorePackage.FILTER_FEATURE_COUNT + 0;
+	int AREA_FILTER__AREAS = CorePackage.FILTER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Coordinate Ranges</em>' class.
+	 * The number of structural features of the '<em>Area Filter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COORDINATE_RANGES_FEATURE_COUNT = CorePackage.FILTER_FEATURE_COUNT + 1;
+	int AREA_FILTER_FEATURE_COUNT = CorePackage.FILTER_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link ruleInit.impl.CoordinateRangeImpl <em>Coordinate Range</em>}' class.
+	 * The meta object id for the '{@link ruleInit.impl.AreaImpl <em>Area</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see ruleInit.impl.CoordinateRangeImpl
-	 * @see ruleInit.impl.InitPackageImpl#getCoordinateRange()
+	 * @see ruleInit.impl.AreaImpl
+	 * @see ruleInit.impl.InitPackageImpl#getArea()
 	 * @generated
 	 */
-	int COORDINATE_RANGE = 2;
+	int AREA = 2;
 
 	/**
 	 * The feature id for the '<em><b>Dimension Ranges</b></em>' containment reference list.
@@ -139,16 +140,16 @@ public interface InitPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COORDINATE_RANGE__DIMENSION_RANGES = 0;
+	int AREA__DIMENSION_RANGES = 0;
 
 	/**
-	 * The number of structural features of the '<em>Coordinate Range</em>' class.
+	 * The number of structural features of the '<em>Area</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COORDINATE_RANGE_FEATURE_COUNT = 1;
+	int AREA_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link ruleInit.impl.DimensionRangeImpl <em>Dimension Range</em>}' class.
@@ -217,6 +218,16 @@ public interface InitPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '<em>Integer</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ruleInit.impl.InitPackageImpl#getInteger()
+	 * @generated
+	 */
+	int INTEGER = 5;
+
+
+	/**
 	 * Returns the meta object for class '{@link ruleInit.CellularAutomataInitialization <em>Cellular Automata Initialization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -249,46 +260,46 @@ public interface InitPackage extends EPackage {
 	EReference getCellularAutomataInitialization_Geometry();
 
 	/**
-	 * Returns the meta object for class '{@link ruleInit.CoordinateRanges <em>Coordinate Ranges</em>}'.
+	 * Returns the meta object for class '{@link ruleInit.AreaFilter <em>Area Filter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Coordinate Ranges</em>'.
-	 * @see ruleInit.CoordinateRanges
+	 * @return the meta object for class '<em>Area Filter</em>'.
+	 * @see ruleInit.AreaFilter
 	 * @generated
 	 */
-	EClass getCoordinateRanges();
+	EClass getAreaFilter();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ruleInit.CoordinateRanges#getCoordinateRanges <em>Coordinate Ranges</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ruleInit.AreaFilter#getAreas <em>Areas</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Coordinate Ranges</em>'.
-	 * @see ruleInit.CoordinateRanges#getCoordinateRanges()
-	 * @see #getCoordinateRanges()
+	 * @return the meta object for the containment reference list '<em>Areas</em>'.
+	 * @see ruleInit.AreaFilter#getAreas()
+	 * @see #getAreaFilter()
 	 * @generated
 	 */
-	EReference getCoordinateRanges_CoordinateRanges();
+	EReference getAreaFilter_Areas();
 
 	/**
-	 * Returns the meta object for class '{@link ruleInit.CoordinateRange <em>Coordinate Range</em>}'.
+	 * Returns the meta object for class '{@link ruleInit.Area <em>Area</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Coordinate Range</em>'.
-	 * @see ruleInit.CoordinateRange
+	 * @return the meta object for class '<em>Area</em>'.
+	 * @see ruleInit.Area
 	 * @generated
 	 */
-	EClass getCoordinateRange();
+	EClass getArea();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ruleInit.CoordinateRange#getDimensionRanges <em>Dimension Ranges</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ruleInit.Area#getDimensionRanges <em>Dimension Ranges</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Dimension Ranges</em>'.
-	 * @see ruleInit.CoordinateRange#getDimensionRanges()
-	 * @see #getCoordinateRange()
+	 * @see ruleInit.Area#getDimensionRanges()
+	 * @see #getArea()
 	 * @generated
 	 */
-	EReference getCoordinateRange_DimensionRanges();
+	EReference getArea_DimensionRanges();
 
 	/**
 	 * Returns the meta object for class '{@link ruleInit.DimensionRange <em>Dimension Range</em>}'.
@@ -344,6 +355,16 @@ public interface InitPackage extends EPackage {
 	EAttribute getPositionLiteral_DimensionIndex();
 
 	/**
+	 * Returns the meta object for data type '<em>Integer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Integer</em>'.
+	 * @model instanceClass="int"
+	 * @generated
+	 */
+	EDataType getInteger();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -392,32 +413,32 @@ public interface InitPackage extends EPackage {
 		EReference CELLULAR_AUTOMATA_INITIALIZATION__GEOMETRY = eINSTANCE.getCellularAutomataInitialization_Geometry();
 
 		/**
-		 * The meta object literal for the '{@link ruleInit.impl.CoordinateRangesImpl <em>Coordinate Ranges</em>}' class.
+		 * The meta object literal for the '{@link ruleInit.impl.AreaFilterImpl <em>Area Filter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see ruleInit.impl.CoordinateRangesImpl
-		 * @see ruleInit.impl.InitPackageImpl#getCoordinateRanges()
+		 * @see ruleInit.impl.AreaFilterImpl
+		 * @see ruleInit.impl.InitPackageImpl#getAreaFilter()
 		 * @generated
 		 */
-		EClass COORDINATE_RANGES = eINSTANCE.getCoordinateRanges();
+		EClass AREA_FILTER = eINSTANCE.getAreaFilter();
 
 		/**
-		 * The meta object literal for the '<em><b>Coordinate Ranges</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Areas</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COORDINATE_RANGES__COORDINATE_RANGES = eINSTANCE.getCoordinateRanges_CoordinateRanges();
+		EReference AREA_FILTER__AREAS = eINSTANCE.getAreaFilter_Areas();
 
 		/**
-		 * The meta object literal for the '{@link ruleInit.impl.CoordinateRangeImpl <em>Coordinate Range</em>}' class.
+		 * The meta object literal for the '{@link ruleInit.impl.AreaImpl <em>Area</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see ruleInit.impl.CoordinateRangeImpl
-		 * @see ruleInit.impl.InitPackageImpl#getCoordinateRange()
+		 * @see ruleInit.impl.AreaImpl
+		 * @see ruleInit.impl.InitPackageImpl#getArea()
 		 * @generated
 		 */
-		EClass COORDINATE_RANGE = eINSTANCE.getCoordinateRange();
+		EClass AREA = eINSTANCE.getArea();
 
 		/**
 		 * The meta object literal for the '<em><b>Dimension Ranges</b></em>' containment reference list feature.
@@ -425,7 +446,7 @@ public interface InitPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COORDINATE_RANGE__DIMENSION_RANGES = eINSTANCE.getCoordinateRange_DimensionRanges();
+		EReference AREA__DIMENSION_RANGES = eINSTANCE.getArea_DimensionRanges();
 
 		/**
 		 * The meta object literal for the '{@link ruleInit.impl.DimensionRangeImpl <em>Dimension Range</em>}' class.
@@ -470,6 +491,15 @@ public interface InitPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute POSITION_LITERAL__DIMENSION_INDEX = eINSTANCE.getPositionLiteral_DimensionIndex();
+
+		/**
+		 * The meta object literal for the '<em>Integer</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ruleInit.impl.InitPackageImpl#getInteger()
+		 * @generated
+		 */
+		EDataType INTEGER = eINSTANCE.getInteger();
 
 	}
 

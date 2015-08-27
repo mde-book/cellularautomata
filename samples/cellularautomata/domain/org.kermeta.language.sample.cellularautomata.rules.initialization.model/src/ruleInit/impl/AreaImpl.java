@@ -5,35 +5,35 @@ package ruleInit.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import org.eclipse.emf.ecore.util.InternalEList;
-import ruleInit.CoordinateRange;
+
+import ruleInit.Area;
 import ruleInit.DimensionRange;
 import ruleInit.InitPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Coordinate Range</b></em>'.
+ * An implementation of the model object '<em><b>Area</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ruleInit.impl.CoordinateRangeImpl#getDimensionRanges <em>Dimension Ranges</em>}</li>
+ *   <li>{@link ruleInit.impl.AreaImpl#getDimensionRanges <em>Dimension Ranges</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange {
+public class AreaImpl extends EObjectImpl implements Area {
 	/**
 	 * The cached value of the '{@link #getDimensionRanges() <em>Dimension Ranges</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -49,7 +49,7 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CoordinateRangeImpl() {
+	protected AreaImpl() {
 		super();
 	}
 
@@ -60,7 +60,7 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return InitPackage.Literals.COORDINATE_RANGE;
+		return InitPackage.Literals.AREA;
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	 */
 	public EList<DimensionRange> getDimensionRanges() {
 		if (dimensionRanges == null) {
-			dimensionRanges = new EObjectContainmentEList<DimensionRange>(DimensionRange.class, this, InitPackage.COORDINATE_RANGE__DIMENSION_RANGES);
+			dimensionRanges = new EObjectContainmentEList<DimensionRange>(DimensionRange.class, this, InitPackage.AREA__DIMENSION_RANGES);
 		}
 		return dimensionRanges;
 	}
@@ -83,7 +83,7 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGE__DIMENSION_RANGES:
+			case InitPackage.AREA__DIMENSION_RANGES:
 				return ((InternalEList<?>)getDimensionRanges()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -97,7 +97,7 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGE__DIMENSION_RANGES:
+			case InitPackage.AREA__DIMENSION_RANGES:
 				return getDimensionRanges();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -112,7 +112,7 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGE__DIMENSION_RANGES:
+			case InitPackage.AREA__DIMENSION_RANGES:
 				getDimensionRanges().clear();
 				getDimensionRanges().addAll((Collection<? extends DimensionRange>)newValue);
 				return;
@@ -128,7 +128,7 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGE__DIMENSION_RANGES:
+			case InitPackage.AREA__DIMENSION_RANGES:
 				getDimensionRanges().clear();
 				return;
 		}
@@ -143,10 +143,10 @@ public class CoordinateRangeImpl extends EObjectImpl implements CoordinateRange 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case InitPackage.COORDINATE_RANGE__DIMENSION_RANGES:
+			case InitPackage.AREA__DIMENSION_RANGES:
 				return dimensionRanges != null && !dimensionRanges.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //CoordinateRangeImpl
+} //AreaImpl
