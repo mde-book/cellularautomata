@@ -11,7 +11,7 @@ rule copyUniverse {
 		)
 }
 
-rule copyDeadCell {
+rule copyDeadCells {
 	from	s : CURRENT!Cell (s.val = 0) 
 	to 		t : NEXTSTEP!Cell (
 			val <- if(s.neighbors->collect(n | n.val)->sum() = 3) then 1 else 0 endif,
@@ -19,7 +19,7 @@ rule copyDeadCell {
 		)
 }
 
-rule copyLiveCell {
+rule copyLiveCells {
 	from	s : CURRENT!Cell (s.val = 1 ) 
 	to 		t : NEXTSTEP!Cell (
 			val <- if(s.neighbors->collect(n | n.val)->sum() = 2
