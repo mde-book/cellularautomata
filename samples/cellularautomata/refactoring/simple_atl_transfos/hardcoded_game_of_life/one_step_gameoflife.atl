@@ -1,0 +1,35 @@
+-- @path MM_MOORE=/org.kermeta.language.sample.cellularautomata.vm.model/metamodel/vm.ecore
+-- @path MM_NEUMANN=/org.kermeta.language.sample.cellularautomata.vm.model/metamodel/vm.ecore
+
+module gameoflife_step;
+create OUT : MM_MOORE from IN : MM_NEUMANN;
+
+rule copyUniverse {
+	from
+		s : MM_NEUMANN!Universe
+	to 
+		t : MM_MOORE!Universe (
+			cells <- s.cells
+		)
+}
+
+rule copyDeadCell {
+	from
+		s : MM_NEUMANN!Cell (s.val = 0) 
+	to 
+		t : MM_MOORE!Cell (
+			val <- if(s.neighbors->collect(n | n.val)->sum() = 3) then 1 else 0 endif,
+			neighbors <- s.neighbors
+		)
+}
+
+rule copyLiveCell {
+	from
+		s : MM_NEUMANN!Cell (s.val = 1 ) 
+	to 
+		t : MM_MOORE!Cell (
+			val <- if(s.neighbors->collect(n | n.val)->sum() = 2
+					  or s.neighbors->collect(n | n.val)->sum() = 3) then 1 else 0 endif,
+			neighbors <- s.neighbors
+		)
+}

@@ -1,0 +1,47 @@
+-- @path MM_MOORE=/org.kermeta.language.sample.cellularautomata.vm.model/metamodel/vm.ecore
+-- @path MM_NEUMANN=/org.kermeta.language.sample.cellularautomata.vm.model/metamodel/vm.ecore
+
+module neumann2moore;
+create OUT : MM_MOORE from IN : MM_NEUMANN;
+
+helper context MM_NEUMANN!Cell def: commonNeighborsWith(otherCell : MM_NEUMANN!Cell ): Set(MM_NEUMANN!Cell) =
+	Set(MM_NEUMANN!Cell) = 
+	self.neighbors->select(neighbor | otherCell.neighbors->includes(neighbor) );
+
+helper context MM_NEUMANN!Cell def: distinctNeighborsWithCommonNeighbor( ): Set(MM_NEUMANN!Cell) = 
+	Set(MM_NEUMANN!Cell) =
+	self.neighbors->select(n1 | self.neighbors->excluding(n1)->select(n2 |not  (n1.commonNeighborsWith(n2).isEmpty())) )
+		;
+
+helper context MM_NEUMANN!Cell def: neighborsOfNeighbors( ): Set(MM_NEUMANN!Cell) = 
+	Set(MM_NEUMANN!Cell) =
+	self.neighbors->collect(n1 | n1.neighbors)->excludes(self); -- at distance 2 from self
+	
+	
+	-- pour chaque voisin a distance de 2, si a plus d'un chemin (ie. 2 voisin communs) alors on les lie
+
+	
+	
+-- helper context MM_NEUMANN!Cell def: cellsWithTwoCommonNeighbors(): Set(MM_NEUMANN!Cell) =
+--	Set(MM_NEUMANN!Cell) = 
+--	self->select(p | p.);
+
+rule copyUniverse {
+	from
+		s : MM_NEUMANN!Universe
+	to 
+		t : MM_MOORE!Universe (
+			cells <- s.cells
+		)
+}
+
+rule copyCell {
+	from
+		s : MM_NEUMANN!Cell
+	to 
+		t : MM_MOORE!Cell (
+			val <- s.val,
+--			neighbors <- s.neighbors
+			neighbors <- s.neighbors.union(s.distinctNeighborsWithCommonNeighbor())
+		)
+}
