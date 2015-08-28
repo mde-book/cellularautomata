@@ -3,27 +3,26 @@
 
 module gameoflife_step;
 create OUT : NEXTSTEP from IN : CURRENT;
-
 rule copyUniverse {
 	from	s : CURRENT!Universe
 	to 		t : NEXTSTEP!Universe (
 			cells <- s.cells
 		)
 }
-
 rule copyDeadCells {
 	from	s : CURRENT!Cell (s.val = 0) 
 	to 		t : NEXTSTEP!Cell (
-			val <- if(s.neighbors->collect(n | n.val)->sum() = 3) then 1 else 0 endif,
+			val <- if(s.neighbors->select(n | n.val = 1)->size() = 3) 
+				   then 1 else 0 endif,
 			neighbors <- s.neighbors
 		)
 }
-
 rule copyLiveCells {
 	from	s : CURRENT!Cell (s.val = 1 ) 
 	to 		t : NEXTSTEP!Cell (
-			val <- if(s.neighbors->collect(n | n.val)->sum() = 2
-					  or s.neighbors->collect(n | n.val)->sum() = 3) then 1 else 0 endif,
+			val <- if(   s.neighbors->select(n | n.val = 1)->size() = 2
+				      or s.neighbors->select(n | n.val = 1)->size() = 3) 
+				   then 1 else 0 endif,
 			neighbors <- s.neighbors
 		)
 }
