@@ -18,17 +18,16 @@ import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_t
 
 @Aspect(className=Cell)
 class CellAspect{
-	public Cell cellCopy
-	
+	public Cell cellCopy	
 	public def void copyCell(){
 		_self.cellCopy = VmPackage.eINSTANCE.vmFactory.createCell
-		val liveNeighborCount = _self.neighbors.filter[n | n.^val == 1].size
+		val liveNgbCount = _self.neighbors.filter[n | n.^val == 1].size
 		if(_self.^val ==0){
-			if(liveNeighborCount ==3) 
+			if(liveNgbCount ==3) 
 				_self.cellCopy.^val = 1
 			else _self.cellCopy.^val = 0
 		} else {
-			if(liveNeighborCount == 2 || liveNeighborCount == 3)
+			if(liveNgbCount == 2 || liveNgbCount == 3)
 				_self.cellCopy.^val = 1
 			else _self.cellCopy.^val = 0
 		}
@@ -37,11 +36,21 @@ class CellAspect{
 		_self.neighbors.forEach[n | _self.cellCopy.neighbors.addAll(n.cellCopy)]
 	} 
 }
-
 @Aspect(className=Universe)
-class UniverseAspect{
-	public def void copyUniverse(){
+class UniverseAspect{	
+	public Universe universeCopy
+	public def Universe copyUniverse(){
 		_self.cells.forEach[cell | cell.copyCell]
 		_self.cells.forEach[cell | cell.linkNeigbours]
+		_self.universeCopy =  VmPackage.eINSTANCE.vmFactory.createUniverse
+		_self.universeCopy.cells.addAll(_self.cells.map[c | c.cellCopy])
+		return _self.universeCopy
 	}
+}
+
+class Main{
+	def static void main(String[] args) {
+		
+	}
+	
 }
