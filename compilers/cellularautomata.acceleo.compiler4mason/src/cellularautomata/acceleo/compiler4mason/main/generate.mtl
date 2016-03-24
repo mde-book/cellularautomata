@@ -1,0 +1,78 @@
+[comment encoding = UTF-8 /]
+[module generate('http://rules/core/1.0', 'http://rules/evol/1.0')]
+
+[template public generateMasonAutomata(anAutomata : CellularAutomata )]
+[file ('myGeneratedMasonAutomata.java', false, 'UTF-8')]
+package generated_ca;
+
+import cellularautomata.mason.utils.*;
+import sim.engine.*;
+import sim.field.grid.*;
+
+public class CA implements Steppable{
+	// the width and height will change later
+    public IntGrid2D tempGrid = new IntGrid2D(0,0);
+
+    @Override
+    public void step(SimState state){
+    	 CA_SimulationState tut = (CA_SimulationState)state;
+        // first copy the grid into tempGrid
+        tempGrid.setTo(tut.grid);
+
+        // now apply the CA rules for each cell...
+        int width = tempGrid.getWidth();
+        int height = tempGrid.getHeight();
+        for(int x=0;x<width;x++){
+			for(int y=0;y<height;y++){            	
+				int currentVal = tempGrid.field['['/]tempGrid.stx(x)[']['/]tempGrid.sty(y)[']'/];
+[for (aRule : Rule | anAutomata.rules)]
+	[aRule.generateRule()/]
+[/for]
+			}
+		}
+	}
+}
+[/file]
+[/template]
+[template public generateRule(aRule : Rule)]
+				if([aRule.filter.generateFilter()/]){
+					tut.grid.field['['/]x[']['/]y[']'/] = [aRule.evaluatedVal.generateExpression()/];
+				}
+[/template]
+[template public generateFilter(aFilter : Filter)]
+[if(aFilter.oclIsKindOf(PopulationRange))]
+	[aFilter.oclAsType(PopulationRange).lowerRange/] <= currentVal && currentVal <= [aFilter.oclAsType(PopulationRange).upperRange/]
+[/if]
+[/template]
+
+[template public generateExpression(anExpression : IntegerExpression)]
+	/* TODO Implement template generateExpression for type [eClass().name/] */
+[/template]
+
+[template public generateExpression(aLiteral : IntegerLiteral)]
+[aLiteral.val/]
+[/template]
+
+[template public generateExpression(aCurrentCellPopulation : CurrentCellPopulation)]
+currentVal
+[/template]
+
+[template public generateExpression(aGreater : Greater)]
+([aGreater.left.generateExpression()/] > [aGreater.right.generateExpression()/] ? 1 : 0)
+[/template]
+
+[template public generateExpression(aConditional : Conditional)]
+[aConditional.condition.generateExpression()/]== 1 ? [aConditional.ifTrueExpression.generateExpression()/] : [aConditional.ifFalseExpression.generateExpression()/]
+[/template]
+
+[template public generateExpression(anAdd : Add)]
+([anAdd.left.generateExpression()/] + [anAdd.right.generateExpression()/])
+[/template]
+
+[template public generateExpression(anEqual : Equal)]
+([anEqual.left.generateExpression()/] == [anEqual.right.generateExpression()/] ? 1 : 0)
+[/template]
+
+[template public generateExpression(anAnd : And)]
+((([anAnd.left.generateExpression()/] != 0) && ([anAnd.right.generateExpression()/] != 0)) ? 1 : 0)
+[/template]
