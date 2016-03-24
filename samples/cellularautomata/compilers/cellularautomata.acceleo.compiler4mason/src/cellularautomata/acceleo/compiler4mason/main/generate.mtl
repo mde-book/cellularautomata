@@ -1,6 +1,5 @@
 [comment encoding = UTF-8 /]
 [module generate('http://rules/core/1.0', 'http://rules/evol/1.0')]
-
 [template public generateMasonAutomata(anAutomata : CellularAutomata )]
 [file ('myGeneratedMasonAutomata.java', false, 'UTF-8')]
 package generated_ca;
@@ -39,10 +38,12 @@ public class CA implements Steppable{
 					tut.grid.field['['/]x[']['/]y[']'/] = [aRule.evaluatedVal.generateExpression()/];
 				}
 [/template]
+
 [template public generateFilter(aFilter : Filter)]
-[if(aFilter.oclIsKindOf(PopulationRange))]
-	[aFilter.oclAsType(PopulationRange).lowerRange/] <= currentVal && currentVal <= [aFilter.oclAsType(PopulationRange).upperRange/]
-[/if]
+[/template]
+
+[template public generateFilter(aFilter : PopulationRange)]
+	[aFilter.lowerRange/] <= currentVal && currentVal <= [aFilter.upperRange/]
 [/template]
 
 [template public generateExpression(anExpression : IntegerExpression)]
