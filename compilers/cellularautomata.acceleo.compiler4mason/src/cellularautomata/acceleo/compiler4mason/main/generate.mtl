@@ -8,7 +8,7 @@ import cellularautomata.mason.utils.*;
 import sim.engine.*;
 import sim.field.grid.*;
 
-public class CA implements Steppable{
+public class MyGeneratedMasonAutomata implements Steppable{
 	// the width and height will change later
     public IntGrid2D tempGrid = new IntGrid2D(0,0);
 
