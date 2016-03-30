@@ -1,34 +1,28 @@
 [comment encoding = UTF-8 /]
 [module generateLatex('http://vm/1.0')]
 
-[query public getBaseFilename(u : Universe) : String = invoke(	'cellularautomata.acceleo.generateLatex.Utility',
-																'getBaseFilename(vm.Universe)', Sequence{u}) /]
-
+[query public getBaseFilename(u : Universe) : String = invoke(	
+	'cellularautomata.acceleo.generateLatex.Utility',
+	'getBaseFilename(vm.Universe)', Sequence{u}) /]
 [template public generateElement(anUniverse : Universe)]
 [comment @main/]
 [file (anUniverse.getBaseFilename().concat('.tex'), false, 'UTF-8')]
 \documentclass{article}
-
 \usepackage{graphicx} % Required for the inclusion of images
-
 % [protected ('additional configurations')]
 %\usepackage{times} % Uncomment to use the Times New Roman font
 % [/protected]
 
-\title{
-	Basic statistics about [anUniverse.getBaseFilename()/] Universe 
-} 
+\title{Basic statistics about [anUniverse.getBaseFilename()/] Universe} 
 
 \author{
 % [protected ('authors')]
 	John \textsc{Smith}
 % [/protected]
-} % Authors names
-
+} 
 \date{\today} % Date for the report
 
 \begin{document}
-
 \maketitle % Insert the title, author and date
 
 \section{Objective}
@@ -57,7 +51,6 @@ Numbers of neighbors alive: & [aCell.neighbors->select(val <> 0)->size()/]
 \end{tabular}
 
 [/for]
-
 \end{document}
 [/file]
 [/template]
