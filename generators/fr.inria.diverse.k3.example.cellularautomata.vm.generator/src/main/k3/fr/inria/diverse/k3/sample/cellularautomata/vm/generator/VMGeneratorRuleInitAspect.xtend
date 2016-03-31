@@ -44,7 +44,7 @@ class AreaAspect {
 		else return false   // illformed coordinateRange, must have the same number of dimensions as the universe TODO raise exception
 	}
 }
-
+// MDE_BOOK_START
 @Aspect(className=DimensionRange)
 class DimensionRangeAspect {
 	def public Boolean isInRange(Integer i) {
@@ -58,3 +58,4 @@ class PositionLiteralAspect extends IntegerExpressionAspect {
 		return context.currentCell.coordinates.get(_self.dimensionIndex)
 	}
 }
+// MDE_BOOK_END
