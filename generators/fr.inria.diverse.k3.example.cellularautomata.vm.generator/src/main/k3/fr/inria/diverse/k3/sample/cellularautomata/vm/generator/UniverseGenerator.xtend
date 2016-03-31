@@ -45,17 +45,14 @@ class UniverseGenerator {
 			var CellularAutomataInitialization ca = res.getContents.get(0) as CellularAutomataInitialization
 			saveUniverse(generateInitialUniverseForAutomata(ca))
 		}
-		
+// MDE_BOOK_START		
 		def public Universe generateInitialUniverseForAutomata(CellularAutomataInitialization automata) {
 			var Universe result
-			var RegularGeometry regularGeometry = null
-			
+			var RegularGeometry regularGeometry = null		
 			if (automata.geometry instanceof RegularGeometry) {
 				regularGeometry = automata.geometry as RegularGeometry
 			}
-			
 			if (regularGeometry != null) {
-				
 				if ((regularGeometry.neighbors == Neighborhood.NEUMANN) && (regularGeometry.dimensions.size == 2) 
 						&& (!regularGeometry.dimensions.exists[ d | d.isCircular])) {
 					result = generateVonNeumannRectangleBoundedUniverse(regularGeometry.dimensions.get(0).extent, regularGeometry.dimensions.get(1).extent)
@@ -64,7 +61,7 @@ class UniverseGenerator {
 							&& (!regularGeometry.dimensions.exists[d | d.isCircular])) {
 						result = generateMooreRectangleBoundedUniverse(regularGeometry.dimensions.get(0).extent, regularGeometry.dimensions.get(1).extent)
 					} else { 
-						println(" Generic configuration not supported yet. Currently supported configurations : dimension=2; neighborsNumber=4|8; not circular")
+						println("Configuration not supported yet.")
 					}
 				}
 				
@@ -73,16 +70,6 @@ class UniverseGenerator {
 					// fill default values
 					result.cells.forEach[cell |
 						// select the rule that applies (there must be maximum one)
-						/* var Iterable<Rule> rules = automata.seedRules.filter[r |r.isApplicableForCell(cell)]
-						var Rule rule = null
-						if (!rules.nullOrEmpty){
-							rule = rules.get(0)
-						}
-						if (rule != null) {
-							var Context context = new Context
-							context.initialize(getResult, cell)
-							cell.^val = rule.evaluatedVal.evaluate(context)
-						} */
 						val rules = automata.seedRules.filter[r |r.isApplicableForCell(cell)].toList
 						var Rule rule = null
 						if (!rules.empty){
@@ -101,14 +88,13 @@ class UniverseGenerator {
 						asciiArtVisualizer.initialize(false)
 						asciiArtVisualizer.visualizeRegular2DUniverse(regularGeometry.dimensions.get(0).extent, result)
 					}
-					
 				}
 			} else {
-				println(" Generic configuration not supported yet. Only RegularGeometry can be generated automatically by this.")
+				println("Not supported yet. Only RegularGeometry can be generated.")
 			}
 			return result
 		}
-		
+// MDE_BOOK_END		
 		def public setResult(Universe result) {
 			this.result = result
 		}
