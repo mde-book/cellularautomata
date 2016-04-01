@@ -19,6 +19,7 @@ abstract class FilterAspect {
 }
 
 
+// MDE_BOOK_START
 @Aspect(className=AreaFilter)
 class AreaFilterAspect extends FilterAspect {
 	def public Boolean isApplicableForCell(Cell cell) {
@@ -30,6 +31,7 @@ class AreaFilterAspect extends FilterAspect {
 		return false // no range have matched the cell
 	}
 }
+// MDE_BOOK_END
 
 @Aspect(className=Area)
 class AreaAspect {
