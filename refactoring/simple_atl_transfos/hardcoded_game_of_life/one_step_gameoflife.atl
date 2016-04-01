@@ -9,6 +9,7 @@ rule copyUniverse {
 			cells <- s.cells
 		)
 }
+-- MDE_BOOK_START
 rule copyDeadCells {
 	from	s : CURRENT!Cell (s.val = 0) 
 	to 		t : NEXTSTEP!Cell (
@@ -26,3 +27,4 @@ rule copyLiveCells {
 			neighbors <- s.neighbors
 		)
 }
+-- MDE_BOOK_END
