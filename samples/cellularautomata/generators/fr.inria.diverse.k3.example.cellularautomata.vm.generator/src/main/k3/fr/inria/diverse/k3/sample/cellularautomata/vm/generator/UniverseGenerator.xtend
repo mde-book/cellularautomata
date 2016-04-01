@@ -103,14 +103,13 @@ class UniverseGenerator {
 		def public Universe getResult() {
 			return this.result
 		}
-		
+
+// MDE_BOOK_START		
 		def public Universe generateVonNeumannRectangleBoundedUniverse(Integer universeLength, Integer universeWidth) { 
 			println("Generating a square Universe using von Neumann neighborhood...")
 			var Universe g = new VmFactoryImpl().createUniverse
-			
-			var Integer cellNumber = universeLength * universeWidth
+			val Integer cellNumber = universeLength * universeWidth
 			println("Generating "+cellNumber.toString+" Cells...")
-			
 			for (int i : 0..cellNumber-1) {
 				var Cell cell = new VmFactoryImpl().createCell
 				cell.init
@@ -119,31 +118,28 @@ class UniverseGenerator {
 				cell.coordinates.add(i % universeWidth) // y
 				g.cells.add(cell)
 			}
-			 
-			
 			println("Generating bounded VonNeumann neighborhood for "+cellNumber.toString+" Cells...")
 			for (int i : 0..cellNumber-1) {
-				var Cell currentCell = g.cells.get(i)
-				var Integer currentLine =  i / universeWidth
-				var Integer currentColumn = i % universeWidth
+				val Cell currentCell = g.cells.get(i)
+				val Integer currentLine =  i / universeWidth
+				val Integer currentColumn = i % universeWidth
 				
 				var Integer maxCol = universeWidth - 1
-				if (currentLine > 0) { // add north 
-					currentCell.neighbors.add(g.cells.get(i-universeWidth))
-				}
-				if (currentColumn < maxCol) {// add east 
-					currentCell.neighbors.add(g.cells.get(i+1))
-				}
-				if(currentLine < maxCol) { // add south 
-					currentCell.neighbors.add(g.cells.get(i+universeWidth))
-				}
-				if(currentColumn > 0) { // add west 
-					currentCell.neighbors.add(g.cells.get(i-1))
-				}
+				switch currentLine{
+					case currentLine > 0 : 			// add north
+						currentCell.neighbors.add(g.cells.get(i-universeWidth))
+					case currentColumn < maxCol: 	// add east 
+						currentCell.neighbors.add(g.cells.get(i+1))
+					case currentLine < maxCol:  	// add south 
+						currentCell.neighbors.add(g.cells.get(i+universeWidth))
+					case currentColumn > 0: 		// add west 
+						currentCell.neighbors.add(g.cells.get(i-1))
+				}				
 				currentCell.^val = 0
 			}
 			return g
 		}
+// MDE_BOOK_END	
 		
 		def public Universe generateMooreRectangleBoundedUniverse(Integer universeLength, Integer universeWidth) { 
 			println("Generating a square Universe using Moore neighborhood...")
