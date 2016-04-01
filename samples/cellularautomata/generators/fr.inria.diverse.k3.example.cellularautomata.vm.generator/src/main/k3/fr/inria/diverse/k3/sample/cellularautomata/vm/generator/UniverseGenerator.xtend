@@ -50,14 +50,14 @@ class UniverseGenerator {
 			var Universe result
 			val geometry = automata.geometry
 			switch geometry{
-				RegularGeometry case (geometry.neighbors == Neighborhood.NEUMANN) && 
-									 (geometry.dimensions.size == 2) && 
-									 (!geometry.dimensions.exists[ d | d.isCircular]): {
+				RegularGeometry case (geometry.neighbors == Neighborhood.NEUMANN)
+								  && (geometry.dimensions.size == 2) 
+								  && (!geometry.dimensions.exists[ d | d.isCircular]): {
 					result = generateVonNeumannRectangleBoundedUniverse(geometry.dimensions.get(0).extent, geometry.dimensions.get(1).extent)
 				} 
-				RegularGeometry case (geometry.neighbors == Neighborhood.MOORE) && 
-								 	 (geometry.dimensions.size == 2) && 
-								 	 (!geometry.dimensions.exists[d | d.isCircular]) : {
+				RegularGeometry case (geometry.neighbors == Neighborhood.MOORE) 
+								  && (geometry.dimensions.size == 2) 
+								  && (!geometry.dimensions.exists[d | d.isCircular]): {
 						result = generateMooreRectangleBoundedUniverse(geometry.dimensions.get(0).extent, geometry.dimensions.get(1).extent)
 				}
 				default: {
@@ -69,7 +69,8 @@ class UniverseGenerator {
 			// compute initial values for cells
 			result.cells.forEach[cell |
 				// select the rule that applies (there must be maximum one)
-				val rules = automata.seedRules.filter[r |r.isApplicableForCell(cell)].toList
+				val rules = automata.seedRules.filter[r |
+					r.isApplicableForCell(cell)].toList
 				var Rule rule = null
 				if (!rules.empty){
 					rule = rules.get(0)
