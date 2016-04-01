@@ -45,53 +45,54 @@ class UniverseGenerator {
 			var CellularAutomataInitialization ca = res.getContents.get(0) as CellularAutomataInitialization
 			saveUniverse(generateInitialUniverseForAutomata(ca))
 		}
-// MDE_BOOK_START		
+// MDE_BOOK_START	
 		def public Universe generateInitialUniverseForAutomata(CellularAutomataInitialization automata) {
 			var Universe result
-			var RegularGeometry regularGeometry = null		
-			if (automata.geometry instanceof RegularGeometry) {
-				regularGeometry = automata.geometry as RegularGeometry
-			}
-			if (regularGeometry != null) {
-				if ((regularGeometry.neighbors == Neighborhood.NEUMANN) && (regularGeometry.dimensions.size == 2) 
-						&& (!regularGeometry.dimensions.exists[ d | d.isCircular])) {
-					result = generateVonNeumannRectangleBoundedUniverse(regularGeometry.dimensions.get(0).extent, regularGeometry.dimensions.get(1).extent)
-				} else {
-					if ((regularGeometry.neighbors == Neighborhood.MOORE) && (regularGeometry.dimensions.size == 2) 
-							&& (!regularGeometry.dimensions.exists[d | d.isCircular])) {
-						result = generateMooreRectangleBoundedUniverse(regularGeometry.dimensions.get(0).extent, regularGeometry.dimensions.get(1).extent)
-					} else { 
-						println("Configuration not supported yet.")
-					}
+			val geometry = automata.geometry
+			switch geometry{
+				RegularGeometry case (geometry.neighbors == Neighborhood.NEUMANN) && 
+									 (geometry.dimensions.size == 2) && 
+									 (!geometry.dimensions.exists[ d | d.isCircular]): {
+					result = generateVonNeumannRectangleBoundedUniverse(geometry.dimensions.get(0).extent, geometry.dimensions.get(1).extent)
+				} 
+				RegularGeometry case (geometry.neighbors == Neighborhood.MOORE) && 
+								 	 (geometry.dimensions.size == 2) && 
+								 	 (!geometry.dimensions.exists[d | d.isCircular]) : {
+						result = generateMooreRectangleBoundedUniverse(geometry.dimensions.get(0).extent, geometry.dimensions.get(1).extent)
 				}
-				
-				if (result != null) {
-					setResult(result)
-					// fill default values
-					result.cells.forEach[cell |
-						// select the rule that applies (there must be maximum one)
-						val rules = automata.seedRules.filter[r |r.isApplicableForCell(cell)].toList
-						var Rule rule = null
-						if (!rules.empty){
-							rule = rules.get(0)
-						}
-						if (rule != null) {
-							var Context context = new Context
-							context.initialize(getResult, cell)
-							cell.^val = rule.evaluatedVal.evaluate(context)
-						}
-					]
-						
-					if (regularGeometry.dimensions.size <= 2 && (regularGeometry.dimensions.get(0).extent == regularGeometry.dimensions.get(1).extent)) {
-						// visualize result using ascii art
-						var SimpleAsciiArt2DVisualizer asciiArtVisualizer = new SimpleAsciiArt2DVisualizer
-						asciiArtVisualizer.initialize(false)
-						asciiArtVisualizer.visualizeRegular2DUniverse(regularGeometry.dimensions.get(0).extent, result)
-					}
+				default: {
+					println("Configuration not supported yet.")
+					return null;
 				}
-			} else {
-				println("Not supported yet. Only RegularGeometry can be generated.")
 			}
+			
+			// compute initial values for cells
+			result.cells.forEach[cell |
+				// select the rule that applies (there must be maximum one)
+				val rules = automata.seedRules.filter[r |r.isApplicableForCell(cell)].toList
+				var Rule rule = null
+				if (!rules.empty){
+					rule = rules.get(0)
+				}
+				if (rule != null) {
+					var Context context = new Context
+					context.initialize(getResult, cell)
+					cell.^val = rule.evaluatedVal.evaluate(context)
+				}
+			]
+// MDE_BOOK_END
+			// save result in generator calls for future access
+			setResult(result)
+			// print result using asciiart if it is a supported geometry	
+			switch geometry{
+				RegularGeometry case (geometry.dimensions.size <= 2 && (geometry.dimensions.get(0).extent == geometry.dimensions.get(1).extent)): {
+				// visualize result using ascii art
+				var SimpleAsciiArt2DVisualizer asciiArtVisualizer = new SimpleAsciiArt2DVisualizer
+				asciiArtVisualizer.initialize(false)
+				asciiArtVisualizer.visualizeRegular2DUniverse(geometry.dimensions.get(0).extent, result)
+				}
+			}
+// MDE_BOOK_START	
 			return result
 		}
 // MDE_BOOK_END		
