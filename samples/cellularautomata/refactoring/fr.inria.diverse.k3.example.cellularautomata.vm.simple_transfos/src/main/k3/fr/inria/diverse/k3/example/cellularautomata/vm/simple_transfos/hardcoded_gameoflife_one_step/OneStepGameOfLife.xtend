@@ -16,6 +16,7 @@ import vm.VmPackage
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.hardcoded_gameoflife_one_step.CellAspect.*
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.hardcoded_gameoflife_one_step.UniverseAspect.*
 
+// MDE_BOOK_START
 @Aspect(className=Cell)
 class CellAspect{
 	public Cell cellCopy	
@@ -47,6 +48,7 @@ class UniverseAspect{
 		return _self.universeCopy
 	}
 }
+// MDE_BOOK_END
 
 class Main{
 	def static void main(String[] args) {
