@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
-
+// MDE_BOOK_START
 import static extension fr.inria.diverse.k3.sample.cellularautomata.evol.refactoring.RuleAspect.*
 
 class EvolutionRuleRefactoring {
@@ -51,10 +51,13 @@ class EvolutionRuleRefactoring {
 	}	
 	
 	public def initEMFRegistry(){
+// MDE_BOOK_END	
 		var fact = new XMIResourceFactoryImpl
 		if (!EPackage.Registry.INSTANCE.containsKey(EvolPackage.eNS_URI)) {
 			EPackage.Registry.INSTANCE.put(EvolPackage.eNS_URI, EvolPackage.eINSTANCE);
 		}
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", fact)
+// MDE_BOOK_START		
 	}
 }
+// MDE_BOOK_END
