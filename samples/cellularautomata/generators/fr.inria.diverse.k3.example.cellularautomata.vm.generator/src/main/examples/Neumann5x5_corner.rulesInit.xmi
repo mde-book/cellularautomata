@@ -12,15 +12,15 @@
         xsi:type="core:IntegerLiteral"
         val="1"/>
     <filter
-        xsi:type="ruleInit:CoordinateRanges">
-      <coordinateRanges>
+        xsi:type="ruleInit:AreaFilter">
+      <areas>
         <dimensionRanges
             lower="1"
             upper="5"/>
         <dimensionRanges
             lower="1"
             upper="1"/>
-      </coordinateRanges>
+      </areas>
     </filter>
   </seedRules>
   <seedRules>
@@ -28,30 +28,30 @@
         xsi:type="core:IntegerLiteral"
         val="1"/>
     <filter
-        xsi:type="ruleInit:CoordinateRanges">
-      <coordinateRanges>
+        xsi:type="ruleInit:AreaFilter">
+      <areas>
         <dimensionRanges
             lower="1"
             upper="1"/>
         <dimensionRanges
             lower="1"
             upper="5"/>
-      </coordinateRanges>
+      </areas>
     </filter>
   </seedRules>
   <seedRules>
     <evaluatedVal
         xsi:type="core:IntegerLiteral"/>
     <filter
-        xsi:type="ruleInit:CoordinateRanges">
-      <coordinateRanges>
+        xsi:type="ruleInit:AreaFilter">
+      <areas>
         <dimensionRanges
             lower="1"
             upper="5"/>
         <dimensionRanges
             lower="1"
             upper="5"/>
-      </coordinateRanges>
+      </areas>
     </filter>
   </seedRules>
   <geometry
