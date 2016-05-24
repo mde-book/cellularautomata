@@ -64,8 +64,7 @@ class UniverseGenerator {
 					println("Configuration not supported yet.")
 					return null;
 				}
-			}
-			
+			}			
 			// compute initial values for cells
 			result.cells.forEach[cell |
 				// select the rule that applies (there must be maximum one)
@@ -107,10 +106,10 @@ class UniverseGenerator {
 
 // MDE_BOOK_START		
 		def public Universe generateVonNeumannRectangleBoundedUniverse(Integer universeLength, Integer universeWidth) { 
-			println("Generating a square Universe using von Neumann neighborhood...")
+			println("Generate a square Universe using von Neumann neighborhood")
 			var Universe g = new VmFactoryImpl().createUniverse
 			val Integer cellNumber = universeLength * universeWidth
-			println("Generating "+cellNumber.toString+" Cells...")
+			println("Generate "+cellNumber.toString+" Cells")
 			for (int i : 0..cellNumber-1) {
 				var Cell cell = new VmFactoryImpl().createCell
 				cell.init
@@ -119,12 +118,11 @@ class UniverseGenerator {
 				cell.coordinates.add(i % universeWidth) // y
 				g.cells.add(cell)
 			}
-			println("Generating bounded VonNeumann neighborhood for "+cellNumber.toString+" Cells...")
+			println("Generate bounded VonNeumann neighborhood for "+cellNumber.toString+" Cells")
 			for (int i : 0..cellNumber-1) {
 				val Cell currentCell = g.cells.get(i)
 				val Integer currentLine =  i / universeWidth
 				val Integer currentColumn = i % universeWidth
-				
 				var Integer maxCol = universeWidth - 1
 				switch currentLine{
 					case currentLine > 0 : 			// add north
