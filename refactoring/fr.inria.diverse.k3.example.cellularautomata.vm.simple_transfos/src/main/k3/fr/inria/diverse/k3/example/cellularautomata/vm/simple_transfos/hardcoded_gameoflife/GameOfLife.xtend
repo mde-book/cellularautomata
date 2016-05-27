@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.hardcoded_gameoflife.CellAspect.*
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.hardcoded_gameoflife.UniverseAspect.*
 
-
+//MDE_BOOK_START
 @Aspect(className=Universe)
 class UniverseAspect{
 	public def void playOneStep(){
@@ -45,7 +45,7 @@ class CellAspect{
         else _self.futureValue = _self.^val
 	}
 }
-
+//MDE_BOOK_END
 class GameOfLife {		
 	public def void playOneStep(String inputModel, String resultModel){
 		val vm = loadVM(inputModel)
