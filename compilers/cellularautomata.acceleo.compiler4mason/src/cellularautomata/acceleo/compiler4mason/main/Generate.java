@@ -67,6 +67,9 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     public Generate() {
         // Empty implementation
+    	//EObject e;
+    	//e.eResource().getURI()
+    	
     }
 
     /**
