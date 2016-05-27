@@ -8,7 +8,7 @@ import ruleInit.AreaFilter
 import ruleInit.DimensionRange
 
 import static extension fr.inria.diverse.k3.sample.cellularautomata.init.refactoring.RuleAspect.*
-
+//MDE_BOOK_START
 @Aspect(className=CellularAutomataInitialization)
 class CellularAutomataInitializationAspect{
 	def public void extendDimension( int dimIndex, int incr){
@@ -37,4 +37,4 @@ class RuleAspect {
 		}
 	}
 }
-
+//MDE_BOOK_END
