@@ -1,4 +1,5 @@
 [comment encoding = UTF-8 /]
+[comment MDE_BOOK_START /]
 [module generateLatex('http://vm/1.0')]
 [query public getBaseFilename(u : Universe) : String = invoke(	
 	'cellularautomata.acceleo.generateLatex.Utility',
@@ -53,3 +54,4 @@ Numbers of neighbors alive: & [aCell.neighbors->select(val <> 0)->size()/]
 \end{document}
 [/file]
 [/template]
+[comment MDE_BOOK_END /]
