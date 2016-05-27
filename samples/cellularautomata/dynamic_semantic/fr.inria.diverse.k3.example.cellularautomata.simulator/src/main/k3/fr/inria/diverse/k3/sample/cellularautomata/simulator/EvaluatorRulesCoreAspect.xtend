@@ -56,13 +56,13 @@ class RuleAspect {
 		return value
 	}
 }
-
+// MDE_BOOK_START
 @Aspect(className=typeof(IntegerExpression))
 abstract class IntegerExpressionAspect
 {
 	def abstract public Integer evaluate(Context context)
 }
-
+// MDE_BOOK_END
 @Aspect(className=typeof(IntegerLiteral))
 class IntegerLiteralAspect extends IntegerExpressionAspect
 {
@@ -143,7 +143,7 @@ class GreaterAspect extends BinaryExpressionAspect{
 		}
 	}
 }
-
+// MDE_BOOK_START
 @Aspect(className=typeof(Lower))
 class LowerAspect extends BinaryExpressionAspect{
 	def public Integer evaluate(Context context) {
@@ -167,7 +167,7 @@ class ModAspect extends BinaryExpressionAspect {
 		return leftVal % (rightVal)
 	}
 }
-
+// MDE_BOOK_END
 @Aspect(className=typeof(Mult))
 class MultAspect extends BinaryExpressionAspect{
 	def public Integer evaluate(Context context) {
@@ -294,7 +294,7 @@ class MinAspect extends NeighborsExpressionAspect {
 		return selectedCellValues.reduce[p1, p2| if(p1 > p2) {p2} else {p1}]
 	}
 }
-
+// MDE_BOOK_START
 @Aspect(className=typeof(Size))
 class SizeAspect extends NeighborsExpressionAspect {
 	def public Integer evaluate(Context context) {
@@ -324,4 +324,5 @@ class SumAspect extends NeighborsExpressionAspect {
 		return selectedCellValues.reduce[p1, p2| p1 + p2]
 	}
 }
+// MDE_BOOK_END
 
