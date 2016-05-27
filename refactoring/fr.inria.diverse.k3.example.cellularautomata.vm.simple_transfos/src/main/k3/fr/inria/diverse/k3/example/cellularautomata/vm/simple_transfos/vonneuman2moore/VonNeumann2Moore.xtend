@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.vonneuman2moore.CellAspect.*
 import static extension fr.inria.diverse.k3.example.cellularautomata.vm.simple_transfos.vonneuman2moore.UniverseAspect.*
 import java.util.HashSet
-
+//MDE_BOOK_START
 @Aspect(className=Universe)
 class UniverseAspect{
 	public def void vonNeumann2Moore(){
@@ -43,7 +43,7 @@ class CellAspect{
 		return commonNeighbors
 	}
 }
-
+//MDE_BOOK_END
 class VonNeumann2Moore {		
 	public def void vonneumann2moore(String inputModel, String resultModel, Integer universeLength, Integer universeWidth){
 		val vm = loadVM(inputModel)
