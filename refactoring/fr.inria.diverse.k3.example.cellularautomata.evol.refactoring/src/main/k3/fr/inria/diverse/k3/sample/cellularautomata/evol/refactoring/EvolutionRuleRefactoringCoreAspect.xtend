@@ -13,7 +13,7 @@ import core.CoreFactory
 import evol.PopulationRange
 import evol.CurrentCellPopulation
 import evol.EvolFactory
-
+//MDE_BOOK_START
 import static extension fr.inria.diverse.k3.sample.cellularautomata.evol.refactoring.EqualAspect.*
 import static extension fr.inria.diverse.k3.sample.cellularautomata.evol.refactoring.PopulationRangeAspect.*
 
@@ -88,3 +88,4 @@ class PopulationRangeAspect {
 		return _self
 	}
 }
+//MDE_BOOK_END
