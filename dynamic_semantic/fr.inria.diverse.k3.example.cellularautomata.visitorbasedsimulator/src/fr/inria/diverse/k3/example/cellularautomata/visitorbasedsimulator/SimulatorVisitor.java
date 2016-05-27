@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
-
+//MDE_BOOK_START
 class SimulatorVisitor implements CAERVisitor{
 	public SimulatorContext context;
 
@@ -20,7 +20,6 @@ class SimulatorVisitor implements CAERVisitor{
 		super();
 		this.context = context;
 	}
-
 	@Override
 	public int visitCellularAutomata(CellularAutomata automata) {
 		HashMap<Cell, Integer> futureCellValues = new HashMap<Cell, Integer>();
@@ -75,6 +74,7 @@ class SimulatorVisitor implements CAERVisitor{
 		int right = expression.getRight().accept(this);
 		return left > right ? 1 : 0;
 	}
+//MDE_BOOK_END
 	@Override
 	public int visitAnd(And expression) {
 		boolean left = expression.getLeft().accept(this) != 0 ;
@@ -114,7 +114,8 @@ class SimulatorVisitor implements CAERVisitor{
 	public int visitUMinus(UMinus expression) {
 		return -(expression.getTarget().accept(this));
 	}
-	@Override
+//MDE_BOOK_START	
+	@Override	
 	public int visitCurrentCellPopulation(CurrentCellPopulation expression) {
 		return context.currentCell.getVal();
 	}
@@ -131,6 +132,7 @@ class SimulatorVisitor implements CAERVisitor{
 					.sum();
 		}
 	}
+//MDE_BOOK_END
 	@Override
 	public int visitMax(Max expression) {
 		Stream<Integer> selectedCellValues;
@@ -228,5 +230,7 @@ class SimulatorVisitor implements CAERVisitor{
 	private boolean doesPopulationRangeMatchesValue(PopulationRange filter, Integer value) {
 		return ((value >= filter.getLowerRange()) && (value <= filter.getUpperRange()));
 	}	
-	
+
+//MDE_BOOK_START	
 }
+//MDE_BOOK_END
