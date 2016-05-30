@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:Conditional
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:core="http://rules/core/1.0"
+    xmlns:evol="http://rules/evol/1.0"
+    xsi:schemaLocation="http://rules/core/1.0 ../../org.kermeta.language.sample.cellularautomata.rules.core.model/metamodel/rules_core.ecore http://rules/evol/1.0 ../../org.kermeta.language.sample.cellularautomata.rules.evolution.model/metamodel/rules_evol.ecore">  
+  <condition
+      xsi:type="core:Greater">
+    <left xsi:type="evol:CurrentCellPopulation"/>
+    <right xsi:type="core:IntegerLiteral"/>
+  </condition>
+  <ifTrueExpression
+      xsi:type="core:Minus">
+    <left xsi:type="evol:Sum"/>
+    <right xsi:type="core:IntegerLiteral"
+        val="1"/>
+  </ifTrueExpression>
+  <ifFalseExpression
+      xsi:type="core:IntegerLiteral"
+      val="1"/>
+</core:Conditional>
