@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: fr.inria.diverse.k3.example.cellularautomata.compiler4mason
+Bundle-SymbolicName: fr.inria.diverse.k3.example.cellularautomata.compiler4mason; singleton:=true
+Bundle-Version: 1.0.0
+Require-Bundle: org.kermeta.language.sample.cellularautomata.rules.core.model;bundle-version="1.0.0",
+ org.kermeta.language.sample.cellularautomata.rules.evolution.model;bundle-version="1.0.0",
+ org.eclipse.emf.ecore.xmi,
+ fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.0.0"
+Bundle-ClassPath: .,resources/k3-3.0-SNAPSHOT.jar,resources/org.eclipse.xtend.lib-2.4.3-SNAPSHOT.jar,resources/org.eclipse.xtext.xbase.lib-2.4.3-SNAPSHOT.jar
