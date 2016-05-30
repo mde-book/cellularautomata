@@ -13,5 +13,5 @@ Export-Package: ruleInit,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.kermeta.language.sample.cellularautomata.rules.core.model;visibility:=reexport,
- org.kermeta.language.sample.cellularautomata.geometry.model;bundle-version="1.0.0";visibility:=reexport
+ cellularautomata.geometry.model;bundle-version="1.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
