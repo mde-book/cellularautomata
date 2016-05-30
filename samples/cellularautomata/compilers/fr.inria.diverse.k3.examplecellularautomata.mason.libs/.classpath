@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry exported="true" kind="lib" path="libs/mason.18.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/libraries/bsh-2.0b4.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/libraries/itext-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/libraries/jcommon-1.0.21.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/libraries/jfreechart-1.0.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/libraries/jmf.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/libraries/portfolio.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/3dlibs/j3dcore.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/3dlibs/j3dutils.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/3dlibs/vecmath.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
