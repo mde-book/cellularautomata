@@ -23,8 +23,8 @@ class CellAspect{
 	public def void copyCell(){
 		_self.cellCopy = VmPackage.eINSTANCE.vmFactory.createCell
 		val liveNgbCount = _self.neighbors.filter[n | n.^val == 1].size
-		if(_self.^val ==0){
-			if(liveNgbCount ==3) 
+		if(_self.^val == 0){
+			if(liveNgbCount == 3) 
 				_self.cellCopy.^val = 1
 			else _self.cellCopy.^val = 0
 		} else {
