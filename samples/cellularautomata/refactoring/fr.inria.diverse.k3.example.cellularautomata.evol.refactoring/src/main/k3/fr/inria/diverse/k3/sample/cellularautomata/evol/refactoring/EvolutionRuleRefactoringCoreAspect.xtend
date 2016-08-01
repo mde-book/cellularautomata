@@ -13,6 +13,7 @@ import core.CoreFactory
 import evol.PopulationRange
 import evol.CurrentCellPopulation
 import evol.EvolFactory
+// TODO rename package from  "fr.inria.diverse.k3.sample.cellularautomata.evol" to "caer"
 //MDE_BOOK_START
 import static extension fr.inria.diverse.k3.sample.cellularautomata.evol.refactoring.EqualAspect.*
 import static extension fr.inria.diverse.k3.sample.cellularautomata.evol.refactoring.PopulationRangeAspect.*
@@ -38,8 +39,8 @@ class RuleAspect {
 		val result = new ArrayList<Rule>		
 		val lower = (_self.filter as PopulationRange).lowerRange
 		val upper = (_self.filter as PopulationRange).upperRange
-		val evaluatedValConditional = _self.evaluatedVal as Conditional
-		val equalcondition = evaluatedValConditional.condition as Equal
+		val evaluatedValCond = _self.evaluatedVal as Conditional
+		val equalcondition = evaluatedValCond.condition as Equal
 		
 		var Integer literalValue
 		if (equalcondition.left instanceof IntegerLiteral) 
@@ -51,15 +52,15 @@ class RuleAspect {
 		val upperRule = CoreFactory.eINSTANCE.createRule
 		if(literalValue == lower){
 			lowerRule.filter = EvolFactory.eINSTANCE.createPopulationRange.init(lower, lower)
-			lowerRule.evaluatedVal = evaluatedValConditional.ifTrueExpression
+			lowerRule.evaluatedVal = evaluatedValCond.ifTrueExpression
 			upperRule.filter = EvolFactory.eINSTANCE.createPopulationRange.init(lower+1, upper)
-			upperRule.evaluatedVal = evaluatedValConditional.ifFalseExpression
+			upperRule.evaluatedVal = evaluatedValCond.ifFalseExpression
 		}
 		else{
 			lowerRule.filter = EvolFactory.eINSTANCE.createPopulationRange.init(lower, upper-1)
-			lowerRule.evaluatedVal = evaluatedValConditional.ifFalseExpression
+			lowerRule.evaluatedVal = evaluatedValCond.ifFalseExpression
 			upperRule.filter = EvolFactory.eINSTANCE.createPopulationRange.init(upper, upper)
-			upperRule.evaluatedVal = evaluatedValConditional.ifTrueExpression
+			upperRule.evaluatedVal = evaluatedValCond.ifTrueExpression
 		}
 		
 		result.add(lowerRule)
