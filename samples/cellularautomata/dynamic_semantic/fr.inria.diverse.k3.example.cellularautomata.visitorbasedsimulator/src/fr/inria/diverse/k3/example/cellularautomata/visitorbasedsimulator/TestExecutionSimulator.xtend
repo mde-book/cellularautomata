@@ -7,6 +7,6 @@ class TestExecution {
 		//simulator.simulateWithAsciiArt2Dvisualizer("src/main/examples/lifeGame.evol.xmi", "src/main/examples/Moore5x5_corner.vm.xmi", "5")
 		simulator.simulateWithAsciiArt2Dvisualizer("../cellularautomata_samples_models/evol_xmi/lifeGame.evol.xmi", 
 		                                           "../cellularautomata_samples_models/vm_xmi/Moore5x5_corner.vm.xmi", 
-		                                           "5")
+		                                           5)
 	}
 }

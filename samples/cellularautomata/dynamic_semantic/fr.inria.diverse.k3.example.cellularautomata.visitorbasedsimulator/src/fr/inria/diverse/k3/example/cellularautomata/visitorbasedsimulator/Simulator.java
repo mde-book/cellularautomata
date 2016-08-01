@@ -14,19 +14,18 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 //MDE_BOOK_START
 public class Simulator {
-	public void simulateWithAsciiArt2Dvisualizer(String ruleFile, String gridFile, String universeSize) { 
+	public void simulateWithAsciiArt2Dvisualizer(String ruleFile, String gridFile, Integer universeLength) { 
 		Universe grid = loadGrid(gridFile);
 		CellularAutomata automata = loadRule(ruleFile);
-		Integer universeLength = Integer.parseInt(universeSize);
 		
-		SimpleAsciiArt2DVisualizer asciiArtVisualizer = new SimpleAsciiArt2DVisualizer();
-		asciiArtVisualizer.visualizeRegular2DUniverse(universeLength,grid);
+		SimpleAsciiArt2DVisualizer visualizer = new SimpleAsciiArt2DVisualizer();
+		visualizer.visualizeRegular2DUniverse(universeLength,grid);
 		
 		SimulatorContext context = new SimulatorContext(grid);
 		SimulatorVisitor simVisitor = new SimulatorVisitor(context);
 		for(int i = 0; i<3; i++) {
 			automata.accept(simVisitor);
-			asciiArtVisualizer.visualizeRegular2DUniverse(universeLength, grid);
+			visualizer.visualizeRegular2DUniverse(universeLength, grid);
 		}
 	}		
 	public CellularAutomata loadRule(String ruleFile) {
