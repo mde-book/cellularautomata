@@ -59,6 +59,13 @@ class SimulatorVisitor implements CAERVisitor{
 		}
 	}
 	@Override
+	public int visitGreater(Greater expression) {
+		int left = expression.getLeft().accept(this);
+		int right = expression.getRight().accept(this);
+		return left > right ? 1 : 0;
+	}
+//MDE_BOOK_END
+	@Override
 	public int visitEqual(Equal expression) {
 		int left = expression.getLeft().accept(this);
 		int right = expression.getRight().accept(this);
@@ -68,13 +75,6 @@ class SimulatorVisitor implements CAERVisitor{
 	public int visitDiv(Div expression) {
 		return expression.getLeft().accept(this) / expression.getRight().accept(this);
 	}
-	@Override
-	public int visitGreater(Greater expression) {
-		int left = expression.getLeft().accept(this);
-		int right = expression.getRight().accept(this);
-		return left > right ? 1 : 0;
-	}
-//MDE_BOOK_END
 	@Override
 	public int visitAnd(And expression) {
 		boolean left = expression.getLeft().accept(this) != 0 ;
