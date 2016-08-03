@@ -5,6 +5,7 @@ package geometry.provider;
 
 import geometry.GeometryFactory;
 import geometry.GeometryPackage;
+import geometry.Neighborhood;
 import geometry.RegularGeometry;
 
 import java.util.Collection;
@@ -32,13 +33,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class RegularGeometryItemProvider
-	extends GeometryItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends GeometryItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -60,29 +55,29 @@ public class RegularGeometryItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNeighborsNumberPropertyDescriptor(object);
+			addNeighborsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Neighbors Number feature.
+	 * This adds a property descriptor for the Neighbors feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNeighborsNumberPropertyDescriptor(Object object) {
+	protected void addNeighborsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_RegularGeometry_neighborsNumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_RegularGeometry_neighborsNumber_feature", "_UI_RegularGeometry_type"),
-				 GeometryPackage.Literals.REGULAR_GEOMETRY__NEIGHBORS_NUMBER,
+				 getString("_UI_RegularGeometry_neighbors_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_RegularGeometry_neighbors_feature", "_UI_RegularGeometry_type"),
+				 GeometryPackage.Literals.REGULAR_GEOMETRY__NEIGHBORS,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -136,8 +131,11 @@ public class RegularGeometryItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		RegularGeometry regularGeometry = (RegularGeometry)object;
-		return getString("_UI_RegularGeometry_type") + " " + regularGeometry.getNeighborsNumber();
+		Neighborhood labelValue = ((RegularGeometry)object).getNeighbors();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_RegularGeometry_type") :
+			getString("_UI_RegularGeometry_type") + " " + label;
 	}
 
 	/**
@@ -152,7 +150,7 @@ public class RegularGeometryItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(RegularGeometry.class)) {
-			case GeometryPackage.REGULAR_GEOMETRY__NEIGHBORS_NUMBER:
+			case GeometryPackage.REGULAR_GEOMETRY__NEIGHBORS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case GeometryPackage.REGULAR_GEOMETRY__DIMENSIONS:

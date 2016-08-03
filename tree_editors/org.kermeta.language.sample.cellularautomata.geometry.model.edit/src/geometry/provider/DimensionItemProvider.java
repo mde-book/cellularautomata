@@ -60,26 +60,26 @@ public class DimensionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addSizePropertyDescriptor(object);
+			addExtentPropertyDescriptor(object);
 			addIsCircularPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Size feature.
+	 * This adds a property descriptor for the Extent feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSizePropertyDescriptor(Object object) {
+	protected void addExtentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Dimension_size_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Dimension_size_feature", "_UI_Dimension_type"),
-				 GeometryPackage.Literals.DIMENSION__SIZE,
+				 getString("_UI_Dimension_extent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Dimension_extent_feature", "_UI_Dimension_type"),
+				 GeometryPackage.Literals.DIMENSION__EXTENT,
 				 true,
 				 false,
 				 false,
@@ -130,7 +130,7 @@ public class DimensionItemProvider
 	@Override
 	public String getText(Object object) {
 		Dimension dimension = (Dimension)object;
-		return getString("_UI_Dimension_type") + " " + dimension.getSize();
+		return getString("_UI_Dimension_type") + " " + dimension.getExtent();
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class DimensionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Dimension.class)) {
-			case GeometryPackage.DIMENSION__SIZE:
+			case GeometryPackage.DIMENSION__EXTENT:
 			case GeometryPackage.DIMENSION__IS_CIRCULAR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
