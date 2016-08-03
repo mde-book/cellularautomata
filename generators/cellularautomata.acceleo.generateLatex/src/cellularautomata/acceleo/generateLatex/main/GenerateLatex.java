@@ -340,9 +340,6 @@ public class GenerateLatex extends AbstractAcceleoGenerator {
     @Override
     public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
-        if (!isInWorkspace(vm.VmPackage.class)) {
-            resourceSet.getPackageRegistry().put(vm.VmPackage.eINSTANCE.getNsURI(), vm.VmPackage.eINSTANCE);
-        }
         
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"
