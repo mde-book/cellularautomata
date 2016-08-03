@@ -1,8 +1,0 @@
-// Moore (4 neighbours) 2 (circular) dimensions 5x5 bounded world
-regularGeometry moore {5 x 5}allCircular
-
-init (1..5, 1) by { 1 } // assign 1 on 1rst line
-init (1, 1..5) by { 1 } // assign 1 on 1rst column
-init (1..5, 1..5) by { 0 } // if none of the previous rule applies, then set to 0
-
-init (1..5), (2,2), (2..5) by { 1  } // several intervals and points

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<ca_initialization:CellularAutomataInitialization xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ca_initialization="http://ca_initialization/1.0" xmlns:ca_rule="http://ca_rule/1.0" xsi:schemaLocation="http://ca_initialization/1.0 ../ecore/CA_Initialization.ecore http://ca_rule/1.0 ../ecore/CA_Rules.ecore">
-  <geometry xsi:type="ca_initialization:RegularGeometry" neighborsNumber="8" worldSize="3" dimension="2"/>
-  <seedRule>
-    <value xsi:type="ca_rule:IntegerLiteral"/>
-  </seedRule>
-</ca_initialization:CellularAutomataInitialization>

@@ -1,1 +1,0 @@
-init (4,5) by { if (1) {2} else {3} } // condition in brackets, i.e. (1)

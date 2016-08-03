@@ -1,4 +1,0 @@
-regularGeometry moore {5 x 5}  				// Moore (4 neighbours) 2 dimensions 5x5 bounded world
-init (1..5, 1) by { 1 } // assign 1 on 1rst line
-init (1, 1..5) by { 1 } // assign 1 on 1rst column
-init (1..5, 1..5) by { 0 } // if none of the previous rule applies, then set to 0

@@ -1,1 +1,0 @@
-init (1..6) by { if (x) {if (1|0) {0} else {1} } else {0} } // x is not allowed as position, because it is used as keyword in RegularGeometry

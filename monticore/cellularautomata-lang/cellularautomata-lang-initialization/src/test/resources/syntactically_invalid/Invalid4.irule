@@ -1,2 +1,0 @@
-where {[-1,5]} initValue = {1} // negative position is not allowed
-
